@@ -1,0 +1,31 @@
+urxvt*foreground:	white
+urxvt*background:	black
+
+urxvt*font:	xft:RictyDiminished:size=10:antialias=true
+urxvt*boidFont:	xftRrictyDiminished:size=11:antialias=true
+urxvt*depth:32
+urxvt*background:[95]#000000
+
+! clipboard
+! $ urxvt --perl-lib 
+$HOME/.urxvt/urxvt-perls
+urxvt.perl-lib: /home/taka/.urxvt/urxvt-perls
+urxvt.perl-ext-common: clipboard
+urxvt.keysym.M-c: perl:clipboard:copy
+urxvt.keysym.M-v: perl:clipboard:paste
+urxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+urxvt.perl-ext-common: keyboard-select:active
+urxvt.keysym.M-s:perl: keyboard-select:search
+
+urxvt.perl-ext:default,url-select
+urxvt.keysym.M-u: perl:url-select:select_next
+urxvt.url-select.button:1
+urxvt.url-select.launcher:firefox-developer -new-tab
+urxvt.url-select.underline:true
+
+urxvt.perl-ext-common:tabbed
+urxvt.tabbed.tabbar-fg: 2
+urxvt.tabbed.tabbar-bg: #001020
+urxvt.tabbed.tab-fg: 3
+urxvt.tabbed.tab-bg: #001020

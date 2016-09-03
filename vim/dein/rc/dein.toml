@@ -1,0 +1,31 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugsins]]
+repo = 'Shougo/neocomplcache'
+repo = 'Shougo/neocomplete'
+
+repo = 'Shougo/vimproc'
+build = 'make'
+
+repo = 'Shougo/unite.vim'
+
+repo = 'Shougo/neosnippet.vim'
+repo = 'Shougo/neosnippet-snippets'
+
+repo = 'nathanaeIkane/vim-indent-guides'
+
+repo = 'w0ng/vim-hybrid'
+
+repo = 'thinca/vim-quickrun'
+
+repo = 'h1mesuke/unite-outline'
+
+repo = 'mattn/emmet-vim'
+
+repo = 'tpope/vim-fugitive'
+
+repo = 'scrooloose/syntastic'
+
+repo = 'jceb/vim-orgmode'
+reoo = 'vimwiki/vimwiki'
