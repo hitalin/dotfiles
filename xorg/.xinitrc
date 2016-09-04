@@ -39,6 +39,7 @@ setxkbmap -layout jp
 test -r ~/.Xmodmap && xmodmap ~/.Xmodmap
 
 export GTK_IM_MODULE='uim'
+uim-xim &
 export XMODIFIERS='@im=uim'
 
 exec xmonad
