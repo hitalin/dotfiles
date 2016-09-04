@@ -29,3 +29,5 @@ repo = 'scrooloose/syntastic'
 
 repo = 'jceb/vim-orgmode'
 reoo = 'vimwiki/vimwiki'
+
+repo = 'lervag/vimtex'
