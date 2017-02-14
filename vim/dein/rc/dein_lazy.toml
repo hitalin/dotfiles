@@ -2,4 +2,4 @@
 repo = 'Rip-Rip/clang_complete'
 repo = 'davidhalter/jedi-vim'
 repo = 'ocaml/merlin'
-repo = 'eaglemt/ghcmod-vim'
+repo = 'eagletmt/ghcmod-vim'
