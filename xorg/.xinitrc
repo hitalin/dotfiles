@@ -43,4 +43,5 @@ uim-xim &
 export XMODIFIERS='@im=uim'
 
 exec xmonad
+urxvtd --quiet --fork --opendisplay
 #end

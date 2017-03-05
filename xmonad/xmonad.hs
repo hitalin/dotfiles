@@ -50,21 +50,21 @@ myWorkspaces = ["1", "2", "3", "4", "5"]
 modm = mod4Mask
 
 -- Color Setting
-colorBlue      = "#9fc7e8"
-colorGreen     = "#a5d6a7"
-colorRed       = "#ef9a9a"
-colorGray      = "#9e9e9e"
-colorWhite     = "#ffffff"
+colorBlue      = "#868bae"
+colorGreen     = "#00d700"
+colorRed       = "#ff005f"
+colorGray      = "#666666"
+colorWhite     = "#bdbdbd"
 colorGrayAlt   = "#eceff1"
 colorNormalbg  = "#1c1c1c"
-colorfg        = "#9fa8b1"
+colorfg        = "#a8b6b8"
 
 -- Border width
-borderwidth = 0
+borderwidth = 1 
 
 -- Border color
-mynormalBorderColor  = colorNormalbg
-myfocusedBorderColor = colorfg
+mynormalBorderColor  = "#262626" 
+myfocusedBorderColor = "#ededed" 
 
 -- gapwidth
 gapwidth  = 4
@@ -83,20 +83,25 @@ main = do
     wsbar <- spawnPipe myWsBar
     xmonad $ ewmh desktopConfig
        { borderWidth        = borderwidth
-       , terminal           = "urxvt"
+       , terminal           = "urxvtc"
        , focusFollowsMouse  = True
        , normalBorderColor  = mynormalBorderColor
        , focusedBorderColor = myfocusedBorderColor
-
+       , startupHook        = myStartupHook
        , manageHook         = myManageHookShift <+>
                               myManageHookFloat <+>
                               manageDocks
-       , layoutHook         = toggleLayouts (avoidStruts $ noBorders Full) $
-                              onWorkspace "3" (avoidStruts $ simplestFloat) $
-                              avoidStruts $ myLayout
+       , layoutHook         = avoidStruts $ ( toggleLayouts (noBorders Full)
+                                            $ onWorkspace "3" simplestFloat
+                                            $ onWorkspace "5" (
+                                                spacing 14
+                                                $ gaps [(U, 2),(D, 2),(L, 5),(R, 5)]
+                                                $ ResizableTall 0 (1/42) (1/2) [])
+                                                $ myLayout
+                                            )
         -- xmobar setting
        , logHook            = myLogHook wsbar
-
+                                >> updatePointer (0.5, 0.5) (0, 0)
        , handleEventHook    = fullscreenEventHook
        , workspaces         = myWorkspaces
        , modMask            = modm
@@ -225,7 +230,8 @@ myLayout = spacing gapwidth $
 -- myStartupHook:     Start up applications                                 {{{
 -------------------------------------------------------------------------------
 
-
+myStartupHook = do
+        spawnOnce "$HOME/.dropbox-dist/dropboxd"
 
 --------------------------------------------------------------------------- }}}
 -- myManageHookShift: some window must created there                        {{{
@@ -270,12 +276,12 @@ myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
 myWsBar = "xmobar $HOME/.xmonad/xmobarrc"
 
 wsPP = xmobarPP { ppOrder           = \(ws:l:t:_)  -> [ws,t]
-                , ppCurrent         = xmobarColor colorGreen colorNormalbg 
-                , ppUrgent          = xmobarColor colorfg    colorNormalbg  
-                , ppVisible         = xmobarColor colorfg    colorNormalbg 
-                , ppHidden          = xmobarColor colorfg    colorNormalbg 
-                , ppHiddenNoWindows = xmobarColor colorfg    colorNormalbg 
-                , ppTitle           = xmobarColor colorGreen colorNormalbg
+                , ppCurrent         = xmobarColor colorRed      colorNormalbg
+                , ppUrgent          = xmobarColor colorGray     colorNormalbg
+                , ppVisible         = xmobarColor colorRed      colorNormalbg
+                , ppHidden          = xmobarColor colorGray     colorNormalbg
+                , ppHiddenNoWindows = xmobarColor colorGray     colorNormalbg
+                , ppTitle           = xmobarColor colorRed      colorNormalbg
                 , ppOutput          = putStrLn
                 , ppWsSep           = " "
                 , ppSep             = "  "
@@ -285,7 +291,7 @@ wsPP = xmobarPP { ppOrder           = \(ws:l:t:_)  -> [ws,t]
 -- myXPConfig:        XPConfig                                            {{{
 
 myXPConfig = defaultXPConfig
-                { font              = "xft:RictyDiminished 1M:size=12:antialias=true"
+                { font              = "xft:RictyDiminished:size=12:antialias=true"
                 , fgColor           = colorfg
                 , bgColor           = colorNormalbg
                 , borderColor       = colorNormalbg
