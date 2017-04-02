@@ -2,8 +2,8 @@ URxvt.foreground: white
 URxvt.background: black
 
 !! font
-URxvt.font:	xft:RictyDiminished:size=10:antialias=true
-URxvt.boidFont:	xftRrictyDiminished:size=11:antialias=true
+URxvt.font: xft:RictyDiminished:size=10:antialias=true
+URxvt.boidFont: xftRrictyDiminished:size=11:antialias=true
 !! for japanese
 URxvt.preeditType: OnTheSpot
 URxvt.perl-ext: xim-onethespot
