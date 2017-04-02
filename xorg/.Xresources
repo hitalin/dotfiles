@@ -6,7 +6,7 @@ URxvt.font:	xft:RictyDiminished:size=10:antialias=true
 URxvt.boidFont:	xftRrictyDiminished:size=11:antialias=true
 !! for japanese
 URxvt.preeditType: OnTheSpot
-URxvt.perl-ext: xim-onethesopt
+URxvt.perl-ext: xim-onethespot
 
 ! URxvt-perls
 URxvt.perl-lib: ~/.urxvt/urxvt-perls/
