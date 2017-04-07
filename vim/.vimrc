@@ -1,5 +1,12 @@
+set encoding=utf-8
+
+if &compatible
+    set nocompatible
+endif
+
 set tabstop=4
 set expandtab
+set smarttab
 
 set autoindent
 set smartindent
@@ -19,8 +26,6 @@ set noswapfile
 set clipboard=unnamed,autoselect
 
 "--------------------------------------------------------------------
-" 2.GUI
-
 set number
 
 set ruler
@@ -35,29 +40,31 @@ set laststatus=2
 
 set cmdheight=2
 
+set foldmethod=marker
+
 set showcmd
 
 set notitle
-
 
 set number 
 set title 
 set showmatch
 
-syntax on
+set t_Co=256
+set background=dark
+colorscheme hybrid
+
+syntax on 
 filetype on
 filetype plugin on
 filetype indent on
 
-
 set ignorecase
 set smartcase
 set wrapscan
+
 "--------------------------------------------------------------------------
-
-
-"###########################Plugin Manager#################################
-" 1. Set Dein.vim
+" Set Plugin Manager
 
 let g:rc_dir = expand('~/.vim')
 let s:dein_dir = expand('~/.vim/dein')
@@ -88,3 +95,15 @@ if dein#check_install()
 endif
 
 filetype plugin on
+
+"-------------------------------------------------------------------------
+" for -b option
+augroup BinaryEditVimrcCommands
+    autocmd!
+    autocmd BufReadPre  *.bin let &binary = 1
+    autocmd BufReadPost * if &binary | silent %!xxd -g 1
+    autocmd BufReadPost * set ft=xxd | endif
+    autocmd BufWritePre * if &binary | %!xxd -r | endif
+    autocmd BufWritePost * if &binary | silent %!xxd -g 1
+    autocmd BufWritePost * set nomod | endif
+augroup END

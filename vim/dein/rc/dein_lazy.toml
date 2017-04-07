@@ -1,8 +1,7 @@
 [[plugins]]
-repo = 'Shougo/vinarise.vim'
 repo = 'shiracamus/vim-syntax-x86-objdump-d'
-
 repo = 'Rip-Rip/clang_complete'
 repo = 'davidhalter/jedi-vim'
 repo = 'ocaml/merlin'
 repo = 'eagletmt/ghcmod-vim'
+repo = 'lervag/vimtex'

@@ -15,19 +15,12 @@ repo = 'Shougo/neosnippet-snippets'
 
 repo = 'nathanaeIkane/vim-indent-guides'
 
-repo = 'w0ng/vim-hybrid'
-
 repo = 'thinca/vim-quickrun'
 
 repo = 'h1mesuke/unite-outline'
-
-repo = 'mattn/emmet-vim'
 
 repo = 'tpope/vim-fugitive'
 
 repo = 'scrooloose/syntastic'
 
-repo = 'jceb/vim-orgmode'
-reoo = 'vimwiki/vimwiki'
-
-repo = 'lervag/vimtex'
+repo = 'w0ng/vim-hybrid'
