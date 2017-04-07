@@ -15,11 +15,6 @@ if [ ! -d ~/.vim/rc/ ]; then
     ln -Fis $SCRIPT_DIR/dein_lazy.toml ~/.vim/rc/
 fi
 
-if [ ! -d ~/.pyenv/ ]; then
-    mkdir -p ~/.pyenv/
-    git clone https://github.com/yyuu/pyenv.git ~/.pyenv/
-fi
-
 if [ ! -d ~/peda/ ]; then
     git clone https://github.com/longld/peda.git ~/peda
     echo "source ~/peda/peda.py" >> ~/.gdbinit
