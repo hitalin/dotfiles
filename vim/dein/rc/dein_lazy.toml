@@ -6,12 +6,15 @@ repo = 'Rip-Rip/clang_complete'
 
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
+on_ft = ['python']
 
 [[plugins]]
 repo = 'ocaml/merlin'
+on_ft = ['ocaml']
 
 [[plugins]]
 repo = 'eagletmt/ghcmod-vim'
+on_ft = ['haskell']
 
 [[plugins]]
 repo = 'lervag/vimtex'
