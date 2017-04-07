@@ -1,4 +1,4 @@
-# --- (d) is defaults on
+[ -z "$PS1" ] && return
 
 # ------------------------------
 # General Settings
@@ -7,8 +7,15 @@ export EDITOR=vim
 export LANG=ja_JP.UTF-8
 export KCODE=u 
 export AUTOFEATURE=true
+export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
+setopt print_eight_bit
+setopt no_flow_control
+setopt interactive_comments
+setopt pushd_ignore_dups
+setopt extended_glob
+setopt prompt_subst
+unset caseglob
 bindkey -e #bindkey -v 
-setopt no_beep 
 setopt auto_cd
 setopt auto_pushd 
 setopt correct 
@@ -31,9 +38,11 @@ unsetopt caseglob
 HISTFILE=~/.zsh_history 
 HISTSIZE=10000 
 SAVEHIST=10000 
+HIST_STAMPS="mm/dd/yyyy"
 setopt bang_hist 
 setopt extended_history 
 setopt hist_ignore_dups 
+setopt hist_ignore_space
 setopt share_history 
 setopt hist_reduce_blanks 
 
@@ -59,8 +68,8 @@ export ZLS_COLORS=$LS_COLORS
 export CLICOLOR=true
 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-### Prompt ###
 
+### Prompt ###
 autoload -U colors; colors
 
 tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
@@ -90,46 +99,14 @@ echo -ne "\033]0;${USER}@${HOST%%.*}\007"
 }
 ;;
 esac
-# ------------------------------
-# Other Settings
-# ------------------------------
-### RVM ###
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
-### Macports ###
-case "${OSTYPE}" in
-darwin*)
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
-;;
-esac
 
-#function cd() {
-# builtin cd $@ && ls;
-#}
-#=============================
-# source auto-fu.zsh
-#=============================
-if [ -f ~/.zsh/auto-fu.zsh ]; then
-source ~/.zsh/auto-fu.zsh
-function zle-line-init () {
-auto-fu-init
-}
-zle -N zle-line-init
-zstyle ':completion:*' completer _oldlist _complete
-fi
-# Attache tmux
-if ( ! test $TMUX ) && ( ! expr $TERM : "^screen" > /dev/null ) && which tmux > /dev/null; then
-if ( tmux has-session ); then
-session=`tmux list-sessions | grep -e '^[0-9].*]$' | head -n 1 | sed -e 's/^\([0-9]\+\).*$/\1/'`
-if [ -n "$session" ]; then
-echo "Attache tmux session $session."
-tmux attach-session -t $session
-else
-echo "Session has been already attached."
-tmux list-sessions
-fi
-else
-echo "Create new tmux session."
-tmux
-fi
-fi
+# alias
+alias ls='ls -F --color=auto'
+
+# ------------------------------
+# plugins 
+# ------------------------------
+source ~/.zplug/init.zsh
+
+#-- ----------------------------
+[[ $TMUX = "" ]] && export TERM="xterm-256color"
