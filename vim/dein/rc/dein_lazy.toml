@@ -1,7 +1,17 @@
 [[plugins]]
 repo = 'shiracamus/vim-syntax-x86-objdump-d'
+
+[[plugins]]
 repo = 'Rip-Rip/clang_complete'
+
+[[plugins]]
 repo = 'davidhalter/jedi-vim'
+
+[[plugins]]
 repo = 'ocaml/merlin'
+
+[[plugins]]
 repo = 'eagletmt/ghcmod-vim'
+
+[[plugins]]
 repo = 'lervag/vimtex'

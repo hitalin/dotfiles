@@ -3,24 +3,37 @@ repo = 'Shougo/dein.vim'
 
 [[plugsins]]
 repo = 'Shougo/neocomplcache'
+
+[[plugins]]
 repo = 'Shougo/neocomplete'
 
+[[plugins]]
 repo = 'Shougo/vimproc'
 build = 'make'
 
+[[plugins]]
 repo = 'Shougo/unite.vim'
 
+[[plugins]]
 repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-repo = 'nathanaeIkane/vim-indent-guides'
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
 
+[[plugins]]
 repo = 'thinca/vim-quickrun'
 
+[[plugins]]
 repo = 'h1mesuke/unite-outline'
 
+[[plugins]]
 repo = 'tpope/vim-fugitive'
 
+[[plugins]]
 repo = 'scrooloose/syntastic'
 
+[[plugins]]
 repo = 'w0ng/vim-hybrid'
