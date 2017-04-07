@@ -23,6 +23,7 @@ setopt magic_equal_subst
 setopt prompt_subst 
 setopt notify 
 setopt equals 
+
 ### Complement ###
 autoload -U compinit; compinit
 setopt auto_list 
@@ -31,9 +32,11 @@ setopt list_packed
 setopt list_types
 bindkey "^[[Z" reverse-menu-complete 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
 ### Glob ###
 setopt extended_glob 
 unsetopt caseglob 
+
 ### History ###
 HISTFILE=~/.zsh_history 
 HISTSIZE=10000 
@@ -53,6 +56,7 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
 function history-all { history -E 1 }
+
 # ------------------------------
 # Look And Feel Settings
 # ------------------------------
@@ -91,6 +95,7 @@ SPROMPT=$tmp_sprompt
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
 PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
 ;
+
 ### Title (user@hostname) ###
 case "${TERM}" in
 kterm*|xterm*)
@@ -102,6 +107,12 @@ esac
 
 # alias
 alias ls='ls -F --color=auto'
+alias less="less -R"
+
+alias ghc="stack ghc"
+alias ghci="stack ghci"
+alias runghc="stack runghc"
+alias runhs="stack runghc"
 
 # ------------------------------
 # plugins 
