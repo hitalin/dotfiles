@@ -1,8 +1,20 @@
 set history save on
 set history size 10000
 set history filename ~/.gdb_history
+set history expansion on
 set print pretty on
 set print static-members off
+set pagination off
 set charset ASCII
 set disassembly-flavor intel
+
 source ~/.peda/peda.py
+
+set print asm-demangle on
+set disable-randomization off
+set follow-fork-mode child
+
+define cs
+    checksec
+end
+
