@@ -112,7 +112,6 @@ alias less="less -R"
 alias ghc="stack ghc"
 alias ghci="stack ghci"
 alias runghc="stack runghc"
-alias runhs="stack runghc"
 
 # ------------------------------
 # plugins 
