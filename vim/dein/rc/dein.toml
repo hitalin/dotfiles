@@ -6,19 +6,97 @@ repo = 'Shougo/neocomplcache'
 
 [[plugins]]
 repo = 'Shougo/neocomplete'
+hook_add = ''' " {{{
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
+    inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    augroup OmniCompletionNeocompleteCommands
+        autocmd!
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    augroup END
+''' # }}}
+
+[[plugins]]
+# スニペット補完
+repo = 'Shougo/neosnippet'
+depends = ['Shougo/neocomplete.vim']
+hook_add = ''' " {{{
+    imap <expr><CR> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)" :
+        \ "\<CR>"
+''' # }}}
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'/*{{{*//*}}}*/
+hook_add = ''' " {{{/*{{{*/
+    let g:lightline = {
+                \     'colorscheme': 'wombat',
+                \     'active': {
+                \         'left': [
+                \             ['mode', 'paste'],
+                \             ['readonly', 'filename', 'modified']
+                \         ],
+                \         'right': [
+                \             ['lineinfo'],
+                \             ['persent'],
+                \             ['fileformat', 'fileencoding', 'filetype']
+                \         ]
+                \     },
+                \     'component_function': {
+                \         'filename': 'VimrcLightLineFileName'
+                \     },
+                \     'component_expand': {
+                \         'readonly': 'VimrcLightLineReadOnly'
+                \     },
+                \     'component_type': {
+                \         'readonly': 'error'
+                \     }
+                \ }
+    
+    function! VimrcLightLineReadOnly()
+        return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'RO' : ''
+    endfunction
+    function! VimrcLightLineFileName()
+        if &ft == 'vimfiler'
+            return vimfiler#get_status_string()
+        elseif &ft == 'unite'
+            return unite#get_status_string()
+        elseif expand('%') == ''
+            return '[No Name]'
+        else
+            return expand('%')
+        endif
+    endfunction
+''' # }}}/*}}}*/
+
 
 [[plugins]]
 repo = 'Shougo/vimproc'
 build = 'make'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'Shougo/vimfiler.vim'
+depends = ['unite.vim']
+hook_add = ''' " {{{
+    let g:vimfiler_force_overwrite_statusline = 0
+    let g:vimfiler_as_default_explorer = 1
+    noremap <silent> [unite]ff :<C-u>VimFilerBufferDir<CR>
+''' # }}}
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
