@@ -109,7 +109,7 @@ esac
 alias ls='ls -F --color=auto'
 alias less="less -R"
 
-alias ocaml="rlwlap ocaml"
+alias ocaml="rlwrap ocaml"
 
 alias ghc="stack ghc"
 alias ghci="stack ghci"
