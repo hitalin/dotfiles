@@ -1,8 +1,6 @@
 [[plugins]]
-repo = 'shiracamus/vim-syntax-x86-objdump-d'
-
-[[plugins]]
-repo = 'Rip-Rip/clang_complete'
+repo = 'justmao945/vim-clang'
+on_ft = ['c', 'cpp']
 
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
@@ -13,8 +11,30 @@ repo = 'ocaml/merlin'
 on_ft = ['ocaml']
 
 [[plugins]]
-repo = 'eagletmt/ghcmod-vim'
+repo = 'dag/vim2hs'
 on_ft = ['haskell']
 
 [[plugins]]
+repo = 'eagletmt/neco-ghc'
+depends = ['Shougo/neocomplcache.vim']
+on_ft = ['haskell']
+external_commands = 'ghc-mod'
+
+[[plugins]]
 repo = 'lervag/vimtex'
+on_ft = ['tex']
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+on_ft = ['markdown']
+hook_source = ''' " {{{
+    let g:vim_markdown_folding_disabled = 1
+''' # }}}
+
+[[plugins]]
+repo = 'kannokanno/previm'
+depends = ['open-browser.vim']
+on_ft = ['markdown']
+hook_source = ''' " {{{
+    let g:previm_enable_realtime = 1
+''' # }}}
