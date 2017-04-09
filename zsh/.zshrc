@@ -115,6 +115,9 @@ alias ghc="stack ghc"
 alias ghci="stack ghci"
 alias runghc="stack runghc"
 
+# OPAM configuration
+. /home/taka/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
 # ------------------------------
 # plugins 
 # ------------------------------
