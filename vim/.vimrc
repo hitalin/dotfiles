@@ -110,5 +110,8 @@ augroup BinaryEditVimrcCommands
     autocmd BufWritePost * set nomod | endif
 augroup END
 
-" for opam/ocp-indent
+" for ocaml
 set rtp^="/home/taka/.opam/system/share/ocp-indent/vim"
+
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute 'set rtp+=' . g:opamshare . '/merlin/vim'

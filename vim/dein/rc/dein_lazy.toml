@@ -7,14 +7,6 @@ repo = 'davidhalter/jedi-vim'
 on_ft = ['python']
 
 [[plugins]]
-repo = 'OCamlPro/ocp-indent'
-on_ft = ['ocaml']
-
-[[plugins]]
-repo = 'ocaml/merlin'
-on_ft = ['ocaml']
-
-[[plugins]]
 repo = 'dag/vim2hs'
 on_ft = ['haskell']
 
