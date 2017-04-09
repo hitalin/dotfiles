@@ -109,3 +109,6 @@ augroup BinaryEditVimrcCommands
     autocmd BufWritePost * if &binary | silent %!xxd -g 1
     autocmd BufWritePost * set nomod | endif
 augroup END
+
+" for opam/ocp-indent
+set rtp^="/home/taka/.opam/system/share/ocp-indent/vim"
