@@ -1,9 +1,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugsins]]
-repo = 'Shougo/neocomplcache'
-
 [[plugins]]
 repo = 'Shougo/neocomplete'
 hook_add = ''' " {{{
@@ -22,7 +19,6 @@ hook_add = ''' " {{{
 ''' # }}}
 
 [[plugins]]
-# スニペット補完
 repo = 'Shougo/neosnippet'
 depends = ['Shougo/neocomplete.vim']
 hook_add = ''' " {{{
