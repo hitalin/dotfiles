@@ -1,2 +1,25 @@
 *~
 *.un~
+
+# vim buckup
+*.swp
+*.swo
+
+# ocaml
+*.cmi
+*.cmo
+*.cmx
+
+# haskll
+*.hi
+
+# python
+*_venv/
+.ropeproject/
+__pycache__/
+*.pyc
+
+# haskell
+*_venv/
+cabal.sandbox.config
+.cabal-sandbox
