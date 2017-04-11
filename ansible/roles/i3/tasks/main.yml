@@ -1,9 +1,12 @@
 ---
-- name: Install i3
-  pacman: name=i3 state=present
+- name: Install xmonad 
+  pacman: name=xmonad state=present
 
-- name: Install py3status
-  aur: name=py3status user={{ user.name }}
+- name: Install xmonad-contrib
+  pacman: name=xmonad-contrib state=present
+
+- name: Install xmobar 
+  aur: name=xmobar user={{ user.name }}
   tags:
     - aur
 
