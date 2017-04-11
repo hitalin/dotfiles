@@ -11,7 +11,6 @@
     - { role: ssd, tags: ['ssd'] }
     - { role: fonts, tags: ['fonts'] }
     - { role: x, tags: ['x'] }
-    - { role: lightdm, tags: ['lightdm'] }
     - { role: xmonad, tags: ['i3'] }
     - { role: pass, tags: ['pass'] }
     - { role: iptables, tags: ['iptables'] }
@@ -20,7 +19,6 @@
     - { role: macchiato, tags: ['macchiato'] }
     - { role: ntp, tags: ['ntp'] }
     - { role: firejail, tags: ['firejail'] }
-    - { role: tor, tags: ['tor'], when: "tor is defined" }
     - { role: unbound, tags: ['unbound'] }
     - { role: editors, tags: ['editors'] }
     - { role: filesystems, tags: ['filesystems'] }
