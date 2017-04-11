@@ -1,0 +1,26 @@
+---
+- name: Install mutt
+  aur: name=neomutt user={{ user.name }}
+  tags:
+    - aur
+
+- name: Push mutt firejail profile
+  copy: src=firejail/mutt.profile dest=/usr/local/etc/firejail/mutt.profile
+  notify:
+    - activate firejail profiles
+  tags:
+    - firejail
+
+- name: Install urlview
+  aur: name=urlview user={{ user.name }}
+  tags:
+    - aur
+
+- name: Install notmuch
+  pacman: name=notmuch state=present
+
+- include: msmtp.yml
+- include: isync.yml
+- include: offlineimap.yml
+- include: mailsync.yml
+- include: contacts.yml

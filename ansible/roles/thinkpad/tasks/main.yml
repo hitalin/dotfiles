@@ -1,0 +1,26 @@
+---
+- name: Install acpi_call for TLP battery functions
+  pacman: name=acpi_call state=present
+  tags:
+    - battery
+
+- name: Install tpacpi-bat
+  aur: name=tpacpi-bat user={{ user.name }}
+  tags:
+    - aur
+    - battery
+
+- name: Install fprintd
+  pacman: name=fprintd state=present
+  tags:
+    - fingerprint
+
+- name: Push sudo authentication file
+  template: src=pam.d/sudo.j2 dest=/etc/pam.d/sudo
+  tags:
+    - fingerprint
+
+- name: Push i3lock authentication file
+  template: src=pam.d/i3lock.j2 dest=/etc/pam.d/i3lock
+  tags:
+    - fingerprint

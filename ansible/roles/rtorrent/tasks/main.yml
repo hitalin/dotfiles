@@ -1,0 +1,17 @@
+---
+- name: Install rtorrent
+  pacman: name=rtorrent state=present
+
+- name: Jail rtorrent
+  file: src=/usr/bin/firejail
+        dest=/usr/local/bin/rtorrent
+        state=link
+  tags:
+    - firejail
+
+- name: Push rtorrent firejail profile
+  copy: src=firejail/rtorrent.profile dest=/usr/local/etc/firejail/rtorrent.profile
+  notify:
+    - activate firejail profiles
+  tags:
+    - firejail
