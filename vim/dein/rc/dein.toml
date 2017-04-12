@@ -136,6 +136,8 @@ repo = 'thinca/vim-quickrun'
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 
+[[plugins]]
+repo = 'vimwiki/vimwiki'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
