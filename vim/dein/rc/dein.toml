@@ -20,7 +20,7 @@ hook_add = ''' " {{{
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
-depends = ['Shougo/neocomplete']
+depends = ['Shougo/neocomplete.vim']
 hook_add = ''' " {{{
     imap <expr><CR> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)" :
@@ -85,8 +85,8 @@ hook_add = ''' " {{{/*{{{*/
 repo = 'Shougo/vimproc'
 build = 'make'
 
+# for file management
 [[plugins]]
-# データ選択インターフェース
 repo = 'Shougo/unite.vim'
 depends = ['vimproc.vim']
 hook_add = ''' " {{{
@@ -124,13 +124,18 @@ hook_add = ''' " {{{
 ''' # }}}
 
 [[plugins]]
+repo = 'h1mesuke/unite-outline'
+
+[[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 
+# to preview markdown in browser
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 
 [[plugins]]
-repo = 'h1mesuke/unite-outline'
+repo = 'tyru/open-browser.vim'
+
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -138,6 +143,7 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'scrooloose/syntastic'
 
+# for foldering
 [[plugins]]
 repo = 'LeafCage/foldCC.vim'
 hook_add = ''' " {{{
