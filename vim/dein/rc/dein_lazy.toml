@@ -12,7 +12,6 @@ on_ft = ['haskell']
 
 [[plugins]]
 repo = 'eagletmt/neco-ghc'
-depends = ['neocomplete.vim']
 on_ft = ['haskell']
 external_commands = 'ghc-mod'
 
