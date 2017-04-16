@@ -1,0 +1,85 @@
+---
+
+- hosts: all
+  vars:
+    # Ubuntu's default python is python3
+    ansible_python_interpreter: "/usr/bin/env python2"
+
+  handlers:
+
+    - name: locale-regen
+      command: locale-gen
+
+    - name: mkinitcpio
+      command: mkinitcpio -p linux
+      notify: mkinitcpio-mainline
+
+    - name: mkinitcpio-mainline
+      command: mkinitcpio -p linux-mainline
+      args:
+        removes: /etc/mkinitcpio.d/linux-mainline.preset
+
+  roles:
+
+    - console
+    - systemd-boot
+    - network
+    - { role: apt-get, aur_package_name: packer }
+    - bluetooth
+
+  tasks:
+
+    - name: Set the correct timezone
+      file:
+        src: /usr/share/zoneinfo/Asia/Tokyo
+        dest: /etc/localtime
+        state: link
+
+    - name: Setup mkinitcpio.conf
+      template:
+        src: templates/mkinitcpio.conf.j2
+        dest: /etc/mkinitcpio.conf
+      notify: mkinitcpio
+
+    - name: Setup makepkg.conf
+      template:
+        src: templates/makepkg.conf.j2
+        dest: /etc/makepkg.conf
+
+    - name: Setup modprobe.conf
+      template:
+        src: templates/modprobe.conf.j2
+        dest: /etc/modprobe.d/modprobe.conf
+
+    - name: Install packages
+      apt-get: name={{ item }}
+      with_items:
+
+        # For the system
+        - intel-ucode
+        - linux-firmware
+
+        # For the shell needs
+        - vim
+        - zsh
+        - git
+        - tig
+        - tmux
+        - ranger
+
+        # X
+        - xmonad
+        - chromium 
+        
+        # for develop
+        - qemu
+
+        # for pwn
+        - gdb
+
+        # for CTF
+        - john
+    - name: Start services (now, and on boot)
+      service: state=started name={{ item }} enabled=yes
+      with_items:
+        - sshd
