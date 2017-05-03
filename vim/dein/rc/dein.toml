@@ -140,6 +140,9 @@ repo = 'tyru/open-browser.vim'
 repo = 'vimwiki/vimwiki'
 
 [[plugins]]
+repo = 'vim-scripts/sudo.vim'
+
+[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
