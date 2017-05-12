@@ -1,0 +1,22 @@
+- hosts: all
+  sudo: yes
+  user: vagrant 
+  tasks:
+    - name: Install packages
+      apt-get: name={{item}}
+      with_items:
+        # For the shell needs
+        - vim
+        - zsh
+        - git
+        - tig
+        - tmux
+        - ranger
+        # X
+        - urxvt
+        - xmonad
+        # for pwn
+        - binutils
+        - gdb
+        # for crypto
+        - john
