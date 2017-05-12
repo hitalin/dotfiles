@@ -17,4 +17,3 @@
         - xmonad
         # for embeded 
         - qemu
-        - binutils
