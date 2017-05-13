@@ -1,0 +1,4 @@
+MD5 (binutils-2.21.1.tar.bz2) = bde820eac53fa3a8d8696667418557ad
+MD5 (gcc-3.4.6.tar.gz) = b0c915e554aaf475dde0571677c15a9c
+MD5 (gdb-7.3.1.tar.gz) = c2795d636a9481d022608cab201be613
+MD5 (newlib-1.20.0.tar.gz) = e5488f545c46287d360e68a801d470e8
