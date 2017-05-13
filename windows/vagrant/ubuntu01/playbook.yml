@@ -12,10 +12,15 @@
         - tig
         - tmux
         - ranger
+        - ctags
         # X
+        - xsel
+        - uim
         - urxvt
+        - urxvt-perls
         - xmonad
-        # for pwn
-        - gdb
-        # for crypto
-        - john
+        - xmonad-contrib
+        - xmobar
+        - leafpad
+        # lang
+        - haskell-stack
