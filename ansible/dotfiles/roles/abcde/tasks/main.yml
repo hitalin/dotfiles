@@ -1,0 +1,5 @@
+---
+- name: install abcde.conf
+  copy:
+    src: abcde.conf
+    dest: ~/.abcde.conf

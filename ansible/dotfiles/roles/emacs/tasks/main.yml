@@ -1,0 +1,42 @@
+---
+- name: create ~/.emacs.d directory
+  file:
+    path: ~/.emacs.d
+    mode: 0755
+    state: directory
+
+- name: install init.el
+  copy:
+    src: init.el
+    dest: ~/.emacs.d/
+    mode: 0644
+
+- name: create ~/.emacs.d/themes directory
+  file:
+    path: ~/.emacs.d/themes
+    mode: 0755
+    state: directory
+
+- name: install color theme file
+  copy:
+    src: manoj-dark-custom-theme.el
+    dest: ~/.emacs.d/themes/
+    mode: 0644
+
+- name: create ~/.emacs.d/init directory
+  file:
+    path: ~/.emacs.d/init
+    mode: 0755
+    state: directory
+
+- name: install package config files
+  copy:
+    src: "{{ item }}"
+    dest: ~/.emacs.d/init/
+    mode: 0644
+  with_items:
+    - init-auto-complete.el
+    - init-haskell-mode.el
+    - init-markdown-mode.el
+    - init-scss-mode.el
+

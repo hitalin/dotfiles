@@ -1,0 +1,5 @@
+---
+- name: install ~/.Xresources
+  copy:
+    src: Xresources
+    dest: ~/.Xresources

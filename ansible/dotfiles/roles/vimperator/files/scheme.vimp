@@ -1,0 +1,47 @@
+highlight Hint << EOS
+  font-family:  monospace;
+  font-size:    18px;
+  font-weight:  bold;
+  white-space:  nowrap;
+  color:        white;
+  background:   red;
+  border-style: none;
+  line-height:  normal;
+  padding:      0px 1px;
+EOS
+
+highlight HintElem << EOS
+  color:      black;
+  background: pink;
+EOS
+
+highlight HintActive << EOS
+  color:      white;
+  background: hotpink;
+EOS
+
+highlight StatusLine color: black; background: white; font-size: 12pt;
+
+highlight Normal     color: black; background: white; font-size: 12pt;
+highlight CmdLine    color: black; background: white; font-size: 12pt;
+highlight InfoMsg    font-size: 12pt;
+
+highlight ModeMsg << EOS
+  font-size:   12pt;
+  font-weight: bold;
+  color:       white;
+  background:  green;
+  padding:     0px 3px 0px 3px;
+EOS
+
+highlight LineNr     font-size: 12pt;
+highlight Question   font-size: 12pt;
+highlight WarningMsg font-size: 12pt;
+highlight ErrorMsg   color: white; background: red; font-size: 12pt;
+
+highlight CompItem[selected] color: black; background: pink;
+highlight CompDesc           color: blue; width: 50%;
+
+highlight Help     font-size: 12pt;
+highlight HelpTag  font-size: 12pt;
+highlight HelpCode font-family: monospace;

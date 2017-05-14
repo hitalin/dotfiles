@@ -1,0 +1,8 @@
+XDG_DESKTOP_DIR="/home/{{ ansible_user_id }}/"
+XDG_DOWNLOAD_DIR="/home/{{ ansible_user_id }}/download"
+XDG_TEMPLATES_DIR="/home/{{ ansible_user_id }}/"
+XDG_PUBLICSHARE_DIR="/home/{{ ansible_user_id }}/"
+XDG_DOCUMENTS_DIR="/home/{{ ansible_user_id }}/"
+XDG_MUSIC_DIR="/home/{{ ansible_user_id }}/music"
+XDG_PICTURES_DIR="/home/{{ ansible_user_id }}/picture"
+XDG_VIDEOS_DIR="/home/{{ ansible_user_id }}/video"

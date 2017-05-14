@@ -1,0 +1,176 @@
+bindkey -e
+
+HISTSIZE=1000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
+
+# alias
+alias ls="ls --color=auto --literal"
+alias ll="ls -lhs"
+alias la="ls -a"
+alias lla="ll -a"
+alias df="df -h"
+alias du="du -h"
+alias free="free -h"
+alias vi="vim"
+alias nano="nano -w"
+alias grep="grep --color=auto"
+alias mew="emacs -e mew"
+alias less="less -cR"
+alias lv="less"
+alias emacs="emacsclient -nw -a ''"
+alias killmacs="emacsclient -e '(kill-emacs)'"
+
+# 環境変数
+## PATH
+function() {
+    local paths=($HOME/.local/bin $HOME/.cabal/bin)
+    local p
+    for p in ${paths[@]}; do
+        echo $path | grep $p > /dev/null || path=($p $path)
+    done
+}
+
+## SSH_AUTH_SOCK (see $HOME/.config/systemd/user/ssh-agent.service)
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+## LESSOPEN
+function() {
+    local source_highlight=/usr/bin/source-highlight-esc.sh
+    if [ -r $source_highlight ]; then
+        export LESSOPEN="| $source_highlight 2> /dev/null %s"
+    fi
+}
+
+## その他
+eval $(dircolors)
+export EDITOR=nano
+export LC_COLLATE=C
+export PAGER="less -cR"
+export SYSTEMD_LESS=FRXMK
+export LANG=en_US.UTF-8
+export PS_FORMAT="uname,pid,%cpu,%mem,nice,rss:7,bsdstart,args"
+
+# command not found hook
+function() {
+    local hook_file=/usr/share/doc/pkgfile/command-not-found.zsh
+    test -r $hook_file && source $hook_file
+}
+
+# man
+man() {
+    env LESS_TERMCAP_md=$(tput bold; tput setaf 4) \
+        LESS_TERMCAP_me=$(tput sgr0) \
+        LESS_TERMCAP_us=$(tput smul; tput setaf 1) \
+        LESS_TERMCAP_ue=$(tput rmul; tput sgr0) \
+        man -L ja "$@"
+}
+
+# vlc
+vlc() {
+    env LANG=ja_JP.UTF-8 vlc "$@"
+}
+
+# git
+git() {
+    if [[ "$@" == "log" ]]; then
+        env git log --graph --format=format:'%C(auto)%h %an %d %s'
+    else
+        env git "$@"
+    fi
+}
+
+# cdの履歴を残しておく
+setopt auto_pushd
+
+# 補完候補をつめて表示
+setopt list_packed
+
+# zshの補完機能を有効にする
+autoload -U compinit && compinit
+
+## 補完候補をメニューで選択できるように
+zstyle ':completion:*' menu select
+
+## 補完で大文字小文字を区別しない
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+## 補完の候補の色をlsの色と同じに
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+## プロセス名の補完
+zstyle ':completion:*:processes' command 'ps o pid,args xf'
+zstyle ':completion:*:processes' sort false
+
+# プロンプトの設定
+autoload -Uz colors
+setopt prompt_subst
+PROMPT='%B[%F{yellow}%m%f:%F{green}%~%f]$vcs_info_msg_0_
+%(!.%F{red}.%F{cyan})%n%#%f%b '
+
+# バージョン管理システムの情報
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd vcs_info
+zstyle ':vcs_info:*' formats ' %F{magenta}(%s)-[%b]%f%F{green}%c%f%F{red}%u%f%m'
+zstyle ':vcs_info:*' actionformats ' %F{magenta}(%s)-[%b|%a]%f%F{green}%c%f%F{red}%u%f%m'
+zstyle ':vcs_info:git:*' patch-format ' %p'
+zstyle ':vcs_info:git+set-message:*' hooks git-status
+
+function +vi-git-status() {
+    if [ $(git rev-parse --is-inside-work-tree) = 'true' ]; then
+        local git_status=$(git status --porcelain)
+        local -A staged_regex=('modified' '^M[ MD]' 'added'  '^A[ MD]' 'deleted' '^D[ M]'
+                               'renamed'  '^R[ MD]' 'copied' '^C[ MD]')
+        local -A unstaged_regex=('modified'  '^[ MARC]M'
+                                 'deleted'   '^[ MARC]D'
+                                 'unmerged'  '^DD\|^AU\|^UD\|^UA\|^DU\|^AA\|^UU'
+                                 'untracked' '^??')
+        local key
+        local count
+
+        for key in ${(k)staged_regex}; do
+            count=$(echo $git_status | grep -c $staged_regex[$key])
+            if [ $count -gt 0 ]; then
+                hook_com[staged]+=" $key=$count"
+            fi
+        done
+
+        for key in ${(k)unstaged_regex}; do
+            count=$(echo $git_status | grep -c $unstaged_regex[$key])
+            if [ $count -gt 0 ]; then
+                hook_com[unstaged]+=" $key=$count"
+            fi
+        done
+
+        local stash=$(git stash list 2>/dev/null | wc -l)
+        if [ $stash -gt 0 ]; then
+            hook_com[misc]=" %F{yellow}stash=$stash%f$hook_com[misc]"
+        fi
+    fi
+}
+
+# opam
+function() {
+    if which opam > /dev/null 2> /dev/null; then
+        eval `opam config env`
+    fi
+
+    local opam_complete=$HOME/.opam/opam-init/complete.zsh
+    if [ -r $opam_complete ]; then
+        . $opam_complete > /dev/null 2> /dev/null || true
+    fi
+
+    local opam_switch_eval=$HOME/.opam/opam-init/switch_eval.sh
+    if [ -r $opam_switch_eval ]; then
+        . $opam_switch_eval > /dev/null 2> /dev/null || true
+    fi
+}
+
+# gem
+function() {
+    if which gem > /dev/null 2> /dev/null; then
+        local gempath=`gem environment gempath | cut -d : -f 1`
+        echo $path | grep "$gempath/bin" > /dev/null || path=($gempath/bin $path)
+    fi
+}

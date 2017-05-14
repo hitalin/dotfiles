@@ -1,0 +1,127 @@
+"" General Configuration
+colorscheme scheme
+set focuscontent
+set status=input,ssl,location,bookmark,history,tabcount,position
+set gui=noaddons,nobookmarks,nomenu,nonavigation,tabs
+set! browser.startup.homepage=about:newtab
+set! toolkit.scrollbox.verticalScrollDistance=10
+
+javascript << EOS
+(function () {
+  if (!liberator.has("Windows")) {
+    liberator.execute("set editor=\"urxvt -e emacs\"");
+  }
+}());
+EOS
+
+
+"" Keymap for Normal/Visual Mode
+noremap j <Down>
+noremap k <Up>
+noremap <C-h> <Nop>
+noremap <C-r> :mapc<CR>:cmapc<CR>:imapc<CR>:highlight clear<CR>:source ~/.vimperatorrc<CR>
+noremap <A-n> :tabmove +1<CR>
+noremap <A-p> :tabmove -1<CR>
+
+javascript << EOS
+(function () {
+  if (liberator.has("Windows")) {
+    liberator.execute("noremap o :open google<SPACE>");
+    liberator.execute("noremap t :tabopen google<SPACE>");
+    liberator.execute("noremap <C-l> :open<SPACE>");
+    liberator.execute("noremap B :bmarks -tags<SPACE>");
+    var style = "style -name commandline-ime chrome://* " +
+                "#liberator-commandline-command input { ime-mode: inactive; }";
+    liberator.execute(style);
+  } else {
+    liberator.execute("command! disableime silent !xdotool key Ctrl+Shift+space");
+    liberator.execute("noremap f :disableime<CR>;o");
+    liberator.execute("noremap o :disableime<CR>:open google<SPACE>");
+    liberator.execute("noremap t :disableime<CR>:tabopen google<SPACE>");
+    liberator.execute("noremap <C-l> :disableime<CR>:open<SPACE>");
+    liberator.execute("noremap F :disableime<CR>;t");
+    liberator.execute("noremap B :disableime<CR>:bmarks -tags<SPACE>");
+    liberator.execute("noremap / :disableime<CR>/");
+    liberator.execute("noremap : :disableime<CR>:");
+  }
+}());
+EOS
+
+
+"" Keymap for Input Mode
+imap <C-h> <BS>
+imap <C-f> <Right>
+imap <C-b> <Left>
+imap <C-p> <Up>
+imap <C-n> <Down>
+imap <C-a> <Home>
+imap <C-e> <End>
+
+
+"" Keymap for CmdLine Mode
+cmap <C-h> <BS>
+cmap <C-f> <Right>
+cmap <C-b> <Left>
+cmap <C-p> <Up>
+cmap <C-n> <Down>
+cmap <C-a> <Home>
+cmap <C-e> <End>
+
+
+"" Install Addons
+javascript << EOS
+(function () {
+  var installAddon = function(name, url) {
+    if (!liberator.hasExtension(name)) {
+      if (liberator.has("Windows")) {
+        // Not Implemented
+      } else {
+        var local = "/tmp/" + name + ".xpi";
+        liberator.execute("silent !wget -O " + local + " " + url);
+        liberator.execute("extadd " + local);
+      }
+    }
+  };
+
+  var addonURL = function(path) {
+    return "https://addons.mozilla.org/firefox/downloads/" + path;
+  };
+
+  if (liberator.profileName == "default") {
+    installAddon("Xmarks"      , addonURL("latest/2410/addon-2410-latest.xpi"));
+    installAddon("Brief"       , addonURL("latest/4578/addon-4578-latest.xpi"));
+    installAddon("ツリー型タブ", addonURL("file/380123/tree_style_tab-0.16.2015122501-fx.xpi"));
+    installAddon("LastPass"    , addonURL("latest/8542/addon-8542-latest.xpi"));
+  }
+}());
+EOS
+
+
+"" TreeStyleTab Configuration
+javascript << EOS
+(function () {
+  if (liberator.hasExtension("ツリー型タブ")) {
+    liberator.execute("set! extensions.treestyletab.closeParentBehavior=0");
+    liberator.execute("set! extensions.treestyletab.closeRootBehavior=1");
+    liberator.execute("set! extensions.treestyletab.autoCollapseExpandSubtreeOnAttach=false");
+    liberator.execute("set! extensions.treestyletab.tabbar.fixed.vertical=true");
+    liberator.execute("set! extensions.treestyletab.tabbar.style=mixed");
+    liberator.execute("set! extensions.treestyletab.tabbar.position=left");
+    liberator.execute("set! extensions.treestyletab.tabbar.width.default=203");
+  }
+}());
+EOS
+
+
+"" Custom Style Sheet
+style -name newtab about:newtab << EOS
+#newtab-grid {
+  display: none;
+}
+EOS
+
+style -name 2ch 2ch.net << EOS
+dl.thread dd {
+  font-family: Mona;
+}
+EOS

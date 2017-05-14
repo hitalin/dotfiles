@@ -1,0 +1,6 @@
+---
+- name: create ~/.config/systemd/user directory
+  file:
+    path: ~/.config/systemd/user
+    mode: 0755
+    state: directory

@@ -1,0 +1,19 @@
+---
+- name: install tmux.conf
+  copy:
+    src: tmux.conf
+    dest: ~/.tmux.conf
+
+- name: create ~/.terminfo/s directory
+  file:
+    path: ~/.terminfo/s
+    mode: 0755
+    state: directory
+
+- name: intall screen, screen-256color terminfo
+  copy:
+    src: "{{ item }}"
+    dest: ~/.terminfo/s/
+  with_items:
+    - screen
+    - screen-256color

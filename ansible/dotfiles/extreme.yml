@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  roles:
+    - xmonad
+    - vimperator
+    - uim
+    - emacs
+    - ssh
+    - tmux
+    - zsh
+    - git
+    - gtk
+    - qt
+    - fontconfig
+    - xresources
+    - userdirs
+    - dunst
+    - abcde
