@@ -1,0 +1,12 @@
+# OMakefile for dot sourcecode
+#
+
+
+# variables
+BUILDCOMMAND = dot
+SRCDIR = .
+BUILDDIR = .
+TYPE = gif
+
+%.gif: %.dot
+	$(BUILDCOMMAND) -Tgif -o $(BUILDDIR)/$*.gif $@
