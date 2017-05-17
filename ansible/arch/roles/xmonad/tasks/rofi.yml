@@ -1,0 +1,10 @@
+---
+- name: Install rofi
+  pacman: name=rofi state=present
+  tags:
+    - rofi
+
+- name: Install xmonad for rofi window switching
+  pacman: name=xmonad state=present
+  tags:
+    - rofi

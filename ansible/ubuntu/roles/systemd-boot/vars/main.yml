@@ -1,0 +1,7 @@
+---
+
+systemd_boot_options:
+  - "cryptdevice=UUID=7def05c9-7ecf-4b16-883c-ecdc2c78d509:system"
+  - root=/dev/mapper/system
+  - rw
+  - i915.preliminary_hw_support=1

@@ -1,0 +1,26 @@
+---
+- name: Install xmonad 
+  pacman: name=xmonad state=present
+
+- name: Install xmonad-contrib
+  pacman: name=xmonad-contrib state=present
+
+- name: Install xmobar 
+  aur: name=xmobar user={{ user.name }}
+  tags:
+    - aur
+
+- name: Verify that default applications file exists
+  file: path=/etc/xdg/mimeapps.list state=touch
+  tags:
+    - debug
+
+- name: Verify header in default applications file
+  lineinfile: dest=/etc/xdg/mimeapps.list
+              state=present
+              line='[Default Applications]'
+              insertbefore=BOF
+  tags:
+      - debug
+
+- include: rofi.yml
