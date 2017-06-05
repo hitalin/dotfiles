@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- Import modules                                                           {{{
+-- Import modules
 -------------------------------------------------------------------------------
 import qualified Data.Map as M
 import Control.Monad (liftM2)          -- myManageHookShift
@@ -42,10 +42,15 @@ import XMonad.Util.SpawnOnce
 import Graphics.X11.ExtraTypes.XF86
 
 import XMonad.Config.Desktop           -- for chromium
---------------------------------------------------------------------------- }}}
--- local variables                                                          {{{
--------------------------------------------------------------------------------
 
+-- xmonad contrib
+import XMonad.Util.NamedScratchpad
+import XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
+import XMonad.Actions.GridSelect (goToSelected, defaultGSConfig)
+
+-------------------------------------------------------------------------------
+-- local variables
+-------------------------------------------------------------------------------
 myWorkspaces = ["1", "2", "3", "4", "5"]
 modm = mod4Mask
 
@@ -73,12 +78,10 @@ gapwidthD = 2
 gapwidthL = 2
 gapwidthR = 2
 
---------------------------------------------------------------------------- }}}
--- main                                                                     {{{
 -------------------------------------------------------------------------------
-
+-- main
+-------------------------------------------------------------------------------
 main :: IO ()
-
 main = do
     wsbar <- spawnPipe myWsBar
     xmonad $ ewmh desktopConfig
@@ -108,8 +111,8 @@ main = do
        , mouseBindings      = newMouse
        }
 
-       -------------------------------------------------------------------- }}}
-       -- Define keys to remove                                             {{{
+       ------------------------------------------------------------------------
+       -- Define keys to remove
        ------------------------------------------------------------------------
 
        `removeKeysP`
@@ -121,8 +124,8 @@ main = do
        "M-S-<Return>"
        ]
 
-       -------------------------------------------------------------------- }}}
-       -- Keymap: window operations                                         {{{
+       ------------------------------------------------------------------------ 
+       -- Keymap: window operations 
        ------------------------------------------------------------------------
 
        `additionalKeysP`
@@ -176,10 +179,9 @@ main = do
        , ("M-b"    , windowPromptBring myXPConfig)
        ]
 
-       -------------------------------------------------------------------- }}}
-       -- Keymap: moving workspace by number                                {{{
+       ------------------------------------------------------------------------ 
+       -- Keymap: moving workspace by number
        ------------------------------------------------------------------------
-
        `additionalKeys`
        [ ((modm .|. m, k), windows $ f i)
          | (i, k) <- zip myWorkspaces
@@ -191,88 +193,65 @@ main = do
          , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
        ]
 
-       -------------------------------------------------------------------- }}}
-       -- Keymap: custom commands                                           {{{
        ------------------------------------------------------------------------
-
+       -- Keymap: custom commands
+       ------------------------------------------------------------------------
        `additionalKeysP`
        [
-
-
-
-
        -- Launch terminal
          ("M-<Return>", spawn "urxvt")
        -- Launch terminal with a float window
        , ("M-S-<Return>", spawn "urxvt_float.sh")
-
-
-
-
-
 
        , ("C-<Escape>", spawn "touchpad_toggle.sh")
        -- Toggle trackpoint (Lenovo PC)
        , ("M1-<Escape>", spawn "trackpoint_toggle.sh")
        ]
 
---------------------------------------------------------------------------- }}}
--- myLayout:          Handle Window behaveior                               {{{
 -------------------------------------------------------------------------------
-
+-- myLayout:          Handle Window behaveior
+-------------------------------------------------------------------------------
 myLayout = spacing gapwidth $
            gaps [(U, gapwidthU),(D, gapwidthD),(L, gapwidthL),(R, gapwidthR)] $
                  (ResizableTall 1 (1/55) (1/2) [])
              ||| (TwoPane (1/55) (1/2))
              ||| Simplest
 
---------------------------------------------------------------------------- }}}
--- myStartupHook:     Start up applications                                 {{{
 -------------------------------------------------------------------------------
-
+-- myStartupHook:     Start up applications
+-------------------------------------------------------------------------------
 myStartupHook = do
         spawnOnce "$HOME/.dropbox-dist/dropboxd"
 
---------------------------------------------------------------------------- }}}
--- myManageHookShift: some window must created there                        {{{
 -------------------------------------------------------------------------------
-
+-- myManageHookShift: some window must created there
+-------------------------------------------------------------------------------
 myManageHookShift = composeAll
             -- if you want to know className, type "$ xprop|grep CLASS" on shell
             [ className =? "chromium"       --> mydoShift "2"
             ]
              where mydoShift = doF . liftM2 (.) W.greedyView W.shift
 
---------------------------------------------------------------------------- }}}
--- myManageHookFloat: new window will created in Float mode                 {{{
 -------------------------------------------------------------------------------
-
+-- myManageHookFloat: new window will created in Float mode
+-------------------------------------------------------------------------------
 myManageHookFloat = composeAll
     [
       className =? "feh"              --> doCenterFloat
     , className =? "Display.im6"      --> doCenterFloat
-
     , className =? "ranger"           --> doCenterFloat
-
-
-
     , title     =? "urxvt_float"      --> doCenterFloat
     , isFullscreen                    --> doFullFloat
-
-
-
     ]
 
---------------------------------------------------------------------------- }}}
--- myLogHook:         loghock settings                                      {{{
 -------------------------------------------------------------------------------
-
+-- myLogHook:         loghock settings
+-------------------------------------------------------------------------------
 myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
 
---------------------------------------------------------------------------- }}}
--- myWsBar:           xmobar setting                                        {{{
 -------------------------------------------------------------------------------
-
+-- myWsBar:           xmobar settings
+-------------------------------------------------------------------------------
 myWsBar = "xmobar $HOME/.xmonad/xmobarrc"
 
 wsPP = xmobarPP { ppOrder           = \(ws:l:t:_)  -> [ws,t]
@@ -287,9 +266,9 @@ wsPP = xmobarPP { ppOrder           = \(ws:l:t:_)  -> [ws,t]
                 , ppSep             = "  "
                 }
 
---------------------------------------------------------------------------- }}}
--- myXPConfig:        XPConfig                                            {{{
-
+-------------------------------------------------------------------------------
+-- myXPConfig:        XPConfig
+-------------------------------------------------------------------------------
 myXPConfig = defaultXPConfig
                 { font              = "xft:RictyDiminished:size=12:antialias=true"
                 , fgColor           = colorfg
@@ -303,11 +282,17 @@ myXPConfig = defaultXPConfig
                 , position          = Bottom
                 }
 
---------------------------------------------------------------------------- }}}
--- newMouse:          Right click is used for resizing window               {{{
 -------------------------------------------------------------------------------
-
+-- newMouse:          Right click is used for resizing window
+-------------------------------------------------------------------------------
 myMouse x = [ ((modm, button3), (\w -> focus w >> Flex.mouseResizeWindow w)) ]
 newMouse x = M.union (mouseBindings defaultConfig x) (M.fromList (myMouse x))
 
---------------------------------------------------------------------------- }}}
+-------------------------------------------------------------------------------
+-- NamedScratchpad:
+-------------------------------------------------------------------------------
+myScratchpads :: [NamedScratchpad]
+myScratchpads = [
+        NS "ranger"   "urxvtc -e ranger" (title =? "ranger")
+        (customFloating $ W.RationalRect 0 0.02 1 0.6)
+ ]

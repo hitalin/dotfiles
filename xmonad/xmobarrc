@@ -15,7 +15,7 @@ Config { font = "xft:RictyDiminished:size=13"
                                            , "--normal" , "#b0bdbd"
                                            , "--high"   , "#a5d6a7"
                                            ] 10
-                    , Run MultiCpu         [ "-t"       , "■ <total0>.<total1>.<total2>.<total3>.<total4>.<total6>.<total7>  "
+                    , Run MultiCpu         [ "-t"       , "■ <total0>.<total1>.<total2>.<total3> "
                                            , "--Low"     , "40"
                                            , "--High"   , "85"
                                            , "-m"       , "2"
