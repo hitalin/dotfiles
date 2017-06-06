@@ -99,6 +99,7 @@ main = do
        , startupHook        = myStartupHook
        , manageHook         = myManageHookShift <+>
                               myManageHookFloat <+>
+                              namedScratchpadManageHook myScratchpads <+>
                               manageDocks
        , layoutHook         = avoidStruts $ ( toggleLayouts (noBorders Full)
                                             $ myLayout
@@ -201,6 +202,8 @@ main = do
                      , xK_parenright
                      ]
          , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+         , ((modm                  , xK_r    ), runOrRaisePrompt myXPConfig)
+         , ((modm                , xK_Tab), goToSelected defaultGSConfig)
        ]
 
        ------------------------------------------------------------------------
