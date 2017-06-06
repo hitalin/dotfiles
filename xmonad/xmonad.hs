@@ -79,7 +79,7 @@ resizeWD = 2*borderwidth
 
 -- gapwidth
 gapwidth  = 4
-gwU = 2
+gwU = 32 
 gwD = 2
 gwL = 2
 gwR = 2
@@ -101,7 +101,6 @@ main = do
                               myManageHookFloat <+>
                               manageDocks
        , layoutHook         = avoidStruts $ ( toggleLayouts (noBorders Full)
-                                            $ onWorkspace "3" simplestFloat
                                             $ myLayout
                                             )
         -- xmobar setting
