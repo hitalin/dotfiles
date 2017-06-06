@@ -202,8 +202,6 @@ main = do
                      , xK_parenright
                      ]
          , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
-         , ((modm                  , xK_r    ), runOrRaisePrompt myXPConfig)
-         , ((modm                , xK_Tab), goToSelected defaultGSConfig)
        ]
 
        ------------------------------------------------------------------------
