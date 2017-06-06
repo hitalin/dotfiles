@@ -78,7 +78,7 @@ moveWD = borderwidth
 resizeWD = 2*borderwidth
 
 -- gapwidth
-gwidth  = 4
+gapwidth  = 4
 gwU = 2
 gwD = 2
 gwL = 2
@@ -106,7 +106,7 @@ main = do
                                             )
         -- xmobar setting
        , logHook            = myLogHook wsbar
-                                >> updatePointer (Relative 0.5, 0.5)
+                                >> updatePointer (0.5, 0.5) (0, 0)
        , handleEventHook    = fullscreenEventHook
        , workspaces         = myWorkspaces
        , modMask            = modm
@@ -222,8 +222,7 @@ main = do
 -------------------------------------------------------------------------------
 -- myLayout:          Handle Window behaveior
 -------------------------------------------------------------------------------
-myLayout = spacing gapwidth $
-           gaps [(U, gwU),(D, gwD),(L, gwL),(R, gwR)] $
+myLayout = spacing gapwidth $ gaps [(U, gwU),(D, gwD),(L, gwL),(R, gwR)]
                  (ResizableTall 1 (1/55) (1/2) [])
              ||| (TwoPane (1/55) (1/2))
              ||| Simplest
