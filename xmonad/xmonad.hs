@@ -3,6 +3,7 @@
 -------------------------------------------------------------------------------
 import qualified Data.Map as M
 import Control.Monad (liftM2)          -- myManageHookShift
+import Data.Monoid
 import System.IO                       -- for xmobar
 
 import XMonad
@@ -23,6 +24,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Layout
 import XMonad.Layout.DragPane          -- see only two window
 import XMonad.Layout.Gaps
+import XMonad.Layout.LayoutScreens
 import XMonad.Layout.NoBorders         -- In Full mode, border is no use
 import XMonad.Layout.PerWorkspace      -- Configure layouts on a per-workspace
 import XMonad.Layout.ResizableTile     -- Resizable Horizontal border
@@ -71,12 +73,16 @@ borderwidth = 1
 mynormalBorderColor  = "#262626" 
 myfocusedBorderColor = "#ededed" 
 
+-- Float window control width
+moveWD = borderwidth
+resizeWD = 2*borderwidth
+
 -- gapwidth
-gapwidth  = 4
-gapwidthU = 2
-gapwidthD = 2
-gapwidthL = 2
-gapwidthR = 2
+gwidth  = 4
+gwU = 2
+gwD = 2
+gwL = 2
+gwR = 2
 
 -------------------------------------------------------------------------------
 -- main
@@ -96,15 +102,11 @@ main = do
                               manageDocks
        , layoutHook         = avoidStruts $ ( toggleLayouts (noBorders Full)
                                             $ onWorkspace "3" simplestFloat
-                                            $ onWorkspace "5" (
-                                                spacing 14
-                                                $ gaps [(U, 2),(D, 2),(L, 5),(R, 5)]
-                                                $ ResizableTall 0 (1/42) (1/2) [])
-                                                $ myLayout
+                                            $ myLayout
                                             )
         -- xmobar setting
        , logHook            = myLogHook wsbar
-                                >> updatePointer (0.5, 0.5) (0, 0)
+                                >> updatePointer (Relative 0.5, 0.5)
        , handleEventHook    = fullscreenEventHook
        , workspaces         = myWorkspaces
        , modMask            = modm
@@ -177,11 +179,20 @@ main = do
        , ("M-g"    , windowPromptGoto myXPConfig)
        -- Search a window and bring to the current workspace
        , ("M-b"    , windowPromptBring myXPConfig)
+       -- Move the focus to next screen (multi screen)
+       , ("M-<Tab>", nextScreen)
+       -- Now we have more than one screen by dividing a single screen
+       , ("M-C-<Space>", layoutScreens 2 (TwoPane 0.5 0.5))
+       , ("M-C-S-<Space>", rescreen)
        ]
 
        ------------------------------------------------------------------------ 
        -- Keymap: moving workspace by number
        ------------------------------------------------------------------------
+       -- mod-[1..9]          Switch to workspace N
+       -- mod-shift-[1..9]    Move window to workspace N
+       -- mod-control-[1..9]  Copy window to workspace N
+
        `additionalKeys`
        [ ((modm .|. m, k), windows $ f i)
          | (i, k) <- zip myWorkspaces
@@ -202,7 +213,7 @@ main = do
          ("M-<Return>", spawn "urxvt")
        -- Launch terminal with a float window
        , ("M-S-<Return>", spawn "urxvt_float.sh")
-
+       -- Toggle touchpad
        , ("C-<Escape>", spawn "touchpad_toggle.sh")
        -- Toggle trackpoint (Lenovo PC)
        , ("M1-<Escape>", spawn "trackpoint_toggle.sh")
@@ -212,7 +223,7 @@ main = do
 -- myLayout:          Handle Window behaveior
 -------------------------------------------------------------------------------
 myLayout = spacing gapwidth $
-           gaps [(U, gapwidthU),(D, gapwidthD),(L, gapwidthL),(R, gapwidthR)] $
+           gaps [(U, gwU),(D, gwD),(L, gwL),(R, gwR)] $
                  (ResizableTall 1 (1/55) (1/2) [])
              ||| (TwoPane (1/55) (1/2))
              ||| Simplest
@@ -239,8 +250,7 @@ myManageHookFloat = composeAll
     [
       className =? "feh"              --> doCenterFloat
     , className =? "Display.im6"      --> doCenterFloat
-    , className =? "ranger"           --> doCenterFloat
-    , title     =? "urxvt_float"      --> doCenterFloat
+    , title     =? "urxvt_float"      --> doSideFloat SC
     , isFullscreen                    --> doFullFloat
     ]
 
