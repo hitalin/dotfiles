@@ -46,10 +46,8 @@ import Graphics.X11.ExtraTypes.XF86
 import XMonad.Config.Desktop           -- for chromium
 
 -- xmonad contrib
-import XMonad.Util.NamedScratchpad
-import XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
 import XMonad.Actions.GridSelect (goToSelected, defaultGSConfig)
-
+import XMonad.Prompt.Shell 
 -------------------------------------------------------------------------------
 -- local variables
 -------------------------------------------------------------------------------
@@ -217,6 +215,9 @@ main = do
        , ("C-<Escape>", spawn "touchpad_toggle.sh")
        -- Toggle trackpoint (Lenovo PC)
        , ("M1-<Escape>", spawn "trackpoint_toggle.sh")
+       -- for xmonad contrib
+       , ("M-g-<Tab>", goToSelected defaultGSConfig)
+       , ("M-x"        , shellPrompt defaultXPConfig)
        ]
 
 -------------------------------------------------------------------------------
@@ -248,7 +249,6 @@ myManageHookShift = composeAll
 myManageHookFloat = composeAll
     [
       className =? "feh"              --> doCenterFloat
-    , className =? "Display.im6"      --> doCenterFloat
     , title     =? "urxvt_float"      --> doSideFloat SC
     , isFullscreen                    --> doFullFloat
     ]
@@ -296,12 +296,3 @@ myXPConfig = defaultXPConfig
 -------------------------------------------------------------------------------
 myMouse x = [ ((modm, button3), (\w -> focus w >> Flex.mouseResizeWindow w)) ]
 newMouse x = M.union (mouseBindings defaultConfig x) (M.fromList (myMouse x))
-
--------------------------------------------------------------------------------
--- NamedScratchpad:
--------------------------------------------------------------------------------
-myScratchpads :: [NamedScratchpad]
-myScratchpads = [
-        NS "ranger"   "urxvtc -e ranger" (title =? "ranger")
-        (customFloating $ W.RationalRect 0 0.02 1 0.6)
- ]
