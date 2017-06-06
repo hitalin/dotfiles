@@ -78,11 +78,11 @@ moveWD = borderwidth
 resizeWD = 2*borderwidth
 
 -- gapwidth
-gapwidth  = 4
+gapwidth  = 2 
 gwU = 32 
-gwD = 2
-gwL = 2
-gwR = 2
+gwD = 1
+gwL = 1
+gwR = 1
 
 -------------------------------------------------------------------------------
 -- main
