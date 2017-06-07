@@ -97,7 +97,6 @@ main = do
        , startupHook        = myStartupHook
        , manageHook         = myManageHookShift <+>
                               myManageHookFloat <+>
-                              namedScratchpadManageHook myScratchpads <+>
                               manageDocks
        , layoutHook         = avoidStruts $ ( toggleLayouts (noBorders Full)
                                             $ myLayout
