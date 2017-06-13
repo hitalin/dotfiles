@@ -42,6 +42,8 @@ export GTK_IM_MODULE='uim'
 uim-xim &
 export XMODIFIERS='@im=uim'
 
+dunst &
+
 exec xmonad
 urxvtd --quiet --fork --opendisplay
 #end
