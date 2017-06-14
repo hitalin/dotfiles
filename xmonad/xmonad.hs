@@ -46,7 +46,7 @@ import Graphics.X11.ExtraTypes.XF86
 import XMonad.Config.Desktop           -- for chromium
 
 -- xmonad contrib
-import XMonad.Actions.GridSelect (goToSelected, defaultGSConfig)
+import XMonad.Actions.GridSelect (goToSelected, bringSelected, defaultGSConfig)
 import XMonad.Prompt.Shell 
 -------------------------------------------------------------------------------
 -- local variables
@@ -172,10 +172,6 @@ main = do
        , ("M-S-k"  , windows W.swapUp)
        -- Shift the focused window to the master window
        , ("M-S-m"  , windows W.shiftMaster)
-       -- Search a window and focus into the window
-       , ("M-g"    , windowPromptGoto myXPConfig)
-       -- Search a window and bring to the current workspace
-       , ("M-b"    , windowPromptBring myXPConfig)
        -- Move the focus to next screen (multi screen)
        , ("M-<Tab>", nextScreen)
        -- Now we have more than one screen by dividing a single screen
@@ -215,8 +211,9 @@ main = do
        -- Toggle trackpoint (Lenovo PC)
        , ("M1-<Escape>", spawn "trackpoint_toggle.sh")
        -- for xmonad contrib
-       , ("M-g-<Tab>", goToSelected defaultGSConfig)
-       , ("M-x"        , shellPrompt defaultXPConfig)
+       , ("M-g"      , goToSelected defaultGSConfig)
+       , ("M-b"      , bringSelected defaultGSConfig)
+       , ("M-p"      , shellPrompt defaultXPConfig)
        ]
 
 -------------------------------------------------------------------------------
@@ -291,7 +288,7 @@ myXPConfig = defaultXPConfig
                 }
 
 -------------------------------------------------------------------------------
--- newMouse:          Right click is used for resizing window
+-- newMouse:         Right click is used for resizing window
 -------------------------------------------------------------------------------
 myMouse x = [ ((modm, button3), (\w -> focus w >> Flex.mouseResizeWindow w)) ]
 newMouse x = M.union (mouseBindings defaultConfig x) (M.fromList (myMouse x))
