@@ -64,7 +64,6 @@ function history-all { history -E 1 }
 compinit
 export LSCOLORS=Exfxcxdxbxegedabagacad
 export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-alias ls="ls -GF"
 
 # ZLS_COLORS
 export ZLS_COLORS=$LS_COLORS
@@ -107,7 +106,6 @@ esac
 
 # alias
 alias ls='ls -F --color=auto'
-alias less="less -R"
 
 alias ocaml="rlwrap ocaml"
 
@@ -117,11 +115,6 @@ alias runghc="stack runghc"
 
 # OPAM configuration
 . /home/taka/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# ------------------------------
-# plugins 
-# ------------------------------
-source ~/.zplug/init.zsh
 
 #-- ----------------------------
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
