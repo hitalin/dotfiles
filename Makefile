@@ -1,16 +1,5 @@
-DOTFILES_EXCLUDES := DS_Store .git .gitmodules .travis.yml
-DOTFILES_TARGET   := $(wildcard .??) bin
-DOTFILES_DIR      := $(PWD)
-DOTFILES_FILES    := $(filter-out $DOTFILES_EXCLUDES), $(DOTFILES_TARGET))
-
-deploy:
-	@$(foreach val, $(DOTFILES_FILES), In -sfnv $(abspath $(val)) $(HOME)/$(val);)
-
-init:
-	@$(foreach val, $(wildcard ./etc/init/*.sh), bash $(val);)
-
-default:        basic vim zsh others
-.PHONY: default basic vim zsh others
+default:        basic vim zsh others mikutter
+.PHONY: default basic vim zsh others mikutter
 
 basic:
 	- mkdir ~/local
@@ -31,3 +20,4 @@ others:
 	- ln -s $(CURDIR)/gdbinit ~/.gdbinit
 	- mkdir ~/.ghc
 	- ln -s $(CURDIR)/ghci.conf ~/.ghc/ghci.conf
+	- ln -s $(CURDIR)/irbrc ~/.irbrc

@@ -1,0 +1,161 @@
+#!/usr/bin/env python
+
+import os
+import sys
+
+def backup(path):
+    return path.endswith('~')
+def empty_file(path):
+    return os.path.getsize(path) == 0
+def vim_swap(path):
+    return path.endswith(('.swp', '.swo', '.swn'))
+def emacs_swap(path):
+    return os.path.basename(path).startswith('#') and path.endswith('#')
+def object(path):
+    return path.endswith('.o')
+def python_compiled(path):
+    return path.endswith('.pyc')
+def haskell_interface(path):
+    return path.endswith('.hi')
+def haskell_middle(path):
+    return path.endswith(('.hi', '.o', '.dyn_o', '.dyn_hi'))
+def tex_middle(path):
+    return path.endswith(('.aux', '.bbl', '.blg', '.dvi', '.log'))
+def link_file(path):
+    return os.path.islink(path)
+def executable_file(path):
+    import stat
+    return 0 < stat.S_IEXEC & os.stat(path).st_mode
+def broken_link(path):
+    return os.path.islink(path) and not os.path.exists(path)
+def gitignored(path):
+    global gitignored_cache
+    if 'gitignored_cache' not in globals():
+        import distutils.spawn
+        if distutils.spawn.find_executable('git') is None:
+            prog = os.path.basename(sys.argv[0])
+            sys.stderr.write('{}: git(1) is not found\n'.format(prog))
+            sys.exit(1)
+        import subprocess
+        gitignored_cache = subprocess.check_output(
+                'git ls-files -o -i --exclude-standard'.split()
+                ).decode().rstrip().split('\n')
+        gitignored_cache = list(map(lambda x : os.path.abspath(x), gitignored_cache))
+    return 0 < gitignored_cache.count(os.path.abspath(path))
+
+import argparse
+class PredAction(argparse.Action):
+    def __init__(self, dest=None, nargs=0, const=None, *args, **kwargs):
+        assert dest
+        if const is None:
+            const = dest
+        super(PredAction, self).__init__(
+                *args,
+                const=const,
+                dest='preds',
+                nargs=nargs,
+                **kwargs)
+    def __call__(self, parser, namespace, values, option_string=None):
+        if getattr(namespace, 'preds') is None:
+            setattr(namespace, 'preds', [])
+        self.predicate = globals()[self.const]
+        if self.nargs == 0:
+            fn = lambda *args, **kwargs : self.predicate(*args, **kwargs)
+        else:
+            fn = lambda *args, **kwargs : self.predicate(*args, values=values, **kwargs)
+        getattr(namespace, 'preds').append(fn)
+
+def get_parser():
+    parser = argparse.ArgumentParser(description='remove some files safely')
+    # arguments
+    parser.add_argument('files', nargs='*', default=['.'])
+    # options
+    parser.add_argument('-c', '--command', metavar='COMMAND')
+    parser.add_argument('-r', '--recursive', action='store_const', const=True)
+    parser.add_argument('-s', '--simulate', action='store_const', const=True)
+    parser.add_argument('-a', '--all', action='store_const', const=True)
+    parser.add_argument('-I', '--report-ignore', action='store_const', const=True)
+    parser.add_argument('-L', '--follow', action='store_const', const=True)
+    # predicates
+    preds = parser.add_argument_group(title='predicates')
+    preds.add_argument('-b', '--backup', action=PredAction)
+    preds.add_argument('-e', '--empty', action=PredAction, const='empty_file')
+    preds.add_argument('-l', '--link', action=PredAction, const='link_file')
+    preds.add_argument('-B', '--broken-link', action=PredAction)
+    preds.add_argument('-x', '--executable', action=PredAction, const='executable_file')
+    preds.add_argument('-V', '--vim-swap', action=PredAction)
+    preds.add_argument('-E', '--emacs-swap', action=PredAction)
+    preds.add_argument('-g', '--gitignored', action=PredAction)
+    preds.add_argument('--object', '--obj', action=PredAction)
+    preds.add_argument('--python-compiled', '--pyc', action=PredAction)
+    preds.add_argument('--haskell-interface', '--hi', action=PredAction)
+    preds.add_argument('--haskell-middle', '--hs', action=PredAction)
+    preds.add_argument('--tex-middle', '--tex', action=PredAction)
+    return parser
+
+def list_files(pathes, recursive=False, follow=False):
+    for path in pathes:
+        if not os.path.isdir(path):
+            yield path
+        elif os.path.islink(path) and not follow:
+            yield path
+        elif recursive:
+            for dirpath, dirnames, filenames \
+                    in os.walk(path, topdown=False, followlinks=follow):
+                for filename in filenames:
+                    yield os.path.join(dirpath, filename)
+                if not follow:
+                    for dirname in dirnames:
+                        if os.path.islink(dirname):
+                            yield os.path.join(dirpath, dirname)
+        else:
+            for item in os.listdir(path):
+                if not os.path.isdir(item):
+                    yield os.path.join(path, item)
+                elif os.path.islink(item) and not follow:
+                    yield os.path.join(path, item)
+
+# if all preds returns True, this returns True. BUT if preds is None, use backup
+def should_remove(path, preds):
+    if preds is None:
+        return backup(path)
+    else:
+        for pred in preds:
+            if not pred(path):
+                return False
+        else:
+            return True
+
+# if command is '', os.remove is used. if None, tries to use certain safe way.
+def remove_file(path, command=None):
+    if command is None:
+        import distutils.spawn
+        for exe in ['trash-put', 'rmtrash']:
+            command = distutils.spawn.find_executable('trash-put')
+            if command is not None:
+                break
+    if command == '' or command is None:
+        os.remove(path)
+    else:
+        import subprocess
+        subprocess.check_call([command, path])
+
+if __name__ == '__main__':
+    args = get_parser().parse_args()
+    prog = os.path.basename(sys.argv[0])
+    files = []
+    for path in list_files(args.files,
+            recursive=args.recursive, follow=args.follow):
+        if not os.path.islink(path) and not os.path.exists(path):
+            sys.stderr.write('{}: not found: {}\n'.format(prog, path))
+        elif should_remove(path, preds=args.preds):
+            files.append(path)
+        elif args.all:
+            sys.stderr.write('{}: should not remove: {}\n'.format(prog, path))
+            sys.exit(1)
+        elif args.report_ignore:
+            sys.stderr.write('{}: ignored: {}\n'.format(prog, path))
+    for path in files:
+        print(path)
+        if not args.simulate:
+            remove_file(path, command=args.command)
