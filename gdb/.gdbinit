@@ -8,7 +8,7 @@ set pagination off
 set charset ASCII
 set disassembly-flavor intel
 
-source ~/.peda/peda.py
+source ~/peda/peda.py
 
 set print asm-demangle on
 set disable-randomization off
