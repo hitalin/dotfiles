@@ -1,9 +1,19 @@
+# archive
+*.zip
+*.tar
+*.bz2
+
+# vim
 *~
 *.un~
-
-# vim buckup
 *.swp
 *.swo
+
+# tag
+tags
+
+# c/cpp
+*.o
 
 # ocaml
 *.cmi
@@ -23,3 +33,6 @@ __pycache__/
 *_venv/
 cabal.sandbox.config
 .cabal-sandbox
+
+# ansible
+*.retry
