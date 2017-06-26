@@ -1,5 +1,7 @@
 #!/bin/sh
 
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+
 if [ ! -d ~/.vim/rc/ ]; then
     mkdir -p ~/.vim/rc
     ln -Fis $SCRIPT_DIR/dein.toml ~/.vim/rc/
