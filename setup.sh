@@ -15,6 +15,7 @@ fi
 
 if [ ! -d ~/peda/ ]; then
     git clone https://github.com/longld/peda.git ~/peda
+    echo "source ~/peda/peda.py" >> ~/.gdbinit
 fi
 
 if [ ! -d ~/pwngdb/ ]; then
