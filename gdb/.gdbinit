@@ -8,8 +8,6 @@ set pagination off
 set charset ASCII
 set disassembly-flavor intel
 
-source ~/peda/peda.py
-
 set print asm-demangle on
 set disable-randomization off
 set follow-fork-mode child
@@ -18,3 +16,13 @@ define cs
     checksec
 end
 
+source ~/peda/peda.py
+source ~/pwndbg/pwndbg.py
+source ~/pwndbg/angelheap/gdbinit.py
+
+define hook-run
+python
+import angelheap
+angelheap.init_angelheap()
+end
+end
