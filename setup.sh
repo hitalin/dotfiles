@@ -28,7 +28,7 @@ else
     echo "set-option -g prefix C-g" > ~~~tmp
     echo ".tmux.conf setting for local."
 fi  
-cat ~~~tmp tmux.conf > ~~~tmux.conf
+cat ~~~tmp .tmux.conf > ~~~tmux.conf
 mv ~~~tmux.conf .tmux.conf
 rm -f ~~~tmp
 
