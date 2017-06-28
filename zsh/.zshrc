@@ -1,120 +1,144 @@
 [ -z "$PS1" ] && return
 
-# ------------------------------
-# General Settings
-# ------------------------------
-export EDITOR=vim 
+export EDITOR=vim
 export LANG=ja_JP.UTF-8
-export KCODE=u 
-export AUTOFEATURE=true
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
-setopt print_eight_bit
-setopt no_flow_control
-setopt interactive_comments
-setopt pushd_ignore_dups
-setopt extended_glob
-setopt prompt_subst
-unset caseglob
-bindkey -e #bindkey -v 
-setopt auto_cd
-setopt auto_pushd 
-setopt correct 
-setopt magic_equal_subst 
-setopt prompt_subst 
-setopt notify 
-setopt equals 
+export GREP_OPTIONS='--color=auto'
+export SDL_VIDEO_X11_DGAMOUSE=0
 
-### Complement ###
-autoload -U compinit; compinit
-setopt auto_list 
-setopt auto_menu 
-setopt list_packed
-setopt list_types
-bindkey "^[[Z" reverse-menu-complete 
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+bindkey -e
+bindkey "^[[Z" reverse-menu-complete
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^[^B' vi-backward-blank-word
+bindkey '^[^F' vi-forward-blank-word
+bindkey '^[^U' backward-delete-word
+bindkey '^[^K' delete-word
 
-### Glob ###
-setopt extended_glob 
-unsetopt caseglob 
+eval $(dircolors -b)
 
-### History ###
-HISTFILE=~/.zsh_history 
-HISTSIZE=10000 
-SAVEHIST=10000 
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
 HIST_STAMPS="mm/dd/yyyy"
-setopt bang_hist 
-setopt extended_history 
-setopt hist_ignore_dups 
-setopt hist_ignore_space
-setopt share_history 
-setopt hist_reduce_blanks 
+
+PROMPT='[%F{magenta}%n%f@%F{green}%U%m%u%f:%F{blue}%B%d%f%b]
+$ '
+RPROMPT='[${vcs_info_msg_0_}]'
+SPROMPT='correct: %R -> %r ? '
+
+zstyle ':zle:*' word-chars " /=;@:{},|"
+zstyle ':zle:*' word-style unspecified
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' ignore-parents parent pwd ..
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
+zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
+zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
+zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'
+zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'
+
+autoload smart-insert-last-word
+zle -N insert-last-word smart-insert-last-word
+zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
+bindkey '^]' insert-last-word
+
+function _delete-char-or-list-expand() {
+    if [[ -z "${RBUFFER}" ]]; then
+        zle list-expand
+    else
+        zle delete-char
+    fi
+}
+zle -N _delete-char-or-list-expand
+bindkey '^D' _delete-char-or-list-expand
+
+function _kill-backward-blank-word() {
+    zle set-mark-command
+    zle vi-backward-blank-word
+    zle kill-region
+}
+zle -N _kill-backward-blank-word
+bindkey '^Y' _kill-backward-blank-word
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+bindkey "^O" history-beginning-search-backward-end
 
-function history-all { history -E 1 }
-
-# ------------------------------
-# Look And Feel Settings
-# ------------------------------
-### Ls Color ###
-compinit
-export LSCOLORS=Exfxcxdxbxegedabagacad
-export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-
-# ZLS_COLORS
-export ZLS_COLORS=$LS_COLORS
-
-export CLICOLOR=true
-
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-### Prompt ###
-autoload -U colors; colors
-
-tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
-tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
-tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
-tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
-
-if [ ${UID} -eq 0 ]; then
-tmp_prompt="%B%U${tmp_prompt}%u%b"
-tmp_prompt2="%B%U${tmp_prompt2}%u%b"
-tmp_rprompt="%B%U${tmp_rprompt}%u%b"
-tmp_sprompt="%B%U${tmp_sprompt}%u%b"
-fi
-PROMPT=$tmp_prompt 
-PROMPT2=$tmp_prompt2 
-RPROMPT=$tmp_rprompt 
-SPROMPT=$tmp_sprompt 
-# SSH
-[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
-;
-
-### Title (user@hostname) ###
-case "${TERM}" in
-kterm*|xterm*)
-precmd() {
-echo -ne "\033]0;${USER}@${HOST%%.*}\007"
+autoload -U modify-current-argument
+_quote-previous-word-in-single() {
+    modify-current-argument '${(qq)${(Q)ARG}}'
+    zle vi-forward-blank-word
 }
-;;
-esac
 
-# alias
+zle -N _quote-previous-word-in-single
+bindkey '^[s' _quote-previous-word-in-single
+
+quote-previous-word-in-double() {
+    modify-current-argument '${(qqq)${(Q)ARG}}'
+    zle vi-forward-blank-word
+}
+zle -N _quotus-previous-word-in-double
+bindkey '^[d' _quote-previous-word-in-double
+
+autoload -Uz select-word-style
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+autoload -Uz compinit
+compinit
+autoload -Uz colors
+colors
+
+setopt correct
+setopt auto_list
+setopt auto_pushd
+setopt auto_menu
+setopt list_types
+setopt list_packed
+setopt print_eight_bit
+setopt no_flow_control
+setopt interactive_comments
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt share_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt extended_glob
+setopt prompt_subst
+unset caseglob
+
+alias d='cd'
+alias ..='cd ..'
 alias ls='ls -F --color=auto'
-
+alias la='ls -a'
+alias ll='ls -la'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias q='exit'
+alias ipv4='ifconfig eth0 | egrep -o "([0-9]{1,3}\.){3}[0-9]{1,3}" | sed -n 1p'
+alias ipv6='ifconfig eth0 | egrep -o "([[:xdigit:]]{0,4}[:]){7}[[:xdigit:]]{0,4}" | sed -n 1p'
+alias mac='ifconfig eth0 | egrep -o "([[:xdigit:]]{2}[:]){5}[[:xdigit:]]{2}"'
 alias ocaml="rlwrap ocaml"
-
 alias ghc="stack ghc"
 alias ghci="stack ghci"
 alias runghc="stack runghc"
+alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
-# OPAM configuration
-. /home/taka/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+function cd()
+{
+    builtin cd $@ && ls;
+}
 
-#-- ----------------------------
+precmd(){ vcs_info } 
+
+function ipv6todecimal(){
+    dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
+}
+
+. ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
