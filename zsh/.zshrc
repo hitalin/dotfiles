@@ -21,9 +21,8 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="mm/dd/yyyy"
 
-PROMPT='[%F{magenta}%n%f@%F{green}%U%m%u%f:%F{blue}%B%d%f%b]
-$ '
-RPROMPT='[${vcs_info_msg_0_}]'
+PROMPT='%F{magenta}%n%f ${vcs_info_msg_0_}$ '
+RPROMPT='%F{green}%U%u%f%F{blue}%B%d%f%b'
 SPROMPT='correct: %R -> %r ? '
 
 zstyle ':zle:*' word-chars " /=;@:{},|"
@@ -35,8 +34,8 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
 zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
-zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'
-zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'
+zstyle ':vcs_info:*' formats '%F{green}%b%f'
+zstyle ':vcs_info:*' actionformats '%F{green}%b%f(%F{red}%a%f)'
 
 autoload smart-insert-last-word
 zle -N insert-last-word smart-insert-last-word
