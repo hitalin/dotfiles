@@ -142,6 +142,7 @@ function ipv6todecimal(){
 
 if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
     source /usr/bin/virtualenvwrapper.sh 
 fi
 
