@@ -140,9 +140,9 @@ function ipv6todecimal(){
 
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper.sh
+    source /usr/bin/virtualenvwrapper.sh 
 fi
 
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
