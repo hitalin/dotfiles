@@ -3,7 +3,6 @@
 export EDITOR=vim
 export LANG=ja_JP.UTF-8
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
-export GREP_OPTIONS='--color=auto'
 export SDL_VIDEO_X11_DGAMOUSE=0
 
 bindkey -e
