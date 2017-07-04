@@ -12,17 +12,17 @@ set print asm-demangle on
 set disable-randomization off
 set follow-fork-mode child
 
-#define cs
-#    checksec
-#end
+define cs
+    checksec
+end
 
 source ~/peda/peda.py
-#source ~/pwndbg/pwndbg.py
-#source ~/pwndbg/angelheap/gdbinit.py
+source ~/pwn/pwngdb.py
+source ~/pwngdb/angelheap/gdbinit.py
 
-#define hook-run
-#python
-#import angelheap
-#angelheap.init_angelheap()
-#end
-#end
+define hook-run
+python
+import angelheap
+angelheap.init_angelheap()
+end
+end

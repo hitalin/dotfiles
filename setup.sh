@@ -18,7 +18,7 @@ if [ ! -d ~/peda/ ]; then
 fi
 
 if [ ! -d ~/pwngdb/ ]; then
-    git clone https://github.com/pwndbg/pwndbg.git ~/pwndbg
+    git clone https://github.com/scwuaptx/Pwngdb.git ~/pwngdb
 fi
 
 if [ ! -z $TMUX_ENV ]; then
