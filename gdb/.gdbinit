@@ -17,7 +17,7 @@ define cs
 end
 
 source ~/peda/peda.py
-source ~/pwn/pwngdb.py
+source ~/pwngdb/pwngdb.py
 source ~/pwngdb/angelheap/gdbinit.py
 
 define hook-run
