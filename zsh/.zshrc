@@ -1,10 +1,5 @@
 [ -z "$PS1" ] && return
 
-export EDITOR=vim
-export LANG=ja_JP.UTF-8
-export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
-export SDL_VIDEO_X11_DGAMOUSE=0
-
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
 bindkey '^R' history-incremental-pattern-search-backward
@@ -136,13 +131,3 @@ precmd(){ vcs_info }
 function ipv6todecimal(){
     dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
 }
-
-. ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-if [ -f /usr/bin/virtualenvwrapper.sh ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
-    source /usr/bin/virtualenvwrapper.sh 
-fi
-
-[[ $TMUX = "" ]] && export TERM="xterm-256color"
