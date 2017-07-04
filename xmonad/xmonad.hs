@@ -203,7 +203,7 @@ main = do
        `additionalKeysP`
        [
        -- Launch terminal
-         ("M-<Return>", spawn "urxvt")
+         ("M-<Return>", spawn "urxvtc")
        -- Launch terminal with a float window
        , ("M-S-<Return>", spawn "urxvt_float.sh")
        -- Toggle touchpad
