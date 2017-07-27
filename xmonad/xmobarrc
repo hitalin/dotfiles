@@ -8,22 +8,21 @@ Config { font = "xft:RictyDiminished:size=13"
        , overrideRedirect = False
        , border = BottomBM 0 
        , borderColor = "#4e4e4e"
-       , commands = [ Run Network "wlp3s0" [ "-t"       , "⇩<rx> ⇧<tx>  "
+       , commands = [ Run Network "wlp3s0" [ "-t"       , "⇩<rx>⇧<tx> "
                                            , "--Low"    , "40"
                                            , "--High"   , "200"
                                            , "-m"       , "3"
                                            , "--normal" , "#b0bdbd"
                                            , "--high"   , "#a5d6a7"
                                            ] 10
-                    , Run MultiCpu         [ "-t"       , "■ <total0>.<total1>.<total2>.<total3> "
-                                           , "--Low"     , "40"
+                    , Run MultiCpu         [ "-t"       , "■<total0>.<total1>.<total2>.<total3> "
+                                           , "--Low"    , "40"
                                            , "--High"   , "85"
                                            , "-m"       , "2"
                                            , "--normal" , "#b0bdbd"
                                            , "--high"   , "#ef9a9a"
                                            ] 10
-
-                    , Run Memory           [ "-t"       , "□ <usedratio>%  "
+                    , Run Memory           [ "-t"       , "□<usedratio>% "
                                            , "--Low"    , "40"
                                            , "--High"   , "90"
                                            , "-m"       , "2"
@@ -31,15 +30,15 @@ Config { font = "xft:RictyDiminished:size=13"
                                            , "--high"   , "#ef9a9a"
                                            ] 10
                     , Run BatteryP         ["CMB1"]
-                                           [ "-t"       , "⌇ <acstatus>  "
+                                           [ "-t"       , "⌇<acstatus> "
                                            , "--Low"    , "20"
                                            , "--High"   , "80"
                                            , "--low"    , "#ef9a9a"
                                            , "--normal" , "#b0bdbd"
                                            , "--"
-                                                 , "-o" , "<left>% (<timeleft>)"
-                                                 , "-O" , "Charging <left>%"
-                                                 , "-i" , "<left>%"
+                                           , "-o" , "<left>% (<timeleft>)"
+                                           , "-O" , "Charging <left>%"
+                                           , "-i" , "<left>%"
                                            ] 50
                     , Run Date "%a %m/%d %H:%M" "date" 10
                     , Run StdinReader
