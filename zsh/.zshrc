@@ -15,8 +15,8 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="mm/dd/yyyy"
 
-PROMPT='%F{cyan}%B%d%b%f
-${vcs_info_msg_0_}$ '
+PROMPT='%F{cyan}%B%d%b%f ${vcs_info_msg_0_}
+$ '
 SPROMPT='correct: %R -> %r ? '
 
 zstyle ':zle:*' word-chars " /=;@:{},|"
