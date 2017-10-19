@@ -1,5 +1,5 @@
-default:        basic vim zsh others mikutter
-.PHONY: default basic vim zsh others mikutter
+default:        basic vim zsh others
+.PHONY: default basic vim zsh others
 
 basic:
 	- mkdir ~/local
@@ -9,7 +9,6 @@ basic:
 
 zsh:
 	- ln -s $(CURDIR)/zsh/zshrc ~/.zshrc
-	curl -sL zplug.sh/installer | zsh
 
 vim:
 	- git clone https://github.com/kmyk/vimrc ~/local/vimrc
@@ -20,4 +19,3 @@ others:
 	- ln -s $(CURDIR)/gdbinit ~/.gdbinit
 	- mkdir ~/.ghc
 	- ln -s $(CURDIR)/ghci.conf ~/.ghc/ghci.conf
-	- ln -s $(CURDIR)/irbrc ~/.irbrc
