@@ -21,11 +21,11 @@ hook_add = ''' " {{{
 [[plugins]]
 repo = 'Shougo/neosnippet'
 depends = ['Shougo/neocomplete.vim']
-hook_add = ''' " {{{
-    imap <expr><CR> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)" :
-        \ "\<CR>"
-''' # }}}
+#hook_add = ''' " {{{
+#    imap <expr><CR> neosnippet#expandable_or_jumpable() ?
+#        \ "\<Plug>(neosnippet_expand_or_jump)" :
+#        \ "\<CR>"
+#''' # }}}
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
