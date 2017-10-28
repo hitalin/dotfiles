@@ -129,7 +129,9 @@ repo = 'h1mesuke/unite-outline'
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 
-# to preview markdown in browser
+[[plugins]]
+repo = 'lervag/vimtex'
+
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 
