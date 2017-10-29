@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 $latex = 'uplatex -synctex=1';
-$latex_silent = 'uplatex -synctex=1 -interaction=batchmode'
+$latex_silent = 'uplatex -synctex=1 -interaction=batchmode';
 $dvipdf = 'dvipdfmx %O -o %D %S';
 $bibtex = 'upbibtex';
 $pdf_mode = 3; # use dvipdf
