@@ -1,0 +1,37 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{report}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{xypic}
+\usepackage{ascmac}
+\let\keytop\undefined
+\let\return\undefined
+\usepackage{okumacro}
+\def\Im{\mathrm{Im}}
+\def\Ker{\mathrm{Ker}}
+\def\Hom{\mathrm{Hom}}
+\def\Ext{\mathrm{Ext}}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}
+\newtheorem*{theorem*}{定理}
+\newtheorem{lemma}{補題}
+\newtheorem*{lemma*}{補題}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem*{definition*}{定義}
+
+\numberwithin{theorem}{section}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \normalfont
+  \topsep6\p@\@plus6\p@ \trivlist
+  \item[\hskip\labelsep{\bfseries #1}\@addpunct{\bfseries}]\ignorespaces
+}{
+  \endtrivlist
+}
+\renewcommand{\proofname}{[証明]}
+\makeatother
