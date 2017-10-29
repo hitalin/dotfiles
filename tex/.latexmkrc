@@ -1,7 +1,8 @@
 #!/usr/bin/perl
-$latex = 'platex -interaction=nonstopmode -kanji=utf-8 %O %S';
+$latex = 'uplatex -synctex=1 -interaction=nonstopmode -kanji=utf-8 %O %S';
+$latex_silent = 'uplatex -synctex=1 -interaction=batchmode -kanji=utf-8 %O %S'
 $dvipdf = 'dvipdfmx %O -o %D %S';
-$bibtex = 'pbibtex';
+$bibtex = 'upbibtex';
 $pdf_mode = 3; # use dvipdf
 $pdf_update_method = 2;
 $pdf_previewer = "start mupdf %O %S";
