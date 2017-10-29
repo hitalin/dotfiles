@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-$latex = 'uplatex -synctex=1';
+$latex = 'uplatex -kanji=utf8 -synctex=1 -file-line-error -halt-on-error -interaction=nonstopmode %O %S';
 $latex_silent = 'uplatex -synctex=1 -interaction=batchmode';
 $pdf_mode = 1;
 $pdflatex = 'lualatex -synctex=1 -file-line-error -halt-on-error -interaction=nonstopmode %O %S';
