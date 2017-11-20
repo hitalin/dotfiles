@@ -139,9 +139,6 @@ repo = 'thinca/vim-quickrun'
 repo = 'tyru/open-browser.vim'
 
 [[plugins]]
-repo = 'vimwiki/vimwiki'
-
-[[plugins]]
 repo = 'vim-scripts/sudo.vim'
 
 [[plugins]]
