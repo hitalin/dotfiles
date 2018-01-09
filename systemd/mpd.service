@@ -1,8 +1,0 @@
-[Unit]
-Description=Music Player Deamon
-
-[Service]
-ExecStart=/usr/bin/mpd --no-deamon
-
-[Install]
-WantedBy=default.target
