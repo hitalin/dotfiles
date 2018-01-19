@@ -331,4 +331,10 @@ you should place your code here."
  )
 
 (setq org-directory "~/org")
-(setq org-agenda-files (list org-directory))
+(setq org-agenda-files '("/home/taka/code/contest/todo_contest.org"
+                         "/home/taka/code/labor/todo_labor.org"
+                         "/home/taka/code/study/todo_study.org"
+                         "/home/taka/code/terror/todo_terror.org"
+                         "/home/taka/electronics/todo_electronics.org"
+                         "/home/taka/env/todo_env.org"
+                         ))
