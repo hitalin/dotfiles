@@ -121,7 +121,8 @@ alias ghci="stack ghci"
 alias runghc="stack runghc"
 alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
-alias emacs='emacs -nw'
+alias emacs='emacsclient -c -a "" &'
+alias killemacs='emacsclient -e "(kill-emacs)"'
 
 function cd()
 {
