@@ -1,10 +1,9 @@
 #!/bin/bash
-# http://inaz2.hatenablog.com/entry/2015/12/01/204201
-# fixed by @nekketsuuu https://ja.stackoverflow.com/questions/35941/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%A7glibc%E3%81%AEmake%E3%81%8C%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B
-# root@ubuntu-xenial:/home/ubuntu# export PATH=/usr/local/bin:$PATH 
-# root@ubuntu-xenial:/home/ubuntu# mkdir -p $PREFIX
-# root@ubuntu-xenial:/home/ubuntu# chown ubuntu $PREFIX
-# root@ubuntu-xenial:/home/ubuntu# ./prepare.sh
+# export PATH=/usr/local/bin:$PATH 
+# mkdir -p $PREFIX
+# chown ubuntu $PREFIX
+# chown ubuntu +x cross_prepare.sh cross_build.sh
+# ./cross_prepare.sh
 set -e
 
 PREFIX=/usr/local
