@@ -2,7 +2,7 @@
 # export PATH=/usr/local/bin:$PATH 
 # mkdir -p $PREFIX
 # chown ubuntu $PREFIX
-# chown ubuntu +x cross_prepare.sh cross_build.sh
+# chmod +x cross_prepare.sh cross_build.sh
 # ./cross_prepare.sh
 set -e
 
