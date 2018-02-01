@@ -1,4 +1,6 @@
 #!/bin/bash
+# ./cross_prepare.sh
+# ./cross_build.sh
 set -e
 
 PREFIX=/usr/local
