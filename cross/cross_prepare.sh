@@ -9,9 +9,6 @@ set -e
 
 PREFIX=/usr/local
 
-PARALLEL_MAKE=-j4
-CONFIGURATION_OPTIONS="--disable-multilib --disable-nls"
-
 BINUTILS_VERSION=binutils-2.28
 LINUX_KERNEL_VERSION=linux-4.11.7
 GCC_VERSION=gcc-7.1.0
@@ -26,7 +23,7 @@ TERMCAP_VERSION=termcap-1.3.1
 GDB_VERSION=gdb-8.0
 
 # Download packages
-cd ~/
+cd $HOME 
 mkdir archives
 cd archives
 

@@ -26,7 +26,7 @@ CLOOG_VERSION=cloog-0.18.1
 TERMCAP_VERSION=termcap-1.3.1
 GDB_VERSION=gdb-8.0
 
-cd ~/
+cd $HOME 
 mkdir build
 cd build
 
@@ -40,20 +40,20 @@ build() {
     # Step 1. Binutils
     mkdir -p build-binutils-$TARGET
     cd build-binutils-$TARGET
-    /home/ubuntu/archives/$BINUTILS_VERSION/configure --prefix=$PREFIX --target=$TARGET $CONFIGURATION_OPTIONS
+    $HOME/archives/$BINUTILS_VERSION/configure --prefix=$PREFIX --target=$TARGET $CONFIGURATION_OPTIONS
     make $PARALLEL_MAKE
     make install
     cd ..
 
     # Step 2. Linux Kernel Headers
-    cd /home/ubuntu/archives/$LINUX_KERNEL_VERSION
+    cd $HOME/archives/$LINUX_KERNEL_VERSION
     make ARCH=$LINUX_ARCH INSTALL_HDR_PATH=$PREFIX/$TARGET headers_install
-    cd /home/ubuntu/build/build-$TARGET
+    cd $HOME/build/build-$TARGET
 
     # Step 3. C/C++ Compilers
     mkdir -p build-gcc-$TARGET
     cd build-gcc-$TARGET
-    /home/ubuntu/archives/$GCC_VERSION/configure --prefix=$PREFIX --target=$TARGET --enable-languages=c,c++ $CONFIGURATION_OPTIONS
+    $HOME/archives/$GCC_VERSION/configure --prefix=$PREFIX --target=$TARGET --enable-languages=c,c++ $CONFIGURATION_OPTIONS
     make $PARALLEL_MAKE all-gcc
     make install-gcc
     cd ..
@@ -61,7 +61,7 @@ build() {
     # Step 4. Standard C Library Headers and Startup Files
     mkdir -p build-glibc-$TARGET
     cd build-glibc-$TARGET
-    /home/ubuntu/archives/$GLIBC_VERSION/configure --prefix=$PREFIX/$TARGET --build=$MACHTYPE --host=$TARGET --target=$TARGET --with-headers=$PREFIX/$TARGET/include $CONFIGURATION_OPTIONS libc_cv_forced_unwind=yes
+    $HOME/archives/$GLIBC_VERSION/configure --prefix=$PREFIX/$TARGET --build=$MACHTYPE --host=$TARGET --target=$TARGET --with-headers=$PREFIX/$TARGET/include $CONFIGURATION_OPTIONS libc_cv_forced_unwind=yes
     make install-bootstrap-headers=yes install-headers
     make $PARALLEL_MAKE csu/subdir_lib
     install csu/crt1.o csu/crti.o csu/crtn.o $PREFIX/$TARGET/lib
@@ -90,14 +90,14 @@ build() {
     # Step 8. GDB
     mkdir -p build-termcap-$TARGET
     cd build-termcap-$TARGET
-    /home/ubuntu/archives/$TERMCAP_VERSION/configure --prefix=$PREFIX --target=$TARGET
+    $HOME/archives/$TERMCAP_VERSION/configure --prefix=$PREFIX --target=$TARGET
     make $PARALLEL_MAKE
     make install
     cd ..
 
     mkdir -p build-gdb-$TARGET
     cd build-gdb-$TARGET
-    /home/ubuntu/archives/$GDB_VERSION/configure --prefix=$PREFIX --target=$TARGET
+    $HOME/archives/$GDB_VERSION/configure --prefix=$PREFIX --target=$TARGET
     make $PARALLEL_MAKE
     make install
     cd ..
