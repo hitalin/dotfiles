@@ -1,0 +1,109 @@
+#!/bin/bash
+# http://inaz2.hatenablog.com/entry/2015/12/01/204201
+# fixed by @nekketsuuu https://ja.stackoverflow.com/questions/35941/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%A7glibc%E3%81%AEmake%E3%81%8C%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B
+# root@ubuntu-xenial:/home/ubuntu# export PATH=/usr/local/bin:$PATH 
+# root@ubuntu-xenial:/home/ubuntu# mkdir -p $PREFIX
+# root@ubuntu-xenial:/home/ubuntu# chown ubuntu $PREFIX
+# root@ubuntu-xenial:/home/ubuntu# ./build.sh
+
+set -e
+
+PREFIX=/usr/local
+
+PARALLEL_MAKE=-j4
+CONFIGURATION_OPTIONS="--disable-multilib --disable-nls"
+
+BINUTILS_VERSION=binutils-2.28
+LINUX_KERNEL_VERSION=linux-4.11.7
+GCC_VERSION=gcc-7.1.0
+GLIBC_VERSION=glibc-2.25
+MPFR_VERSION=mpfr-3.1.5
+GMP_VERSION=gmp-6.1.1
+MPC_VERSION=mpc-1.0.3
+ISL_VERSION=isl-0.16.1
+CLOOG_VERSION=cloog-0.18.1
+
+TERMCAP_VERSION=termcap-1.3.1
+GDB_VERSION=gdb-8.0
+
+cd ~/
+mkdir build
+cd build
+
+build() {
+    local TARGET="$1"
+    local LINUX_ARCH="$2"
+
+    mkdir build-$TARGET
+    cd build-$TARGET
+
+    # Step 1. Binutils
+    mkdir -p build-binutils-$TARGET
+    cd build-binutils-$TARGET
+    /home/ubuntu/archives/$BINUTILS_VERSION/configure --prefix=$PREFIX --target=$TARGET $CONFIGURATION_OPTIONS
+    make $PARALLEL_MAKE
+    make install
+    cd ..
+
+    # Step 2. Linux Kernel Headers
+    cd /home/ubuntu/archives/$LINUX_KERNEL_VERSION
+    make ARCH=$LINUX_ARCH INSTALL_HDR_PATH=$PREFIX/$TARGET headers_install
+    cd /home/ubuntu/build/build-$TARGET
+
+    # Step 3. C/C++ Compilers
+    mkdir -p build-gcc-$TARGET
+    cd build-gcc-$TARGET
+    /home/ubuntu/archives/$GCC_VERSION/configure --prefix=$PREFIX --target=$TARGET --enable-languages=c,c++ $CONFIGURATION_OPTIONS
+    make $PARALLEL_MAKE all-gcc
+    make install-gcc
+    cd ..
+
+    # Step 4. Standard C Library Headers and Startup Files
+    mkdir -p build-glibc-$TARGET
+    cd build-glibc-$TARGET
+    /home/ubuntu/archives/$GLIBC_VERSION/configure --prefix=$PREFIX/$TARGET --build=$MACHTYPE --host=$TARGET --target=$TARGET --with-headers=$PREFIX/$TARGET/include $CONFIGURATION_OPTIONS libc_cv_forced_unwind=yes
+    make install-bootstrap-headers=yes install-headers
+    make $PARALLEL_MAKE csu/subdir_lib
+    install csu/crt1.o csu/crti.o csu/crtn.o $PREFIX/$TARGET/lib
+    $TARGET-gcc -nostdlib -nostartfiles -shared -x c /dev/null -o $PREFIX/$TARGET/lib/libc.so
+    touch $PREFIX/$TARGET/include/gnu/stubs.h
+    cd ..
+
+    # Step 5. Compiler Support Library
+    cd build-gcc-$TARGET
+    make $PARALLEL_MAKE all-target-libgcc
+    make install-target-libgcc
+    cd ..
+
+    # Step 6. Standard C Library & the rest of Glibc
+    cd build-glibc-$TARGET
+    make $PARALLEL_MAKE
+    make install
+    cd ..
+
+    # Step 7. Standard C++ Library & the rest of GCC
+    cd build-gcc-$TARGET
+    make $PARALLEL_MAKE
+    make install
+    cd ..
+
+    # Step 8. GDB
+    mkdir -p build-termcap-$TARGET
+    cd build-termcap-$TARGET
+    /home/ubuntu/archives/$TERMCAP_VERSION/configure --prefix=$PREFIX --target=$TARGET
+    make $PARALLEL_MAKE
+    make install
+    cd ..
+
+    mkdir -p build-gdb-$TARGET
+    cd build-gdb-$TARGET
+    /home/ubuntu/archives/$GDB_VERSION/configure --prefix=$PREFIX --target=$TARGET
+    make $PARALLEL_MAKE
+    make install
+    cd ..
+
+    cd ..
+}
+
+#build aarch64-linux-gnu arm64
+build arm-linux-gnueabihf arm
