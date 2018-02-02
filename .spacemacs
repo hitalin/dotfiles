@@ -1,4 +1,4 @@
-;; -*- mode: emacs-lisp -*-
+
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -330,11 +330,8 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  )
 
-(setq org-directory "~/org")
 (setq org-agenda-files '("/home/taka/code/contest/todo_contest.org"
                          "/home/taka/code/labor/todo_labor.org"
                          "/home/taka/code/study/todo_study.org"
                          "/home/taka/code/terror/todo_terror.org"
-                         "/home/taka/electronics/todo_electronics.org"
-                         "/home/taka/env/todo_env.org"
                          ))
