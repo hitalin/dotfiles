@@ -1,6 +1,6 @@
 #!/bin/bash
-# ./cross_prepare.sh
-# ./cross_build.sh
+# ./prepare.sh
+# ./build.sh
 set -e
 ./config.sh
 

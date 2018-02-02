@@ -2,10 +2,10 @@
 # export PATH=/usr/local/bin:$PATH 
 # mkdir -p $PREFIX
 # chown ubuntu $PREFIX
-# chmod +x cross_prepare.sh cross_build.sh
-# ./cross_prepare.sh
+# chmod +x config.sh prepare.sh build.sh
+# ./prepare.sh
 set -e
-./prepare.sh
+./config.sh
 
 # Download packages
 cd $HOME 

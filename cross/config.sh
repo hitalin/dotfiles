@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PREFIX=/usr/local
 
 PARALLEL_MAKE=-j4
