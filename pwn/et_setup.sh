@@ -111,4 +111,4 @@ cd $HOMEDIR
 rm .bashrc
 git clone --recursive https://github.com/i0z0m/dotfiles
 cd dotfiles
-./install.sh
+./setup.sh
