@@ -1,6 +1,4 @@
 #!/bin/bash
-# ./prepare.sh
-# ./build.sh
 set -e
 ./config.sh
 source config.sh

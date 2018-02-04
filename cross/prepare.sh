@@ -1,9 +1,4 @@
 #!/bin/bash
-# export PATH=/usr/local/bin:$PATH 
-# mkdir -p $PREFIX
-# chown ubuntu $PREFIX
-# chmod +x config.sh prepare.sh build.sh
-# ./prepare.sh
 set -e
 ./config.sh
 source config.sh
