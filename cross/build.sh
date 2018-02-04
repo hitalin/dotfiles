@@ -3,6 +3,7 @@
 # ./build.sh
 set -e
 ./config.sh
+source config.sh
 
 cd $HOME 
 mkdir build

@@ -6,6 +6,7 @@
 # ./prepare.sh
 set -e
 ./config.sh
+source config.sh
 
 # Download packages
 cd $HOME 
