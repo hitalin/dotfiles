@@ -1,7 +1,7 @@
 #!/bin/bash
 PREFIX=/usr/local
 
-PARALLEL_MAKE=-j4
+PARALLEL_MAKE=-j1
 CONFIGURATION_OPTIONS="--disable-multilib --disable-nls"
 
 BINUTILS_VERSION=binutils-2.28
