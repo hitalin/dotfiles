@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 # Set pip2 
 sudo pacman -Syy
 sudo pacman -S --noconfirm python2-pip
