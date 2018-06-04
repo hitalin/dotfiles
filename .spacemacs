@@ -360,7 +360,6 @@ you should place your code here."
  )
 
 (setq org-agenda-files '("/home/taka/code/contest/todo_contest.org"
-                         "/home/taka/code/labor/todo_labor.org"
+                         "/home/taka/code/sec/todo_sec.org"
                          "/home/taka/code/study/todo_study.org"
-                         "/home/taka/code/terror/todo_terror.org"
                          ))
