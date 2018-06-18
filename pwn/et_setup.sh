@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/sh
+set -e
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 HOMEDIR=/home/$USER
 
@@ -112,3 +114,5 @@ rm .bashrc
 git clone --recursive https://github.com/i0z0m/dotfiles
 cd dotfiles
 ./setup.sh
+
+echo "Finished!"

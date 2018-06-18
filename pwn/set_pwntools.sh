@@ -1,3 +1,5 @@
+#!/bin/sh
+set -e
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 if [ ! -d ~/peda/ ]; then
@@ -7,3 +9,5 @@ fi
 if [ ! -d ~/pwngdb/ ]; then
     git clone https://github.com/scwuaptx/Pwngdb.git ~/pwngdb
 fi
+
+echo "Finished!"
