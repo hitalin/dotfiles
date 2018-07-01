@@ -111,7 +111,10 @@ augroup BinaryEditVimrcCommands
 augroup END
 
 " for ocaml
-set rtp^="/home/i0z0m/.opam/system/share/ocp-indent/vim"
+set rtp^="$HOME/.opam/system/share/ocp-indent/vim"
 
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute 'set rtp+=' . g:opamshare . '/merlin/vim'
+
+" for cpp
+let g:clang_auto = 0
