@@ -1,5 +1,6 @@
 export EDITOR=vim
 export LANG=ja_JP.UTF-8
+export LC_ALL=en_US.UTF-8
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
 export SDL_VIDEO_X11_DGAMOUSE=0
 
