@@ -6,10 +6,10 @@ export SDL_VIDEO_X11_DGAMOUSE=0
 
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
  
-if [ -f $(which virtualenvwrapper.sh) ]; then
-    export WORKON_HOME=$HOME.virtualenvs
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
-    #source $(which virtualenvwrapper.sh) 
-fi
+# if [ -f $(which virtualenvwrapper.sh) ]; then
+#     export WORKON_HOME=$HOME.virtualenvs
+#     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
+#     source $(which virtualenvwrapper.sh) 
+# fi
 
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
