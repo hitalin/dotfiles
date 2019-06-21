@@ -5,16 +5,16 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 HOMEDIR=/home/$USER
 
 # Updates
-sudo apt-get -y update
+sudo apt -y update
 
-sudo apt-get -y install python3-pip
-sudo apt-get -y install tmux
-sudo apt-get -y install gdb gdb-multiarch
-sudo apt-get -y install unzip
-sudo apt-get -y install foremost
-sudo apt-get -y install ipython
-sudo apt-get -y install python2.7 python-pip python-dev git libssl-dev libffi-dev
-sudo apt-get -y install vim curl
+sudo apt -y install python3-pip
+sudo apt -y install tmux
+sudo apt -y install gdb gdb-multiarch
+sudo apt -y install unzip
+sudo apt -y install foremost
+sudo apt -y install ipython
+sudo apt -y install python2.7 python-pip python-dev git libssl-dev libffi-dev
+sudo apt -y install vim curl
 
 # Ptrace enable
 echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
@@ -51,10 +51,10 @@ cd ~
 git clone https://github.com/devttys0/binwalk
 cd binwalk
 sudo python setup.py install
-sudo apt-get install squashfs-tools
+sudo apt install squashfs-tools
 
 # Install american-fuzzy-lop
-sudo apt-get -y install clang llvm
+sudo apt -y install clang llvm
 cd $HOMEDIR/tools
 wget --quiet http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
 tar -xzvf afl-latest.tgz
@@ -83,9 +83,9 @@ cd ../..
 
 # Install 32 bit libs
 sudo dpkg --add-architecture i386
-sudo apt-get update
-sudo apt-get -y install libc6:i386 libncurses5:i386 libstdc++6:i386
-sudo apt-get -y install libc6-dev-i386
+sudo apt update
+sudo apt -y install libc6:i386 libncurses5:i386 libstdc++6:i386
+sudo apt -y install libc6-dev-i386
 
 # Install r2pipe
 pip install r2pipe
@@ -108,7 +108,7 @@ cd py2neo
 python setup.py install
 
 # Personal config
-sudo sudo apt-get -y install stow
+sudo sudo apt -y install stow
 cd $HOMEDIR
 rm .bashrc
 git clone --recursive https://github.com/i0z0m/dotfiles
