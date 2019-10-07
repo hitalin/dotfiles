@@ -130,9 +130,6 @@ repo = 'h1mesuke/unite-outline'
 repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
-repo = 'lervag/vimtex'
-
-[[plugins]]
 repo = 'thinca/vim-quickrun'
 
 [[plugins]]
