@@ -58,7 +58,6 @@ colorscheme hybrid
 
 syntax on 
 filetype on
-filetype plugin on
 filetype indent on
 
 set ignorecase
@@ -91,6 +90,8 @@ if dein#load_state(s:dein_dir)
 	call dein#end()
 	call dein#save_state()
 endif
+
+filetype plugin on
 
 if dein#check_install()
 	call dein#install()
