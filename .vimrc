@@ -88,15 +88,18 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:toml,      {'lazy': 0})
 	call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
+    call dein#add('jceb/vim-orgmode')
+
 	call dein#end()
 	call dein#save_state()
 endif
 
+filetype plugin indent on
+syntax enable
+
 if dein#check_install()
 	call dein#install()
 endif
-
-filetype plugin on
 
 "-------------------------------------------------------------------------
 " for -b option

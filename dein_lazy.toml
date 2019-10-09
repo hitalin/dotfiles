@@ -29,7 +29,3 @@ hook_source = ''' " {{{
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
-
-[[plugins]]
-repo = 'jceb/vim-orgmode'
-on_ft = ['org']
