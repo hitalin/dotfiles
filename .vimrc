@@ -57,7 +57,6 @@ let g:hybrid_reduced_contrast = 1
 colorscheme hybrid
 
 syntax on 
-filetype on
 filetype indent on
 
 set ignorecase
