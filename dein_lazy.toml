@@ -7,6 +7,10 @@ repo = 'davidhalter/jedi-vim'
 on_ft = ['python']
 
 [[plugins]]
+repo = 'CoatiSoftware/vim-sourcetrail'
+on_ft = ['c', 'cpp', 'python']
+
+[[plugins]]
 repo = 'dag/vim2hs'
 on_ft = ['haskell']
 
