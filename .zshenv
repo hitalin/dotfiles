@@ -5,7 +5,8 @@ export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
 export SDL_VIDEO_X11_DGAMOUSE=0
 
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
- 
+
+export PATH=$PATH:~/.local/bin
 # if [ -f $(which virtualenvwrapper.sh) ]; then
 #     export WORKON_HOME=$HOME.virtualenvs
 #     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
