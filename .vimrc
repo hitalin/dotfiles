@@ -18,6 +18,7 @@ set backspace=2
 augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
 set wrapscan
