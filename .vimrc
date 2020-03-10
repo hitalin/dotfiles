@@ -4,15 +4,21 @@ if &compatible
     set nocompatible
 endif
 
-set tabstop=4
 set expandtab
 set smarttab
 
 set autoindent
 set smartindent
 
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set backspace=2
+
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
 
 set wrapscan
 set showmatch
