@@ -164,3 +164,6 @@ hook_add = ''' " {{{
         exec 'set tags+=' . s:git_root_dir . '/tags'
     endif
 ''' # }}}
+
+[[plugins]]
+repo = 'tomasr/molokai'
