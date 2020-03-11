@@ -2,8 +2,13 @@
 set -e
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-if [ ! -f ~/.vim/colors/hybrid.vim ]; then
-    git clone https://github.com/w0ng/vim-hybrid.git ~/.vim/
+if [ ! -f ~/.zsh/pure/pure.zsh ]; then
+    mkdir -p "$HOME/.zsh"
+    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+fi
+
+if [ ! -f ~/.vim/colors/molokai.vim ]; then
+    git clone https://github.com/tomasr/molokai.git ~/.vim/
     rm ~/.vim/README.md 
 fi
 
