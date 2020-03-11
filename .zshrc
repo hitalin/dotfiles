@@ -1,5 +1,6 @@
 [ -z "$PS1" ] && return
 
+# bindkey
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
 bindkey '^R' history-incremental-pattern-search-backward
@@ -19,18 +20,22 @@ PROMPT='%F{cyan}%B%d%b%f ${vcs_info_msg_0_}
 $ '
 SPROMPT='correct: %R -> %r ? '
 
-zstyle ':zle:*' word-chars " /=;@:{},|"
-zstyle ':zle:*' word-style unspecified
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' ignore-parents parent pwd ..
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
-zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
-zstyle ':vcs_info:*' formats '%F{green}%b%f'
-zstyle ':vcs_info:*' actionformats '%F{green}%b%f(%F{red}%a%f)'
+# theme 
+#zstyle ':zle:*' word-chars " /=;@:{},|"
+#zstyle ':zle:*' word-style unspecified
+#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+#zstyle ':completion:*' ignore-parents parent pwd ..
+#zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+#                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+#zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
+#zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
+#zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
+#zstyle ':vcs_info:*' formats '%F{green}%b%f'
+#zstyle ':vcs_info:*' actionformats '%F{green}%b%f(%F{red}%a%f)'
+autoload -U promptinit; promptinit
+prompt pure
 
+# hoge
 autoload smart-insert-last-word
 zle -N insert-last-word smart-insert-last-word
 zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
@@ -82,6 +87,7 @@ compinit
 autoload -Uz colors
 colors
 
+# setopt
 setopt correct
 setopt auto_list
 setopt auto_pushd
@@ -102,6 +108,7 @@ setopt extended_glob
 setopt prompt_subst
 unset caseglob
 
+# alias
 alias q='exit'
 alias ls='ls -F --color=auto'
 alias rm='rm -i'
