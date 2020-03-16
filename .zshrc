@@ -16,22 +16,6 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="mm/dd/yyyy"
 
-PROMPT='%F{cyan}%B%d%b%f ${vcs_info_msg_0_}
-$ '
-SPROMPT='correct: %R -> %r ? '
-
-# theme 
-#zstyle ':zle:*' word-chars " /=;@:{},|"
-#zstyle ':zle:*' word-style unspecified
-#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-#zstyle ':completion:*' ignore-parents parent pwd ..
-#zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-#                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-#zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-#zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
-#zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
-#zstyle ':vcs_info:*' formats '%F{green}%b%f'
-#zstyle ':vcs_info:*' actionformats '%F{green}%b%f(%F{red}%a%f)'
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -80,7 +64,6 @@ zle -N _quotus-previous-word-in-double
 bindkey '^[d' _quote-previous-word-in-double
 
 autoload -Uz select-word-style
-autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 autoload -Uz compinit
 compinit
@@ -127,13 +110,6 @@ alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 alias emacs='emacsclient -nw -a ""'
 alias killemacs='emacsclient -e "(kill-emacs)"'
 alias fbterm='env LANG=ja_JP.UTF-8 fbterm -- uim-fep'
-
-function cd()
-{
-    builtin cd $@ && ls;
-}
-
-precmd(){ vcs_info } 
 
 function ipv6todecimal(){
     dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
