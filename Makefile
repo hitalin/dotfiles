@@ -115,7 +115,6 @@ pipinstall: ## Install python packages
 	pip install --user litecli
 	pip install --user matplotlib
 	pip install --user nose
-	pip install --user pandas
 	pip install --user pipenv
 	pip install --user progressbar2
 	pip install --user psycopg2-binary
@@ -159,11 +158,6 @@ neomutt: ## Init neomutt mail client
 	pikaur -S goobook-git
 	goobook authenticate
 
-alacritty: ## Init alacritty
-	sudo pacman -S alacritty
-	test -L ${HOME}/.config/alacritty/alacritty.yml || rm -rf ${HOME}/.config/alacritty/alacritty.yml
-	ln -vsf ${PWD}/.config/alacritty/alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
-
 urxvt: ## Init rxvt-unicode terminal
 	sudo pacman -S rxvt-unicode urxvt-perls
 	ln -vsf ${PWD}/.Xresources ${HOME}/.Xresources
@@ -180,11 +174,6 @@ xterm: ## Init xterm terminal
 	ln -vsf ${PWD}/.Xresources ${HOME}/.Xresources
 	sudo ln -vsf ${PWD}/usr/share/applications/xterm.desktop /usr/share/applications/xterm.desktop
 	sudo ln -vsf ${PWD}/usr/share/applications/uxterm.desktop /usr/share/applications/uxterm.desktop
-
-termite: ## Init termite terminal
-	sudo pacman -S termite
-	mkdir -p ${HOME}/.config/termite
-	ln -vsf ${PWD}/.config/termite/config ${HOME}/.config/termite/config
 
 tlp: ## Setting for power saving and preventing battery deterioration
 	sudo pacman -S tlp powertop
@@ -217,8 +206,8 @@ ibusmozc: ## Install ibus-mozc
 	pikaur -S ibus-mozc
 	ibus-daemon -drx
 
-ttf-cica: ## Install Cica font
-	pikaur -S ttf-cica
+ttf-hackgen: ## Install HackGen font
+	pikaur -S ttf-hackgen
 
 localhostssl: # Set ssl for localhost
 	mkcert -install
@@ -264,20 +253,6 @@ minikube: ## Setup minikube with kvm2
 	sudo systemctl start virtlogd.service
 	sudo systemctl enable virtlogd.service
 	minikube config set vm-driver kvm2
-
-kind: ## Setup kind (Kubernetes In Docker)
-	GO111MODULE="on" go get sigs.k8s.io/kind@v0.7.0
-	sudo sh -c "kind completion zsh > /usr/share/zsh/site-functions/_kind"
-
-redis: ## Redis inital setup
-	sudo pacman -S redis
-	sudo systemctl enable redis.service
-	sudo systemctl start redis.service
-
-dingo: ## Install dingo Google DNS over HTTPS
-	sudo pacman -S dingo
-	sudo systemctl enable dingo.service
-	sudo systemctl start dingo.service
 
 ccls: ## Install c,c++ language server
 	pikaur -S ccls
@@ -347,11 +322,6 @@ toggle: ## Prepare command that toggle between emacs and chromium
 	sudo ln -vsf ${PWD}/usr/share/applications/toggle.desktop /usr/share/applications/toggle.desktop
 	sudo cp ${PWD}/.toggle.sh /usr/local/bin/toggle
 
-aws: ## Init aws cli
-	mkdir -p ${HOME}/.local
-	pip install --user awscli
-	ln -vsfn ${PWD}/.aws ${HOME}/.aws
-
 tmuxp: ## Install tmuxp
 	mkdir -p ${HOME}/.local
 	pip install --user tmuxp
@@ -387,16 +357,6 @@ gnuglobal: ## Install gnu global
 	mkdir -p ${HOME}/.local
 	pip install --user pygments
 	pikaur -S global
-
-emacs-devel: ## Install development version of emacs
-	cd ${HOME}/src/github.com/masasam;\
-	git clone -b emacs-27 git@github.com:emacs-mirror/emacs.git;\
-	cd emacs;\
-	./autogen.sh;\
-	./configure;\
-	make;\
-	sudo make install;\
-	rm -rf ${HOME}/.emacs.d/elpa
 
 openvpn: ## Install openvpn
 	sudo pacman -S openvpn networkmanager-openvpn
