@@ -67,29 +67,26 @@ base: ## Install base and base-devel package
 	texinfo which
 
 install: ## Install arch linux packages using pacman
-	sudo pacman -S base zsh git tig vim tmux keychain unrar ethtool \
+	sudo pacman -S base zsh git tig vim tmux ranger keychain unrar ethtool \
 	zsh-completions xsel emacs gvfs-smb unace iperf valgrind noto-fonts-emoji \
 	inkscape file-roller xclip atool debootstrap oath-toolkit imagemagick lynx \
 	the_silver_searcher cifs-utils elinks flameshot ipcalc traceroute \
-	cups-pdf firefox firefox-i18n-ja gimp strace lhasa hub bookworm tig sysprof \
-	pkgfile dconf-editor rsync debian-archive-keyring chez-scheme cpio aria2 \
-	nmap poppler-data ffmpeg asciidoc sbcl aspell aspell-en screen mosh diskus \
-	gdb wmctrl pwgen linux-docs htop tcpdump gvfs p7zip lzop fzf gpaste optipng \
+	cups-pdf firefox chromium strace lhasa hub bookworm sysprof \
+	pkgfile dconf-editor rsync debian-archive-keyring mit-scheme cpio aria2 \
+	nmap poppler-data ffmpeg asciidoc aspell aspell-en mosh diskus \
+	gdb qemu radare2 wmctrl pwgen linux-docs htop tcpdump gvfs p7zip lzop fzf gpaste optipng \
 	arch-install-scripts pandoc jq pkgstats highlight alsa-utils geckodriver \
-	texlive-langjapanese tokei texlive-latexextra ctags hdparm eog curl parallel \
-	arc-gtk-theme npm typescript llvm llvm-libs lldb tree w3m whois nnn qreator \
-	zsh-syntax-highlighting shellcheck bash-completion mathjax expect obs-studio \
+	texlive-langjapanese tokei texlive-latexextra atags hdparm eog curl parallel \
+	arc-gtk-theme llvm llvm-libs lldb tree w3m whois nnn qreator \
+	zsh-syntax-highlighting shellcheck bash-completion expect obs-studio \
 	cscope pdfgrep gnu-netcat cmatrix jpegoptim nethogs mlocate \
-	pacman-contrib x11-ssh-askpass libreoffice-fresh-ja python-prompt_toolkit \
-	jhead peek ncdu gnome-screenshot sshfs fping syncthing terraform bat lshw \
+	pacman-contrib x11-ssh-askpass python-prompt_toolkit \
+	jhead peek ncdu scrot sshfs fping syncthing terraform bat lshw \
 	xdotool sshuttle packer ripgrep stunnel vimiv adapta-gtk-theme gnome-tweaks \
 	firejail opencv hexedit discord pv smartmontools gnome-logs wireshark-cli \
-	wl-clipboard lsof mapnik browserpass-chromium editorconfig-core-c watchexec \
+	wl-clipboard lsof mapnik editorconfig-core-c watchexec \
 	mpv browserpass-firefox man-db baobab ioping mkcert code
 	sudo pkgfile --update
-
-
-
 
 pipinstall: ## Install python packages
 	mkdir -p ${HOME}/.local
@@ -184,27 +181,10 @@ xterm: ## Init xterm terminal
 	sudo ln -vsf ${PWD}/usr/share/applications/xterm.desktop /usr/share/applications/xterm.desktop
 	sudo ln -vsf ${PWD}/usr/share/applications/uxterm.desktop /usr/share/applications/uxterm.desktop
 
-mlterm: ## Init mlterm terminal
-	pikaur -S mlterm
-	mkdir -p ${HOME}/.mlterm
-	ln -vsf ${PWD}/.mlterm/main ${HOME}/.mlterm/main
-	ln -vsf ${PWD}/.mlterm/color ${HOME}/.mlterm/color
-	ln -vsf ${PWD}/.mlterm/aafont ${HOME}/.mlterm/aafont
-	ln -vsf ${PWD}/.mlterm/key ${HOME}/.mlterm/key
-	sudo ln -vsf ${PWD}/usr/share/applications/mlterm.desktop /usr/share/applications/mlterm.desktop
-	sudo ln -vsf ${PWD}/usr/share/applications/mlclient.desktop /usr/share/applications/mlclient.desktop
-
 termite: ## Init termite terminal
 	sudo pacman -S termite
 	mkdir -p ${HOME}/.config/termite
 	ln -vsf ${PWD}/.config/termite/config ${HOME}/.config/termite/config
-
-dnsmasq: ## Init dnsmasq
-	sudo pacman -S dnsmasq
-	sudo ln -vsf ${PWD}/etc/dnsmasq/resolv.dnsmasq.conf /etc/resolv.dnsmasq.conf
-	sudo ln -vsf ${PWD}/etc/dnsmasq/dnsmasq.conf /etc/dnsmasq.conf
-	sudo mkdir -p /etc/NetworkManager
-	sudo ln -vsf ${PWD}/etc/NetworkManager/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf
 
 tlp: ## Setting for power saving and preventing battery deterioration
 	sudo pacman -S tlp powertop
