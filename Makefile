@@ -206,8 +206,8 @@ ibusmozc: ## Install ibus-mozc
 	pikaur -S ibus-mozc
 	ibus-daemon -drx
 
-ttf-hackgen: ## Install HackGen font
-	pikaur -S ttf-hackgen
+ttf-hackgen: ## Install Cica font
+	pikaur -S ttf-cica
 
 localhostssl: # Set ssl for localhost
 	mkcert -install
