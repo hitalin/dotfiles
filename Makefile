@@ -396,11 +396,6 @@ pipupdate: ## Update python packages
 rustupdate: ## Update rust packages
 	cargo install-update -a
 
-mysite: ## My site and blogs source(This is private repository)
-	ghq get -p masasam/solist
-	ghq get -p masasam/solistblog
-	ghq get -p masasam/PPAP
-
 testbackup: ## Test this Makefile with mount backup directory
 	docker build -t dotfiles ${PWD}
 	docker run -it --name maketestbackup -v /home/${USER}/backup:${HOME}/backup:cached --name makefiletest -d dotfiles:latest /bin/bash;\
@@ -423,7 +418,7 @@ testpath: ## Echo PATH
 	PATH=$$PATH
 	@echo $$PATH
 
-allinstall: rclone gnupg ssh install init keyring urxvt xterm pikaur tlp thinkpad ttf-hackgen dnsmasq pipinstall ibusmozc neomutt docker zeal sylpheed lvfs gcloud docker-compose aws toggle aur kind eralchemy mpsyt
+allinstall: rclone gnupg ssh install init keyring urxvt xterm pikaur tlp thinkpad ttf-hackgen dnsmasq pipinstall ibusmozc neomutt docker zeal sylpheed lvfs docker-compose toggle aur kind eralchemy mpsyt
 
 nextinstall: chromium rustinstall
 
