@@ -423,7 +423,7 @@ testpath: ## Echo PATH
 	PATH=$$PATH
 	@echo $$PATH
 
-allinstall: rclone gnupg ssh install init keyring urxvt xterm termite pikaur tlp thinkpad ttf-cica dnsmasq pipinstall ibusmozc neomutt docker zeal sylpheed lvfs gcloud docker-compose aws toggle aur kind eralchemy mpsyt
+allinstall: rclone gnupg ssh install init keyring urxvt xterm pikaur tlp thinkpad ttf-hackgen dnsmasq pipinstall ibusmozc neomutt docker zeal sylpheed lvfs gcloud docker-compose aws toggle aur kind eralchemy mpsyt
 
 nextinstall: chromium rustinstall
 
