@@ -110,7 +110,6 @@ alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 alias emacs='emacsclient -nw -a ""'
 alias killemacs='emacsclient -e "(kill-emacs)"'
 alias fbterm='env LANG=ja_JP.UTF-8 fbterm -- uim-fep'
-alias urxvt='urxvt -fn "xft:monospace-9" -fg white -bg black &'
 
 function ipv6todecimal(){
     dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
