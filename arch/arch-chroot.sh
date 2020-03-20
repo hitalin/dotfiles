@@ -52,7 +52,7 @@ if [ "${INSTALL_NOMUKEN}" = "y" ];then
   echo "[*] Add taka"
   useradd -m -g users -G wheel -s /bin/zsh taka 
   sudo -u nomuken sh -c "`curl https://sh.i0z0m.com/ssh.sh`"
-  echo "[?] nomuken's password?"
+  echo "[?] taka's password?"
   passwd taka 
 else
   echo "[x] Ok, Skipped \"Add taka user\""
