@@ -94,6 +94,8 @@ unset caseglob
 # alias
 alias q='exit'
 alias ls='ls -F --color=auto'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
