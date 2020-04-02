@@ -107,7 +107,8 @@ alias ghci="stack ghci"
 alias runghc="stack runghc"
 alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
-alias emacs='emacsclient -nw -a ""'
+alias erun='emacs --daemon'
+alias e='emacsclient -nw -a ""'
 alias ekill='emacsclient -e "(kill-emacs)"'
 alias fbterm='env LANG=ja_JP.UTF-8 fbterm -- uim-fep'
 
