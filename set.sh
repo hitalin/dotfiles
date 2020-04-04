@@ -18,6 +18,11 @@ if [ ! -d ~/.vim/rc/ ]; then
     ln -Fis $SCRIPT_DIR/vim/rc/dein_lazy.toml ~/.vim/rc/
 fi
 
+if [ ! -f ~/.emacs.d/ ]; then
+    mkdier -o "$HOME/.emacs.d"
+    git clone https://github.com/hlissner/doom-emacs "$HOME/.emacs.d" 
+fi
+
 chsh -s $(which zsh)
 
 echo "Finished!"
