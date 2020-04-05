@@ -1,7 +1,6 @@
 # common
 export EDITOR=vim
-export LANG=ja_JP.UTF-8
-export LC_ALL=en_US.UTF-8
+
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
 export LESS_TERMCAP_mb=$(tput bold)                # begin blinking
 export LESS_TERMCAP_md=$(tput bold; tput setaf 4)  # begin bold (blue)
@@ -10,6 +9,7 @@ export LESS_TERMCAP_se=$(tput sgr0)                # end standout-mode
 export LESS_TERMCAP_so=$(tput bold; tput setaf 3)  # begin standout-mode (yellow)
 export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)     # end underline
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
+
 export SDL_VIDEO_X11_DGAMOUSE=0
 
 # theme
