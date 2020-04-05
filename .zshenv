@@ -1,6 +1,4 @@
 # common
-export EDITOR=vim
-
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
 export LESS_TERMCAP_mb=$(tput bold)                # begin blinking
 export LESS_TERMCAP_md=$(tput bold; tput setaf 4)  # begin bold (blue)
