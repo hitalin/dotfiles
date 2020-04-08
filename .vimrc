@@ -85,8 +85,8 @@ set foldmethod=marker
 set showcmd
 set notitle
 
-set number 
-set title 
+set number
+set title
 set showmatch
 
 set t_Co=256
@@ -94,7 +94,7 @@ set background=dark
 colorscheme molokai
 let g:molokai_original = 1
 
-syntax on 
+syntax on
 filetype indent on
 
 set ignorecase
@@ -119,8 +119,6 @@ set rtp^="$HOME/.opam/system/share/ocp-indent/vim"
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute 'set rtp+=' . g:opamshare . '/merlin/vim'
 
-"" for cpp
-let g:clang_auto = 0
 "" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
