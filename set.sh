@@ -2,6 +2,10 @@
 set -e
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
+if [ ! -f ~/.zinit ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+fi
+
 if [ ! -f ~/.zsh/pure/pure.zsh ]; then
     mkdir -p "$HOME/.zsh"
     git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure/"
