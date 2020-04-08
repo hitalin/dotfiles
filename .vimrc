@@ -1,3 +1,45 @@
+" package manager ---------------------------------------------------------------
+set packpath^=~/.vim
+packadd minpac
+
+call minpac#init()
+
+" Try to load minpac.
+packadd minpac
+
+if exists('*minpac#init')
+  " minpac is loaded.
+  call minpac#init()
+  call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+  " Additional plugins here.
+  call minpac#add('mattn/vim-lsp-settings')
+  call minpac#add('prabirshrestha/vim-lsp')
+  call minpac#add('prabirshrestha/async.vim')
+  call minpac#add('prabirshrestha/asyncomplete.vim')
+  call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
+  call minpac#add('vim-jp/syntax-vim-ex')
+  call minpac#add('thinca/vim-quickrun')
+  call minpac#add('tyru/open-browser.vim')
+  call minpac#add('tomasr/molokai')
+  call minpac#add('bronson/vim-trailing-whitespace')
+  call minpac#add('Shougo/vimproc.vim')
+  call minpac#add('Shougo/unite.vim')
+  call minpac#add('rking/ag.vim')
+  call minpac#add('tpope/vim-fugitive')
+  call minpac#add('junegunn/vim-easy-align')
+endif
+
+" Plugin settings here.
+
+" Define user commands for updating/cleaning the plugins.
+" Each of them loads minpac, reloads .vimrc to register the
+" information of plugins, then performs the task.
+command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
+command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
+
+" common ----------------------------------------------------------------------------
 set encoding=utf-8
 
 if &compatible
@@ -32,25 +74,15 @@ set noswapfile
 
 set clipboard=unnamed,autoselect
 
-"--------------------------------------------------------------------
 set number
-
 set ruler
-
 set nolist
-
 set listchars=tab:»-,trail:-,eol:\n,extends:»,precedes:«,nbsp:%
-
 set wrap
-
 set laststatus=2
-
 set cmdheight=2
-
 set foldmethod=marker
-
 set showcmd
-
 set notitle
 
 set number 
@@ -69,40 +101,7 @@ set ignorecase
 set smartcase
 set wrapscan
 
-"--------------------------------------------------------------------------
-" Set Plugin Manager
-
-let g:rc_dir = expand('~/.vim')
-let s:dein_dir = expand('~/.vim/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-if &runtimepath !~# '/dein.vim'
-	if !isdirectory(s:dein_repo_dir)
-		execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-	endif
-	execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-endif
-
-if dein#load_state(s:dein_dir)
-	call dein#begin(s:dein_dir)
-
-	let s:toml      = g:rc_dir . '/rc/dein.toml'
-	let s:lazy_toml = g:rc_dir . '/rc/dein_lazy.toml'
-
-	call dein#load_toml(s:toml,      {'lazy': 0})
-	call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-	call dein#end()
-	call dein#save_state()
-endif
-
-filetype plugin on
-
-if dein#check_install()
-	call dein#install()
-endif
-
-"-------------------------------------------------------------------------
+" option -------------------------------------------------------------------------
 " for -b option
 augroup BinaryEditVimrcCommands
     autocmd!
