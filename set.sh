@@ -12,12 +12,12 @@ if [ ! -f ~/.vim/pack/minpac ]; then
 fi
 
 if [ ! -f ~/.vim/colors/molokai.vim ]; then
-    mkdier -o "$HOME/.zsh/colors"
+    mkdir -o "$HOME/.zsh/colors"
     git clone https://github.com/tomasr/molokai.git "$HOME/.vim/colors/"
 fi
 
 if [ ! -f ~/.emacs.d/ ]; then
-    mkdier -o "$HOME/.emacs.d"
+    mkdir -o "$HOME/.emacs.d"
     git clone https://github.com/hlissner/doom-emacs "$HOME/.emacs.d"
 fi
 
