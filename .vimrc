@@ -23,18 +23,17 @@ if exists('*minpac#init')
   "" apperance
   call minpac#add('itchyny/lightline.vim')
   call minpac#add('tomasr/molokai')
-  call minpac#add('bronson/vim-trailing-whitespace')
   "" file management
   call minpac#add('Shougo/unite.vim')
   call minpac#add('junegunn/fzf.vim')
   call minpac#add('mileszs/ack.vim')
-  "" buffer
+  "" hoge
+  call minpac#add('bronson/vim-trailing-whitespace')
   call minpac#add('tpope/vim-unimpaired')
+  call minpac#add('junegunn/vim-easy-align')
   "" git
   call minpac#add('tpope/vim-fugitive')
   call minpac#add('airblade/vim-gitgutter')
-  call minpac#add('tpope/vim-unimpaired')
-  call minpac#add('junegunn/vim-easy-align')
   "" preview markdown
   call minpac#add('plasticboy/vim-markdown')
   call minpac#add('kannokanno/previm')
