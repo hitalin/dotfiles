@@ -20,6 +20,7 @@ if exists('*minpac#init')
   call minpac#add('prabirshrestha/async.vim')
   call minpac#add('prabirshrestha/asyncomplete.vim')
   call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
+  call minpac#add('pdavydov108/vim-lsp-cquery')
   "" apperance
   call minpac#add('itchyny/lightline.vim')
   call minpac#add('tomasr/molokai')
