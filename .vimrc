@@ -13,26 +13,34 @@ if exists('*minpac#init')
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   " Additional plugins here.
+  call minpac#add('vim-jp/syntax-vim-ex')
+  "" LSP
   call minpac#add('mattn/vim-lsp-settings')
   call minpac#add('prabirshrestha/vim-lsp')
   call minpac#add('prabirshrestha/async.vim')
   call minpac#add('prabirshrestha/asyncomplete.vim')
   call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
-  call minpac#add('vim-jp/syntax-vim-ex')
-  call minpac#add('thinca/vim-quickrun')
-  call minpac#add('tyru/open-browser.vim')
+  "" apperance
   call minpac#add('itchyny/lightline.vim')
   call minpac#add('tomasr/molokai')
   call minpac#add('bronson/vim-trailing-whitespace')
-  call minpac#add('Shougo/vimproc.vim')
+  "" file management
   call minpac#add('Shougo/unite.vim')
   call minpac#add('junegunn/fzf.vim')
   call minpac#add('mileszs/ack.vim')
+  "" buffer
   call minpac#add('tpope/vim-unimpaired')
+  "" git
   call minpac#add('tpope/vim-fugitive')
   call minpac#add('airblade/vim-gitgutter')
   call minpac#add('tpope/vim-unimpaired')
   call minpac#add('junegunn/vim-easy-align')
+  "" preview markdown
+  call minpac#add('plasticboy/vim-markdown')
+  call minpac#add('kannokanno/previm')
+  call minpac#add('thinca/vim-quickrun')
+  call minpac#add('Shougo/vimproc.vim')
+  call minpac#add('tyru/open-browser.vim')
 endif
 
 " Plugin settings here.
