@@ -41,6 +41,8 @@ if exists('*minpac#init')
   call minpac#add('thinca/vim-quickrun')
   call minpac#add('Shougo/vimproc.vim')
   call minpac#add('tyru/open-browser.vim')
+  "" hage
+  call minpac#add('CoatiSoftware/vim-sourcetrail')
 endif
 
 " Plugin settings here.
