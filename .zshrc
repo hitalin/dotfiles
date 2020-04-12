@@ -131,3 +131,7 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
+
+# Load the pure theme, with zsh-async library that's bundled with it.
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure

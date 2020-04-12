@@ -6,11 +6,6 @@ if [ ! -f ~/.zinit ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi
 
-if [ ! -f ~/.zsh/pure/pure.zsh ]; then
-    mkdir -p "$HOME/.zsh"
-    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure/"
-fi
-
 if [ ! -f ~/.vim/pack/minpac ]; then
     git clone https://github.com/k-takata/minpac.git "$HOME/.vim/pack/minpac/opt/minpac"
 fi

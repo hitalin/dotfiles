@@ -11,7 +11,7 @@ export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 export SDL_VIDEO_X11_DGAMOUSE=0
 
 # theme
-fpath+=$HOME/.zsh/pure
+fpath+=$HOME/.zinit/plugins/sindresorhus---pure
 
 # lang
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
