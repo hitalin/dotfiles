@@ -23,7 +23,6 @@ if exists('*minpac#init')
   call minpac#add('pdavydov108/vim-lsp-cquery')
   "" apperance
   call minpac#add('itchyny/lightline.vim')
-  call minpac#add('tomasr/molokai')
   "" file management
   call minpac#add('Shougo/unite.vim')
   call minpac#add('junegunn/fzf.vim')
