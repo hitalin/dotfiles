@@ -20,7 +20,7 @@ export PATH=$PATH:~/.local/bin
 # if [ -f $(which virtualenvwrapper.sh) ]; then
 #     export WORKON_HOME=$HOME.virtualenvs
 #     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
-#     source $(which virtualenvwrapper.sh) 
+#     source $(which virtualenvwrapper.sh)
 # fi
 
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
