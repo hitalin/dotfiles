@@ -9,16 +9,10 @@ bindkey '^[^F' vi-forward-blank-word
 bindkey '^[^U' backward-delete-word
 bindkey '^[^K' delete-word
 
-eval $(dircolors -b)
-eval "$(fasd --init auto)"
-
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="mm/dd/yyyy"
-
-autoload -U promptinit; promptinit
-prompt pure
 
 # hoge
 autoload smart-insert-last-word
@@ -94,26 +88,40 @@ unset caseglob
 
 # alias
 alias q='exit'
+
+eval $(dircolors -b)
 alias ls='ls -F --color=auto'
+
 alias ...='cd ../..'
 alias ....='cd ../../..'
+eval "$(fasd --init auto)"
+# fasd & fzf change directory - jump using `fasd` if given argument, filter output of `fasd` using `fzf` else
+alias z() {
+    [ $# -gt 0 ] && fasd_cd -d "$*" && return
+    local dir
+    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
+
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
+
 alias ipv4='ifconfig eth0 | egrep -o "([0-9]{1,3}\.){3}[0-9]{1,3}" | sed -n 1p'
 alias ipv6='ifconfig eth0 | egrep -o "([[:xdigit:]]{0,4}[:]){7}[[:xdigit:]]{0,4}" | sed -n 1p'
 alias mac='ifconfig eth0 | egrep -o "([[:xdigit:]]{2}[:]){5}[[:xdigit:]]{2}"'
+
 alias ocaml="rlwrap ocaml"
 alias ghc="stack ghc"
 alias ghci="stack ghci"
 alias runghc="stack runghc"
+
 alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
+
 alias erun='emacs --daemon'
 alias e='emacsclient -nw -a ""'
 alias ekill='emacsclient -e "(kill-emacs)"'
-alias fbterm='env LANG=ja_JP.UTF-8 fbterm -- uim-fep'
 
 function ipv6todecimal(){
     dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
@@ -136,3 +144,5 @@ autoload -Uz _zinit
 # Load the pure theme, with zsh-async library that's bundled with it.
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
+autoload -U promptinit; promptinit
+prompt pure
