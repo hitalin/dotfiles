@@ -1,5 +1,6 @@
 # common
-export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
+export LESS='--tabs=4 --no-init --LONG-PROMPT --RAW-CONTROL-CHARS --ignore-case'
+export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
 export LESS_TERMCAP_mb=$(tput bold)                # begin blinking
 export LESS_TERMCAP_md=$(tput bold; tput setaf 4)  # begin bold (blue)
 export LESS_TERMCAP_me=$(tput sgr0)                # end mode
