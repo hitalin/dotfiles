@@ -114,7 +114,6 @@ alias ls='ls -F --color=auto'
 
 alias ...='cd ../..'
 alias ....='cd ../../..'
-eval "$(fasd --init auto)"
 
 alias rm='rm -i'
 alias cp='cp -i'
