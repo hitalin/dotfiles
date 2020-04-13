@@ -13,6 +13,10 @@ export SDL_VIDEO_X11_DGAMOUSE=0
 # theme
 fpath+=$HOME/.zinit/plugins/sindresorhus---pure
 
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --color=always'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--ansi"
+
 # lang
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
