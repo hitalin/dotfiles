@@ -10,6 +10,7 @@ bindkey '^[^U' backward-delete-word
 bindkey '^[^K' delete-word
 
 eval $(dircolors -b)
+eval "$(fasd --init auto)"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
