@@ -26,7 +26,6 @@ if exists('*minpac#init')
   "" file management
   call minpac#add('Shougo/unite.vim')
   call minpac#add('junegunn/fzf.vim')
-  call minpac#add('mileszs/ack.vim')
   "" hoge
   call minpac#add('bronson/vim-trailing-whitespace')
   call minpac#add('tpope/vim-unimpaired')
