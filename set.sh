@@ -2,13 +2,10 @@
 set -e
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-if [ ! -f ~/.zinit ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-fi
-
-if [ ! -f ~/.vim/dein ]; then
-    mkdir -o "$HOME/.vim/dein"
-    git clone git clone https://github.com/Shougo/dein.vim "$HOME/.vim/dein"
+if [ ! -d ~/.vim/rc/ ]; then
+    mkdir -p ~/.vim/rc
+    ln -Fis $SCRIPT_DIR/vim/rc/dein.toml ~/.vim/rc/
+    ln -Fis $SCRIPT_DIR/vim/rc/dein_lazy.toml ~/.vim/rc/
 fi
 
 if [ ! -f ~/.emacs.d/ ]; then
