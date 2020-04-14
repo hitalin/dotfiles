@@ -1,29 +1,9 @@
+# manage plugin
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# for LSP
 [[plugins]]
-repo = 'mattn/vim-lsp-settings'
-
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-
-# completion
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
-
-[[plugins]]
-repo = 'pdavydov108/vim-lsp-cquery'
-
-# lint
-[[plugins]]
-repo = 'dense-analysis/ale'
+repo = 'cespare/vim-toml'
 
 # snippet
 [[plugins]]
