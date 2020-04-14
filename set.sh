@@ -6,13 +6,9 @@ if [ ! -f ~/.zinit ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi
 
-if [ ! -f ~/.vim/pack/minpac ]; then
-    git clone https://github.com/k-takata/minpac.git "$HOME/.vim/pack/minpac/opt/minpac"
-fi
-
-if [ ! -f ~/.vim/colors/molokai.vim ]; then
-    mkdir -o "$HOME/.zsh/colors"
-    git clone https://github.com/tomasr/molokai.git "$HOME/.vim/colors/"
+if [ ! -f ~/.vim/dein ]; then
+    mkdir -o "$HOME/.vim/dein"
+    git clone git clone https://github.com/Shougo/dein.vim "$HOME/.vim/dein"
 fi
 
 if [ ! -f ~/.emacs.d/ ]; then

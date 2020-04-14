@@ -1,0 +1,11 @@
+[[plugins]]
+repo = 'pdavydov108/vim-lsp-cquery'
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+repo = 'CoatiSoftware/vim-sourcetrail'
+on_ft = ['c', 'cpp', 'python']
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
