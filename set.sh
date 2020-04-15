@@ -2,7 +2,7 @@
 set -e
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-if [ -f ~/.vim/ ]; then
+if [ ! -f ~/.vim/rc ]; then
     mkdir -p ~/.vim/rc
     ln -Fis $SCRIPT_DIR/vim/rc/dein.toml ~/.vim/rc/
     ln -Fis $SCRIPT_DIR/vim/rc/dein_lazy.toml ~/.vim/rc/
