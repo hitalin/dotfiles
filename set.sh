@@ -8,8 +8,13 @@ if [ ! -d ~/.vim/rc/ ]; then
     ln -Fis $SCRIPT_DIR/vim/rc/dein_lazy.toml ~/.vim/rc/
 fi
 
+if [ ! -d ~/.vim/colors/molokai.vim ]; then
+    mkdir -p "$HOME/.vim/colors"
+    git clone https://github.com/tomasr/molokai "$HOME/.vim/colors"
+fi
+
 if [ ! -f ~/.emacs.d/ ]; then
-    mkdir -o "$HOME/.emacs.d"
+    mkdir -p "$HOME/.emacs.d"
     git clone https://github.com/hlissner/doom-emacs "$HOME/.emacs.d"
 fi
 
