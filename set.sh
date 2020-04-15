@@ -5,7 +5,7 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 if [ ! -f ~/.vim ]; then
     mkdir -p ~/.vim/
     git clone https://github.com/tomasr/molokai ~/.vim
-    rm ~/.vim/LICENCE.md
+    rm ~/.vim/LICENSE.md
     rm ~/.vim/README.md
     mkdir -p ~/.vim/rc
     ln -Fis $SCRIPT_DIR/vim/rc/dein.toml ~/.vim/rc/
