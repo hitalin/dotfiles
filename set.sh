@@ -4,15 +4,15 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 if [ ! -f ~/.vim ]; then
     mkdir -p ~/.vim/
-    git clone https://github.com/tomasr/molokai "$HOME/.vim"
+    git clone https://github.com/tomasr/molokai ~/.vim
     mkdir -p ~/.vim/rc
     ln -Fis $SCRIPT_DIR/vim/rc/dein.toml ~/.vim/rc/
     ln -Fis $SCRIPT_DIR/vim/rc/dein_lazy.toml ~/.vim/rc/
 fi
 
 if [ ! -f ~/.emacs.d/ ]; then
-    mkdir -p "$HOME/.emacs.d"
-    git clone https://github.com/hlissner/doom-emacs "$HOME/.emacs.d"
+    mkdir -p ~/.emacs.d
+    git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
     mkdir -p ~/.doom.d
     ln -Fis $SCRIPT_DIR/emacs/config.el ~/.doom.d/config.el
     ln -Fis $SCRIPT_DIR/emacs/early-init.el ~/.doom.d/early-init.el
