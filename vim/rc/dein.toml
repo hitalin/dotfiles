@@ -42,3 +42,7 @@ repo = 'tomasr/molokai'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+
+# tools
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
