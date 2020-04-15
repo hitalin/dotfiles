@@ -16,6 +16,13 @@ repo = 'cocopon/vaffle.vim'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 
+# git
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
 # preview markdown
 [[plugins]]
 repo = 'kannokanno/previm'
@@ -29,12 +36,9 @@ repo = 'Shougo/vimproc.vim'
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 
-# git
+# tools
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo = 'bronson/vim-trailing-whitespace'
 
 # apperance
 [[plugins]]
@@ -42,7 +46,3 @@ repo = 'tomasr/molokai'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-
-# tools
-[[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
