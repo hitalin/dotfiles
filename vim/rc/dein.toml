@@ -18,10 +18,6 @@ repo = 'junegunn/fzf.vim'
 
 # preview markdown
 [[plugins]]
-repo = 'plasticboy/vim-markdown'
-on_ft = ['md']
-
-[[plugins]]
 repo = 'kannokanno/previm'
 
 [[plugins]]
