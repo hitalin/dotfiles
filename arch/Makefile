@@ -36,30 +36,32 @@ init: ## Initial deploy dotfiles
 	ln -vsf ${PWD}/.config/hub ${HOME}/.config/hub
 
 base: ## Install base and base-devel package
-	sudo pacman -S filesystem gcc-libs glibc bash coreutils file findutils gawk \
+	sudo pacman -S base filesystem gcc-libs glibc bash coreutils file findutils gawk \
 	grep procps-ng sed tar gettext pciutils psmisc shadow util-linux bzip2 gzip \
 	xz licenses pacman systemd systemd-sysvcompat iputils iproute2 autoconf sudo \
 	automake binutils bison fakeroot flex gcc groff libtool m4 make patch pkgconf \
 	texinfo which
 
 install: ## Install arch linux packages using pacman
-	sudo pacman -S base zsh git tig vim tmux ranger keychain unrar ethtool \
-	zsh-completions xsel emacs gvfs-smb unace iperf valgrind noto-fonts-emoji \
-	inkscape file-roller xclip atool debootstrap oath-toolkit imagemagick lynx \
+	sudo pacman -S \
+	git tig vim emacs zsh tmux mosh\ 
+	ranger keychain unrar ethtool \
+	zsh-completions xsel gvfs-smb unace iperf valgrind noto-fonts-emoji \
+	inkscape file-roller atool debootstrap oath-toolkit imagemagick lynx \
 	the_silver_searcher cifs-utils elinks flameshot ipcalc traceroute \
 	cups-pdf firefox chromium strace lhasa hub bookworm sysprof \
 	pkgfile dconf-editor rsync debian-archive-keyring mit-scheme cpio aria2 \
-	nmap poppler-data ffmpeg asciidoc aspell aspell-en mosh diskus \
-	gdb qemu radare2 wmctrl pwgen linux-docs htop tcpdump gvfs p7zip lzop fzf gpaste optipng \
+	nmap poppler-data ffmpeg asciidoc aspell aspell-en diskus \
+	gdb qemu radare2 wmctrl pwgen linux-docs htop tcpdump gvfs p7zip lzop fzf fd gpaste optipng \
 	arch-install-scripts pandoc jq pkgstats highlight alsa-utils geckodriver \
 	texlive-langjapanese tokei texlive-latexextra atags hdparm eog curl parallel \
 	llvm llvm-libs lldb tree w3m whois nnn qreator \
 	zsh-syntax-highlighting shellcheck bash-completion expect obs-studio \
 	cscope pdfgrep gnu-netcat cmatrix jpegoptim nethogs mlocate \
 	pacman-contrib x11-ssh-askpass python-prompt_toolkit \
-	jhead peek ncdu scrot sshfs fping syncthing terraform bat lshw \
-	xdotool sshuttle packer ripgrep stunnel vimiv adapta-gtk-theme gnome-tweaks \
-	firejail opencv hexedit discord pv smartmontools gnome-logs wireshark-cli \
+	jhead peek ncdu scrot sshfs fping syncthing terraform lshw \
+	xdotool sshuttle packer ripgrep procs bat stunnel vimiv adapta-gtk-theme gnome-tweaks \
+	firejail opencv hexedit pv smartmontools gnome-logs wireshark-cli \
 	wl-clipboard lsof mapnik editorconfig-core-c watchexec \
 	mpv browserpass-firefox man-db baobab ioping mkcert code
 	sudo pkgfile --update
@@ -83,15 +85,12 @@ pipinstall: ## Install python packages
 	pip install --user graph-cli
 	pip install --user httpie
 	pip install --user importmagic
-	pip install --user ipywidgets
-	pip install --user jedi
 	pip install --user jupyter
 	pip install --user jupyterlab
 	pip install --user jupyterthemes
 	pip install --user litecli
 	pip install --user matplotlib
 	pip install --user nose
-	pip install --user pipenv
 	pip install --user progressbar2
 	pip install --user psycopg2-binary
 	pip install --user py-spy
@@ -99,7 +98,6 @@ pipinstall: ## Install python packages
 	pip install --user pyflakes
 	pip install --user pylint
 	pip install --user python-language-server
-	pip install --user redis
 	pip install --user requests_mock
 	pip install --user rope
 	pip install --user rtv
@@ -115,6 +113,10 @@ pipinstall: ## Install python packages
 	pip install --user virtualenv
 	pip install --user virtualenvwrapper
 	pip install --user yapf
+	pip install --user pelican
+	pip install --user sphinx
+	pip install --user sphinx-ltd_theme
+	pip install --user ghp-import
 	rm -fr get-pip.py
 
 rustinstall: ## Install rust and rust language server
@@ -237,8 +239,8 @@ zeal: ## Deploy zeal config and docsets
 emacspeak: ## Install emacspeak for blind person
 	pikaur -S emacspeak
 
-pikaur: ## Install yay using pikaur 
-	pikaur -S pikaur 
+pikaur: ## Install yay using pikaur
+	pikaur -S pikaur
 
 aur: ## Install arch linux AUR packages using pikaur
 	pikaur -S downgrade
@@ -247,7 +249,6 @@ aur: ## Install arch linux AUR packages using pikaur
 	pikaur -S slack-desktop
 	pikaur -S tableplus
 	pikaur -S trivy-bin
-	pikaur -S zoom
 
 aurplus: ## Install arch linux AUR packages using pikaur
 	pikaur -S drone-cli
