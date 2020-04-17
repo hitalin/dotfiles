@@ -11,7 +11,7 @@ repo = 'SirVer/ultisnips'
 
 # manage files
 [[plugins]]
-repo = 'Shougo/defx.nvim'
+repo = 'cocopon/vaffle.vim'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
