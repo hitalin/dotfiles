@@ -35,6 +35,12 @@ let g:asyncomplete_completion_delay=10
 '''
 
 [[plugins]]
+repo = 'Shougo/deoplete.nvim'
+
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+
+[[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
 
 [[plugins]]
