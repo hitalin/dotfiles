@@ -52,6 +52,13 @@ augroup end
 
 let g:ale_linters = { 'haskell': ['hie'], }
 
+" Only for nvim
+" -----------------------------------------------------------------------------------
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+
+
 " common ----------------------------------------------------------------------------
 set encoding=utf-8
 
@@ -94,7 +101,8 @@ let format_allow_over_tw = 1
 
 set noswapfile
 
-set clipboard=unnamed,autoselect
+set clipboard=unnamed
+set clipboard+=unnamedplus
 
 set number
 set ruler
