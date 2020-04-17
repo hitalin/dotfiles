@@ -1,5 +1,4 @@
 " Set Plugin Manager
-
 let g:rc_dir = expand('~/.vim')
 let s:dein_dir = expand('~/.vim/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -31,6 +30,8 @@ if dein#check_install()
 endif
 
 " for LSP  -----------------------------------------------------------------------------------
+let g:deoplete#enable_at_startup = 1
+
 augroup MyLsp
   autocmd FileType haskell setlocal omnifunc=lsp#complete
 
@@ -55,20 +56,28 @@ let g:ale_linters = { 'haskell': ['hie'], }
 set encoding=utf-8
 
 if &compatible
-    set nocompatible
+  set nocompatible
 endif
 
-set expandtab
-set smarttab
+syntax on
+filetype indent on
 
 set autoindent
 set smartindent
 
+set expandtab
+set smartindent
+set wildmenu
+set wildmode=full
 set tabstop=2
-set softtabstop=2
 set shiftwidth=2
-set backspace=2
-
+set softtabstop=2
+set virtualedit=block
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+  set undolevels=1000
+endif
 augroup fileTypeIndent
   autocmd!
   autocmd BufNewFile,BufRead *.py   setlocal tabstop=4 softtabstop=4 shiftwidth=4
@@ -106,9 +115,6 @@ set t_Co=256
 set background=dark
 colorscheme molokai
 let g:molokai_original = 1
-
-syntax on
-filetype indent on
 
 set ignorecase
 set smartcase
