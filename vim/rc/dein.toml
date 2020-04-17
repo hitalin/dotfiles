@@ -46,6 +46,9 @@ repo = 'tyru/open-browser.vim'
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 
+[[plugins]]
+repo = 'markonm/traces.vim'
+
 # apperance
 [[plugins]]
 repo = 'itchyny/lightline.vim'
