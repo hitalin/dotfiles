@@ -30,8 +30,6 @@ if dein#check_install()
 endif
 
 " for LSP  -----------------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-
 augroup MyLsp
   autocmd FileType haskell setlocal omnifunc=lsp#complete
 
@@ -51,13 +49,6 @@ augroup MyLsp
 augroup end
 
 let g:ale_linters = { 'haskell': ['hie'], }
-
-" Only for nvim
-" -----------------------------------------------------------------------------------
-if !has('nvim')
-  set ttymouse=xterm2
-endif
-
 
 " common ----------------------------------------------------------------------------
 set encoding=utf-8
