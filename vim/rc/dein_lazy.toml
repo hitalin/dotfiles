@@ -62,3 +62,6 @@ repo = 'dense-analysis/ale'
 hook_add'''
 let g:ale_linters = { 'haskell': ['hie'], }
 '''
+
+[[plugins]]
+repo = 'liuchengxu/vista.vim'
