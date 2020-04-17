@@ -36,11 +36,11 @@ augroup MyLsp
   autocmd FileType haskell setlocal omnifunc=lsp#complete
 
   if executable('hie')
-      au User lsp_setup call lsp#register_server({
-        \ 'name': 'hie',
-        \ 'cmd': {server_info->['hie']},
-        \ 'whitelist': ['haskell'],
-        \ })
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'hie',
+      \ 'cmd': {server_info->['hie']},
+      \ 'whitelist': ['haskell'],
+      \ })
   endif
 
   au FileType haskell nmap <leader>R <plug>(lsp-rename)
