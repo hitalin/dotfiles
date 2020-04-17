@@ -29,27 +29,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-" for LSP  -----------------------------------------------------------------------------------
-augroup MyLsp
-  autocmd FileType haskell setlocal omnifunc=lsp#complete
-
-  if executable('hie')
-    au User lsp_setup call lsp#register_server({
-      \ 'name': 'hie',
-      \ 'cmd': {server_info->['hie']},
-      \ 'whitelist': ['haskell'],
-      \ })
-  endif
-
-  au FileType haskell nmap <leader>R <plug>(lsp-rename)
-  au FileType haskell nmap <leader>D <plug>(lsp-definition)
-  au FileType haskell nmap <leader>r <plug>(lsp-references)
-  au FileType haskell nmap <leader>d <plug>(lsp-document-symbol)
-  au FileType haskell nmap <leader>w <plug>(lsp-workspace-symbol)
-augroup end
-
-let g:ale_linters = { 'haskell': ['hie'], }
-
 " common ----------------------------------------------------------------------------
 set encoding=utf-8
 
