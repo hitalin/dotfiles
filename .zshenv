@@ -21,7 +21,7 @@ export FZF_DEFAULT_OPTS="--ansi"
 # lang
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/home/taka/.local/bin
 # if [ -f $(which virtualenvwrapper.sh) ]; then
 #     export WORKON_HOME=$HOME.virtualenvs
 #     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
