@@ -117,6 +117,7 @@ pipinstall: ## Install python packages
 	pip install --user sphinx
 	pip install --user sphinx-ltd_theme
 	pip install --user ghp-import
+	pip install --user pynvim
 	rm -fr get-pip.py
 
 rustinstall: ## Install rust and rust language server
