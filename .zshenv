@@ -22,12 +22,5 @@ export FZF_DEFAULT_OPTS="--ansi"
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 export PATH=$PATH:/home/taka/.local/bin
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
-# if [ -f $(which virtualenvwrapper.sh) ]; then
-#     export WORKON_HOME=$HOME.virtualenvs
-#     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
-#     source $(which virtualenvwrapper.sh)
-# fi
 
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
