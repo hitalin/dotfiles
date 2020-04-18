@@ -37,7 +37,7 @@ au BufNewFile,BufRead *.ts set filetype=typescript
 
 
 " Indentation settings {{{
-au Filetype rust setlocal ts=4 sts=4 sw=4 et
+au Filetype rust setlocal ts=4 sts=4 sw=4
 au Filetype python setlocal ts=4 sts=4 sw=4
 au Filetype rst  setlocal ts=3 sts=3 sw=3
 " }}}
@@ -257,47 +257,44 @@ if dein#tap('quickrun')
 endif
 
 " lightline
-if dein#tap('vim-airline')
-  " let g:airline_theme='murmur'
-  let g:lightline = {
-              \     'colorscheme': 'wombat',
-              \     'active': {
-              \         'left': [
-              \             ['mode', 'paste'],
-              \             ['readonly', 'filename', 'modified']
-              \         ],
-              \         'right': [
-              \             ['lineinfo'],
-              \             ['persent'],
-              \             ['fileformat', 'fileencoding', 'filetype']
-              \         ]
-              \     },
-              \     'component_function': {
-              \         'filename': 'VimrcLightLineFileName'
-              \     },
-              \     'component_expand': {
-              \         'readonly': 'VimrcLightLineReadOnly'
-              \     },
-              \     'component_type': {
-              \         'readonly': 'error'
-              \     }
-              \ }
+let g:lightline = {
+            \     'colorscheme': 'wombat',
+            \     'active': {
+            \         'left': [
+            \             ['mode', 'paste'],
+            \             ['readonly', 'filename', 'modified']
+            \         ],
+            \         'right': [
+            \             ['lineinfo'],
+            \             ['persent'],
+            \             ['fileformat', 'fileencoding', 'filetype']
+            \         ]
+            \     },
+            \     'component_function': {
+            \         'filename': 'VimrcLightLineFileName'
+            \     },
+            \     'component_expand': {
+            \         'readonly': 'VimrcLightLineReadOnly'
+            \     },
+            \     'component_type': {
+            \         'readonly': 'error'
+            \     }
+            \ }
 
-  function! VimrcLightLineReadOnly()
-      return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'RO' : ''
-  endfunction
-  function! VimrcLightLineFileName()
-      if &ft == 'vimfiler'
-          return vimfiler#get_status_string()
-      elseif &ft == 'unite'
-          return unite#get_status_string()
-      elseif expand('%') == ''
-          return '[No Name]'
-      else
-          return expand('%')
-      endif
-  endfunction
-endif
+function! VimrcLightLineReadOnly()
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'RO' : ''
+endfunction
+function! VimrcLightLineFileName()
+    if &ft == 'vimfiler'
+        return vimfiler#get_status_string()
+    elseif &ft == 'unite'
+        return unite#get_status_string()
+    elseif expand('%') == ''
+        return '[No Name]'
+    else
+        return expand('%')
+    endif
+endfunction
 
 " vim-cpp-enhanced-highlight
 if dein#tap('vim-cpp-enhanced-highlight')
