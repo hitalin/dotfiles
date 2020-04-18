@@ -67,13 +67,6 @@
   (dolist (lang org-babel-lsp-lang-list)
     (eval `(lsp-org-babel-enbale ,lang))))
 
-(use-package! lsp-haskell
-  :config
-  (setq lsp-haskell-process-path-hie "ghcide")
-  (setq lsp-haskell-process-args-hie '())
-  (add-hook 'haskell-mode-hook #'lsp)
-)
-
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
 (require 'opam-user-setup "~/dotfiles/emacs/opam-user-setup.el")
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
