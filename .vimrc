@@ -213,7 +213,7 @@ endif
 " vim-lsp
 if dein#tap('vim-lsp')
   let g:lsp_log_verbose = 1
-  let g:lsp_log_file = expand('~/vim-lsp.log')
+  let g:lsp_log_file = expand('~/.vim/vim-lsp.log')
 
   if executable('pyls')
     au User lsp_setup call lsp#register_server({
