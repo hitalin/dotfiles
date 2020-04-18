@@ -259,42 +259,20 @@ endif
 
 " lightline
 let g:lightline = {
-     \     'colorscheme': 'wombat',
-     \     'active': {
-     \         'left': [
-     \             ['mode', 'paste'],
-     \             ['readonly', 'filename', 'modified']
-     \         ],
-     \         'right': [
-     \             ['lineinfo'],
-     \             ['persent'],
-     \             ['fileformat', 'fileencoding', 'filetype']
-     \         ]
-     \     },
-     \     'component_function': {
-     \         'filename': 'VimrcLightLineFileName'
-     \     },
-     \     'component_expand': {
-     \         'readonly': 'VimrcLightLineReadOnly'
-     \     },
-     \     'component_type': {
-     \         'readonly': 'error'
-     \     }
-     \ }
-
-function! VimrcLightLineReadOnly()
-    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'RO' : ''
-endfunction
-function! VimrcLightLineFileName()
-    if &ft == 'vimfiler'
-        return vimfiler#get_status_string()
-    elseif &ft == 'unite'
-        return unite#get_status_string()
-    elseif expand('%') == ''
-        return '[No Name]'
-    else
-        return expand('%')
-    endif
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+      \             [ 'vista' ],
+      \           ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'vista': 'NearestMethodOrFunction',
+      \ },
+      \ }
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 " vim-cpp-enhanced-highlight
