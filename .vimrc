@@ -77,7 +77,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('prabirshrestha/asyncomplete-lsp.vim')
 
   call dein#add('Shougo/echodoc.vim')
-
+  call dein#add('liuchengxu/vista.vim')
   " Linter
   call dein#add('w0rp/ale')
 
@@ -111,9 +111,6 @@ if dein#load_state(s:dein_dir)
 
   " Colorscheme
   call dein#add('flazz/vim-colorschemes')
-  call dein#add('sff1019/vim-brogrammer-theme')
-  call dein#add('sff1019/vim-joker')
-
   " FZF
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
@@ -262,28 +259,28 @@ endif
 
 " lightline
 let g:lightline = {
-            \     'colorscheme': 'wombat',
-            \     'active': {
-            \         'left': [
-            \             ['mode', 'paste'],
-            \             ['readonly', 'filename', 'modified']
-            \         ],
-            \         'right': [
-            \             ['lineinfo'],
-            \             ['persent'],
-            \             ['fileformat', 'fileencoding', 'filetype']
-            \         ]
-            \     },
-            \     'component_function': {
-            \         'filename': 'VimrcLightLineFileName'
-            \     },
-            \     'component_expand': {
-            \         'readonly': 'VimrcLightLineReadOnly'
-            \     },
-            \     'component_type': {
-            \         'readonly': 'error'
-            \     }
-            \ }
+     \     'colorscheme': 'wombat',
+     \     'active': {
+     \         'left': [
+     \             ['mode', 'paste'],
+     \             ['readonly', 'filename', 'modified']
+     \         ],
+     \         'right': [
+     \             ['lineinfo'],
+     \             ['persent'],
+     \             ['fileformat', 'fileencoding', 'filetype']
+     \         ]
+     \     },
+     \     'component_function': {
+     \         'filename': 'VimrcLightLineFileName'
+     \     },
+     \     'component_expand': {
+     \         'readonly': 'VimrcLightLineReadOnly'
+     \     },
+     \     'component_type': {
+     \         'readonly': 'error'
+     \     }
+     \ }
 
 function! VimrcLightLineReadOnly()
     return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'RO' : ''
@@ -412,7 +409,7 @@ set noswapfile
 set clipboard+=unnamedplus
 
 " Colorscheme
-colorscheme brogrammer
+colorscheme molokai
 
 " gui configuration
 hi Visual cterm=reverse
