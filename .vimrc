@@ -100,8 +100,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('rhysd/accelerated-jk')
   call dein#add('thinca/vim-quickrun')
   call dein#add('godlygeek/tabular')
-  call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-					\ 'build': 'sh -c "cd app & yarn install"' })
   call dein#add('beckorz/previm', {'rev': 'update-libraries'})
 
   " Colorization
