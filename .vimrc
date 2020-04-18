@@ -30,6 +30,10 @@ if dein#check_install()
 endif
 
 " common ----------------------------------------------------------------------------
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+
 set encoding=utf-8
 
 if &compatible
