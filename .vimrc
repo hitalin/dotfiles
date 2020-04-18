@@ -1,8 +1,3 @@
-" Only for nvim
-if !has('nvim')
-  set ttymouse=xterm2
-endif
-
 " enable plugin, indent
 filetype plugin on
 
@@ -88,7 +83,6 @@ if dein#load_state(s:dein_dir)
   " Syntax highlight
   call dein#add('vim-python/python-syntax')
   call dein#add('octol/vim-cpp-enhanced-highlight')
-  call dein#add('numirias/semshi')
   call dein#add('editorconfig/editorconfig-vim')
 
   " Statusline
