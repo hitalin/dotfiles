@@ -51,7 +51,6 @@ let s:dein_github = s:dein_dir . '/repos/github.com'
 let s:dein_repo_name = "Shougo/dein.vim"
 let s:dein_repo_dir = s:dein_github . '/' . s:dein_repo_name
 let g:ale_completion_enabled = 1
-let g:calendar_google_calendar = 1
 
 "  Install dein automatically
 if !isdirectory(s:dein_repo_dir)
@@ -89,9 +88,6 @@ if dein#load_state(s:dein_dir)
   " Linter
   call dein#add('w0rp/ale')
 
-  " Calendar
-  call dein#add('itchyny/calendar.vim')
-
   " Funny plugins
   call dein#add('ashisha/image.vim')
   call dein#add('osyo-manga/vim-nyaaancat')
@@ -103,7 +99,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('editorconfig/editorconfig-vim')
 
   " Statusline
-  call dein#add('ryanoasis/vim-devicons')
   call dein#add('itchyny/lightline.vim')
 
   " Filer
@@ -120,12 +115,11 @@ if dein#load_state(s:dein_dir)
   call dein#add('godlygeek/tabular')
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
 					\ 'build': 'cd app & npm install' })
-  call dein#add('malithsen/trello-vim')
   call dein#add('beckorz/previm', {'rev': 'update-libraries'})
 
   " Colorization
   call dein#add('vim-scripts/AnsiEsc.vim')
-  " call dein#add('bronson/vim-trailing-whitespace')
+  call dein#add('bronson/vim-trailing-whitespace')
   call dein#add('chrisbra/Colorizer')
 
   " Colorscheme
@@ -166,11 +160,6 @@ if dein#tap('ale')
         \   'python': ['autopep8'],
         \}
   let g:ale_fix_on_save = 1
-endif
-
-" calendar
-if dein#tap('calendar.vim')
-  let g:extra_whitespace_ignored_filetypes = ['unite', 'mkd', 'calendar']
 endif
 
 " Colorizer
@@ -324,70 +313,6 @@ if dein#tap('vim-cpp-enhanced-highlight')
   let g:cpp_class_decl_highlight = 1
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_concepts_highlight = 1
-endif
-
-" defx.nvim
-if dein#tap('defx.nvim')
-  autocmd FileType defx call s:defx_my_settings()
-    function! s:defx_my_settings() abort
-     " Define mappings
-      nnoremap <silent><buffer><expr> o
-      \ defx#is_directory() ?
-      \ defx#do_action('open_tree') :
-      \ defx#do_action('multi', ['drop', 'quit'])
-      nnoremap <silent><buffer><expr> l
-      \ defx#is_directory() ?
-      \ defx#do_action('open_tree') :
-      \ defx#do_action('multi', ['drop', 'quit'])
-      nnoremap <silent><buffer><expr> h
-     \ defx#do_action('close_tree')
-      nnoremap <silent><buffer><expr> c
-     \ defx#do_action('copy')
-      nnoremap <silent><buffer><expr> C
-     \ defx#do_action('open')
-      nnoremap <silent><buffer><expr> m
-     \ defx#do_action('move')
-      nnoremap <silent><buffer><expr> p
-     \ defx#do_action('paste')
-      nnoremap <silent><buffer><expr> K
-     \ defx#do_action('new_directory')
-      nnoremap <silent><buffer><expr> N
-     \ defx#do_action('new_file')
-      nnoremap <silent><buffer><expr> d
-     \ defx#do_action('remove')
-      nnoremap <silent><buffer><expr> r
-     \ defx#do_action('rename')
-      nnoremap <silent><buffer><expr> x
-     \ defx#do_action('execute_system')
-      nnoremap <silent><buffer><expr> yy
-     \ defx#do_action('yank_path')
-      nnoremap <silent><buffer><expr> .
-     \ defx#do_action('toggle_ignored_files')
-      nnoremap <silent><buffer><expr> ~
-     \ defx#do_action('cd')
-      nnoremap <silent><buffer><expr> <Space>
-     \ defx#do_action('toggle_select') . 'j'
-      nnoremap <silent><buffer><expr> *
-     \ defx#do_action('toggle_select_all')
-      nnoremap <silent><buffer><expr> j
-     \ line('.') == line('$') ? 'gg' : 'j'
-      nnoremap <silent><buffer><expr> k
-     \ line('.') == 1 ? 'G' : 'k'
-      nnoremap <silent><buffer><expr> <C-l>
-     \ defx#do_action('redraw')
-      nnoremap <silent><buffer><expr> <C-g>
-     \ defx#do_action('print')
-      nnoremap <silent><buffer><expr> cd
-     \ defx#do_action('change_vim_cwd')
-    endfunction
-
-    call defx#custom#option('_', {
-	      \ 'columns': 'mark:indent:icons:filename:type',
-	      \ })
-
-    " It's weird...
-    " autocmd VimEnter * call timer_start(0, { tid -> execute('Defx -split=vertical -winwidth=30 -direction=topleft')})
-    map <silent> <C-\> :Defx -toggle -split=vertical -winwidth=30 -direction=topleft -resume<CR>
 endif
 
 " vim-markdown
