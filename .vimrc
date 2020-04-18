@@ -34,7 +34,6 @@ let s:use_dein = 1
 " }}}
 
 " FileType {{{
-au BufRead,BufNewFile,BufReadPre *.swift set filetype=swift
 au BufNewFile,BufRead *.ts set filetype=typescript
 "}}}
 
@@ -42,6 +41,7 @@ au BufNewFile,BufRead *.ts set filetype=typescript
 " Indentation settings {{{
 au Filetype rust setlocal ts=4 sts=4 sw=4 et
 au Filetype python setlocal ts=4 sts=4 sw=4
+au Filetype rst  setlocal ts=3 sts=3 sw=3
 " }}}
 
 " Dein {{{
@@ -50,10 +50,9 @@ let s:dein_dir = s:vimdir . '/dein'
 let s:dein_github = s:dein_dir . '/repos/github.com'
 let s:dein_repo_name = "Shougo/dein.vim"
 let s:dein_repo_dir = s:dein_github . '/' . s:dein_repo_name
-let s:rsense_dir = $HOME . '/.rbenv/shims/rsense'
 let g:ale_completion_enabled = 1
-let g:python2_host_prog = $HOME . '/.pyenv/shims/python2'
-let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
+let g:python2_host_prog = $PYENV_ROOT . '/shims/python2'
+let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 let g:calendar_google_calendar = 1
 
 "  Install dein automatically
@@ -76,7 +75,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/vimproc.vim', {
         \ 'build' : {
         \     'windows' : 'tools\\update-dll-mingw',
-        \     'cygwin' : 'make -f make_cygwin.mak',
         \     'unix' : 'make -f make_unix.mak',
         \    },
         \ })
@@ -130,7 +128,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-scripts/YankRing.vim')
   call dein#add('rhysd/accelerated-jk')
   call dein#add('thinca/vim-quickrun')
-  call dein#add('wlangstroth/vim-racket')
   call dein#add('godlygeek/tabular')
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
 					\ 'build': 'cd app & npm install' })
@@ -170,8 +167,6 @@ endif
 
 " ale
 if dein#tap('ale')
-  let g:ale_swift_swiftlint_executable = 'swiftlint'
-  let g:ale_swift_swiftlint_options = ''
   let g:ale_python_autopep8_options = '--max-line-length 100'
 
   let g:ale_linters = {
