@@ -101,7 +101,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('thinca/vim-quickrun')
   call dein#add('godlygeek/tabular')
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-					\ 'build': 'cd app & npm install' })
+					\ 'build': 'sh -c "cd app & yarn install"' })
   call dein#add('beckorz/previm', {'rev': 'update-libraries'})
 
   " Colorization
@@ -244,7 +244,7 @@ endif
 
 " previm
 if dein#tap('previm')
-  let g:previm_open_cmd = 'open -a Google\ Chrome'
+  let g:previm_open_cmd = '/usr/bin/chromium'
 endif
 
 "python-syntax
