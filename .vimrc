@@ -110,8 +110,7 @@ if dein#load_state(s:dein_dir)
 
   " Statusline
   call dein#add('ryanoasis/vim-devicons')
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('itchyny/lightline.vim')
 
   " Filer
   call dein#add('sh8/defx-icons', {'rev': 'AvailableXterm256'})
@@ -329,16 +328,47 @@ if dein#tap('quickrun')
   let g:quickrun_config = {}
 endif
 
-" vim-airline
+" lightline 
 if dein#tap('vim-airline')
   " let g:airline_theme='murmur'
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#fnamemod = ':t'
-  let g:airline#extensions#tabline#left_sep = "\uE0B0 "
-  let g:airline#extensions#tabline#left_alt_sep = ' '
-  let g:airline_left_sep = "\uE0B0 "
-  let g:airline_right_sep = "\uE0B2"
+  let g:lightline = {
+              \     'colorscheme': 'wombat',
+              \     'active': {
+              \         'left': [
+              \             ['mode', 'paste'],
+              \             ['readonly', 'filename', 'modified']
+              \         ],
+              \         'right': [
+              \             ['lineinfo'],
+              \             ['persent'],
+              \             ['fileformat', 'fileencoding', 'filetype']
+              \         ]
+              \     },
+              \     'component_function': {
+              \         'filename': 'VimrcLightLineFileName'
+              \     },
+              \     'component_expand': {
+              \         'readonly': 'VimrcLightLineReadOnly'
+              \     },
+              \     'component_type': {
+              \         'readonly': 'error'
+              \     }
+              \ }
+
+  function! VimrcLightLineReadOnly()
+      return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'RO' : ''
+  endfunction
+  function! VimrcLightLineFileName()
+      if &ft == 'vimfiler'
+          return vimfiler#get_status_string()
+      elseif &ft == 'unite'
+          return unite#get_status_string()
+      elseif expand('%') == ''
+          return '[No Name]'
+      else
+          return expand('%')
+      endif
+  endfunction
 endif
 
 " vim-cpp-enhanced-highlight
