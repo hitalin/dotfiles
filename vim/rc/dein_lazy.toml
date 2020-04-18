@@ -47,8 +47,7 @@ repo = 'dense-analysis/ale'
 hook_add = '''
 let g:ale_linters = {
 \   'c'      : ['cquery'],
-\   'cpp'    : ['cquery'],
-}
+\   'cpp'    : ['cquery'] }
 '''
 
 [[plugins]]
