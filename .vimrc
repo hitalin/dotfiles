@@ -51,8 +51,6 @@ let s:dein_github = s:dein_dir . '/repos/github.com'
 let s:dein_repo_name = "Shougo/dein.vim"
 let s:dein_repo_dir = s:dein_github . '/' . s:dein_repo_name
 let g:ale_completion_enabled = 1
-let g:python2_host_prog = $PYENV_ROOT . '/shims/python2'
-let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 let g:calendar_google_calendar = 1
 
 "  Install dein automatically
@@ -80,15 +78,13 @@ if dein#load_state(s:dein_dir)
         \ })
 
   " Completion
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('prabirshrestha/async.vim')
+  call dein#add('mattn/vim-lsp-settings')
   call dein#add('prabirshrestha/vim-lsp')
-  call dein#add('lighttiger2505/deoplete-vim-lsp')
+  call dein#add('prabirshrestha/async.vim')
+  call dein#add('prabirshrestha/asyncomplete.vim')
+  call dein#add('prabirshrestha/asyncomplete-lsp.vim')
   call dein#add('Shougo/echodoc.vim')
-  call dein#add('jiangmiao/auto-pairs')
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('honza/vim-snippets')
+  call dein#add('SirVer/ultisnips')
 
   " Linter
   call dein#add('w0rp/ale')
@@ -111,14 +107,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('itchyny/lightline.vim')
 
   " Filer
-  call dein#add('sh8/defx-icons', {'rev': 'AvailableXterm256'})
-  call dein#add('kristijanhusak/defx-git')
-  call dein#add('Shougo/defx.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-
+  call dein#add('cocopon/vaffle.vim')
   " Git
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
@@ -188,44 +177,6 @@ endif
 if dein#tap('Colorizer')
   autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
 endif
-
-" deoplete
-if dein#tap('deoplete.nvim')
-  set completeopt-=preview
-  set shortmess+=c
-  let g:deoplete#enable_at_startup = 1
-endif
-
-
-" neosnippet.vim
-if dein#tap('neosnippet.vim')
-  " Plugin key-mappings.
-  " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-  " SuperTab like snippets behavior.
-  " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-  "imap <expr><TAB>
-  " \ pumvisible() ? "\<C-n>" :
-  " \ neosnippet#expandable_or_jumpable() ?
-  " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-  " For conceal markers.
-  if has('conceal')
-    set conceallevel=2 concealcursor=niv
-  endif
-
-  " Enable snipMate compatibility feature.
-  let g:neosnippet#enable_snipmate_compatibility = 1
-
-  " Tell Neosnippet about the other snippets
-  let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-endif
-
 
 " echodoc.vim
 if dein#tap('echodoc.vim')
