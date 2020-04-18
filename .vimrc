@@ -147,6 +147,7 @@ if dein#tap('ale')
   let g:ale_linters = {
         \   'python': ['flake8'],
         \   'cpp': ['g++'],
+        \   'rust': ['rustc'],
         \}
   let g:ale_fixers = {
         \   'python': ['autopep8'],
@@ -211,6 +212,7 @@ endif
 
 " vim-lsp
 if dein#tap('vim-lsp')
+  let g:lsp_diagnostics_enabled = 0
   let g:lsp_log_verbose = 1
   let g:lsp_log_file = expand('~/.vim/vim-lsp.log')
 
@@ -235,7 +237,14 @@ if dein#tap('vim-lsp')
         \ })
   endif
 
-  " autocmd FileType go setlocal omnifunc=lsp#complete
+  if executable('rls')
+      au User lsp_setup call lsp#register_server({
+          \ 'name': 'rls',
+          \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+          \ 'whitelist': ['rust'],
+          \ })
+  endif
+
   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
   let g:lsp_diagnostics_enabled = 0
 endif
@@ -388,12 +397,6 @@ nnoremap <silent><C-Space> :call BufferDeleteExceptFiler()<CR>
 " imap <C-j> <Down>
 " imap <C-h> <Left>
 " imap <C-l> <Right>
-
-function! BufferDeleteExceptFiler()
-  if (&filetype !=# 'defx')
-    bd!
-  endif
-endfunction
 
 if !has('gui_running')
   augroup term_vim_c_space
