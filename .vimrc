@@ -160,6 +160,15 @@ if dein#tap('echodoc.vim')
   let g:echodoc#enable_force_overwrite = 1
 endif
 
+" vista.vim
+if dein#tap('vista.vim')
+  let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+  let g:vista_executive_for = {
+    \ 'cpp': 'vim_lsp',
+    \ }
+  let g:vista_fzf_preview = ['right:50%']
+endif
+
 " fzf.vim
 if dein#tap('fzf.vim')
   command! -bang -nargs=* Rg
