@@ -102,7 +102,6 @@ if dein#load_state(s:dein_dir)
 
   " Util
   call dein#add('tomtom/tcomment_vim')
-  call dein#add('vim-scripts/YankRing.vim')
   call dein#add('rhysd/accelerated-jk')
   call dein#add('thinca/vim-quickrun')
   call dein#add('godlygeek/tabular')
@@ -347,10 +346,6 @@ if dein#tap('vim-trailing-whitespace')
     endif
     :FixWhitespace
   endfun
-endif
-
-if dein#tap('vim-scripts/YankRing.vim')
-  let g:yankring_clipboard_monitor=0
 endif
 
 " }}}
