@@ -75,6 +75,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('prabirshrestha/async.vim')
   call dein#add('prabirshrestha/asyncomplete.vim')
   call dein#add('prabirshrestha/asyncomplete-lsp.vim')
+
   call dein#add('Shougo/echodoc.vim')
 
   " Linter
@@ -141,10 +142,11 @@ if dein#tap('ale')
   let g:ale_linters = {
         \   'python': ['flake8'],
         \   'cpp': ['g++'],
-        \   'rust': ['rustc'],
+        \   'rust': ['rls'],
         \}
   let g:ale_fixers = {
         \   'python': ['autopep8'],
+        \   'rust': ['rustfmt'],
         \}
   let g:ale_fix_on_save = 1
 endif
