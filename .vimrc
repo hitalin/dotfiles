@@ -83,14 +83,9 @@ if dein#load_state(s:dein_dir)
   call dein#add('prabirshrestha/asyncomplete.vim')
   call dein#add('prabirshrestha/asyncomplete-lsp.vim')
   call dein#add('Shougo/echodoc.vim')
-  call dein#add('SirVer/ultisnips')
 
   " Linter
   call dein#add('w0rp/ale')
-
-  " Funny plugins
-  call dein#add('ashisha/image.vim')
-  call dein#add('osyo-manga/vim-nyaaancat')
 
   " Syntax highlight
   call dein#add('vim-python/python-syntax')
@@ -263,7 +258,7 @@ if dein#tap('quickrun')
   let g:quickrun_config = {}
 endif
 
-" lightline 
+" lightline
 if dein#tap('vim-airline')
   " let g:airline_theme='murmur'
   let g:lightline = {
