@@ -70,12 +70,13 @@ if dein#load_state(s:dein_dir)
   call dein#add('prabirshrestha/vim-lsp')
   " Linter
   call dein#add('w0rp/ale')
-  " depend on python
+  " depend on pynvim
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
   call dein#add('lighttiger2505/deoplete-vim-lsp')
   call dein#add('SirVer/ultisnips')
+  call dein#add('numirias/semshi')
   " info
   call dein#add('Shougo/echodoc.vim')
   call dein#add('liuchengxu/vista.vim')
@@ -95,8 +96,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('iamcco/markdown-preview.nvim',
             \ {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
   					\ 'build': 'sh -c "cd app & yarn install"' })
-  call dein#add('vim-scripts/AnsiEsc.vim')
   " Colorization
+  call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#add('bronson/vim-trailing-whitespace')
   call dein#add('chrisbra/Colorizer')
   call dein#add('flazz/vim-colorschemes')
@@ -253,7 +254,7 @@ if dein#tap('vim-lsp')
   let g:lsp_diagnostics_enabled = 0
 endif
 
-" depend on python
+" depend on pynvim
 let g:python3_host_prog = '/usr/bin/python3'
 
 if dein#tap('deoplete.nvim')
