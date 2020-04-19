@@ -262,6 +262,13 @@ if dein#tap('deoplete.nvim')
   let g:deoplete#enable_at_startup = 1
 endif
 
+if dein#tap('ultisnips')
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  let g:UltiSnipsEditSplit="vertical"
+endif
+
 " Colorizer
 if dein#tap('Colorizer')
   autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
