@@ -22,19 +22,14 @@ endif
 " Encode
 set encoding=UTF-8
 
-" Flags {{{
-let s:use_dein = 1
-" }}}
-
-" FileType {{{
-au BufNewFile,BufRead *.ts set filetype=typescript
-"}}}
-
-
 " Indentation settings {{{
 au Filetype rust setlocal ts=4 sts=4 sw=4
 au Filetype python setlocal ts=4 sts=4 sw=4
 au Filetype rst  setlocal ts=3 sts=3 sw=3
+" }}}
+
+" Flags {{{
+let s:use_dein = 1
 " }}}
 
 " Dein {{{
@@ -70,9 +65,11 @@ if dein#load_state(s:dein_dir)
         \ })
 
   " Completion
+  call dein#add('prabirshrestha/async.vim')
   call dein#add('mattn/vim-lsp-settings')
   call dein#add('prabirshrestha/vim-lsp')
-  call dein#add('prabirshrestha/async.vim')
+  " Linter
+  call dein#add('w0rp/ale')
   " depend on python
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('roxma/nvim-yarp')
@@ -83,35 +80,30 @@ if dein#load_state(s:dein_dir)
   " info
   call dein#add('Shougo/echodoc.vim')
   call dein#add('liuchengxu/vista.vim')
-  " Linter
-  call dein#add('w0rp/ale')
+  call dein#add('itchyny/lightline.vim')
   " Syntax highlight
   call dein#add('vim-python/python-syntax')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('editorconfig/editorconfig-vim')
-  " Statusline
-  call dein#add('itchyny/lightline.vim')
-  " Git
-  call dein#add('airblade/vim-gitgutter')
-  call dein#add('tpope/vim-fugitive')
   " Util
+  call dein#add('lervag/vimtex')
   call dein#add ('cocopon/vaffle.vim')
   call dein#add('tomtom/tcomment_vim')
   call dein#add('rhysd/accelerated-jk')
   call dein#add('thinca/vim-quickrun')
   call dein#add('godlygeek/tabular')
   call dein#add('beckorz/previm', {'rev': 'update-libraries'})
-  " Colorization
   call dein#add('vim-scripts/AnsiEsc.vim')
+  " Colorization
   call dein#add('bronson/vim-trailing-whitespace')
   call dein#add('chrisbra/Colorizer')
-  " Colorscheme
   call dein#add('flazz/vim-colorschemes')
   " FZF
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-  " LATEX
-  call dein#add('lervag/vimtex')
+  " Git
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('tpope/vim-fugitive')
 
   call dein#end()
 endif
@@ -143,11 +135,6 @@ if dein#tap('ale')
   let g:ale_fix_on_save = 1
 endif
 
-" Colorizer
-if dein#tap('Colorizer')
-  autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
-endif
-
 " echodoc.vim
 if dein#tap('echodoc.vim')
   set noshowmode
@@ -163,6 +150,24 @@ if dein#tap('vista.vim')
     \ }
   let g:vista_fzf_preview = ['right:50%']
 endif
+
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+      \             [ 'vista' ],
+      \           ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'vista': 'NearestMethodOrFunction',
+      \ },
+      \ }
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
 
 " fzf.vim
 if dein#tap('fzf.vim')
@@ -316,38 +321,15 @@ if dein#tap('defx.nvim')
     map <silent> <C-\> :Defx -toggle -split=vertical -winwidth=30 -direction=topleft -resume<CR>
 endif
 
-" previm
-if dein#tap('previm')
-  let g:previm_open_cmd = '/usr/bin/chromium'
+" Colorizer
+if dein#tap('Colorizer')
+  autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
 endif
 
 "python-syntax
 if dein#tap('python-syntax')
   let g:python_highlight_all = 1
 endif
-
-" quickrun
-if dein#tap('quickrun')
-  let g:quickrun_config = {}
-endif
-
-" lightline
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-      \             [ 'vista' ],
-      \           ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'vista': 'NearestMethodOrFunction',
-      \ },
-      \ }
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
 
 " vim-cpp-enhanced-highlight
 if dein#tap('vim-cpp-enhanced-highlight')
@@ -356,6 +338,16 @@ if dein#tap('vim-cpp-enhanced-highlight')
   let g:cpp_class_decl_highlight = 1
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_concepts_highlight = 1
+endif
+
+" previm
+if dein#tap('previm')
+  let g:previm_open_cmd = '/usr/bin/chromium'
+endif
+
+" quickrun
+if dein#tap('quickrun')
+  let g:quickrun_config = {}
 endif
 
 " vim-markdown
