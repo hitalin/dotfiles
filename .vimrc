@@ -73,46 +73,43 @@ if dein#load_state(s:dein_dir)
   call dein#add('mattn/vim-lsp-settings')
   call dein#add('prabirshrestha/vim-lsp')
   call dein#add('prabirshrestha/async.vim')
-  call dein#add('prabirshrestha/asyncomplete.vim')
-  call dein#add('prabirshrestha/asyncomplete-lsp.vim')
-
+  " depend on python
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+  call dein#add('lighttiger2505/deoplete-vim-lsp')
+  call dein#add('Shougo/defx.nvim')
+  call dein#add('SirVer/ultisnips')
+  " info
   call dein#add('Shougo/echodoc.vim')
   call dein#add('liuchengxu/vista.vim')
   " Linter
   call dein#add('w0rp/ale')
-
   " Syntax highlight
   call dein#add('vim-python/python-syntax')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('editorconfig/editorconfig-vim')
-
   " Statusline
   call dein#add('itchyny/lightline.vim')
-
-  " Filer
-  call dein#add('cocopon/vaffle.vim')
   " Git
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
-
   " Util
+  call dein#add ('cocopon/vaffle.vim')
   call dein#add('tomtom/tcomment_vim')
   call dein#add('rhysd/accelerated-jk')
   call dein#add('thinca/vim-quickrun')
   call dein#add('godlygeek/tabular')
   call dein#add('beckorz/previm', {'rev': 'update-libraries'})
-
   " Colorization
   call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#add('bronson/vim-trailing-whitespace')
   call dein#add('chrisbra/Colorizer')
-
   " Colorscheme
   call dein#add('flazz/vim-colorschemes')
   " FZF
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-
   " LATEX
   call dein#add('lervag/vimtex')
 
@@ -247,6 +244,76 @@ if dein#tap('vim-lsp')
 
   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
   let g:lsp_diagnostics_enabled = 0
+endif
+
+" depend on python
+let g:python3_host_prog = '/usr/bin/python3'
+
+if dein#tap('deoplete.nvim')
+  set completeopt-=preview
+  set shortmess+=c
+  let g:deoplete#enable_at_startup = 1
+endif
+
+if dein#tap('defx.nvim')
+  autocmd FileType defx call s:defx_my_settings()
+    function! s:defx_my_settings() abort
+     " Define mappings
+      nnoremap <silent><buffer><expr> o
+      \ defx#is_directory() ?
+      \ defx#do_action('open_tree') :
+      \ defx#do_action('multi', ['drop', 'quit'])
+      nnoremap <silent><buffer><expr> l
+      \ defx#is_directory() ?
+      \ defx#do_action('open_tree') :
+      \ defx#do_action('multi', ['drop', 'quit'])
+      nnoremap <silent><buffer><expr> h
+     \ defx#do_action('close_tree')
+      nnoremap <silent><buffer><expr> c
+     \ defx#do_action('copy')
+      nnoremap <silent><buffer><expr> C
+     \ defx#do_action('open')
+      nnoremap <silent><buffer><expr> m
+     \ defx#do_action('move')
+      nnoremap <silent><buffer><expr> p
+     \ defx#do_action('paste')
+      nnoremap <silent><buffer><expr> K
+     \ defx#do_action('new_directory')
+      nnoremap <silent><buffer><expr> N
+     \ defx#do_action('new_file')
+      nnoremap <silent><buffer><expr> d
+     \ defx#do_action('remove')
+      nnoremap <silent><buffer><expr> r
+     \ defx#do_action('rename')
+      nnoremap <silent><buffer><expr> x
+     \ defx#do_action('execute_system')
+      nnoremap <silent><buffer><expr> yy
+     \ defx#do_action('yank_path')
+      nnoremap <silent><buffer><expr> .
+     \ defx#do_action('toggle_ignored_files')
+      nnoremap <silent><buffer><expr> ~
+     \ defx#do_action('cd')
+      nnoremap <silent><buffer><expr> <Space>
+     \ defx#do_action('toggle_select') . 'j'
+      nnoremap <silent><buffer><expr> *
+     \ defx#do_action('toggle_select_all')
+      nnoremap <silent><buffer><expr> j
+     \ line('.') == line('$') ? 'gg' : 'j'
+      nnoremap <silent><buffer><expr> k
+     \ line('.') == 1 ? 'G' : 'k'
+      nnoremap <silent><buffer><expr> <C-l>
+     \ defx#do_action('redraw')
+      nnoremap <silent><buffer><expr> <C-g>
+     \ defx#do_action('print')
+      nnoremap <silent><buffer><expr> cd
+     \ defx#do_action('change_vim_cwd')
+    endfunction
+
+    call defx#custom#option('_', {
+	      \ 'columns': 'mark:indent:icons:filename:type',
+	      \ })
+
+    map <silent> <C-\> :Defx -toggle -split=vertical -winwidth=30 -direction=topleft -resume<CR>
 endif
 
 " previm
