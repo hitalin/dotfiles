@@ -410,6 +410,8 @@ hi Search cterm=reverse ctermfg=yellow
 hi VertSplit ctermbg=NONE guibg=NONE
 
 " Spell configuration
+autocmd BufRead,BufNewFile *.md  set spelllang=en_us,cjk spell
+autocmd BufRead,BufNewFile *.tex set spelllang=en_us,cjk spell
 hi clear SpellBad
 hi clear SpellCap
 hi clear SpellLocal
