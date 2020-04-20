@@ -1,0 +1,17 @@
+@article{oda,
+yomi = "Tadao Oda",
+author = "小田 忠雄",
+title = "数学の常識・非常識---由緒正しい{\TeX}入力法",
+journal = "数学通信",
+volume = 4,
+number = 1,
+pages = "95--112",
+year = 1995,
+url = "http://www.math.tohoku.ac.jp/tmj/oda_tex.pdf" }
+@book{okumura,
+yomi = "Haruhiko Okumura",
+author = "奥村 晴彦，黒木 裕介",
+title = "{\LaTeXe}美文書作成入門",
+publisher = "技術評論社",
+year = 2013,
+edition = 6 }
