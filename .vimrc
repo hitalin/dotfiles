@@ -234,6 +234,7 @@ if dein#tap('vim-lsp')
         \   'pycodestyle': {'enabled': v:false},
         \   'jedi_definition': {'follow_imports': v:true, 'follow_builtin_imports': v:true},}}}
         \ })
+    autocmd FileType python setlocal omnifunc=lsp#complete
   endif
 
   if executable('cquery')
@@ -244,6 +245,7 @@ if dein#tap('vim-lsp')
         \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
         \ })
+    autocmd FileType cpp setlocal omnifunc=lsp#complete
   endif
 
   if executable('rls')
@@ -253,6 +255,7 @@ if dein#tap('vim-lsp')
         \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
         \ 'whitelist': ['rust'],
         \ })
+    autocmd FileType rust setlocal omnifunc=lsp#complete
   endif
 
   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
