@@ -78,6 +78,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('lighttiger2505/deoplete-vim-lsp')
   call dein#add('SirVer/ultisnips')
+  call dein#add('Shougo/defx.nvim')
   if has('nvim')
     call dein#add('numirias/semshi')
   endif
@@ -91,7 +92,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('editorconfig/editorconfig-vim')
   " Util
   call dein#add('lervag/vimtex')
-  call dein#add ('cocopon/vaffle.vim')
   call dein#add('tomtom/tcomment_vim')
   call dein#add('rhysd/accelerated-jk')
   call dein#add('thinca/vim-quickrun')
@@ -102,7 +102,6 @@ if dein#load_state(s:dein_dir)
   					\ 'build': 'sh -c "cd app & yarn install"' })
   " Colorization
   call dein#add('vim-scripts/AnsiEsc.vim')
-  call dein#add('bronson/vim-trailing-whitespace')
   call dein#add('chrisbra/Colorizer')
   call dein#add('flazz/vim-colorschemes')
   " FZF
@@ -279,6 +278,69 @@ if dein#tap('ultisnips')
   let g:UltiSnipsEditSplit="vertical"
 endif
 
+if dein#tap('defx.nvim')
+  autocmd FileType defx call s:defx_my_settings()
+    function! s:defx_my_settings() abort
+     " Define mappings
+      nnoremap <silent><buffer><expr> o
+      \ defx#is_directory() ?
+      \ defx#do_action('open_tree') :
+      \ defx#do_action('multi', ['drop', 'quit'])
+      nnoremap <silent><buffer><expr> l
+      \ defx#is_directory() ?
+      \ defx#do_action('open_tree') :
+      \ defx#do_action('multi', ['drop', 'quit'])
+      nnoremap <silent><buffer><expr> h
+     \ defx#do_action('close_tree')
+      nnoremap <silent><buffer><expr> c
+     \ defx#do_action('copy')
+      nnoremap <silent><buffer><expr> C
+     \ defx#do_action('open')
+      nnoremap <silent><buffer><expr> m
+     \ defx#do_action('move')
+      nnoremap <silent><buffer><expr> p
+     \ defx#do_action('paste')
+      nnoremap <silent><buffer><expr> K
+     \ defx#do_action('new_directory')
+      nnoremap <silent><buffer><expr> N
+     \ defx#do_action('new_file')
+      nnoremap <silent><buffer><expr> d
+     \ defx#do_action('remove')
+      nnoremap <silent><buffer><expr> r
+     \ defx#do_action('rename')
+      nnoremap <silent><buffer><expr> x
+     \ defx#do_action('execute_system')
+      nnoremap <silent><buffer><expr> yy
+     \ defx#do_action('yank_path')
+      nnoremap <silent><buffer><expr> .
+     \ defx#do_action('toggle_ignored_files')
+      nnoremap <silent><buffer><expr> ~
+     \ defx#do_action('cd')
+      nnoremap <silent><buffer><expr> <Space>
+     \ defx#do_action('toggle_select') . 'j'
+      nnoremap <silent><buffer><expr> *
+     \ defx#do_action('toggle_select_all')
+      nnoremap <silent><buffer><expr> j
+     \ line('.') == line('$') ? 'gg' : 'j'
+      nnoremap <silent><buffer><expr> k
+     \ line('.') == 1 ? 'G' : 'k'
+      nnoremap <silent><buffer><expr> <C-l>
+     \ defx#do_action('redraw')
+      nnoremap <silent><buffer><expr> <C-g>
+     \ defx#do_action('print')
+      nnoremap <silent><buffer><expr> cd
+     \ defx#do_action('change_vim_cwd')
+    endfunction
+
+    map <silent> <C-\> :Defx -toggle -split=vertical -winwidth=30 -direction=topleft -resume<CR>
+endif
+
+function! BufferDeleteExceptFiler()
+  if (&filetype !=# 'defx')
+    bd!
+  endif
+endfunction
+
 " Colorizer
 if dein#tap('Colorizer')
   autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
@@ -338,21 +400,6 @@ if dein#tap('vimtex')
   let g:vimtex_view_general_options = '@line @pdf @tex'
   let g:vimtex_compiler_progname = 'nvr'
 endif
-
-" vim-trailing-whitespace
-if dein#tap('vim-trailing-whitespace')
-  " Delete whitespace automatically when current file is saved
-  autocmd BufWritePre *  call s:StripTrailingWhitespace()
-  fun! s:StripTrailingWhitespace()
-    " Only strip if the b:noStripeWhitespace variable isn't set
-    if exists('b:noStripWhitespace')
-      return
-    endif
-    :FixWhitespace
-  endfun
-endif
-
-" }}}
 
 " Basic settings {{{
 
