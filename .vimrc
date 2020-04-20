@@ -76,7 +76,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('roxma/vim-hug-neovim-rpc')
   call dein#add('lighttiger2505/deoplete-vim-lsp')
   call dein#add('SirVer/ultisnips')
-  call dein#add('numirias/semshi')
   " info
   call dein#add('Shougo/echodoc.vim')
   call dein#add('liuchengxu/vista.vim')
