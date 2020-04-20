@@ -402,10 +402,9 @@ if dein#tap('vimtex')
   let g:vimtex_compiler_progname = 'nvr'
 endif
 
-let g:extra_whitespace_ignored_filetypes = ['denite', 'help', 'defx', '']
-
 " vim-trailing-whitespace
 if dein#tap('vim-trailing-whitespace')
+  let g:extra_whitespace_ignored_filetypes = ['denite', 'help', 'defx', '']
   " Delete whitespace automatically when current file is saved
   autocmd BufWritePre *  call s:StripTrailingWhitespace()
   fun! s:StripTrailingWhitespace()
