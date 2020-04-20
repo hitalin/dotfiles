@@ -6,6 +6,6 @@ $pdflatex = 'lualatex -synctex=1 -file-line-error -halt-on-error -interaction=no
 $dvipdf = 'dvipdfmx %O -o %D %S';
 $bibtex = 'pbibtex %O %B';
 $pdf_update_method = 2;
-$pdf_previewer = "start mupdf %O %S";
+$pdf_previewer = "start zathura %O %S";
 # Prevent latexmk from removing PDF after typeset.
 # $pvc_view_file_via_temporary = 0;
