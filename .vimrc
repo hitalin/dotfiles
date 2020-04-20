@@ -71,11 +71,16 @@ if dein#load_state(s:dein_dir)
   " Linter
   call dein#add('w0rp/ale')
   " depend on pynvim
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
   call dein#add('lighttiger2505/deoplete-vim-lsp')
   call dein#add('SirVer/ultisnips')
+  if has('nvim')
+    call dein#add('numirias/semshi')
+  endif
   " info
   call dein#add('Shougo/echodoc.vim')
   call dein#add('liuchengxu/vista.vim')
@@ -260,6 +265,10 @@ if dein#tap('deoplete.nvim')
   set completeopt-=preview
   set shortmess+=c
   let g:deoplete#enable_at_startup = 1
+endif
+
+if has('nvim')
+  let g:deoplete#auto_complete_delay = 100
 endif
 
 if dein#tap('ultisnips')
