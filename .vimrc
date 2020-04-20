@@ -101,6 +101,7 @@ if dein#load_state(s:dein_dir)
             \ {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
   					\ 'build': 'sh -c "cd app & yarn install"' })
   " Colorization
+  call dein#add('bronson/vim-trailing-whitespace')
   call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#add('chrisbra/Colorizer')
   call dein#add('flazz/vim-colorschemes')
@@ -399,6 +400,21 @@ if dein#tap('vimtex')
   let g:vimtex_view_general_viewer = '/usr/bin/zathura'
   let g:vimtex_view_general_options = '@line @pdf @tex'
   let g:vimtex_compiler_progname = 'nvr'
+endif
+
+let g:extra_whitespace_ignored_filetypes = ['denite', 'help', 'defx', '']
+
+" vim-trailing-whitespace
+if dein#tap('vim-trailing-whitespace')
+  " Delete whitespace automatically when current file is saved
+  autocmd BufWritePre *  call s:StripTrailingWhitespace()
+  fun! s:StripTrailingWhitespace()
+    " Only strip if the b:noStripeWhitespace variable isn't set
+    if exists('b:noStripWhitespace')
+      return
+    endif
+    :FixWhitespace
+  endfun
 endif
 
 " Basic settings {{{
