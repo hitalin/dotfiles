@@ -83,7 +83,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('lighttiger2505/deoplete-vim-lsp')
   call dein#add('SirVer/ultisnips')
   call dein#add('Shougo/defx.nvim')
-  call dein#add('Shougo/denite.nvim')
   if has('nvim')
     call dein#add('numirias/semshi')
   endif
@@ -336,24 +335,6 @@ function! BufferDeleteExceptFiler()
     bd!
   endif
 endfunction
-
-if dein#tap('denite.nvim')
-  autocmd FileType denite call s:denite_my_settings()
-  function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-    \ denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d
-    \ denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p
-    \ denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q
-    \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i
-    \ denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space>
-    \ denite#do_map('toggle_select').'j'
-  endfunction
-endif
 
 " Colorizer
 if dein#tap('Colorizer')
