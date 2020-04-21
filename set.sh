@@ -3,6 +3,7 @@ set -e
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 if [ ! -f ~/.config/nvim/ ]; then
+  pip3 install --user pynvim neovim-remote
   mkdir -p ~/.config/nvim/
   ln -Fis $SCRIPT_DIR/.vimrc ~/.config/nvim/init.vim
   mkdir -p ~/.config/nvim/colors

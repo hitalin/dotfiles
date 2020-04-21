@@ -2,8 +2,6 @@
 set -e
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-HOMEDIR=/home/$USER
-
 # Updates
 sudo apt -y update
 
@@ -21,12 +19,12 @@ echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 
 # Install virtualenvwrapper
 pip install virtualenvwrapper
-export WORKON_HOME=$HOMEDIR/.virtualenvs
-export PROJECT_HOME=$HOMEDIR/Devel
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Switch to tools dir for installation
-cd $HOMEDIR
+cd $HOME
 mkdir tools
 cd tools
 
@@ -55,7 +53,7 @@ sudo apt install squashfs-tools
 
 # Install american-fuzzy-lop
 sudo apt -y install clang llvm
-cd $HOMEDIR/tools
+cd $HOME/tools
 wget --quiet http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
 tar -xzvf afl-latest.tgz
 rm afl-latest.tgz
@@ -97,8 +95,8 @@ sudo python setup.py install
 
 # Install crashwalk
 go get -u github.com/arizvisa/crashwalk/cmd/...
-mkdir $HOMEDIR/src
-cd $HOMEDIR/src
+mkdir $HOME/src
+cd $HOME/src
 git clone https://github.com/jfoote/exploitable
 
 mkvirtualenv joern
@@ -109,7 +107,7 @@ python setup.py install
 
 # Personal config
 sudo sudo apt -y install stow
-cd $HOMEDIR
+cd $HOME
 rm .bashrc
 git clone --recursive https://github.com/i0z0m/dotfiles
 cd dotfiles
