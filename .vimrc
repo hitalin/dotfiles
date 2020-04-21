@@ -258,6 +258,9 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " vista.vim
 if dein#tap('vista.vim')
+  set statusline+=%{NearestMethodOrFunction()}
+  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
   let g:vista_executive_for = {
     \ 'cpp': 'vim_lsp',
