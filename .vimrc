@@ -67,6 +67,11 @@ if dein#load_state(s:dein_dir)
   " Completion
   call dein#add('prabirshrestha/async.vim')
   call dein#add('prabirshrestha/vim-lsp')
+  " mattn
+  call dein#add('mattn/vim-lsp-settings')
+  call dein#add('mattn/vim-lsp-icons')
+  call dein#add('hrsh7th/vim-vsnip')
+  call dein#add('hrsh7th/vim-vsnip-integ')
   " Linter
   call dein#add('w0rp/ale')
   " depend on pynvim
@@ -78,6 +83,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('lighttiger2505/deoplete-vim-lsp')
   call dein#add('SirVer/ultisnips')
   call dein#add('Shougo/defx.nvim')
+  call dein#add('Shougo/denite.nvim')
   if has('nvim')
     call dein#add('numirias/semshi')
   endif
@@ -96,9 +102,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('thinca/vim-quickrun')
   call dein#add('godlygeek/tabular')
   call dein#add('beckorz/previm', {'rev': 'update-libraries'})
-  call dein#add('iamcco/markdown-preview.nvim',
-            \ {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-  					\ 'build': 'sh -c "cd app & yarn install"' })
   " Colorization
   call dein#add('ntpeters/vim-better-whitespace')
   call dein#add('vim-scripts/AnsiEsc.vim')
@@ -223,17 +226,6 @@ if dein#tap('vim-lsp')
   let g:lsp_log_verbose = 1
   let g:lsp_log_file = expand('~/.vim/vim-lsp.log')
 
-  if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ 'workspace_config': {'pyls': {'plugins': {
-        \   'pycodestyle': {'enabled': v:false},
-        \   'jedi_definition': {'follow_imports': v:true, 'follow_builtin_imports': v:true},}}}
-        \ })
-  endif
-
   if executable('ccls')
      au User lsp_setup call lsp#register_server({
         \ 'name': 'ccls',
@@ -243,15 +235,6 @@ if dein#tap('vim-lsp')
         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
         \ })
    endif
-
-  if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-        \ 'whitelist': ['rust'],
-        \ })
-  endif
 
   function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
@@ -353,6 +336,24 @@ function! BufferDeleteExceptFiler()
     bd!
   endif
 endfunction
+
+if dein#tap('denite.nvim')
+  autocmd FileType denite call s:denite_my_settings()
+  function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+    \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> d
+    \ denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p
+    \ denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q
+    \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+    \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space>
+    \ denite#do_map('toggle_select').'j'
+  endfunction
+endif
 
 " Colorizer
 if dein#tap('Colorizer')
