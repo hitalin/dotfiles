@@ -221,7 +221,6 @@ endif
 
 " vim-lsp
 if dein#tap('vim-lsp')
-  let g:lsp_diagnostics_enabled = 0
   let g:lsp_log_verbose = 1
   let g:lsp_log_file = expand('~/.vim/vim-lsp.log')
 
