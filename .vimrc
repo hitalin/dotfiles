@@ -65,13 +65,10 @@ if dein#load_state(s:dein_dir)
         \ })
 
   " Completion
-  call dein#add('prabirshrestha/async.vim')
-  call dein#add('prabirshrestha/vim-lsp')
-  " mattn
-  call dein#add('mattn/vim-lsp-settings')
-  call dein#add('mattn/vim-lsp-icons')
-  call dein#add('hrsh7th/vim-vsnip')
-  call dein#add('hrsh7th/vim-vsnip-integ')
+  call dein#add('autozimu/LanguageClient-neovim', {
+    \ 'rev': 'next',
+    \ 'build': 'bash install.sh',
+    \ })
   " Linter
   call dein#add('w0rp/ale')
   " depend on pynvim
@@ -80,7 +77,6 @@ if dein#load_state(s:dein_dir)
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('lighttiger2505/deoplete-vim-lsp')
   call dein#add('SirVer/ultisnips')
   call dein#add('Shougo/defx.nvim')
   if has('nvim')
@@ -220,38 +216,22 @@ if dein#tap('fzf.vim')
   endfunction
 endif
 
-" vim-lsp
-if dein#tap('vim-lsp')
-  let g:lsp_log_verbose = 1
-  let g:lsp_log_file = expand('~/.vim/vim-lsp.log')
+" LanguageClient-neovim
+set hidden
 
-  if executable('ccls')
-     au User lsp_setup call lsp#register_server({
-        \ 'name': 'ccls',
-        \ 'cmd': {server_info->['ccls']},
-        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-        \ 'initialization_options': {'cache': {'directory': '/tmp/ccls/cache' }},
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-        \ })
-   endif
+let g:LanguageClient_serverCommands = {
+    \ 'c': ['/usr/bin/ccls', '--log-file=/tmp/cc.log'],
+    \ 'cpp': ['/usr/bin/ccls', '--log-file=/tmp/cc.log'],
+    \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
 
-  function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> <f2> <plug>(lsp-rename)
-    " refer to doc to add more commands
-  endfunction
+let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
+let g:LanguageClient_settingsPath = '/home/taka/.vim/settings.json'
 
-  augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-  augroup END
-
-  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-  let g:lsp_diagnostics_enabled = 0
-endif
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " depend on pynvim
 let g:python3_host_prog = '/usr/bin/python3'
