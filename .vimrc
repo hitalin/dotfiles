@@ -66,7 +66,6 @@ if dein#load_state(s:dein_dir)
 
   " Completion
   call dein#add('prabirshrestha/async.vim')
-  call dein#add('mattn/vim-lsp-settings')
   call dein#add('prabirshrestha/vim-lsp')
   " Linter
   call dein#add('w0rp/ale')
@@ -224,16 +223,16 @@ if dein#tap('vim-lsp')
   let g:lsp_log_verbose = 1
   let g:lsp_log_file = expand('~/.vim/vim-lsp.log')
 
-"  if executable('pyls')
-"    au User lsp_setup call lsp#register_server({
-"        \ 'name': 'pyls',
-"        \ 'cmd': {server_info->['pyls']},
-"        \ 'whitelist': ['python'],
-"        \ 'workspace_config': {'pyls': {'plugins': {
-"        \   'pycodestyle': {'enabled': v:false},
-"        \   'jedi_definition': {'follow_imports': v:true, 'follow_builtin_imports': v:true},}}}
-"        \ })
-"  endif
+  if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ 'workspace_config': {'pyls': {'plugins': {
+        \   'pycodestyle': {'enabled': v:false},
+        \   'jedi_definition': {'follow_imports': v:true, 'follow_builtin_imports': v:true},}}}
+        \ })
+  endif
 
   if executable('ccls')
      au User lsp_setup call lsp#register_server({
@@ -245,14 +244,14 @@ if dein#tap('vim-lsp')
         \ })
    endif
 
-"  if executable('rls')
-"    au User lsp_setup call lsp#register_server({
-"        \ 'name': 'rls',
-"        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-"        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-"        \ 'whitelist': ['rust'],
-"        \ })
-"  endif
+  if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'whitelist': ['rust'],
+        \ })
+  endif
 
   function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
