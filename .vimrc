@@ -119,13 +119,6 @@ if dein#tap('accelerated-jk')
 endif
 
 " coc
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-json',
-  \ ]
 
 "" if hidden is not set, TextEdit might fail.
 set hidden
