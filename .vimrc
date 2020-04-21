@@ -69,8 +69,6 @@ if dein#load_state(s:dein_dir)
     \ 'rev': 'next',
     \ 'build': 'bash install.sh',
     \ })
-  " Linter
-  call dein#add('w0rp/ale')
   " depend on pynvim
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -121,22 +119,6 @@ filetype plugin indent on
 if dein#tap('accelerated-jk')
   nmap j <Plug>(accelerated_jk_gj)
   nmap k <Plug>(accelerated_jk_gk)
-endif
-
-" ale
-if dein#tap('ale')
-  let g:ale_python_autopep8_options = '--max-line-length 100'
-
-  let g:ale_linters = {
-        \   'python': ['flake8'],
-        \   'cpp': ['g++'],
-        \   'rust': ['rls'],
-        \}
-  let g:ale_fixers = {
-        \   'python': ['autopep8'],
-        \   'rust': ['rustfmt'],
-        \}
-  let g:ale_fix_on_save = 1
 endif
 
 " echodoc.vim
