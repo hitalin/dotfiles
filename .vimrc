@@ -76,7 +76,6 @@ if dein#load_state(s:dein_dir)
     call dein#add('numirias/semshi')
   endif
   " info
-  call dein#add('Shougo/echodoc.vim')
   call dein#add('liuchengxu/vista.vim')
   call dein#add('itchyny/lightline.vim')
   " Syntax highlight
@@ -256,13 +255,6 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 "" Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" echodoc.vim
-if dein#tap('echodoc.vim')
-  set noshowmode
-  let g:echodoc#enable_at_startup = 1
-  let g:echodoc#enable_force_overwrite = 1
-endif
 
 " vista.vim
 if dein#tap('vista.vim')
