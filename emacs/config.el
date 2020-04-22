@@ -11,11 +11,24 @@
 ;; soft wrapping
 (global-visual-line-mode t)
 
-;; x-clipboard-copy
-(defun x-clipboard-copy ()
+;; Permit kill-saving text to and from to X11 clipboard; beats the
+ ;; heck out of manually copying with the cursor.
+(defun kill-save-to-x-clipboard ()
   (interactive)
-  (when (region-active-p)
-    (shell-command-on-region (region-beginning) (region-end) "xsel -i" nil nil)))
+  (progn
+    (shell-command-on-region (region-beginning) (region-end) "xsel -i")
+    (message "Kill-saved region to clipboard!")
+    (deactivate-mark)))
+
+(global-set-key (kbd "C-c k") 'kill-save-to-x-clipboard)
+
+(defun yank-from-x-clipboard ()
+  (interactive)
+  (progn
+    (insert (shell-command-to-string "xsel -o")))
+    (message "Yanked region from clipboard!"))
+
+(global-set-key (kbd "C-c y") 'yank-from-x-clipboard)
 
 ;; indent
 (setq-default c-basic-offset 2
