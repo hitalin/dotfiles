@@ -11,7 +11,7 @@ font-size=20
 
 # force font width (and/or height), usually for non-fixed width fonts
 # legal value format: n (fw_new = n), +n (fw_new = fw_old + n), -n (fw_new = fw_old - n)
-#font-width=
+font-width=-1
 #font-height=
 
 # default color of foreground/background text
@@ -44,7 +44,7 @@ text-encodings=UTF-8
 
 # cursor shape: 0 = underline, 1 = block
 # cursor flash interval in milliseconds, 0 means disable flashing
-cursor-shape=0
+cursor-shape=1
 cursor-interval=500
 
 # additional ascii chars considered as part of a word while auto-selecting text, except ' ', 0-9, a-z, A-Z
@@ -55,7 +55,7 @@ word-chars=._-
 screen-rotate=0
 
 # specify the favorite input method program to run
-input-method=uim-fep
+input-method=fcitx
 
 # treat ambiguous width characters as wide
-#ambiguous-wide=yes
+ambiguous-wide=yes
