@@ -89,7 +89,8 @@ fontsize = 16
 
 # type_engine = cairo
 
-# use_anti_alias = true
+#TODO:if use_anti_alias, mlterm-fb cannot run
+#use_anti_alias = true
 
 # use_cp932_ucs_for_xft = true
 
@@ -195,6 +196,7 @@ bg_color = black
 # use_xim = true
 
 # (xim,uim,scim,m17n-lib,ibus,fcitx,wnn,canna,skk,iiimf,none)
+# TODO:cannot use fcitx - GLib-GIO-CRITICAL, assertion'G_IS_DBUS_CONNECTION(connection)' failed'
 #input_method = fcitx
 
 # tabsize = 8
