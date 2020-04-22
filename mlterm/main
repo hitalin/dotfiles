@@ -136,7 +136,7 @@ fontsize = 16
 
 use_scrollbar = true
 
-scrollbar_mode = righ
+scrollbar_mode = right
 
 # (simple,sample,sample2,sample3,next,motif,athena,mozmodern)
 # scrollbar_view_name = simple
