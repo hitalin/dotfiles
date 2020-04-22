@@ -11,6 +11,11 @@ export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 
 export SDL_VIDEO_X11_DGAMOUSE=0
 
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export DefaultIMModule=fcitx
+
 # theme
 fpath+=$HOME/.zinit/plugins/sindresorhus---pure
 
