@@ -32,17 +32,12 @@ au Filetype rst  setlocal ts=3 sts=3 sw=3
 let s:use_dein = 1
 " }}}
 
-" Flags {{{
-let s:use_dein = 1
-" }}}
-
 " Dein {{{
 let s:vimdir = $HOME . '/.vim'
 let s:dein_dir = s:vimdir . '/dein'
 let s:dein_github = s:dein_dir . '/repos/github.com'
 let s:dein_repo_name = "Shougo/dein.vim"
 let s:dein_repo_dir = s:dein_github . '/' . s:dein_repo_name
-let g:ale_completion_enabled = 1
 
 "  Install dein automatically
 if !isdirectory(s:dein_repo_dir)
