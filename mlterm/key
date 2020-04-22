@@ -1,5 +1,5 @@
 #### Default settings
-# UNUSED=IM_HOTKEY
+Zenkakuhankaku=IM_HOTKEY
 # Control+F1=OPEN_SCREEN
 # Control+F2=OPEN_PTY
 # Control+F3=NEXT_PTY
