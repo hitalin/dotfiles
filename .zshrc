@@ -128,7 +128,7 @@ alias runghc="stack runghc"
 alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
-alias erun='emacs --daemon'
+alias erun='LC_CTYPE=ja_JP.UTF-8 emacs --daemon'
 alias e='emacsclient -nw -a ""'
 alias ekill='emacsclient -e "(kill-emacs)"'
 
