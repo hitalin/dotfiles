@@ -196,7 +196,7 @@ bg_color = black
 # use_xim = true
 
 # (xim,uim,scim,m17n-lib,ibus,fcitx,wnn,canna,skk,iiimf,none)
-# TODO:cannot use fcitx - GLib-GIO-CRITICAL, assertion'G_IS_DBUS_CONNECTION(connection)' failed'
+# TODO:cannot use fcitx because of ERROR (process:74295)GLib-GIO-CRITICAL **: 02:21:49:061: g_dbus_proxy_new: assertion'G_IS_DBUS_CONNECTION(connection)' failed'
 #input_method = fcitx
 
 # tabsize = 8
