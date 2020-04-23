@@ -6,6 +6,3 @@
 ;; (package! another-package :recipe (:fetcher github :repo "username/repo"))
 ;; (package! builtin-package :disable t)
 (package! ox-gfm)
-
-(package! lsp-ocaml)
-(package! lsp-haskell)
