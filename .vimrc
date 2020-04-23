@@ -81,7 +81,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('lervag/vimtex')
   call dein#add('tomtom/tcomment_vim')
   call dein#add('rhysd/accelerated-jk')
-  call dein#add('thinca/vim-quickrun')
+  call dein#add('kassio/neoterm')
   call dein#add('godlygeek/tabular')
   call dein#add('beckorz/previm', {'rev': 'update-libraries'})
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
