@@ -283,7 +283,7 @@ if dein#tap('lightline.vim')
         \           ]
         \ },
         \ 'component_function': {
-        \   'vista': 'NearestMethodOrFunction'
+        \   'vista': 'NearestMethodOrFunction',
         \   'cocstatus': 'coc#status',
         \   'currentfunction': 'CocCurrentFunction',
         \ },
