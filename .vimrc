@@ -284,10 +284,8 @@ if dein#tap('lightline.vim')
         \ },
         \ 'component_function': {
         \   'cocstatus': 'coc#status',
-        \   'currentfunction': 'CocCurrentFunction'
-        \ },
-        \ 'component_function': {
-        \   'method': 'NearestMethodOrFunction'
+        \   'currentfunction': 'CocCurrentFunction',
+        \   'vista': 'NearestMethodOrFunction'
         \ },
         \ }
 endif
