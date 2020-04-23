@@ -71,6 +71,7 @@ if dein#load_state(s:dein_dir)
     call dein#add('numirias/semshi')
   endif
   " info
+  call dein#add('liuchengxu/vista.vim')
   call dein#add('itchyny/lightline.vim')
   " Syntax highlight
   call dein#add('vim-python/python-syntax')
@@ -247,6 +248,20 @@ if dein#tap('coc.nvim')
   nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 endif
 
+" vista.vim
+if dein#tap('vista.vim')
+  function! NearestMethodOrFunction() abort
+    return get(b:, 'vista_nearest_method_or_function', '')
+  endfunction
+
+  set statusline+=%{NearestMethodOrFunction()}
+
+  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+  nmap <silent> <C-f><C-v> :<C-u>Vista coc<CR>
+  nmap <silent> <C-f><C-s> :<C-u>Vista finder coc<CR>
+endif
+
 " lightline.vim
 "" Add (Neo)Vim's native statusline support.
 "" NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -262,11 +277,17 @@ if dein#tap('lightline.vim')
         \ 'colorscheme': 'wombat',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
-        \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+        \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+        \             [ 'cocstatus', 'currentfunction'],
+        \             [ 'vista' ],
+        \           ]
         \ },
         \ 'component_function': {
         \   'cocstatus': 'coc#status',
         \   'currentfunction': 'CocCurrentFunction'
+        \ },
+        \ 'component_function': {
+        \   'method': 'NearestMethodOrFunction'
         \ },
         \ }
 endif
