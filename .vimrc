@@ -71,8 +71,7 @@ if dein#load_state(s:dein_dir)
     call dein#add('numirias/semshi')
   endif
   " info
-  call dein#add('liuchengxu/vista.vim')
-  call dein#add('liuchengxu/eleline.vim')
+  call dein#add('itchyny/lightline.vim')
   " Syntax highlight
   call dein#add('vim-python/python-syntax')
   call dein#add('octol/vim-cpp-enhanced-highlight')
@@ -232,7 +231,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 "" Add (Neo)Vim's native statusline support.
 "" NOTE: Please see `:h coc-status` for integrations with external plugins that
 "" provide custom statusline: lightline.vim, vim-airline.
-"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 "" Mappings using CoCList:
 "" Show all diagnostics.
@@ -252,17 +251,22 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 "" Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" vista.vim
-if dein#tap('vista.vim')
-  set statusline+=%{NearestMethodOrFunction()}
-  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" lightline.vim
+function! CocCurrentFunction()
+  return get(b:, 'coc_current_function', '')
+endfunction
 
-  let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-  let g:vista_executive_for = {
-    \ 'cpp': 'vim_lsp',
-    \ }
-  let g:vista_fzf_preview = ['right:50%']
-endif
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
 
 " fzf.vim
 if dein#tap('fzf.vim')
