@@ -73,6 +73,7 @@ if dein#load_state(s:dein_dir)
   " info
   call dein#add('liuchengxu/vista.vim')
   call dein#add('itchyny/lightline.vim')
+  call dein#add('itchyny/vim-gitbranch')
   " Syntax highlight
   call dein#add('vim-python/python-syntax')
   call dein#add('octol/vim-cpp-enhanced-highlight')
@@ -283,6 +284,7 @@ if dein#tap('lightline.vim')
         \           ]
         \ },
         \ 'component_function': {
+        \   'gitbranch': 'gitbranch#name',
         \   'cocstatus': 'coc#status',
         \   'currentfunction': 'CocCurrentFunction',
         \   'vista': 'NearestMethodOrFunction',
