@@ -72,7 +72,7 @@ if dein#load_state(s:dein_dir)
   endif
   " info
   call dein#add('liuchengxu/vista.vim')
-  call dein#add('itchyny/lightline.vim')
+  call dein#add('liuchengxu/eleline.vim')
   " Syntax highlight
   call dein#add('vim-python/python-syntax')
   call dein#add('octol/vim-cpp-enhanced-highlight')
@@ -262,24 +262,6 @@ if dein#tap('vista.vim')
     \ }
   let g:vista_fzf_preview = ['right:50%']
 endif
-
-" lightline
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-      \             [ 'vista' ],
-      \           ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'vista': 'NearestMethodOrFunction',
-      \ },
-      \ }
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
 
 " fzf.vim
 if dein#tap('fzf.vim')
