@@ -278,14 +278,14 @@ if dein#tap('lightline.vim')
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-        \             [ 'cocstatus', 'currentfunction'],
         \             [ 'vista' ],
+        \             [ 'cocstatus', 'currentfunction'],
         \           ]
         \ },
         \ 'component_function': {
+        \   'vista': 'NearestMethodOrFunction'
         \   'cocstatus': 'coc#status',
         \   'currentfunction': 'CocCurrentFunction',
-        \   'vista': 'NearestMethodOrFunction'
         \ },
         \ }
 endif
