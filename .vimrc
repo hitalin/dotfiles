@@ -87,6 +87,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
 					\ 'build': 'sh -c "cd app & yarn install"' })
   " Colorization
+  call dein#add('Yggdroot/indentLine')
   call dein#add('ntpeters/vim-better-whitespace')
   call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#add('chrisbra/Colorizer')
