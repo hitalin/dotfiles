@@ -34,5 +34,11 @@ __pycache__/
 cabal.sandbox.config
 .cabal-sandbox
 
+# latex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+
 # ansible
 *.retry
