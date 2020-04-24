@@ -25,10 +25,6 @@ export PATH=$PATH:/home/taka/.local/bin
 # WSL
 if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
   export DISPLAY=localhost:0.0
-  # auto run vcxsrv
-  if [ -z "$(tasklist.exe | grep vcxsrv)" ]; then
-    cmd.exe /c config.xlaunch
-  fi
 fi
 
 # terminal
