@@ -22,6 +22,15 @@ export PATH=$PATH:/home/taka/.local/bin
 
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+# WSL
+if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
+  export DISPLAY=localhost:0.0
+  # auto run vcxsrv
+  if [ -z "$(tasklist.exe | grep vcxsrv)" ]; then
+    cmd.exe /c config.xlaunch
+  fi
+fi
+
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
