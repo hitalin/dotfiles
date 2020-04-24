@@ -7,9 +7,9 @@ if [ ! -f ~/.config/nvim/ ]; then
   mkdir -p ~/.config/nvim/
   ln -Fis $SCRIPT_DIR/.vimrc ~/.config/nvim/init.vim
 # after initing vim
-#  ln -Fis $SCRIPT_DIR/vim/coc-settings.json ~/.vim/coc-settings.json
+#  ln -Fis $SCRIPT_DIR/vim/coc-settings.json $HOME/.vim/coc-settings.json
 #  mkdir -p ~/.config/nvim/colors
-#  ln -Fis ~/.vim/dein/repos/github.com/flazz/vim-colorschemes/colors/molokai.vim ~/.config/nvim/colors/molokai.vim
+#  ln -Fis $HOME/.vim/dein/repos/github.com/flazz/vim-colorschemes/colors/molokai.vim $HOME/.config/nvim/colors/molokai.vim
 fi
 
 if [ ! -f ~/.emacs.d/ ]; then
