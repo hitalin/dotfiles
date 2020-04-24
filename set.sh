@@ -6,8 +6,10 @@ if [ ! -f ~/.config/nvim/ ]; then
   pip3 install --user pynvim neovim-remote
   mkdir -p ~/.config/nvim/
   ln -Fis $SCRIPT_DIR/.vimrc ~/.config/nvim/init.vim
-  mkdir -p ~/.config/nvim/colors
-  ln -Fis ~/.vim/dein/repos/github.com/flazz/vim-colorschemes/colors/molokai.vim ~/.config/nvim/colors/molokai.vim
+# after initing vim
+#  ln -Fis $SCRIPT_DIR/vim/coc-settings.json ~/.vim/coc-settings.json
+#  mkdir -p ~/.config/nvim/colors
+#  ln -Fis ~/.vim/dein/repos/github.com/flazz/vim-colorschemes/colors/molokai.vim ~/.config/nvim/colors/molokai.vim
 fi
 
 if [ ! -f ~/.emacs.d/ ]; then
