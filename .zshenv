@@ -22,12 +22,6 @@ export PATH=$PATH:/home/taka/.local/bin
 
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# GUI
-export XMODIFIERS=@im=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export DefaultIMModule=fcitx
-
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
