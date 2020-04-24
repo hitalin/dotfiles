@@ -12,7 +12,7 @@ if [ ! -f ~/.config/nvim/ ]; then
 fi
 
 if [ ! -f ~/.emacs.d/ ]; then
-  mkdir -p ~/.emacs.d
+  mkdir -p ~/.emacs.d/
   git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
   mkdir -p ~/.doom.d
   ln -Fis $SCRIPT_DIR/emacs/config.el ~/.doom.d/config.el
