@@ -106,9 +106,9 @@ only_use_unicode_font = true
 
 # compose_dec_special_font = false
 
-#use_bold_font = true
+use_bold_font = true
 
-#use_italic_font = true
+use_italic_font = true
 
 # leftward_double_drawing = false
 
@@ -236,7 +236,7 @@ input_method = uim
 # (raw,ttyrec)
 # vt_seq_format = raw
 
-#use_clipboard = true
+use_clipboard = true
 
 # logging_msg = true
 
@@ -266,7 +266,7 @@ input_method = uim
 
 # use_alt_buffer = true
 
-# use_ansi_colors = true
+use_ansi_colors = true
 
 # allow_change_shortcut = false
 
