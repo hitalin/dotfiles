@@ -92,7 +92,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#add('chrisbra/Colorizer')
   call dein#add('flazz/vim-colorschemes')
-  call dein#add('dracula/vim')
   " FZF
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
@@ -521,7 +520,7 @@ set noswapfile
 set clipboard+=unnamedplus
 
 " Colorscheme
-colorscheme dracula
+colorscheme molokai
 
 " gui configuration
 hi Visual cterm=reverse

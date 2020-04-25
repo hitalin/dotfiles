@@ -3,7 +3,7 @@
 ;; Place your private configuration here
 
 ;; doom-theme
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-molokai)
 
 ;; set language as Japanese
 (set-language-environment 'Japanese)
