@@ -2,6 +2,9 @@
 
 ;; Place your private configuration here
 
+;; doom-theme
+(setq doom-theme 'doom-dracula)
+
 ;; set language as Japanese
 (set-language-environment 'Japanese)
 ;; coding UTF8
