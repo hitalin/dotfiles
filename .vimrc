@@ -114,6 +114,14 @@ if dein#tap('accelerated-jk')
 endif
 
 " coc
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-json',
+  \ 'coc-clangd'
+  \ 'coc-python'
+  \ 'coc-texlab'
+  \ ]
+" from README.md
 "" if hidden is not set, TextEdit might fail.
 set hidden
 
