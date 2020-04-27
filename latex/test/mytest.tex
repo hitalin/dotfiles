@@ -1,7 +1,6 @@
 \documentclass[uplatex]{jsarticle}
 \usepackage[backend=biber, style=numeric]{biblatex}
-\addbibresource{myreference.bib}
-\addbibresource{bibtest.bib}
+\addbibresource{mytest.bib}
 
 \begin{document}
 \title{タイトル}
@@ -10,12 +9,7 @@
 \maketitle
 
 \begin{abstract}
-これは数式のTex記法の練習です．
+これは数式のTex記法の練習です．\cite{y.}
 \end{abstract}
-
-\section{y.}
-\[ \int dx = x + C. \]
-
-\section{walk}
-
+\printbibliography
 \end{document}
