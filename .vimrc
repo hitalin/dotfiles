@@ -117,9 +117,9 @@ endif
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-json',
-  \ 'coc-clangd'
-  \ 'coc-python'
-  \ 'coc-texlab'
+  \ 'coc-clangd',
+  \ 'coc-python',
+  \ 'coc-texlab',
   \ ]
 " from README.md
 "" if hidden is not set, TextEdit might fail.
