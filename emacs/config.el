@@ -245,6 +245,15 @@
   (dolist (lang org-babel-lsp-lang-list)
     (eval `(lsp-org-babel-enbale ,lang))))
 
+; configure packages
+
+;; anki-editor
+(use-package! anki-editor
+  :after org-noter
+  :config
+  ; I like making decks
+  (setq anki-editor-create-decks 't))
+
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
 (require 'opam-user-setup "~/dotfiles/emacs/opam-user-setup.el")
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
