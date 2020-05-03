@@ -45,7 +45,7 @@
 ; org-mode
 (after! org
   ;; set org file directory
-  (setq org-files-directory "~/orgfiles/")
+  (setq org-directory "~/orgfiles/")
   ;; set agenda files
   (setq org-agenda-files (list "~/orgfiles/TODO.org"))
   ;; set task states
@@ -84,22 +84,22 @@
   ;; show inherited tags in agenda view
   (setq org-agenda-show-inherited-tags t)
   ;; set default notes file
-  (setq org-default-notes-file (expand-file-name "notes.org" org-files-directory))
+  (setq org-default-notes-file (expand-file-name "notes.org" org-directory))
   ;; set capture templates
   (setq org-capture-templates
-        `(("r" "respond" entry (file ,(expand-file-name "email.org" org-files-directory))
+        `(("r" "respond" entry (file ,(expand-file-name "email.org" org-directory))
            "* TODO %a %? \nDEADLINE: %(org-insert-time-stamp (org-read-date nil t \"+1d\"))")
-          ("t" "todo" entry (file ,(expand-file-name "notes.org" org-files-directory))
+          ("t" "todo" entry (file ,(expand-file-name "notes.org" org-directory))
            "* TODO %?\n%U\n%a\n")
-          ("n" "note" entry (file ,(expand-file-name "notes.org" org-files-directory))
+          ("n" "note" entry (file ,(expand-file-name "notes.org" org-directory))
            "* %? :note:\n%U\n%a\n")
-          ("e" "event" entry (file ,(expand-file-name "meetings.org" org-files-directory))
+          ("e" "event" entry (file ,(expand-file-name "meetings.org" org-directory))
            "* %? \n%^T\n%a\n")
           ))
   ;; set archive tag
   (setq org-archive-tag "archive")
   ;; set archive file
-  (setq org-archive-location (concat org-files-directory "archive.org::* From %s"))
+  (setq org-archive-location (concat org-directory "archive.org::* From %s"))
   ;; refiling targets include any file contributing to the agenda - up to 2 levels deep
   (setq org-refile-targets '((nil :maxlevel . 2)
                              (org-agenda-files :maxlevel . 2)))
