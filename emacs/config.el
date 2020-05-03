@@ -2,8 +2,12 @@
 
 ;; Place your private configuration here
 
+; doom
+
 ;; doom-theme
 (setq doom-theme 'doom-molokai)
+
+; common
 
 ;; set language as Japanese
 (set-language-environment 'Japanese)
@@ -38,8 +42,13 @@
               tab-width 2
               indent-tabs-mode nil)
 
+; org-mode
+(setq org-directory "~/orgfiles/")
+
 ;; org-agenda
 (setq org-agenda-files (list "~/orgfiles/TODO.org"))
+
+;; org-capture and enrty
 (setq org-log-done 'time)
 
 ;; lsp-mode
