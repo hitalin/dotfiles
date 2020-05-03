@@ -48,7 +48,6 @@
   (setq org-files-directory "~/orgfiles/")
   ;; set agenda files
   (setq org-agenda-files (list "~/orgfiles/TODO.org"))
-  (setq org-log-done 'time)
   ;; set task states
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
@@ -60,6 +59,18 @@
                 ("WAITING" :foreground "#de935f" :weight bold)
                 ("SOMEDAY" :foreground "#b294bb" :weight bold)
                 ("CANCELLED" :foreground "#f0c674" :weight bold))))
+  ;; logging & drawers
+  (setq org-log-state-notes-insert-after-drawers nil
+                  org-log-into-drawer t
+                  org-log-done 'time
+                  org-log-repeat 'time
+                  org-log-redeadline 'note
+                  org-log-reschedule 'note)
+  ;; prettify
+  (setq org-hide-emphasis-markers nil
+                  org-bullets-bullet-list '("◉" "⚫" "○")
+                  org-list-demote-modify-bullet '(("+" . "-") ("1." . "a.") ("-" . "+"))
+                  org-ellipsis "▼")
   ;; trigger task states
   (setq org-todo-state-tags-triggers
         (quote (("CANCELLED" ("CANCELLED" . t))
