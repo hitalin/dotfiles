@@ -81,7 +81,7 @@ if dein#load_state(s:dein_dir)
   " Util
   call dein#add('lervag/vimtex')
   call dein#add('tomtom/tcomment_vim')
-  call dein#add('rhysd/accelerated-jk')
+  call dein#add('easymotion/vim-easymotion')
   call dein#add('kassio/neoterm')
   call dein#add('godlygeek/tabular')
   call dein#add('beckorz/previm', {'rev': 'update-libraries'})
