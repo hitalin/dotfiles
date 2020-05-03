@@ -60,7 +60,36 @@ if dein#load_state(s:dein_dir)
        \     'unix' : 'make -f make_unix.mak',
        \    },
        \ })
+  " support coding
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+  call dein#add('airblade/vim-rooter')
+  " extending standard features
+  call dein#add('terryma/vim-expand-region')
+  call dein#add('junegunn/vim-easy-align')
+  call dein#add('preservim/nerdcommenter')
+  call dein#add('unblevable/quick-scope')
+  call dein#add('kassio/neoterm')
+  call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
+					\ 'build': 'sh -c "cd app & yarn install"' })
+  " add features
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('tpope/vim-fugitive')
+  " customize the layout
+  call dein#add('liuchengxu/vista.vim')
+  call dein#add('itchyny/lightline.vim')
+  call dein#add('itchyny/vim-gitbranch')
+  call dein#add('mhinz/vim-startify')
+  " syntax highlight
+  call dein#add('vim-python/python-syntax')
+  call dein#add('octol/vim-cpp-enhanced-highlight')
+  call dein#add('editorconfig/editorconfig-vim')
+  " colorization
+  call dein#add('ntpeters/vim-better-whitespace')
+  call dein#add('vim-scripts/AnsiEsc.vim')
+  call dein#add('chrisbra/Colorizer')
+  call dein#add('flazz/vim-colorschemes')
   " depend on pynvim
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -70,35 +99,6 @@ if dein#load_state(s:dein_dir)
   if has('nvim')
     call dein#add('numirias/semshi')
   endif
-  " info
-  call dein#add('liuchengxu/vista.vim')
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('itchyny/vim-gitbranch')
-  call dein#add('airblade/vim-rooter')
-  call dein#add('mhinz/vim-startify')
-  " Syntax highlight
-  call dein#add('vim-python/python-syntax')
-  call dein#add('octol/vim-cpp-enhanced-highlight')
-  call dein#add('editorconfig/editorconfig-vim')
-  " Util
-  call dein#add('terryma/vim-expand-region')
-  call dein#add('junegunn/vim-easy-align')
-  call dein#add('preservim/nerdcommenter')
-  call dein#add('easymotion/vim-easymotion')
-  call dein#add('kassio/neoterm')
-  call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-					\ 'build': 'sh -c "cd app & yarn install"' })
-  " Colorization
-  call dein#add('ntpeters/vim-better-whitespace')
-  call dein#add('vim-scripts/AnsiEsc.vim')
-  call dein#add('chrisbra/Colorizer')
-  call dein#add('flazz/vim-colorschemes')
-  " FZF
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-  " Git
-  call dein#add('airblade/vim-gitgutter')
-  call dein#add('tpope/vim-fugitive')
 
   call dein#end()
 endif
