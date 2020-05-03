@@ -47,7 +47,7 @@
   ;; set org file directory
   (setq org-directory "~/orgfiles/")
   ;; set agenda files
-  (setq org-agenda-files (list "~/orgfiles/TODO.org"))
+  (setq org-agenda-files (list "~/orgfiles/TASK.org"))
   ;; set task states
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
@@ -75,7 +75,6 @@
   (setq org-todo-state-tags-triggers
         (quote (("CANCELLED" ("CANCELLED" . t))
                 ("WAITING" ("WAITING" . t))
-                (done ("WAITING"))
                 ("TODO" ("WAITING") ("CANCELLED"))
                 ("NEXT" ("WAITING") ("CANCELLED"))
                 ("DONE" ("WAITING") ("CANCELLED")))))
