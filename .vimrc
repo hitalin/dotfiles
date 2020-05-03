@@ -74,17 +74,18 @@ if dein#load_state(s:dein_dir)
   call dein#add('liuchengxu/vista.vim')
   call dein#add('itchyny/lightline.vim')
   call dein#add('itchyny/vim-gitbranch')
+  call dein#add('airblade/vim-rooter')
+  call dein#add('mhinz/vim-startify')
   " Syntax highlight
   call dein#add('vim-python/python-syntax')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('editorconfig/editorconfig-vim')
   " Util
-  call dein#add('lervag/vimtex')
-  call dein#add('tomtom/tcomment_vim')
-  call dein#add('easymotion/vim-easymotion')
+  call dein#add('terryma/vim-expand-region')
+  call dein#add('junegunn/vim-easy-align')
+  call dein#add('preservim/nerdcommenter')
+  call dein#add('unblevable/quick-scope')
   call dein#add('kassio/neoterm')
-  call dein#add('godlygeek/tabular')
-  call dein#add('beckorz/previm', {'rev': 'update-libraries'})
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
 					\ 'build': 'sh -c "cd app & yarn install"' })
   " Colorization
@@ -116,6 +117,7 @@ endif
 " coc
 let g:coc_global_extensions = [
   \ 'coc-snippets',
+  \ 'coc-pairs',
   \ 'coc-json',
   \ 'coc-clangd',
   \ 'coc-python',
