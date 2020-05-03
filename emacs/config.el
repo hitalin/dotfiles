@@ -39,7 +39,7 @@
               indent-tabs-mode nil)
 
 ;; org-agenda
-(setq org-agenda-files (list "~/orgfiles"))
+(setq org-agenda-files (list "~/orgfiles/TODO.org"))
 (setq org-log-done 'time)
 
 ;; lsp-mode
