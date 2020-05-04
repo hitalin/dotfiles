@@ -4,6 +4,12 @@
 
 ; doom
 
+;; font for GUI
+(setq doom-font (font-spec :family "Cica" :size 14)
+      doom-variable-pitch-font (font-spec :family "Cica" :height 120)
+      doom-unicode-font (font-spec :family "all-the-icons")
+      doom-big-font (font-spec :family "Cica" :size 16))
+
 ;; doom-theme
 (setq doom-theme 'doom-molokai)
 
