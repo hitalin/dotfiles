@@ -7,3 +7,4 @@
 ;; (package! builtin-package :disable t)
 (package! anki-editor)
 (package! ox-gfm)
+(package! vimrc-mode)
