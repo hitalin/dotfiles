@@ -71,7 +71,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('unblevable/quick-scope')
   call dein#add('kassio/neoterm')
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-					\ 'build': 'sh -c "cd app & yarn install"' })
+         \ 'build': 'sh -c "cd app & yarn install"' })
   " add features
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
