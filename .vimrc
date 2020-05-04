@@ -67,7 +67,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('terryma/vim-expand-region')
   call dein#add('junegunn/vim-easy-align')
   call dein#add('preservim/nerdcommenter')
-  call dein#add('unblevable/quick-scope')
+  call dein#add('justinmk/vim-sneak')
   call dein#add('kassio/neoterm')
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
 					\ 'build': 'sh -c "cd app & yarn install"' })
