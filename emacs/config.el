@@ -48,38 +48,45 @@
               indent-tabs-mode nil)
 
 ; org-mode
-(after! org
+(use-package! org
+  :config
   ;; set org file directory
   (setq org-directory "~/orgfiles/")
   ;; set agenda files
   (setq org-agenda-files (list "~/orgfiles/INBOX.org"
                                "~/orgfiles/TASK.org"
                                "~/orgfiles/JOURNAL.org"))
+  ;; org-capture-templates
+  (setq org-capture-templates
+        '(("t" "Task" entry (file+headline "~/orgfiles/INBOX.org" "Task")
+           "** WAIT %?\n  CREATED: %U\n")
+          ("i" "Idea" entry (file+headline "~/orgfiles/INBOX.org" "Idea")
+           "** %?\n  CREATED: %U\n")
+          ("n" "Note" entry (file+datetree "~/orgfiles/INBOX.org" "Note")
+           "** %?\n\n")
+          ))
   ;; set task states
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-                (sequence "WAITING(w)"  "|" "SOMEDAY(o)" "CANCELLED(c)"))))
+                (sequence "WAIT(w)"  "|" "SOMEDAY(o)" "CANCEL(c)"))))
   (setq org-todo-keyword-faces
         (quote (("TODO" :foreground "#cc6666" :weight bold)
                 ("NEXT" :foreground "#8abeb7" :weight bold)
                 ("DONE" :foreground "#b5bd68" :weight bold)
-                ("WAITING" :foreground "#de935f" :weight bold)
+                ("WAIT" :foreground "#de935f" :weight bold)
                 ("SOMEDAY" :foreground "#b294bb" :weight bold)
-                ("CANCELLED" :foreground "#f0c674" :weight bold :strike-through t))))
+                ("CANCEL" :foreground "#f0c674" :weight bold :strike-through t))))
   ;; trigger task states
   (setq org-todo-state-tags-triggers
-        (quote (("TODO" ("WAITING") ("CANCELLED"))
-                ("NEXT" ("WAITING") ("CANCELLED"))
-                ("DONE" ("WAITING") ("CANCELLED"))
-                ("WAITING" ("WAITING" . t))
-                ("SOMEDAY" ("WAITING", t))
-                ("CANCELLED" ("CANCELLED" . t))
+        (quote (("TODO" ("WAIT") ("CANCEL"))
+                ("NEXT" ("WAIT") ("CANCEL"))
+                ("DONE" ("WAIT") ("CANCEL"))
+                ("WAIT" ("WAIT" . t))
+                ("SOMEDAY" ("WAIT", t))
+                ("CANCEL" ("CANCEL" . t))
                 )))
   ;; logging
-  (setq org-log-done 'time
-        org-log-repeat 'time
-        org-log-redeadline 'note
-        org-log-reschedule 'note)
+  (setq org-log-done 'time)
   ;; prettify
   (setq org-hide-emphasis-markers nil
       org-ellipsis "▼")
