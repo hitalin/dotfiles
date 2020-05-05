@@ -53,9 +53,7 @@
   ;; set org file directory
   (setq org-directory "~/orgfiles/")
   ;; set agenda files
-  (setq org-agenda-files (list "~/orgfiles/INBOX.org"
-                               "~/orgfiles/TASK.org"
-                               "~/orgfiles/JOURNAL.org"))
+  (setq org-agenda-files (list "~/orgfiles/TASK.org"))
   ;; org-capture-templates
   (setq org-capture-templates
         '(("t" "Task" entry (file+headline "~/orgfiles/INBOX.org" "Task")
@@ -88,8 +86,7 @@
   ;; logging
   (setq org-log-done 'time)
   ;; prettify
-  (setq org-hide-emphasis-markers nil
-      org-ellipsis "▼")
+  (setq org-ellipsis "▼")
 )
 
 ; configure packages
