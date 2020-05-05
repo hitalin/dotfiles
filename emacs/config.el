@@ -59,11 +59,11 @@
   ;; org-capture-templates
   (setq org-capture-templates
         '(("t" "Task" entry (file+headline "~/orgfiles/INBOX.org" "Task")
-           "** WAIT %?\n  CREATED: %U\n")
-          ("i" "Idea" entry (file+headline "~/orgfiles/INBOX.org" "Idea")
-           "** %?\n  CREATED: %U\n")
+           "\n** WAIT %?\n  CREATED: %U\n")
+          ("i""Idea" entry (file+headline "~/orgfiles/INBOX.org" "Idea")
+           "\n** %?\n  CREATED: %U\n")
           ("n" "Note" entry (file+datetree "~/orgfiles/INBOX.org" "Note")
-           "** %?\n\n")
+           "\n** %?\n")
           ))
   ;; set task states
   (setq org-todo-keywords
