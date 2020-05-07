@@ -15,6 +15,7 @@ fi
 if [ ! -f ~/.emacs.d/ ]; then
   mkdir -p ~/.emacs.d/
   git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+  ~/.emacs.d/bin/doom install
   mkdir -p ~/.doom.d
   ln -Fis $SCRIPT_DIR/emacs/config.el ~/.doom.d/config.el
   ln -Fis $SCRIPT_DIR/emacs/early-init.el ~/.doom.d/early-init.el
