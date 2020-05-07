@@ -18,22 +18,20 @@
 (prefer-coding-system 'utf-8)
 
 ;; Permit kill-saving text to and from to X11 clipboard; beats the
- ;; heck out of manually copying with the cursor.
-(defun copy-to-x-clipboard ()
+;; heck out of manually copying with the cursor.
+(defun kill-save-to-x-clipboard ()
   (interactive)
   (progn
     (shell-command-on-region (region-beginning) (region-end) "xsel -i")
-    (message "Copy region to clipboard!")
+    (message "Kill-saved region to clipboard!")
     (deactivate-mark)))
-
-(global-set-key (kbd "C-c k") 'copy-to-x-clipboard)
+(global-set-key (kbd "C-c k") 'kill-save-to-x-clipboard)
 
 (defun yank-from-x-clipboard ()
   (interactive)
   (progn
     (insert (shell-command-to-string "xsel -o")))
     (message "Yanked region from clipboard!"))
-
 (global-set-key (kbd "C-c y") 'yank-from-x-clipboard)
 
 ; nmartin84/.doom.d
