@@ -1,54 +1,83 @@
-; doom
+#+EXPORT_FILE_NAME: README
 
-;; font for GUI
-(setq doom-font (font-spec :family "Cica" :size 14)
-      doom-variable-pitch-font (font-spec :family "Cica" :height 120)
+My DOOM emacs private configuration:
+[[file:attachments/doom.png]]
+
+High focus on GTD process workflow: ([[https://github.com/nmartin84/.references/blob/master/gtd-babel.org][source]])
+#+RESULTS:
+[[file:./attachments/gtd.png]]
+
+* Getting started
+If you have not installed DOOM Emacs but would like to:
+#+BEGIN_EXAMPLE
+git clone https://github.com/nmartin84/.doom.d.git ~/.doom.d
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+#+END_EXAMPLE
+
+Otherwise, backup your existing DOOM private config and run:
+#+BEGIN_EXAMPLE
+mv ~/.doom.d ~/.doom.d_backup
+git clone https://github.com/nmartin84/.doom.d.git ~/.doom.d
+~/.emacs.d/bin/doom refresh
+#+END_EXAMPLE
+
+This repo uses a literate configuration, with basic settings in ~./init.el~, ~./packags.el~, the content of ~./config.el~ will be generated
+from the Emacs Lisp code blocks in ~config.org~. This readme file gets created when exporting ~config.org~ to markdown.
+* Pretty
+** Fonts
+For fonts please download [[https://input.fontbureau.com/download/][Input]] and [[http://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2][DejaVu]]
+#+BEGIN_SRC emacs-lisp
+(setq doom-font (font-spec :family "InputMono" :size 18)
+      doom-variable-pitch-font (font-spec :family "InputMono" :height 120)
       doom-unicode-font (font-spec :family "all-the-icons")
-      doom-big-font (font-spec :family "Cica" :size 16))
-
-;; doom-theme
-(setq doom-theme 'doom-molokai)
-
-; common
-
-;; set language as Japanese
-(set-language-environment 'Japanese)
-;; coding UTF8
-(set-language-environment  'utf-8)
-(prefer-coding-system 'utf-8)
-
-;; soft wrapping
-(global-visual-line-mode t)
-
-;; Permit kill-saving text to and from to X11 clipboard; beats the
- ;; heck out of manually copying with the cursor.
-(defun kill-save-to-x-clipboard ()
-  (interactive)
-  (progn
-    (shell-command-on-region (region-beginning) (region-end) "xsel -i")
-    (message "Kill-saved region to clipboard!")
-    (deactivate-mark)))
-
-(global-set-key (kbd "C-c k") 'kill-save-to-x-clipboard)
-
-(defun yank-from-x-clipboard ()
-  (interactive)
-  (progn
-    (insert (shell-command-to-string "xsel -o")))
-    (message "Yanked region from clipboard!"))
-
-(global-set-key (kbd "C-c y") 'yank-from-x-clipboard)
-
-; nmartin84/.doom.d
+      doom-big-font (font-spec :family "InputMono" :size 20))
+#+END_SRC
+** Theme
+#+BEGIN_SRC emacs-lisp
+(setq doom-theme 'chocolate)
+(custom-theme-set-faces
+ 'user
+ '(org-ellipsis ((t (:foreground "SpringGreen")))))
+(if (equal doom-theme 'chocolate)
+     (custom-theme-set-faces
+      'user
+      '(org-list-dt ((t (:foreground "cadet blue"))))
+      '(org-ellipsis ((t (:foreground "gold"))))))
+(if (equal doom-theme 'chocolate)
+     (setq org-emphasis-alist
+           '(("*" (bold :foreground "MediumPurple"))
+             ("/" (italic :foreground "VioletRed"))
+             ("_" underline)
+             ("=" (:foreground "cadet blue"))
+             ("~" (:foreground "cadet blue"))
+             ("+" (:foreground "slate grey" :strike-through t)))))
+     (if (equal doom-theme 'doom-snazzy)
+         (custom-theme-set-faces
+          'user
+          '(org-block ((t (:background "#20222b"))))
+          '(org-block-begin-line ((t (:background "#282A36"))))
+          '(org-ellipsis ((t (:foreground "SpringGreen"))))
+          '(org-headline-done ((t (:strike-through t))))))
+#+END_SRC
+* Environment
+** User Settings
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Nicholas Martin"
+      user-mail-address "nmartin84.com")
 (display-time-mode 1)
 (setq display-time-day-and-date t)
-
+#+END_SRC
+** Default Files
+#+BEGIN_SRC emacs-lisp
 (load-library "find-lisp")
 (defvar org-gtd-tasks-file "~/.org/workload/tasks.org")
 (defvar org-gtd-archive-file "~/.org/workload/archive.org")
 (defvar org-gtd-files (find-lisp-find-files "~/.org/" "\.org$"))
 (defvar org-gtd-notes-files (find-lisp-find-files "~/.org/notes/" "\.org$"))
-
+#+END_SRC
+** Keys
+#+BEGIN_SRC emacs-lisp
 (map! :after org
       :map org-mode-map
       :localleader
@@ -69,8 +98,13 @@
       :desc "Deadgrep Directory" "d" #'deadgrep
       :desc "Swiper All" "@" #'swiper-all
       :prefix ("o" . "open")
+      :desc "Elfeed" "e" #'elfeed
       :desc "Deft" "w" #'deft)
-
+#+END_SRC
+** Extra Files
+* Behavior
+** Popup Rules
+#+BEGIN_SRC emacs-lisp
 (after! org (set-popup-rule! "^Capture.*\\.org$" :side 'right :size .50 :select t :vslot 2 :ttl 3))
 (after! org (set-popup-rule! "Dictionary" :side 'bottom :size .30 :select t :vslot 3 :ttl 3))
 (after! org (set-popup-rule! "*helm*" :side 'bottom :size .30 :select t :vslot 5 :ttl 3))
@@ -81,16 +115,36 @@
 (after! org (set-popup-rule! "*xwidget" :side 'right :size .50 :select t :vslot 5 :ttl 3))
 (after! org (set-popup-rule! "*Org Agenda*" :side 'right :size .40 :select t :vslot 2 :ttl 3))
 (after! org (set-popup-rule! "*Org ql" :side 'right :size .50 :select t :vslot 2 :ttl 3))
-
+#+END_SRC
+** Buffer Settings
+#+BEGIN_SRC emacs-lisp
 (global-auto-revert-mode t)
-
+#+END_SRC
+** Other things
+Set line numbers to relative:
+#+BEGIN_SRC emacs-lisp
+(setq display-line-numbers-type 'relative)
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
 (custom-set-faces! '(doom-modeline-evil-insert-state :weight bold :foreground "#339CDB"))
-
+#+END_SRC
+* Module Settings
+** Bookmark+
+#+BEGIN_SRC emacs-lisp
 (require 'bookmark+)
-
+#+END_SRC
+** Deft Mode
+#+BEGIN_SRC emacs-lisp
 (setq deft-directory "~/.org/notes/")
 (setq deft-current-sort-method 'title)
-
+#+END_SRC
+** Elfeed
+#+BEGIN_SRC emacs-lisp
+(setq rmh-elfeed-org-files "~/.elfeed/elfeed.org")
+#+END_SRC
+** OrgMode
+*** Agenda
+#+BEGIN_SRC emacs-lisp
 (after! org (setq org-agenda-files '("~/.org/workload/tasks.org" "~/.org/workload/references.org")))
 (after! org (setq org-agenda-diary-file "~/.org/diary.org"
                   org-agenda-dim-blocked-tasks t
@@ -103,23 +157,34 @@
                   org-agenda-skip-deadline-if-done t
                   org-enforce-todo-checkbox-dependencies nil
                   org-habit-show-habits t))
-
+#+END_SRC
+**** Load all *.org files to agenda
+#+BEGIN_SRC emacs-lisp
 (load-library "find-lisp")
 (after! org (setq org-agenda-files
                   (find-lisp-find-files "~/.org/" "\.org$")))
-
+#+END_SRC
+*** Captures
+#+BEGIN_SRC emacs-lisp
 ;(after! org (setq org-capture-templates
 ;                  '(("a" "Append")
 ;                    ("c" "Captures"))))
-
+#+END_SRC
+***** Capture
+****** Append Headline
+#+BEGIN_SRC emacs-lisp
 (after! org (add-to-list 'org-capture-templates
                          '("h" "Append Headline" entry (file+function org-capture-file-selector org-capture-templates-append-headline)
                            "%(format \"%s\" org-capture-templates-dynamic-opt1)%?")))
-
+#+END_SRC
+****** Append Notes
+#+BEGIN_SRC emacs-lisp
 (after! org (add-to-list 'org-capture-templates
                          '("l" "Append List" plain (file+function org-capture-file-selector org-capture-templates-append-notes)
                            "%(format \"%s\" org-capture-templates-dynamic-opt2)%?")))
-
+#+END_SRC
+****** New Task
+#+BEGIN_SRC emacs-lisp
 (after! org (add-to-list 'org-capture-templates
              '("t" "Task" entry (file+headline org-gtd-tasks-file "INBOX")
                "* TODO %^{taskname}%? %^{CATEGORY}p
@@ -127,11 +192,15 @@
 :CREATED: %U
 :END:
 ")))
-
+#+END_SRC
+****** Reference
+#+BEGIN_SRC emacs-lisp
 (after! org (add-to-list 'org-capture-templates
              '("r" "Reference" entry (file "~/.org/workload/references.org")
 "* TODO %u %^{reference}%?")))
-
+#+END_SRC
+****** Notes
+#+BEGIN_SRC emacs-lisp
 (defun my/generate-org-note-name ()
   (setq my-org-note--name (read-string "Name: "))
   (expand-file-name (format "%s.org" my-org-note--name) "~/.org/notes/"))
@@ -140,7 +209,9 @@
                          '("n" "New Note" plain (file my/generate-org-note-name)
                            "%(format \"#+TITLE: %s\n\" my-org-note--name)
 %?")))
-
+#+END_SRC
+******* +Entry to Note
+#+BEGIN_SRC emacs-lisp
 (defun org-capture-file-selector ()
   "test file selector"
   (interactive)
@@ -149,7 +220,9 @@
 (after! org (add-to-list 'org-capture-templates
                          '("fnh" "New Headline to Note" entry (file org-capture-file-selector)
                            "* %?")))
-
+#+END_SRC
+******* +Item to Note Headline
+#+BEGIN_SRC emacs-lisp
 (defun org-capture-file-selector ()
   "test file selector"
   (interactive)
@@ -158,24 +231,34 @@
 (after! org (add-to-list 'org-capture-templates
                          '("fni" "New Item to Headline" plain (file+function org-capture-file-selector org-capture-headline-finder)
                            "+ %u %?")))
-
+#+END_SRC
+******* +Item to Task
+#+BEGIN_SRC emacs-lisp
 (after! org (add-to-list 'org-capture-templates
              '("fti" "+Task Item" plain (file+function "~/.org/workload/tasks.org" org-capture-headline-finder)
 "+ %u %?")))
-
+#+END_SRC
+******* +Child Task
+#+BEGIN_SRC emacs-lisp
 (after! org (add-to-list 'org-capture-templates
              '("ftc" "Child Task" entry (file+function "~/.org/workload/tasks.org" org-find-task-headline)
 "* TODO %u %^{task}%? %^G")))
-
+#+END_SRC
+******* Child Task
+#+BEGIN_SRC emacs-lisp
 (after! org (add-to-list 'org-capture-templates
              '("bt" "Task" entry (file+function buffer-name org-find-task-headline)
 "* TODO %u %^{task} %^G
 %?")))
-
+#+END_SRC
+****** Daily Task
+#+BEGIN_SRC emacs-lisp
 (after! org (add-to-list 'org-capture-templates
                          '("d" "Daily Task" plain (file+headline "~/.org/workload/tasks.org" "Daily Items")
                            "- [ ] %t %?")))
-
+#+END_SRC
+****** Time Tracking
+#+BEGIN_SRC emacs-lisp
 (after! org (add-to-list 'org-capture-templates
              '("x" "Time Tracker" entry (file+olp+datetree "~/.org/workload/timetracking.org")
                "* [%\\1] %\\7 for %\\5
@@ -192,14 +275,18 @@
 :LOGBOOK:
 :END:
 %?" :tree-type week :clock-in t :clock-resume t)))
-
+#+END_SRC
+*** Directories
+#+BEGIN_SRC emacs-lisp
 (after! org (setq org-directory "~/.org/"
                   org-image-actual-width nil
                   +org-export-directory "~/.export/"
                   org-archive-location "~/.org/workload/archive.org::datetree/"
                   org-default-notes-file "~/.org/workload/inbox.org"
                   projectile-project-search-path '("~/.org/")))
-
+#+END_SRC
+*** Exports
+#+BEGIN_SRC emacs-lisp
 (after! org (setq org-html-head-include-scripts t
                   org-export-with-toc t
                   org-export-with-author t
@@ -213,7 +300,10 @@
                   org-export-with-properties t
                   org-export-with-smart-quotes t
                   org-export-backends '(pdf ascii html latex odt md pandoc)))
-
+#+END_SRC
+*** Faces
+Need to add condition to adjust faces based on theme select.
+#+BEGIN_SRC emacs-lisp
 (after! org (setq org-todo-keyword-faces
       '(("TODO" :foreground "OrangeRed" :weight bold)
         ("NEXT" :foreground "SteelBlue" :weight bold)
@@ -221,26 +311,36 @@
         ("ACTIVE" :foreground "DeepPink" :weight bold)
         ("NEXT" :foreground "spring green" :weight bold)
         ("DONE" :foreground "slategrey" :weight bold :strike-through t))))
-
+#+END_SRC
+*** Keywords
+#+BEGIN_SRC emacs-lisp
 (after! org (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n!)" "SOMEDAY(s!)" "HOLDING(h!)" "DELEGATED(e!)" "|" "DONE(d!)"))))
-
+#+END_SRC
+*** Logging & Drawers
+#+BEGIN_SRC emacs-lisp
 (after! org (setq org-log-state-notes-insert-after-drawers nil
                   org-log-into-drawer t
                   org-log-done 'time
                   org-log-repeat 'time
                   org-log-redeadline 'note
                   org-log-reschedule 'note))
-
+#+END_SRC
+*** Prettify
+#+BEGIN_SRC emacs-lisp
 ;(after! org (setq org-bullets-bullet-list '("•" "◦")
 (after! org (setq org-hide-emphasis-markers nil
                   org-bullets-bullet-list '("◉" "⚫" "○")
                   org-list-demote-modify-bullet '(("+" . "-") ("1." . "a.") ("-" . "+"))
                   org-ellipsis "▼"))
-
+#+END_SRC
+*** Properties
+#+BEGIN_SRC emacs-lisp
 (setq org-use-property-inheritance t ; We like to inhert properties from their parents
       org-catch-invisible-edits 'smart) ; Catch invisible edits
-
+#+END_SRC
+*** Publishing
+#+BEGIN_SRC emacs-lisp
 (after! org (setq org-publish-project-alist
                   '(("attachments"
                      :base-directory "~/.org/notes/attachments/"
@@ -266,19 +366,27 @@
                      :auto-preamble t
                      :with-toc t)
                     ("myprojectweb" :components("attachments" "notes")))))
-
+#+END_SRC
+*** Refiling
+#+BEGIN_SRC emacs-lisp
 (after! org (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
                   org-outline-path-complete-in-steps nil
                   org-refile-allow-creating-parent-nodes 'confirm))
-
+#+END_SRC
+*** Startup
+#+BEGIN_SRC emacs-lisp
 (after! org (setq org-startup-indented t
                   org-src-tab-acts-natively t))
 ;(add-hook 'org-mode-hook (lambda () (org-autolist-mode)))
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook 'turn-off-auto-fill)
-
+#+END_SRC
+*** Tags
+#+BEGIN_SRC emacs-lisp
 (after! org (setq org-tags-column -80))
-
+#+END_SRC
+** Org Rifle
+#+BEGIN_SRC emacs-lisp
 (use-package helm-org-rifle
   :after (helm org)
   :preface
@@ -384,7 +492,9 @@
   (helm-org-rifle-test-against-path t))
 
 (provide 'setup-helm-org-rifle)
-
+#+END_SRC
+** Org Roam
+#+BEGIN_SRC emacs-lisp
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
@@ -401,7 +511,9 @@
   (org-roam-mode +1))
 (require 'company-org-roam)
 (push 'company-org-roam company-backends)
-
+#+END_SRC
+** Super Agenda
+#+BEGIN_SRC emacs-lisp
 (org-super-agenda-mode t)
 (setq org-agenda-custom-commands
       '(("k" "Tasks"
@@ -470,7 +582,10 @@
             (string-suffix-p ".org" file))
         file
       (concat file ".org"))))
-
+#+END_SRC
+* Custom Functions
+** my--browse-url
+#+BEGIN_SRC emacs-lisp
 (defun my--browse-url (url &optional _new-window)
   ;; new-window ignored
   "Opens link via powershell.exe"
@@ -480,7 +595,9 @@
            0 nil
            (list "-Command" quotedUrl))))
 (setq-default browse-url-browser-function 'my--browse-url)
-
+#+END_SRC
+** my-agenda-prefix
+#+BEGIN_SRC emacs-lisp
 (defun my-agenda-prefix ()
   (format "%s" (my-agenda-indent-string (org-current-level))))
 
@@ -492,7 +609,9 @@
         (setq level (1- level)
               str (concat str "──")))
       (concat str "►"))))
-
+#+END_SRC
+** my/goto
+#+BEGIN_SRC emacs-lisp
 ;;; my-goto.el --- go to things quickly -*- lexical-binding: t; -*-
 
 ;; This is free and unencumbered software released into the public domain.
@@ -562,7 +681,9 @@
 
 (provide 'my-goto)
 ;;; my-goto.el ends here
-
+#+END_SRC
+** org-archive-file
+#+BEGIN_SRC emacs-lisp
 (defvar org-archive-directory "~/.org/archives/")
 (defun org-archive-file ()
   "Moves the current buffer to the archived folder"
@@ -572,7 +693,9 @@
     (write-file (expand-file-name (file-name-nondirectory old) dir) t)
     (delete-file old)))
 (provide 'org-archive-file)
-
+#+END_SRC
+** org-capture-templates-dynamic-headline
+#+BEGIN_SRC emacs-lisp
 (defun org-capture-templates-append-headline ()
   "A guided walk-through to capturing"
   (interactive)
@@ -600,7 +723,9 @@
                                                      (concat (format-time-string "<%Y-%m-%d %a>")))
                                                  (if (equal date1 (nth 2 var2))
                                                      (concat (format-time-string "[%Y-%m-%d %a]")))))))))
-
+#+END_SRC
+** org-capture-templates-dynamic-notes
+#+BEGIN_SRC emacs-lisp
 (defun org-capture-templates-append-notes ()
   "A guided walk-through to capturing"
   (interactive)
@@ -632,12 +757,17 @@
                                                      (concat (format-time-string "[%Y-%m-%d %a]")))
                                                  (if (equal date1 (nth 2 var2))
                                                      (concat (format-time-string "<%Y-%m-%d %a>")))))))))
+#+END_SRC
 
+** org-capture-file-selector
+#+BEGIN_SRC emacs-lisp
 (defun org-capture-file-selector ()
   "test file selector"
   (interactive)
   (concat (read-file-name "Select file: " org-directory)))
-
+#+END_SRC
+** org-capture-headline-finder
+#+BEGIN_SRC emacs-lisp
 (defun org-capture-headline-finder (&optional arg)
   "Like `org-todo-list', but using only the current buffer's file."
   (interactive "P")
@@ -646,7 +776,9 @@
         (error "%s is not visiting a file" (buffer-name (current-buffer)))
       (counsel-org-agenda-headlines)))
   (goto-char (org-end-of-subtree)))
-
+#+END_SRC
+** org-update-cookies-after-save
+#+BEGIN_SRC emacs-lisp
 (defun org-update-cookies-after-save()
   (interactive)
   (let ((current-prefix-arg '(4)))
@@ -656,47 +788,13 @@
           (lambda ()
             (add-hook 'before-save-hook 'org-update-cookies-after-save nil 'make-it-local)))
 (provide 'org-update-cookies-after-save)
-
+#+END_SRC
+** set-truncate-lines
+#+BEGIN_SRC emacs-lisp
 (setq-default truncate-lines t)
 
 (defun jethro/truncate-lines-hook ()
   (setq truncate-lines nil))
 
 (add-hook 'text-mode-hook 'jethro/truncate-lines-hook)
-
-;; anki-editor
-(use-package! anki-editor
-  :after org-noter
-  :bind (:map org-mode-map
-              ("<f12>" . anki-editor-cloze-region-auto-incr)
-              ("<f11>" . anki-editor-cloze-region-dont-incr)
-              ("<f10>" . anki-editor-reset-cloze-number)
-              ("<f9>"  . anki-editor-push-tree))
-  :hook (org-capture-after-finalize . anki-editor-reset-cloze-number) ; Reset cloze-number after each capture.
-  :config
-  (setq anki-editor-create-decks t ;; Allow anki-editor to create a new deck if it doesn't exist
-        anki-editor-org-tags-as-anki-tags t)
-
-  (defun anki-editor-cloze-region-auto-incr (&optional arg)
-    "Cloze region without hint and increase card number."
-    (interactive)
-    (anki-editor-cloze-region my-anki-editor-cloze-number "")
-    (setq my-anki-editor-cloze-number (1+ my-anki-editor-cloze-number))
-    (forward-sexp))
-  (defun anki-editor-cloze-region-dont-incr (&optional arg)
-    "Cloze region without hint using the previous card number."
-    (interactive)
-    (anki-editor-cloze-region (1- my-anki-editor-cloze-number) "")
-    (forward-sexp))
-  (defun anki-editor-reset-cloze-number (&optional arg)
-    "Reset cloze number to ARG or 1"
-    (interactive)
-    (setq my-anki-editor-cloze-number (or arg 1)))
-  (defun anki-editor-push-tree ()
-    "Push all notes under a tree."
-    (interactive)
-    (anki-editor-push-notes '(4))
-    (anki-editor-reset-cloze-number))
-  ;; Initialize
-  (anki-editor-reset-cloze-number)
-)
+#+END_SRC

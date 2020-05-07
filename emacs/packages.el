@@ -1,10 +1,28 @@
-;; -*- no-byte-compile: t; -*-
-;;; ~/.doom.d/packages.el
-
-;;; Examples:
-;; (package! some-package)
-;; (package! another-package :recipe (:fetcher github :repo "username/repo"))
-;; (package! builtin-package :disable t)
 (package! anki-editor)
 (package! ox-gfm)
 (package! vimrc-mode)
+
+;; Must Have packages
+(package! helm-org-rifle)
+(package! org-sidebar)
+(package! org-super-agenda)
+(package! ox-pandoc)
+(package! ox-twbs)
+(package! deadgrep)
+(package! org-web-tools)
+(package! company-org-roam)
+(package! bookmark+
+  :recipe (:host github :repo "emacsmirror/bookmark-plus"))
+(package! doct
+  :recipe (:host github :repo "progfolio/doct"))
+;; Optional
+;(package! org-board)
+;(package! org-mind-map)
+;(package! pdf-tools)
+;(package! gnuplot)
+;(package! gnuplot-mode)
+;; Testing
+(package! org-analyzer)
+;(package! org-autolist)
+;(package! org-mru-clock)
+;(package! org-time-budgets)
