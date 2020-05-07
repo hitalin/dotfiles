@@ -24,7 +24,6 @@ prompt pure
 zinit for \
     light-mode  zsh-users/zsh-completions \
     light-mode  zsh-users/zsh-autosuggestions \
-    light-mode  zdharma/fast-syntax-highlighting \
 
 # bindkey
 bindkey -e
