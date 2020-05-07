@@ -1,4 +1,4 @@
-; doom
+; personal
 
 ;; font for GUI
 (setq doom-font (font-spec :family "Cica" :size 14)
@@ -8,8 +8,6 @@
 
 ;; doom-theme
 (setq doom-theme 'doom-molokai)
-
-; common
 
 ;; set language as Japanese
 (set-language-environment 'Japanese)

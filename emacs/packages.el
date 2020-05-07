@@ -1,6 +1,4 @@
-(package! anki-editor)
-(package! ox-gfm)
-(package! vimrc-mode)
+; nmartin84/.doom.d
 
 ;; Must Have packages
 (package! helm-org-rifle)
@@ -26,3 +24,8 @@
 ;(package! org-autolist)
 ;(package! org-mru-clock)
 ;(package! org-time-budgets)
+
+; personal
+(package! anki-editor)
+(package! ox-gfm)
+(package! vimrc-mode)
