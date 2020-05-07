@@ -17,19 +17,16 @@
 (set-language-environment  'utf-8)
 (prefer-coding-system 'utf-8)
 
-;; soft wrapping
-(global-visual-line-mode t)
-
 ;; Permit kill-saving text to and from to X11 clipboard; beats the
  ;; heck out of manually copying with the cursor.
-(defun kill-save-to-x-clipboard ()
+(defun copy-to-x-clipboard ()
   (interactive)
   (progn
     (shell-command-on-region (region-beginning) (region-end) "xsel -i")
-    (message "Kill-saved region to clipboard!")
+    (message "Copy region to clipboard!")
     (deactivate-mark)))
 
-(global-set-key (kbd "C-c k") 'kill-save-to-x-clipboard)
+(global-set-key (kbd "C-c k") 'copy-to-x-clipboard)
 
 (defun yank-from-x-clipboard ()
   (interactive)
