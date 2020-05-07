@@ -695,29 +695,3 @@
   ;; Initialize
   (anki-editor-reset-cloze-number)
 )
-
-;; Org-capture templates
-(setq org-my-anki-file "/path/to/your/anki.org")
-(add-to-list 'org-capture-templates
-             ("a" "Anki basic"
-              entry
-              (file+headline org-my-anki-file "Dispatch Shelf")
-              "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Basic\n:ANKI_DECK: Mega\n:END:\n** Front\n%?\n** Back\n%x\n"))
-(add-to-list 'org-capture-templates
-             ("A" "Anki cloze"
-              entry
-              (file+headline org-my-anki-file "Dispatch Shelf")
-              "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:ANKI_DECK: Mega\n:END:\n** Text\n%x\n** Extra\n"))
-
-;; Allow Emacs to access content from clipboard.
-(setq x-select-enable-clipboard t
-      x-select-enable-primary t)
-
-(defun make-orgcapture-frame ()
-    "Create a new frame and run org-capture."
-    (interactive)
-    (make-frame '((name . "org-capture") (window-system . x)))
-    (select-frame-by-name "org-capture")
-    (counsel-org-capture)
-    (delete-other-windows)
-    )
