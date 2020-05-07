@@ -15,6 +15,7 @@
 (set-language-environment  'utf-8)
 (prefer-coding-system 'utf-8)
 
+; https://www.reddit.com/r/emacs/comments/9x2gbd/pure_tty_emacs_all_the_time/
 ;; Permit kill-saving text to and from to X11 clipboard; beats the
 ;; heck out of manually copying with the cursor.
 (defun kill-save-to-x-clipboard ()
@@ -32,7 +33,7 @@
     (message "Yanked region from clipboard!"))
 (global-set-key (kbd "C-c y") 'yank-from-x-clipboard)
 
-; nmartin84/.doom.d
+; https://github.com/nmartin84/.doom.d
 (display-time-mode 1)
 (setq display-time-day-and-date t)
 
@@ -658,7 +659,7 @@
 
 (add-hook 'text-mode-hook 'jethro/truncate-lines-hook)
 
-;; https://yiufung.net/post/anki-org/
+; https://yiufung.net/post/anki-org/
 (use-package! anki-editor
   :after org-noter
   :bind (:map org-mode-map
