@@ -14,11 +14,17 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-# Load the pure theme, with zsh-async library that's bundled with it.
+### Load the pure theme, with zsh-async library that's bundled with it.
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 autoload -U promptinit; promptinit
 prompt pure
+
+### https://github.com/zdharma/zinit/blob/master/README.md
+zinit for \
+    light-mode  zsh-users/zsh-completions \
+    light-mode  zsh-users/zsh-autosuggestions \
+    light-mode  zdharma/fast-syntax-highlighting \
 
 # bindkey
 bindkey -e
