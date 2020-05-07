@@ -63,26 +63,6 @@
           ("n" "Note" entry (file+datetree "~/orgfiles/INBOX.org" "Note")
            "\n** %?\n")
           ))
-  ;; set task states
-  (setq org-todo-keywords
-        (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-                (sequence "WAIT(w)"  "|" "SOMEDAY(o)" "CANCEL(c)"))))
-  (setq org-todo-keyword-faces
-        (quote (("TODO" :foreground "#cc6666" :weight bold)
-                ("NEXT" :foreground "#8abeb7" :weight bold)
-                ("DONE" :foreground "#b5bd68" :weight bold)
-                ("WAIT" :foreground "#de935f" :weight bold)
-                ("SOMEDAY" :foreground "#b294bb" :weight bold)
-                ("CANCEL" :foreground "#f0c674" :weight bold :strike-through t))))
-  ;; trigger task states
-  (setq org-todo-state-tags-triggers
-        (quote (("TODO" ("WAIT") ("CANCEL"))
-                ("NEXT" ("WAIT") ("CANCEL"))
-                ("DONE" ("WAIT") ("CANCEL"))
-                ("WAIT" ("WAIT" . t))
-                ("SOMEDAY" ("WAIT", t))
-                ("CANCEL" ("CANCEL" . t))
-                )))
   ;; logging
   (setq org-log-done 'time)
   ;; prettify
