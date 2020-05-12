@@ -1,20 +1,23 @@
 * personal
-
 ** font for GUI
+#+BEGIN_SRC elisp
 (setq doom-font (font-spec :family "Cica" :size 14)
       doom-variable-pitch-font (font-spec :family "Cica" :height 120)
       doom-unicode-font (font-spec :family "all-the-icons")
       doom-big-font (font-spec :family "Cica" :size 16))
-
+#+END_SRC
 ** doom-theme
+#+BEGIN_SRC elisp
 (setq doom-theme 'doom-molokai)
-
+#+END_SRC
 ** set language as Japanese
+#+BEGIN_SRC elisp
 (set-language-environment 'Japanese)
 (set-language-environment  'utf-8)
 (prefer-coding-system 'utf-8)
-
-* https://www.reddit.com/r/emacs/comments/9x2gbd/pure_tty_emacs_all_the_time/
+#+END_SRC
+** https://www.reddit.com/r/emacs/comments/9x2gbd/pure_tty_emacs_all_the_time/
+#+BEGIN_SRC elisp
 (defun kill-save-to-x-clipboard ()
   (interactive)
   (progn
@@ -29,21 +32,25 @@
     (insert (shell-command-to-string "xsel -o")))
     (message "Yanked region from clipboard!"))
 (global-set-key (kbd "C-c y") 'yank-from-x-clipboard)
+#+END_SRC
+
 
 * https://github.com/nmartin84/.doom.d
-
 ** User Settings
+#+BEGIN_SRC elisp
 (display-time-mode 1)
 (setq display-time-day-and-date t)
-
+#+END_SRC
 ** Default Files
+#+BEGIN_SRC elisp
 (load-library "find-lisp")
 (defvar org-gtd-tasks-file "~/orgfiles/workload/tasks.org")
 (defvar org-gtd-archive-file "~/orgfiles/workload/archive.org")
 (defvar org-gtd-files (find-lisp-find-files "~/orgfiles/" "\.org$"))
 (defvar org-gtd-notes-files (find-lisp-find-files "~/orgfiles/notes/" "\.org$"))
-
+#+END_SRC
 ** Keys
+#+BEGIN_SRC elisp
 (map! :after org
       :map org-mode-map
       :localleader
@@ -65,10 +72,12 @@
       :desc "Swiper All" "@" #'swiper-all
       :prefix ("o" . "open")
       :desc "Deft" "w" #'deft)
+#+END_SRC
+
 
 * Behavior
-
 ** Popup Rules
+#+BEGIN_SRC elisp
 (after! org (set-popup-rule! "^Capture.*\\.org$" :side 'right :size .50 :select t :vslot 2 :ttl 3))
 (after! org (set-popup-rule! "Dictionary" :side 'bottom :size .30 :select t :vslot 3 :ttl 3))
 (after! org (set-popup-rule! "*helm*" :side 'bottom :size .30 :select t :vslot 5 :ttl 3))
@@ -79,25 +88,30 @@
 (after! org (set-popup-rule! "*xwidget" :side 'right :size .50 :select t :vslot 5 :ttl 3))
 (after! org (set-popup-rule! "*Org Agenda*" :side 'right :size .40 :select t :vslot 2 :ttl 3))
 (after! org (set-popup-rule! "*Org ql" :side 'right :size .50 :select t :vslot 2 :ttl 3))
-
+#+END_SRC
 ** Buffer Settings
+#+BEGIN_SRC elisp
 (global-auto-revert-mode t)
-
+#+END_SRC
 ** Other things
+#+BEGIN_SRC elisp
 (custom-set-faces! '(doom-modeline-evil-insert-state :weight bold :foreground "#339CDB"))
+#+END_SRC
+
 
 * Module Settings
-
 ** Bookmark+
+#+BEGIN_SRC elisp
 (require 'bookmark+)
-
+#+END_SRC
 ** Deft Mode
+#+BEGIN_SRC elisp
 (setq deft-directory "~/orgfiles/notes/")
 (setq deft-current-sort-method 'title)
-
+#+END_SRC
 ** OrgMode
-
 *** agenda
+#+BEGIN_SRC elisp
 (after! org (setq org-agenda-files '("~/orgfiles/workload/tasks.org" "~/orgfiles/workload/references.org")))
 (after! org (setq org-agenda-diary-file "~/orgfiles/diary.org"
                   org-agenda-dim-blocked-tasks t
@@ -110,29 +124,33 @@
                   org-agenda-skip-deadline-if-done t
                   org-enforce-todo-checkbox-dependencies nil
                   org-habit-show-habits t))
-
+#+END_SRC
 **** Load all *.org files to agenda
+#+BEGIN_SRC elisp
 (load-library "find-lisp")
 (after! org (setq org-agenda-files
                   (find-lisp-find-files "~/orgfiles/" "\.org$")))
-
+#+END_SRC
 *** Captures
+#+BEGIN_SRC elisp
 ;(after! org (setq org-capture-templates
 ;                  '(("a" "Append")
 ;                    ("c" "Captures"))))
-
+#+END_SRC
 **** Capture
-
-***** Append Headline
+#+BEGIN_SRC elisp
 (after! org (add-to-list 'org-capture-templates
                          '("h" "Append Headline" entry (file+function org-capture-file-selector org-capture-templates-append-headline)
                            "%(format \"%s\" org-capture-templates-dynamic-opt1)%?")))
+#+END_SRC
 ***** Append Notes
+#+BEGIN_SRC elisp
 (after! org (add-to-list 'org-capture-templates
                          '("l" "Append List" plain (file+function org-capture-file-selector org-capture-templates-append-notes)
                            "%(format \"%s\" org-capture-templates-dynamic-opt2)%?")))
-
+#+END_SRC
 ***** New Task
+#+BEGIN_SRC elisp
 (after! org (add-to-list 'org-capture-templates
              '("t" "Task" entry (file+headline org-gtd-tasks-file "INBOX")
                "* TODO %^{taskname}%? %^{CATEGORY}p
@@ -140,13 +158,15 @@
 :CREATED: %U
 :END:
 ")))
-
+#+END_SRC
 ***** Reference
+#+BEGIN_SRC elisp
 (after! org (add-to-list 'org-capture-templates
              '("r" "Reference" entry (file "~/orgfiles/workload/references.org")
 "* TODO %u %^{reference}%?")))
-
+#+END_SRC
 ***** Notes
+#+BEGIN_SRC elisp
 (defun my/generate-org-note-name ()
   (setq my-org-note--name (read-string "Name: "))
   (expand-file-name (format "%s.org" my-org-note--name) "~/orgfiles/notes/"))
@@ -679,8 +699,9 @@
   (setq truncate-lines nil))
 
 (add-hook 'text-mode-hook 'jethro/truncate-lines-hook)
-
-* https://yiufung.net/post/anki-org/
+#+END_SRC
+** https://yiufung.net/post/anki-org/
+#+BEGIN_SRC elisp
 (use-package! anki-editor
   :after org-noter
   :bind (:map org-mode-map
@@ -716,3 +737,4 @@
   ;; Initialize
   (anki-editor-reset-cloze-number)
 )
+#+END_SRC
