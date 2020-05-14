@@ -80,17 +80,17 @@ if dein#load_state(s:dein_dir)
   call dein#add('itchyny/lightline.vim')
   call dein#add('itchyny/vim-gitbranch')
   call dein#add('mhinz/vim-startify')
-  " syntax highlight
-  call dein#add('vim-python/python-syntax')
-  call dein#add('octol/vim-cpp-enhanced-highlight')
-  call dein#add('editorconfig/editorconfig-vim')
-  call dein#add('jceb/vim-orgmode')
   " colorization
   call dein#add('ntpeters/vim-better-whitespace')
   call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#add('chrisbra/Colorizer')
   call dein#add('flazz/vim-colorschemes')
-  " view documents
+  " syntax highlight
+  call dein#add('vim-python/python-syntax')
+  call dein#add('octol/vim-cpp-enhanced-highlight')
+  call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('jceb/vim-orgmode')
+  " preview documents
   call dein#add('vim-scripts/VOoM')
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
          \ 'build': 'sh -c "cd app & yarn install"' })
