@@ -91,7 +91,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('jceb/vim-orgmode')
   " preview documents
-  call dein#add('vim-scripts/VOoM')
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
          \ 'build': 'sh -c "cd app & yarn install"' })
   " depend on pynvim
@@ -429,6 +428,9 @@ if dein#tap('vim-better-whitespace')
   let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
   autocmd FileType markdown EnableWhitespace
 endif
+
+" VOoM
+let g:voom_python_versions = [3]
 
 " Basic settings {{{
 
