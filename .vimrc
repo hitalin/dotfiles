@@ -70,8 +70,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('justinmk/vim-sneak')
   call dein#add('unblevable/quick-scope')
   call dein#add('kassio/neoterm')
-  call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-         \ 'build': 'sh -c "cd app & yarn install"' })
   " add features
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
@@ -92,6 +90,10 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#add('chrisbra/Colorizer')
   call dein#add('flazz/vim-colorschemes')
+  " view documents
+  call dein#add('vim-scripts/VOoM')
+  call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
+         \ 'build': 'sh -c "cd app & yarn install"' })
   " depend on pynvim
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
