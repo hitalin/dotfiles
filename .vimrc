@@ -112,12 +112,6 @@ endif
 
 filetype plugin indent on
 
-" accelerated-jk
-if dein#tap('accelerated-jk')
-  nmap j <Plug>(accelerated_jk_gj)
-  nmap k <Plug>(accelerated_jk_gk)
-endif
-
 " coc
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -416,7 +410,7 @@ if dein#tap('Colorizer')
   autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
 endif
 
-"python-syntax
+" python-syntax
 if dein#tap('python-syntax')
   let g:python_highlight_all = 1
 endif
@@ -428,21 +422,6 @@ if dein#tap('vim-cpp-enhanced-highlight')
   let g:cpp_class_decl_highlight = 1
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_concepts_highlight = 1
-endif
-
-" previm
-if dein#tap('previm')
-  let g:previm_open_cmd = '/usr/bin/chromium'
-endif
-
-" quickrun
-if dein#tap('quickrun')
-  let g:quickrun_config = {}
-endif
-
-" vim-markdown
-if dein#tap('vim-markdown')
-  let g:vim_markdown_folding_disabled = 1
 endif
 
 if dein#tap('vimtex')
