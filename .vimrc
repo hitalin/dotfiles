@@ -429,9 +429,6 @@ if dein#tap('vim-better-whitespace')
   autocmd FileType markdown EnableWhitespace
 endif
 
-" VOoM
-let g:voom_python_versions = [3]
-
 " Basic settings {{{
 
 " Set statusline
