@@ -12,6 +12,10 @@ fi
 
 if [ ! -d ~/.gdbinit-gef.py ]; then
   wget -O ~/.gdbinit-gef.py -q https://github.com/hugsy/gef/raw/master/gef.py
+  pip install --user keystone-engine
+  pip install --user unicorn
+  pip install --user capstone
+  pip install --user ropper
 fi
 
 echo "Finished!"
