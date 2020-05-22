@@ -13,12 +13,13 @@ set disable-randomization off
 set follow-fork-mode child
 
 define cs
-    checksec
+  checksec
 end
 
 source ~/peda/peda.py
 source ~/pwngdb/pwngdb.py
 source ~/pwngdb/angelheap/gdbinit.py
+source ~/.gdbinit-gef.py
 
 define hook-run
 python
