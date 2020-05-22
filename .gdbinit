@@ -5,7 +5,6 @@ set history expansion on
 set print pretty on
 set print static-members off
 set pagination off
-set charset ASCII
 set disassembly-flavor intel
 
 set print asm-demangle on
