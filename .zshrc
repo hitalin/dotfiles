@@ -23,7 +23,6 @@ prompt pure
 ### https://github.com/zdharma/zinit/blob/master/README.md
 zinit for \
     light-mode  zsh-users/zsh-completions \
-    light-mode  zsh-users/zsh-autosuggestions \
 
 # bindkey
 bindkey -e
