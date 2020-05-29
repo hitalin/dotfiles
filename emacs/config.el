@@ -217,7 +217,7 @@
         ("DONE" :foreground "slategrey" :weight bold :strike-through t))))
 
 (after! org (setq org-todo-keywords
-      '((sequence "TODO(t)" "NEXT(n!)" "SOMEDAY(s!)" "HOLDING(h!)" "DELEGATED(e!)" "|" "DONE(d!)"))))
+      '((sequence "TODO(t)" "NEXT(n!)" "SOMEDAY(s!)" "HOLD(h!)" "KILL(k!)" "|" "DONE(d!)"))))
 
 (after! org (setq org-log-state-notes-insert-after-drawers nil
                   org-log-into-drawer t
@@ -424,7 +424,7 @@
                  (org-tags-match-list-sublevels t)
                  (org-agenda-skip-function
                   '(or
-                    (org-agenda-skip-subtree-if 'nottodo '("DELEGATED"))))
+                    (org-agenda-skip-subtree-if 'nottodo '("KILL"))))
                  (org-super-agenda-groups
                   '((:auto-property "WHO")))))))
         ("n" "Notes"
@@ -442,7 +442,7 @@
                     (org-agenda-skip-entry-if 'regexp "\[#[A-E]\]")
                     (org-agenda-skip-if 'nil '(scheduled deadline))
                     (org-agenda-skip-entry-if 'todo '("SOMEDAY"))
-                    (org-agenda-skip-entry-if 'todo '("DELEGATED"))))
+                    (org-agenda-skip-entry-if 'todo '("KILL"))))
                  (org-agenda-files '("~/orgfiles/workload/tasks.org"))
                  (org-super-agenda-groups
                   '((:auto-ts t)))))))
