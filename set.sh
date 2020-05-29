@@ -21,7 +21,7 @@ if [ ! -f ~/.emacs.d/ ]; then
   ln -Fis $SCRIPT_DIR/emacs/early-init.el ~/.doom.d/early-init.el
   ln -Fis $SCRIPT_DIR/emacs/init.el ~/.doom.d/init.el
   ln -Fis $SCRIPT_DIR/emacs/packages.el ~/.doom.d/packages.el
-  ~/.emacs.d/bin/doom refresh
+  ~/.emacs.d/bin/doom sync
   ~/.emacs.d/bin/doom doctor
 fi
 
