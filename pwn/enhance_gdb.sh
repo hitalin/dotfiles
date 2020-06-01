@@ -18,7 +18,7 @@ if [ ! -d ~/.gdbinit-gef.py ]; then
 fi
 
 if [ ! -d ~/voltron/ ]; then
-  git clone https://github.com/snare/voltron.git
+  git clone https://github.com/snare/voltron.git ~/voltron
 fi
 
 echo "Finished!"
