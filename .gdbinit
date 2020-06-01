@@ -15,10 +15,10 @@ define cs
   checksec
 end
 
-source ~/peda/peda.py
-source ~/pwngdb/pwngdb.py
-source ~/pwngdb/angelheap/gdbinit.py
-source ~/.gdbinit-gef.py
+source ~/.gdb/peda/peda.py
+source ~/.gdb/pwngdb/pwngdb.py
+source ~/.gdb/pwngdb/angelheap/gdbinit.py
+source ~/.gdb/.gdbinit-gef.py
 
 define hook-run
 python
@@ -26,3 +26,4 @@ import angelheap
 angelheap.init_angelheap()
 end
 end
+source /home/taka/.local/lib/python3.8/site-packages/voltron/entry.py
