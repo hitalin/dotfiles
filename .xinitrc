@@ -45,5 +45,6 @@ fcitx &
 dunst &
 urxvtd --quiet --fork --opendisplay
 
-exec i3 -V >> ~/.config/i3/i3log-$(date +'%F-%k-%M-%S') 2>&1
+exec i3
+#exec i3 -V >> ~/.config/i3/i3log-$(date +'%F-%k-%M-%S') 2>&1
 #end
