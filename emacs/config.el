@@ -86,7 +86,7 @@
 (setq deft-current-sort-method 'title)
 
 (after! org (setq org-agenda-files '("~/orgfiles/workload/tasks.org" "~/orgfiles/workload/references.org")))
-(after! org (setq org-agenda-diary-file "~/orgfiles/diary.org"
+(after! org (setq org-agenda-diary-file "~/orgfiles/workload/diary.org"
                   org-agenda-dim-blocked-tasks t
                   org-agenda-use-time-grid t
                   org-agenda-hide-tags-regexp ":\\w+:"
