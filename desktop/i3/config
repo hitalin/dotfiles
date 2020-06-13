@@ -39,13 +39,6 @@ bindsym $mod+Return exec urxvtc
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run -show combi"
 bindsym $mod+Shift+d exec --no-startup-id rofi -show window
@@ -175,18 +168,24 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3blocks
         position top
-        font pango:Cica 12
+        font pango:DejaVu Sans Mono 12
 }
 
-# Set background
-#exec_always --no-startup-id nitrogen --restore
-# run special warning script
+# for only i3-gaps
+gaps outer 2
+gaps inner 2
+
+smart_gaps on
+smart_borders no_gaps
+
+# hide window title bar
+for_window [class="^.*"] border pixel 1
+new_window 1pixel
+
+# startup
 exec --no-startup-id sh $HOME/dotfiles/desktop/wallpaper/.fehbg
-# Compositing Manager
 exec --no-startup-id picom -b --config $HOME/dotfiles/desktop/xorg/picom.conf
-# dropbox
 exec --no-startup-id dropbox
-# emacs
 exec --no-startup-id LC_CTYPE=ja_JP.UTF-8 emacs --daemon
