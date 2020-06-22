@@ -16,8 +16,7 @@
 (prefer-coding-system 'utf-8)
 
 ; https://www.reddit.com/r/emacs/comments/9x2gbd/pure_tty_emacs_all_the_time/
-;; Permit kill-saving text to and from to X11 clipboard; beats the
-;; heck out of manually copying with the cursor.
+;; Permit kill-saving text to and from to X11 clipboard
 (defun kill-save-to-x-clipboard ()
   (interactive)
   (progn
@@ -32,6 +31,10 @@
     (insert (shell-command-to-string "xsel -o")))
     (message "Yanked region from clipboard!"))
 (global-set-key (kbd "C-c y") 'yank-from-x-clipboard)
+
+;; Allow GUI Emacs to access content from clipboard.
+;(setq x-select-enable-clipboard t
+;      x-select-enable-primary t)
 
 ; https://github.com/nmartin84/.doom.d
 (display-time-mode 1)
@@ -87,6 +90,7 @@
 
 (after! org (setq org-agenda-files '("~/orgfiles/workload/tasks.org" "~/orgfiles/workload/references.org")))
 (after! org (setq org-agenda-diary-file "~/orgfiles/workload/diary.org"
+                  org-my-anki-file "~/orgfiles/workload/anki.org"
                   org-agenda-dim-blocked-tasks t
                   org-agenda-use-time-grid t
                   org-agenda-hide-tags-regexp ":\\w+:"
@@ -134,6 +138,15 @@
                          '("n" "New Note" plain (file my/generate-org-note-name)
                            "%(format \"#+TITLE: %s\n\" my-org-note--name)
 %?")))
+
+;; https://yiufung.net/post/anki-org/
+(after! org (add-to-list 'org-capture-templates
+                         '("a" "Anki basic" entry (file+headline org-my-anki-file "Dispatch Shelf")
+                           "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Basic\n:ANKI_DECK: Mega\n:END:\n** Front\n%?\n** Back\n%x\n")))
+
+(after! org (add-to-list 'org-capture-templates
+                         '("A" "Anki cloze" entry (file+headline org-my-anki-file "Dispatch Shelf")
+                           "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:ANKI_DECK: Mega\n:END:\n** Text\n%x\n** Extra\n")))
 
 (defun org-capture-file-selector ()
   "test file selector"
@@ -660,6 +673,7 @@
 (add-hook 'text-mode-hook 'jethro/truncate-lines-hook)
 
 ; https://yiufung.net/post/anki-org/
+;; Emacs/Org-mode as editor to Anki
 (use-package! anki-editor
   :after org-noter
   :bind (:map org-mode-map
@@ -695,3 +709,4 @@
   ;; Initialize
   (anki-editor-reset-cloze-number)
 )
+;;
