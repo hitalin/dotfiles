@@ -23,7 +23,10 @@ export PATH=$PATH:/home/taka/.local/bin
 
 # WSL
 if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
-  export DISPLAY=localhost:0.0
+## for WSL1
+#export DISPLAY=localhost:0.0
+## for WSL2
+  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 fi
 
 # terminal
