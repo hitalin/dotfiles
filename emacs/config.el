@@ -33,8 +33,8 @@
 (global-set-key (kbd "C-c y") 'yank-from-x-clipboard)
 
 ;; Allow GUI Emacs to access content from clipboard.
-;(setq x-select-enable-clipboard t
-;      x-select-enable-primary t)
+(setq x-select-enable-clipboard t
+      x-select-enable-primary t)
 
 ; https://github.com/nmartin84/.doom.d
 (display-time-mode 1)
