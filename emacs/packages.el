@@ -25,8 +25,10 @@
 ;(package! org-mru-clock)
 ;(package! org-time-budgets)
 
-; personal
+; yiufung/dot-emacs
 (package! anki-editor)
+(package! pdf-tools)
 (package! org-download)
+; personal
 (package! ox-gfm)
 (package! vimrc-mode)
