@@ -27,5 +27,6 @@
 
 ; personal
 (package! anki-editor)
+(package! org-download)
 (package! ox-gfm)
 (package! vimrc-mode)
