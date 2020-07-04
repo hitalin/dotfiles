@@ -41,10 +41,10 @@
 (setq display-time-day-and-date t)
 
 (load-library "find-lisp")
-(defvar org-gtd-tasks-file "~/orgfiles/workload/tasks.org")
-(defvar org-gtd-archive-file "~/orgfiles/workload/archive.org")
-(defvar org-gtd-files (find-lisp-find-files "~/orgfiles/" "\.org$"))
-(defvar org-gtd-notes-files (find-lisp-find-files "~/orgfiles/notes/" "\.org$"))
+(defvar org-gtd-tasks-file "~/org/workload/tasks.org")
+(defvar org-gtd-archive-file "~/org/workload/archive.org")
+(defvar org-gtd-files (find-lisp-find-files "~/org/" "\.org$"))
+(defvar org-gtd-notes-files (find-lisp-find-files "~/org/notes/" "\.org$"))
 
 (map! :after org
       :map org-mode-map
@@ -85,12 +85,12 @@
 
 (require 'bookmark+)
 
-(setq deft-directory "~/orgfiles/notes/")
+(setq deft-directory "~/org/notes/")
 (setq deft-current-sort-method 'title)
 
-(after! org (setq org-agenda-files '("~/orgfiles/workload/tasks.org" "~/orgfiles/workload/references.org")))
-(after! org (setq org-agenda-diary-file "~/orgfiles/workload/diary.org"
-                  org-my-anki-file "~/orgfiles/workload/anki.org"
+(after! org (setq org-agenda-files '("~/org/workload/tasks.org" "~/org/workload/references.org")))
+(after! org (setq org-agenda-diary-file "~/org/workload/diary.org"
+                  org-my-anki-file "~/org/workload/anki.org"
                   org-agenda-dim-blocked-tasks t
                   org-agenda-use-time-grid t
                   org-agenda-hide-tags-regexp ":\\w+:"
@@ -104,7 +104,7 @@
 
 (load-library "find-lisp")
 (after! org (setq org-agenda-files
-                  (find-lisp-find-files "~/orgfiles/" "\.org$")))
+                  (find-lisp-find-files "~/org/" "\.org$")))
 
 ;(after! org (setq org-capture-templates
 ;                  '(("a" "Append")
@@ -127,12 +127,12 @@
 ")))
 
 (after! org (add-to-list 'org-capture-templates
-             '("r" "Reference" entry (file "~/orgfiles/workload/references.org")
+             '("r" "Reference" entry (file "~/org/workload/references.org")
 "* TODO %u %^{reference}%?")))
 
 (defun my/generate-org-note-name ()
   (setq my-org-note--name (read-string "Name: "))
-  (expand-file-name (format "%s.org" my-org-note--name) "~/orgfiles/notes/"))
+  (expand-file-name (format "%s.org" my-org-note--name) "~/org/notes/"))
 
 (after! org (add-to-list 'org-capture-templates
                          '("n" "New Note" plain (file my/generate-org-note-name)
@@ -151,7 +151,7 @@
 (defun org-capture-file-selector ()
   "test file selector"
   (interactive)
-  (setq org-notes-directory "~/orgfiles/notes/")
+  (setq org-notes-directory "~/org/notes/")
   (concat (read-file-name "Select file: " org-notes-directory)))
 (after! org (add-to-list 'org-capture-templates
                          '("fnh" "New Headline to Note" entry (file org-capture-file-selector)
@@ -160,18 +160,18 @@
 (defun org-capture-file-selector ()
   "test file selector"
   (interactive)
-  (setq org-notes-directory "~/orgfiles/notes/")
+  (setq org-notes-directory "~/org/notes/")
   (concat (read-file-name "Select file: " org-notes-directory)))
 (after! org (add-to-list 'org-capture-templates
                          '("fni" "New Item to Headline" plain (file+function org-capture-file-selector org-capture-headline-finder)
                            "+ %u %?")))
 
 (after! org (add-to-list 'org-capture-templates
-             '("fti" "+Task Item" plain (file+function "~/orgfiles/workload/tasks.org" org-capture-headline-finder)
+             '("fti" "+Task Item" plain (file+function "~/org/workload/tasks.org" org-capture-headline-finder)
 "+ %u %?")))
 
 (after! org (add-to-list 'org-capture-templates
-             '("ftc" "Child Task" entry (file+function "~/orgfiles/workload/tasks.org" org-find-task-headline)
+             '("ftc" "Child Task" entry (file+function "~/org/workload/tasks.org" org-find-task-headline)
 "* TODO %u %^{task}%? %^G")))
 
 (after! org (add-to-list 'org-capture-templates
@@ -180,11 +180,11 @@
 %?")))
 
 (after! org (add-to-list 'org-capture-templates
-                         '("d" "Daily Task" plain (file+headline "~/orgfiles/workload/tasks.org" "Daily Items")
+                         '("d" "Daily Task" plain (file+headline "~/org/workload/tasks.org" "Daily Items")
                            "- [ ] %t %?")))
 
 (after! org (add-to-list 'org-capture-templates
-             '("x" "Time Tracker" entry (file+olp+datetree "~/orgfiles/workload/timetracking.org")
+             '("x" "Time Tracker" entry (file+olp+datetree "~/org/workload/timetracking.org")
                "* [%\\1] %\\7 for %\\5
 :PROPERTIES:
 :CASENUMBER: %^{Case or SVCTAG}
@@ -200,12 +200,12 @@
 :END:
 %?" :tree-type week :clock-in t :clock-resume t)))
 
-(after! org (setq org-directory "~/orgfiles/"
+(after! org (setq org-directory "~/org/"
                   org-image-actual-width nil
-                  +org-export-directory "~/orgfiles/export/"
-                  org-archive-location "~/orgfiles/workload/archive.org::datetree/"
-                  org-default-notes-file "~/orgfiles/workload/inbox.org"
-                  projectile-project-search-path '("~/orgfiles/")))
+                  +org-export-directory "~/org/export/"
+                  org-archive-location "~/org/workload/archive.org::datetree/"
+                  org-default-notes-file "~/org/workload/inbox.org"
+                  projectile-project-search-path '("~/org/")))
 
 (after! org (setq org-html-head-include-scripts t
                   org-export-with-toc t
@@ -250,12 +250,12 @@
 
 (after! org (setq org-publish-project-alist
                   '(("attachments"
-                     :base-directory "~/orgfiles/notes/attachments/"
+                     :base-directory "~/org/notes/attachments/"
                      :base-extension "jpg\\|jpeg\\|png\\|pdf\\|css"
                      :publishing-directory "~/publish_html/images/"
                      :publishing-function org-publish-attachment)
                     ("notes"
-                     :base-directory "~/orgfiles/"
+                     :base-directory "~/org/"
                      :publishing-directory "~/publish_html"
                      :base-extension "org"
                      :with-drawers t
@@ -395,7 +395,7 @@
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
-  (setq org-roam-directory "~/orgfiles/notes/")
+  (setq org-roam-directory "~/org/notes/")
   (setq org-roam-graph-viewer "/usr/bin/open")
   :bind (:map org-roam-mode-map
           (("C-c n l" . org-roam)
@@ -416,7 +416,7 @@
                   ((org-agenda-overriding-header "Agenda")
                    (org-agenda-span 'day)
                    (org-agenda-start-day (org-today))
-                   (org-agenda-files '("~/orgfiles/workload/tasks.org" "~/orgfiles/workload/tickler.org"))))
+                   (org-agenda-files '("~/org/workload/tasks.org" "~/org/workload/tickler.org"))))
           (todo ""
                 ((org-agenda-overriding-header "Tasks")
                  (org-agenda-skip-function
@@ -426,14 +426,14 @@
                      (org-agenda-skip-entry-if 'notregexp ":@\\w+"))
                     (org-agenda-skip-if nil '(scheduled deadline))
                     (org-agenda-skip-if 'todo '("SOMEDAY"))))
-                 (org-agenda-files '("~/orgfiles/workload/tasks.org"))
+                 (org-agenda-files '("~/org/workload/tasks.org"))
                  (org-super-agenda-groups
                   '((:name "Priority Items"
                            :priority>= "B")
                     (:auto-parent t)))))
           (todo ""
                 ((org-agenda-overriding-header "Delegated Tasks")
-                 (org-agenda-files '("~/orgfiles/workload/tasks.org"))
+                 (org-agenda-files '("~/org/workload/tasks.org"))
                  (org-tags-match-list-sublevels t)
                  (org-agenda-skip-function
                   '(or
@@ -443,7 +443,7 @@
         ("n" "Notes"
          ((todo ""
                 ((org-agenda-overriding-header "Note Actions")
-                 (org-agenda-files '("~/orgfiles/notes/"))
+                 (org-agenda-files '("~/org/notes/"))
                  (org-super-agenda-groups
                   '((:auto-category t)))))))
         ("i" "Inbox"
@@ -456,7 +456,7 @@
                     (org-agenda-skip-if 'nil '(scheduled deadline))
                     (org-agenda-skip-entry-if 'todo '("SOMEDAY"))
                     (org-agenda-skip-entry-if 'todo '("KILL"))))
-                 (org-agenda-files '("~/orgfiles/workload/tasks.org"))
+                 (org-agenda-files '("~/org/workload/tasks.org"))
                  (org-super-agenda-groups
                   '((:auto-ts t)))))))
         ("s" "Someday"
@@ -465,7 +465,7 @@
                  (org-agenda-skip-function
                   '(or
                     (org-agenda-skip-entry-if 'nottodo '("SOMEDAY"))))
-                 (org-agenda-files '("~/orgfiles/workload/tasks.org"))
+                 (org-agenda-files '("~/org/workload/tasks.org"))
                  (org-super-agenda-groups
                   '((:auto-parent t)))))))))
 (defun my/org-capture-note-file ()
@@ -571,7 +571,7 @@
 (provide 'my-goto)
 ;;; my-goto.el ends here
 
-(defvar org-archive-directory "~/orgfiles/archives/")
+(defvar org-archive-directory "~/org/archives/")
 (defun org-archive-file ()
   "Moves the current buffer to the archived folder"
   (interactive)
