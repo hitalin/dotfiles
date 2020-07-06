@@ -30,5 +30,6 @@
 (package! pdf-tools)
 (package! org-download)
 ; personal
+(package! org-pomodoro)
 (package! ox-gfm)
 (package! vimrc-mode)
