@@ -478,14 +478,15 @@
         file
       (concat file ".org"))))
 
-; open URL by web browser in windows for WSL
-(defun my--browse-url (url &optional _new-window)
-  ;; new-window ignored
-  "Opens link via powershell.exe"
-  (interactive (browse-url-interactive-arg "URL: "))
-  (let ((quotedUrl (format "start '%s'" url)))
-    (apply 'call-process "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe" nil 0 nil (list "-Command" quotedUrl))))
-(setq-default browse-url-browser-function 'my--browse-url)
+; setup browser function when running in WSL
+(defconst powershell-exe "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
+(when (file-executable-p powershell-exe)
+  (defun my-WSL-browse-url (url &optional _new-window)
+    (interactive (browse-url-interactive-arg "URL: "))
+    (let ((quotedUrl (format "start '%s'" url)))
+      (apply 'call-process powershell-exe
+             nil 0 nil (list "-Command" quotedUrl))))
+  (setq-default browse-url-browser-function 'my-WSL-browse-url))
 
 (defun my-agenda-prefix ()
   (format "%s" (my-agenda-indent-string (org-current-level))))
