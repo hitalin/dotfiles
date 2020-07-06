@@ -482,7 +482,7 @@
 ;(defconst powershell-exe "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
 (when (string-match "-[Mm]icrosoft" operating-system-release)
   (setq browse-url-browser-function 'browse-url-generic)
-  (setq browse-url-generic-program "/mnt/c/Program Files/Mozilla Firefox/firefox.exe")
+  (setq browse-url-generic-program "/mnt/c/Program Files/Mozilla Firefox/firefox.exe"))
   ;;(when (file-executable-p powershell-exe)
 ;  (defun my-WSL-browse-url (url &optional _new-window)
 ;    (interactive (browse-url-interactive-arg "URL: "))
