@@ -395,7 +395,7 @@
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
-  (setq org-roam-directory "~/org/")
+  (setq org-roam-directory "~/org/roam/")
   (setq org-roam-graph-viewer "/usr/bin/open")
   :bind (:map org-roam-mode-map
           (("C-c n l" . org-roam)
