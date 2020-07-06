@@ -480,7 +480,8 @@
 
 ; setup browser function when running in WSL
 (defconst powershell-exe "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
-(when (file-executable-p powershell-exe)
+(when (string-match "-[Mm]icrosoft" operating-system-release)
+;(when (file-executable-p powershell-exe)
   (defun my-WSL-browse-url (url &optional _new-window)
     (interactive (browse-url-interactive-arg "URL: "))
     (let ((quotedUrl (format "start '%s'" url)))
