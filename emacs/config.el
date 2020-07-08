@@ -36,21 +36,20 @@
 (setq x-select-enable-clipboard t
       x-select-enable-primary t)
 
+;; setup browser function when running in WSL
+(defconst powershell-exe "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
+(when (file-executable-p powershell-exe)
+(defun my-WSL-browse-url (url &optional _new-window)
+  (interactive (browse-url-interactive-arg "URL: "))
+  (let ((quotedUrl (format "start '%s'" url)))
+    (apply 'call-process powershell-exe
+           nil 0 nil (list "-Command" quotedUrl))))
+(setq-default browse-url-browser-function 'my-WSL-browse-url))
+
 ; https://github.com/nmartin84/.doom.d
 (display-time-mode 1)
 (setq display-time-day-and-date t)
 
-; setup browser function when running in WSL
-;(defconst powershell-exe "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
-  ;;(when (file-executable-p powershell-exe)
-;  (defun my-WSL-browse-url (url &optional _new-window)
-;    (interactive (browse-url-interactive-arg "URL: "))
-;    (let ((quotedUrl (format "start '%s'" url)))
-;      (apply 'call-process powershell-exe
-;             nil 0 nil (list "-Command" quotedUrl))))
-;  (setq-default browse-url-browser-function 'my-WSL-browse-url))
-
-; org-mode
 (load-library "find-lisp")
 (defvar org-gtd-tasks-file "~/org/workload/tasks.org")
 (defvar org-gtd-archive-file "~/org/workload/archive.org")
