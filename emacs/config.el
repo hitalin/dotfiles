@@ -626,7 +626,8 @@
 ; https://yiufung.net/post/anki-org/
 ;; Emacs/Org-mode as editor to Anki
 (use-package! anki-editor
-  :after org-noter
+  :defer 10
+  :after org
   :bind (:map org-mode-map
               ("<f12>" . anki-editor-cloze-region-auto-incr)
               ("<f11>" . anki-editor-cloze-region-dont-incr)
