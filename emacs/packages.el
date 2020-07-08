@@ -16,7 +16,7 @@
 ;; Optional
 ;(package! org-board)
 ;(package! org-mind-map)
-;(package! pdf-tools)
+(package! pdf-tools)
 ;(package! gnuplot)
 ;(package! gnuplot-mode)
 ;; Testing
@@ -27,8 +27,6 @@
 
 ; yiufung/dot-emacs
 (package! anki-editor)
-(package! pdf-tools)
-(package! org-download)
 ; personal
 (package! org-pomodoro)
 (package! ox-gfm)
