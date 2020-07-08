@@ -263,11 +263,11 @@
                   '(("attachments"
                      :base-directory "~/org/notes/attachments/"
                      :base-extension "jpg\\|jpeg\\|png\\|pdf\\|css"
-                     :publishing-directory "~/publish_html/images/"
+                     :publishing-directory "~/org/publish_html/images/"
                      :publishing-function org-publish-attachment)
                     ("notes"
                      :base-directory "~/org/"
-                     :publishing-directory "~/publish_html"
+                     :publishing-directory "~/org/publish_html"
                      :base-extension "org"
                      :with-drawers t
                      :recursive t
