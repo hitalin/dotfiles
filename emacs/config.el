@@ -250,9 +250,7 @@
                   org-log-redeadline 'note
                   org-log-reschedule 'note))
 
-;(after! org (setq org-bullets-bullet-list '("•" "◦")
 (after! org (setq org-hide-emphasis-markers nil
-                  org-bullets-bullet-list '("◉" "⚫" "○")
                   org-list-demote-modify-bullet '(("+" . "-") ("1." . "a.") ("-" . "+"))
                   org-ellipsis "▼"))
 
