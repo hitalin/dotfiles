@@ -1,0 +1,9 @@
+* %(read-string "Entry name: ")
+:PROPERTIES:
+:CUSTOMER: %^{CUSTOMER}
+:TAG:      %^{TAG}
+:CREATED:  %U
+:END:
+:LOGBOOK:
+:END:
+%?
