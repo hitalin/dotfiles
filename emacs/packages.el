@@ -1,3 +1,6 @@
+; personal
+(package! org-pomodoro)
+; nmartin84/.doom.d
 (package! org-roam-server)
 (package! helm-org-rifle)
 (package! metrics-tracker)
