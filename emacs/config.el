@@ -1,3 +1,4 @@
+; personal
 ;; set language as Japanese
 (set-language-environment 'Japanese)
 ;; coding UTF8
@@ -37,6 +38,7 @@
 
 
 
+; https://github.com/nmartin84/.doom.d
 (when (> (display-pixel-height) 1200)
   (setq doom-font (font-spec :family "Cica" :size 18)
         doom-big-font (font-spec :family "Cica" :size 24)))
@@ -109,7 +111,7 @@
 (when (equal (window-system) nil)
   (and
    (bind-key "C-<down>" #'+org/insert-item-below)
-   (setq doom-theme 'doom-monokai-pro)
+   (setq doom-theme 'doom-molokai)
    (setq doom-font (font-spec :family "Cica" :size 20))))
 
 (when (> (display-pixel-width) '3000)
@@ -171,7 +173,7 @@
   :bind (("<f8>" . deft))
   :commands (deft deft-open-file deft-new-file-named)
   :config
-  (setq deft-directory "~/.org/"
+  (setq deft-directory "~/org/"
         deft-auto-save-interval 0
         deft-recursive t
         deft-current-sort-method 'title
@@ -395,4 +397,4 @@
 (load! "customs.el")
 
 (toggle-frame-maximized)
-(setq doom-theme 'doom-monokai-pro)
+(setq doom-theme 'doom-molokai)
