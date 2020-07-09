@@ -336,7 +336,7 @@
 
 (setq org-roam-directory "~/org/")
 (setq org-roam-tag-sources '(prop all-directories))
-(setq org-roam-db-location "~/org/roam.db")
+(setq org-roam-db-location "~/org/roam/org-roam.db")
 
 (use-package org-roam-server
   :ensure t
