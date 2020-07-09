@@ -165,7 +165,7 @@
       :desc "Deadgrep Directory" "d" #'deadgrep
       :desc "Swiper All" "@" #'swiper-all
       :prefix ("o" . "open")
-      :desc "Elfeed" "e" #'elfeed
+;      :desc "Elfeed" "e" #'elfeed
       :desc "Deft" "w" #'deft)
 
 (when (equal (window-system) nil)
@@ -224,9 +224,9 @@
 ;  :config
 ;  (setq plantuml-jar-path (expand-file-name "~/.doom.d/plantuml.jar")))
 
-(require 'elfeed-org)
-(elfeed-org)
-(setq rmh-elfeed-org-files (list "~/.elfeed/elfeed.org"))
+;(require 'elfeed-org)
+;(elfeed-org)
+;(setq rmh-elfeed-org-files (list "~/.elfeed/elfeed.org"))
 
 (load! "my-deft-title.el")
 (use-package deft
