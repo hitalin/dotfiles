@@ -18,7 +18,7 @@ if [ ! -f ~/.emacs.d/ ]; then
   ~/.emacs.d/bin/doom install
   mkdir -p ~/.doom.d
   ln -Fis $SCRIPT_DIR/emacs/config.el ~/.doom.d/config.el
-  ln -Fis $SCRIPT_DIR/emacs/early-init.el ~/.doom.d/early-init.el
+#  ln -Fis $SCRIPT_DIR/emacs/early-init.el ~/.doom.d/early-init.el
   ln -Fis $SCRIPT_DIR/emacs/init.el ~/.doom.d/init.el
   ln -Fis $SCRIPT_DIR/emacs/packages.el ~/.doom.d/packages.el
   ~/.emacs.d/bin/doom sync
