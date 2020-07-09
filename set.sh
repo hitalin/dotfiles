@@ -21,6 +21,9 @@ if [ ! -f ~/.emacs.d/ ]; then
 #  ln -Fis $SCRIPT_DIR/emacs/early-init.el ~/.doom.d/early-init.el
   ln -Fis $SCRIPT_DIR/emacs/init.el ~/.doom.d/init.el
   ln -Fis $SCRIPT_DIR/emacs/packages.el ~/.doom.d/packages.el
+  ln -Fis $SCRIPT_DIR/emacs/my-deft-title.el ~/.doom.d/my-deft-title.el
+  ln -Fis $SCRIPT_DIR/emacs/orgmode.el ~/.doom.d/orgmode.el
+  ln -Fis $SCRIPT_DIR/emacs/customs.el ~/.doom.d/customs.el
   ~/.emacs.d/bin/doom sync
   ~/.emacs.d/bin/doom doctor
 fi

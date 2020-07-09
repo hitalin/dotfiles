@@ -59,7 +59,7 @@
 
 (setq user-full-name "i0z0m")
 
-(setq diary-file "~/.org/diary.org")
+(setq diary-file "~/org/diary.org")
 
 (display-time-mode 1)
 (setq display-time-day-and-date t)
@@ -109,7 +109,7 @@
 (when (equal (window-system) nil)
   (and
    (bind-key "C-<down>" #'+org/insert-item-below)
-   (setq doom-theme 'doom-molokai)
+   (setq doom-theme 'doom-monokai-pro)
    (setq doom-font (font-spec :family "Cica" :size 20))))
 
 (when (> (display-pixel-width) '3000)
@@ -282,9 +282,9 @@
 
 (provide 'setup-helm-org-rifle)
 
-(setq org-roam-directory "~/.org/")
+(setq org-roam-directory "~/org/")
 (setq org-roam-tag-sources '(prop all-directories))
-(setq org-roam-db-location "~/.org/roam.db")
+(setq org-roam-db-location "~/org/roam.db")
 
 (use-package org-roam-server
   :ensure t
@@ -337,7 +337,7 @@
       '(("M" "Master Agenda"
          ((agenda ""
                   ((org-agenda-overriding-header "Master Agenda")
-                   (org-agenda-files (append (file-expand-wildcards "~/.org/*/tasks/*.org") (file-expand-wildcards "~/.org/*/tickler.org")))
+                   (org-agenda-files (append (file-expand-wildcards "~/org/*/tasks/*.org") (file-expand-wildcards "~/org/*/tickler.org")))
                    (org-agenda-time-grid nil)
                    (org-agenda-start-day (org-today))
                    (org-agenda-span '1)
@@ -347,7 +347,7 @@
                       (:name "Tasks" :file-path "next")
                       (:name "Update" :category "Update")))))
           (todo ""
-                ((org-agenda-files (append (file-expand-wildcards "~/.org/*/tasks/*.org")))
+                ((org-agenda-files (append (file-expand-wildcards "~/org/*/tasks/*.org")))
                  (org-agenda-overriding-header (doom-project-root))
                  (org-agenda-prefix-format " %(my-agenda-prefix) ")
                  (org-agenda-skip-function
@@ -359,7 +359,7 @@
         ("w" "Master Work"
          ((agenda ""
                   ((org-agenda-overriding-header (format "Master Agenda for ALL " (counsel-directory-name (doom-project-root))))
-                   (org-agenda-files (append (file-expand-wildcards "~/.org/work*/tasks/*.org") (file-expand-wildcards "~/.org/work*/*.org")))
+                   (org-agenda-files (append (file-expand-wildcards "~/org/work*/tasks/*.org") (file-expand-wildcards "~/org/work*/*.org")))
                    (org-agenda-time-grid nil)
                    (org-agenda-start-day (org-today))
                    (org-agenda-span '1)
@@ -370,14 +370,14 @@
                       (:name "Update" :category "Update")))))
           (todo ""
                 ((org-agenda-overriding-header (format "Master Task List for ALL" (counsel-directory-name (doom-project-root))))
-                 (org-agenda-files (append (file-expand-wildcards "~/.org/work*/tasks/*.org")))
+                 (org-agenda-files (append (file-expand-wildcards "~/org/work*/tasks/*.org")))
                  (org-agenda-prefix-format " %(my-agenda-prefix) ")
                  (org-super-agenda-groups
                   '((:auto-category t)))))))
         ("i" "Inbox"
          ((todo ""
                 ((org-agenda-overriding-header "")
-                 (org-agenda-files (list "~/.org/next.org" "~/.org/inbox.org"))
+                 (org-agenda-files (list "~/org/next.org" "~/org/inbox.org"))
                  (org-super-agenda-groups
                   '((:category "Cases")
                     (:category "Emails")

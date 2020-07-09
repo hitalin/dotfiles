@@ -1,7 +1,7 @@
 ;;------ Agenda Settings
 ;(after! org (setq org-agenda-files (directory-files-recursively "~/.org/" "\.org$")))
-(after! org (setq org-agenda-files (append (file-expand-wildcards "~/.org/*/tasks/*.org") (file-expand-wildcards "~/.org/*/*.org"))))
-(after! org (setq org-agenda-diary-file "~/.org/diary.org"
+(after! org (setq org-agenda-files (append (file-expand-wildcards "~/org/*/tasks/*.org") (file-expand-wildcards "~/org/*/*.org"))))
+(after! org (setq org-agenda-diary-file "~/org/diary.org"
                   org-agenda-window-setup 'only-window
                   org-agenda-dim-blocked-tasks t
                   org-agenda-use-time-grid t
@@ -26,13 +26,13 @@
       '(("c" "Captures")
         ("d" "Diary" plain (file zyro/capture-file-name)
          (file "~/.doom.d/templates/diary.org"))
-        ("cc" "Capture" entry (file+headline "~/.org/next.org" "INBOX")
+        ("cc" "Capture" entry (file+headline "~/org/next.org" "INBOX")
          (file "~/.doom.d/templates/capture.org"))
-        ("cb" "Breakfix" entry (file+headline "~/.org/next.org" "INBOX")
+        ("cb" "Breakfix" entry (file+headline "~/org/next.org" "INBOX")
          (file "~/.doom.d/templates/breakfix.org"))
-        ("ce" "Email" entry (file+headline "~/.org/next.org" "EMAILS")
+        ("ce" "Email" entry (file+headline "~/org/next.org" "EMAILS")
          (file "~/.doom.d/templates/email.org") :immediate-finish t)
-        ("cx" "Case Review" entry (file+headline "~/.org/next.org" "CASES")
+        ("cx" "Case Review" entry (file+headline "~/org/next.org" "CASES")
          (file "~/.doom.d/templates/case.org") :immediate-finish t)
         ("cr" "Reference" entry (function +org-capture-central-project-todo-file))
         ("m" "Metrics Tracker" plain (file+olp+datetree diary-file "Metrics Tracker")
@@ -51,11 +51,11 @@
   (read-file-name "Select file: " (concat (doom-project-root) "templates/")))
 
 ;;------ Directories
-(after! org (setq org-directory "~/.org/"
+(after! org (setq org-directory "~/org/"
                   org-image-actual-width nil
                   +org-export-directory "~/.export/"
                   org-archive-location "archives.org::* %s"
-                  projectile-project-search-path '("~/.org/")))
+                  projectile-project-search-path '("~/org/")))
 
 ;;------ Export Settings
 (after! org (setq org-html-head-include-scripts t
@@ -76,7 +76,7 @@
 (require 'org-id)
 ;(setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 (setq org-link-file-path-type 'relative)
-(setq org-passwords-file "~/.org/passwords.org")
+(setq org-passwords-file "~/org/passwords.org")
 
 ;;------ TODO Keywords
 (setq org-todo-keywords
@@ -102,13 +102,13 @@
 ;;------ Publishing
 (after! org (setq org-publish-project-alist
                   '(("attachments"
-                     :base-directory "~/.org/"
+                     :base-directory "~/org/"
                      :recursive t
                      :base-extension "jpg\\|jpeg\\|png\\|pdf\\|css"
                      :publishing-directory "~/publish_html"
                      :publishing-function org-publish-attachment)
                     ("notes"
-                     :base-directory "~/.org/"
+                     :base-directory "~/org/"
                      :publishing-directory "~/publish_html"
                      :section-numbers nil
                      :base-extension "org"

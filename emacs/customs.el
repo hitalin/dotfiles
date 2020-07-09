@@ -163,7 +163,7 @@
               str (concat str "──")))
       (concat str "►"))))
 
-(defvar org-archive-directory "~/.org/archives/")
+(defvar org-archive-directory "~/org/archives/")
 
 (defun org-archive-file ()
   "Moves the current buffer to the archived folder"
