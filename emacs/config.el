@@ -205,8 +205,6 @@
 (use-package org-pdftools
   :hook (org-load . org-pdftools-setup-link))
 
-(after! org (setq org-ditaa-jar-path "~/.emacs.d/.local/straight/repos/org-mode/contrib/scripts/ditaa.jar"))
-
 ; GNUPLOT
 (use-package gnuplot
   :config
@@ -215,14 +213,6 @@
 ; MERMAID
 (setq mermaid-mmdc-location "~/node_modules/.bin/mmdc"
       ob-mermaid-cli-path "~/node_modules/.bin/mmdc")
-
-; PLANTUML
-;(use-package ob-plantuml
-;  :ensure nil
-;  :commands
-;  (org-babel-execute:plantuml)
-;  :config
-;  (setq plantuml-jar-path (expand-file-name "~/.doom.d/plantuml.jar")))
 
 ;(require 'elfeed-org)
 ;(elfeed-org)
