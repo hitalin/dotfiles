@@ -26,13 +26,13 @@
       '(("c" "Captures")
         ("d" "Diary" plain (file zyro/capture-file-name)
          (file "~/.doom.d/templates/diary.org"))
-        ("cc" "Capture" entry (file+headline "~/org/next.org" "INBOX")
+        ("cc" "Capture" entry (file+headline "~/org/workload/next.org" "INBOX")
          (file "~/.doom.d/templates/capture.org"))
-        ("cb" "Breakfix" entry (file+headline "~/org/next.org" "INBOX")
+        ("cb" "Breakfix" entry (file+headline "~/org/workload/next.org" "INBOX")
          (file "~/.doom.d/templates/breakfix.org"))
-        ("ce" "Email" entry (file+headline "~/org/next.org" "EMAILS")
+        ("ce" "Email" entry (file+headline "~/org/workload/next.org" "EMAILS")
          (file "~/.doom.d/templates/email.org") :immediate-finish t)
-        ("cx" "Case Review" entry (file+headline "~/org/next.org" "CASES")
+        ("cx" "Case Review" entry (file+headline "~/org/workload/next.org" "CASES")
          (file "~/.doom.d/templates/case.org") :immediate-finish t)
         ("cr" "Reference" entry (function +org-capture-central-project-todo-file))
         ("m" "Metrics Tracker" plain (file+olp+datetree diary-file "Metrics Tracker")
@@ -41,7 +41,7 @@
          (file "~/.doom.d/templates/habitstracker.org") :immediate-finish t)
         ("ca" "Article" plain (file+headline (concat (doom-project-root) "articles.org") "Inbox")
          "%(call-interactively #'org-cliplink-capture)")
-        ("x" "Time Tracker" entry (file+headline "~/.org/timetracking.org" "Time Tracker")
+        ("x" "Time Tracker" entry (file+headline "~/org/workload/timetracking.org" "Time Tracker")
          (file "~/.doom.d/templates/timetracker.org") :clock-in t :clock-resume t)))
 
 
@@ -53,7 +53,7 @@
 ;;------ Directories
 (after! org (setq org-directory "~/org/"
                   org-image-actual-width nil
-                  +org-export-directory "~/.export/"
+                  +org-export-directory "~/org/export/"
                   org-archive-location "archives.org::* %s"
                   projectile-project-search-path '("~/org/")))
 
@@ -76,7 +76,7 @@
 (require 'org-id)
 ;(setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 (setq org-link-file-path-type 'relative)
-(setq org-passwords-file "~/org/passwords.org")
+(setq org-passwords-file "~/org/workload/passwords.org")
 
 ;;------ TODO Keywords
 (setq org-todo-keywords

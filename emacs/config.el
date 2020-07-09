@@ -121,7 +121,7 @@
 
 (setq user-full-name "i0z0m")
 
-(setq diary-file "~/org/diary.org")
+(setq diary-file "~/org/workload/diary.org")
 
 (display-time-mode 1)
 (setq display-time-day-and-date t)
