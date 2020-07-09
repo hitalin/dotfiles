@@ -293,16 +293,16 @@
 
   (helm-org-rifle-define-command
    "wiki" ()
-   "Search in \"~/lib/notes/writing\" and `plain-org-wiki-directory' or create a new wiki entry"
+   "Search in \"~/org/notes/writing\" and `plain-org-wiki-directory' or create a new wiki entry"
    :sources `(,(helm-build-sync-source "Exact wiki entry"
                  :candidates (plain-org-wiki-files)
                  :action #'plain-org-wiki-find-file)
               ,@(--map (helm-org-rifle-get-source-for-file it) files)
               ,(helm-build-dummy-source "Wiki entry"
                  :action #'plain-org-wiki-find-file))
-   :let ((files (let ((directories (list "~/lib/notes/writing"
+   :let ((files (let ((directories (list "~/org/notes/writing"
                                          plain-org-wiki-directory
-                                         "~/lib/notes")))
+                                         "~/org/notes")))
                   (-flatten (--map (f-files it
                                             (lambda (file)
                                               (s-matches? helm-org-rifle-directories-filename-regexp
