@@ -157,12 +157,12 @@
       ob-mermaid-cli-path "~/node_modules/.bin/mmdc")
 
 ; PLANTUML
-(use-package ob-plantuml
-  :ensure nil
-  :commands
-  (org-babel-execute:plantuml)
-  :config
-  (setq plantuml-jar-path (expand-file-name "~/.doom.d/plantuml.jar")))
+;(use-package ob-plantuml
+;  :ensure nil
+;  :commands
+;  (org-babel-execute:plantuml)
+;  :config
+;  (setq plantuml-jar-path (expand-file-name "~/.doom.d/plantuml.jar")))
 
 (require 'elfeed-org)
 (elfeed-org)
