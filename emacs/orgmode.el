@@ -82,6 +82,14 @@
 (setq org-todo-keywords
       '((sequence "TODO(t!)" "REFILE(r!)" "SOMEDAY(s!)" "NEXT(n!)" "INPROGRESS(i!)" "|" "DONE(d!)")))
 
+(after! org (setq org-todo-keyword-faces
+      '(("TODO" :foreground "OrangeRed" :weight bold)
+        ("REFILE" :foreground "SteelBlue" :weight bold)
+        ("SOMEDAY" :foreground "gold" :weight bold)
+        ("NEXT" :foreground "spring green" :weight bold)
+        ("INPROGRESS" :foreground "DeepPink" :weight bold)
+        ("DONE" :foreground "slategrey" :weight bold :strike-through t))))
+
 ;;------ Logging & Drawers
 (after! org (setq org-log-state-notes-insert-after-drawers nil
                   org-log-into-drawer t
