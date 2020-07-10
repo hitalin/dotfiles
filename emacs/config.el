@@ -334,9 +334,9 @@
 
 (provide 'setup-helm-org-rifle)
 
-(setq org-roam-directory "~/org/roam/")
+(setq org-roam-directory "~/org/")
 (setq org-roam-tag-sources '(prop all-directories))
-(setq org-roam-db-location "~/org/roam/org-roam.db")
+(setq org-roam-db-location "~/org/org-roam.db")
 
 (use-package org-roam-server
   :ensure t
