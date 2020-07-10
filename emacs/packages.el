@@ -1,6 +1,8 @@
 ; personal
 (package! org-pomodoro)
 (package! anki-editor)
+(package! ox-gfm)
+(package! ox-hugo)
 ; nmartin84/.doom.d
 (package! org-roam-server)
 (package! helm-org-rifle)
