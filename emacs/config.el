@@ -203,8 +203,8 @@
  window-combination-resize t
  x-stretch-cursor t)
 
-;(use-package org-pdftools
-;  :hook (org-load . org-pdftools-setup-link))
+(use-package org-pdftools
+  :hook (org-load . org-pdftools-setup-link))
 
 ; GNUPLOT
 (use-package gnuplot
@@ -337,7 +337,7 @@
 
 (setq org-roam-directory "~/org/")
 (setq org-roam-tag-sources '(prop all-directories))
-;(setq org-roam-db-location "~/org/org-roam.db")
+(setq org-roam-db-location "~/org/org-roam.db")
 
 (use-package org-roam-server
   :ensure t
