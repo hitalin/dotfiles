@@ -16,12 +16,7 @@ if [ ! -e ~/.emacs.d/ ]; then
   mkdir -p ~/.emacs.d/
   git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
   mkdir -p ~/.doom.d
-  ln -s $SCRIPT_DIR/emacs/config.el ~/.doom.d/config.el
-  ln -s $SCRIPT_DIR/emacs/init.el ~/.doom.d/init.el
-  ln -s $SCRIPT_DIR/emacs/packages.el ~/.doom.d/packages.el
-  ln -s $SCRIPT_DIR/emacs/my-deft-title.el ~/.doom.d/my-deft-title.el
-  ln -s $SCRIPT_DIR/emacs/orgmode.el ~/.doom.d/orgmode.el
-  ln -s $SCRIPT_DIR/emacs/customs.el ~/.doom.d/customs.el
+  ln -s $SCRIPT_DIR/emacs ~/.doom.d
   ~/.emacs.d/bin/doom sync
   ~/.emacs.d/bin/doom doctor
 fi
