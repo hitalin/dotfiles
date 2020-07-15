@@ -120,7 +120,7 @@
 (setq org-ellipsis "▼")
 
 (setq user-full-name "i0z0m"
-      user-mail-address "nmartin84@gmail.com")
+      user-mail-address "i0z0mu@gmail.com")
 
 (setq diary-file "~/org/workload/diary.org")
 
