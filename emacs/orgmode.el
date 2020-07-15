@@ -1,7 +1,7 @@
 ;;------ Agenda Settings
 ;(after! org (setq org-agenda-files (directory-files-recursively "~/.org/" "\.org$")))
 (after! org (setq org-agenda-files (append (file-expand-wildcards "~/org/*/tasks/*.org") (file-expand-wildcards "~/org/*/*.org"))))
-(after! org (setq org-agenda-diary-file "~/org/diary.org"
+(after! org (setq org-agenda-diary-file "~/org/workload/diary.org"
                   org-agenda-window-setup 'only-window
                   org-agenda-dim-blocked-tasks t
                   org-agenda-use-time-grid t
@@ -76,7 +76,7 @@
 (require 'org-id)
 ;(setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 (setq org-link-file-path-type 'relative)
-(setq org-passwords-file "~/org/workload/passwords.org")
+;(setq org-passwords-file "~/org/workload/passwords.org")
 
 ;;------ TODO Keywords
 (setq org-todo-keywords

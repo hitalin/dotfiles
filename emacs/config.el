@@ -116,10 +116,11 @@
 
 ; "✖"
 (setq org-tags-column 0)
-(setq org-superstar-headline-bullets-list '("●" "○"))
+(setq org-superstar-headline-bullets-list '("◉" "●" "○"))
 (setq org-ellipsis "▼")
 
-(setq user-full-name "i0z0m")
+(setq user-full-name "i0z0m"
+      user-mail-address "nmartin84@gmail.com")
 
 (setq diary-file "~/org/workload/diary.org")
 
@@ -174,14 +175,14 @@
    (setq doom-theme 'doom-molokai)
    (setq doom-font (font-spec :family "Cica" :size 20))))
 
-(when (> (display-pixel-width) '3000)
-  (set-popup-rule! "*Org Agenda*" :side 'left :size .30 :select t :vslot 2 :ttl 3)
-  (set-popup-rule! "*Capture*" :side 'left :size .30 :select t :vslot 2 :ttl 3)
-  (set-popup-rule! "*helm*" :side 'left :size .30 :select t :vslot 5 :ttl 3))
-(when (< (display-pixel-width) '2000)
-  (set-popup-rule! "*Org Agenda*" :side 'bottom :size .30 :select t :vslot 2 :ttl 3)
-  (set-popup-rule! "*Capture*" :side 'bottom :size .30 :select t :vslot 2 :ttl 3)
-  (set-popup-rule! "*helm*" :side 'bottom :size .30 :select t :vslot 5 :ttl 3))
+;(when (> (display-pixel-width) '3000)
+;(after! org (set-popup-rule! "*Org Agenda*" :side 'left :size .25 :height 0.5 :select t :slot 1 :ttl 3))
+;(after! org (set-popup-rule! "*Capture*" :side 'left :size .25 :height 0.5 :select t :slot 1 :ttl 3))
+;  (set-popup-rule! "*helm*" :side 'left :size .30 :select t :vslot 5 :ttl 3))
+;(when (< (display-pixel-width) '2000)
+;  (set-popup-rule! "*Org Agenda*" :side 'bottom :size .30 :select t :vslot 2 :ttl 3)
+;  (set-popup-rule! "*Capture*" :side 'bottom :size .30 :select t :vslot 2 :ttl 3)
+;  (set-popup-rule! "*helm*" :side 'bottom :size .30 :select t :vslot 5 :ttl 3))
                                         ;(after! org (set-popup-rule! "*Deft*" :side 'right :size .50 :select t :vslot 2 :ttl 3))
                                         ;(after! org (set-popup-rule! "*Select Link*" :side 'bottom :size .40 :select t :vslot 3 :ttl 3))
                                         ;(after! org (set-popup-rule! "*deadgrep" :side 'bottom :height .40 :select t :vslot 4 :ttl 3))
@@ -202,8 +203,8 @@
  window-combination-resize t
  x-stretch-cursor t)
 
-(use-package org-pdftools
-  :hook (org-load . org-pdftools-setup-link))
+;(use-package org-pdftools
+;  :hook (org-load . org-pdftools-setup-link))
 
 ; GNUPLOT
 (use-package gnuplot
@@ -336,17 +337,17 @@
 
 (setq org-roam-directory "~/org/")
 (setq org-roam-tag-sources '(prop all-directories))
-(setq org-roam-db-location "~/org/org-roam.db")
+;(setq org-roam-db-location "~/org/org-roam.db")
 
 (use-package org-roam-server
   :ensure t
   :config
-  (setq org-roam-server-host "192.168.1.103"
+  (setq org-roam-server-host "127.0.0.1"
         org-roam-server-port 8070
         org-roam-server-export-inline-images t
         org-roam-server-authenticate nil
         org-roam-server-network-poll nil
-        org-roam-server-network-arrows 'nil
+        org-roam-server-network-arrows 'from
         org-roam-server-network-label-truncate t
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20))
@@ -386,50 +387,20 @@
 (org-super-agenda-mode t)
 
 (setq org-agenda-custom-commands
-      '(("M" "Master Agenda"
+      '(("w" "Master Agenda"
          ((agenda ""
                   ((org-agenda-overriding-header "Master Agenda")
-                   (org-agenda-files (append (file-expand-wildcards "~/org/*/tasks/*.org") (file-expand-wildcards "~/org/*/tickler.org")))
+                   (org-agenda-files (append (file-expand-wildcards "~/org/workload/*.org") (file-expand-wildcards "~/org/workload/tasks/*")))
                    (org-agenda-time-grid nil)
                    (org-agenda-start-day (org-today))
-                   (org-agenda-span '1)
-                   (org-super-agenda-groups
-                    '((:habit t)
-                      (:name "Meetings" :category "Meetings")
-                      (:name "Tasks" :file-path "next")
-                      (:name "Update" :category "Update")))))
+                   (org-agenda-span '1)))
           (todo ""
-                ((org-agenda-files (append (file-expand-wildcards "~/org/*/tasks/*.org")))
-                 (org-agenda-overriding-header (doom-project-root))
-                 (org-agenda-prefix-format " %(my-agenda-prefix) ")
-                 (org-agenda-skip-function
-                  '(or
-                    (org-agenda-skip-entry-if 'nil '("scheduled"))
-                    (org-agenda-skip-entry-if 'nil '("deadline"))))
-                 (org-super-agenda-groups
-                  '((:auto-category t)))))))
-        ("w" "Master Work"
-         ((agenda ""
-                  ((org-agenda-overriding-header (format "Master Agenda for ALL " (counsel-directory-name (doom-project-root))))
-                   (org-agenda-files (append (file-expand-wildcards "~/org/work*/tasks/*.org") (file-expand-wildcards "~/org/work*/*.org")))
-                   (org-agenda-time-grid nil)
-                   (org-agenda-start-day (org-today))
-                   (org-agenda-span '1)
-                   (org-super-agenda-groups
-                    '((:habit t)
-                      (:name "Meetings" :category "Meetings")
-                      (:name "Tasks" :file-path "next")
-                      (:name "Update" :category "Update")))))
-          (todo ""
-                ((org-agenda-overriding-header (format "Master Task List for ALL" (counsel-directory-name (doom-project-root))))
-                 (org-agenda-files (append (file-expand-wildcards "~/org/work*/tasks/*.org")))
-                 (org-agenda-prefix-format " %(my-agenda-prefix) ")
-                 (org-super-agenda-groups
-                  '((:auto-category t)))))))
+                ((org-agenda-overriding-header "Master TODO List")
+                 (org-agenda-files (append (file-expand-wildcards "~/org/workload/tasks/*")))))))
         ("i" "Inbox"
          ((todo ""
                 ((org-agenda-overriding-header "")
-                 (org-agenda-files (list "~/org/next.org" "~/org/inbox.org"))
+                 (org-agenda-files (list "~/org/workload/inbox.org"))
                  (org-super-agenda-groups
                   '((:category "Cases")
                     (:category "Emails")
@@ -437,8 +408,7 @@
         ("x" "Someday"
          ((todo ""
                 ((org-agenda-overriding-header "Someday")
-                 (org-agenda-files (list (concat (doom-project-root) "gtd/someday.org")))
-                 (org-agenda-prefix-format " %(my-agenda-prefix) ")
+                 (org-agenda-files (list "~/org/workload/someday.org"))
                  (org-super-agenda-groups
                   '((:auto-parent t)))))))))
 
