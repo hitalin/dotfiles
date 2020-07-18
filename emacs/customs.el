@@ -13,7 +13,7 @@
 (defun zyro/capture-file-name ()
   "Generate filename at time of capture"
   (setq zyro/capture-headline (read-string "Document Title: "))
-  (expand-file-name (concat (doom-project-root) "diary/" (format "(%s)%s.org" (format-time-string "%b-%d-%Y") zyro/capture-headline))))
+  (expand-file-name (concat (doom-project-root) "diary/" (format "%s_%s.org" (format-time-string "%b-%d-%Y") zyro/capture-headline))))
 
 ;(defun zyro/capture-file-name ()
 ;  "Generate filename at time of capture"
@@ -21,7 +21,7 @@
 ;  (let ((dirname (read-directory-name "Pick directory: " (concat (doom-project-root) "notes/")))
 ;        (zyro/capture-headline (read-string "Document Title: ")))
 ;    (expand-file-name (concat dirname
-;                              (format "(%s)%s.org" (format-time-string "%b-%d-%Y") zyro/capture-headline)))))
+;                              (format "%s_%s.org" (format-time-string "%b-%d-%Y") zyro/capture-headline)))))
 
 ;(defun zyro/diary--capture-to-folder ()
 ;  "Diary capture captured to destination folder"
@@ -29,7 +29,7 @@
 ;  (let ((dirname (directory-files (concat (doom-project-root) "notes/") nil "^\\w+$"))
 ;        (dirfold (concat (doom-project-root) "notes/")))
 ;    (defvar zyro/capture-headline (read-string "Document Title: "))
-;    (expand-file-name (concat dirfold (completing-read "Select directory: " dirname) "/" (format "(%s)%s.org" (format-time-string "%b-%d-%Y") zyro/capture-headline)))))
+;    (expand-file-name (concat dirfold (completing-read "Select directory: " dirname) "/" (format "%s_%s.org" (format-time-string "%b-%d-%Y") zyro/capture-headline)))))
 
 (defun zyro/select-task-type ()
   "Select task file from a list defined by '+org-capture-task-files'"
