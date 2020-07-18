@@ -42,8 +42,9 @@
         ("ca" "Article" plain (file+headline (concat (doom-project-root) "articles.org") "Inbox")
          "%(call-interactively #'org-cliplink-capture)")
         ("x" "Time Tracker" entry (file+headline "~/org/workload/timetracking.org" "Time Tracker")
-         (file "~/.doom.d/templates/timetracker.org") :clock-in t :clock-resume t)))
-
+         (file "~/.doom.d/templates/timetracker.org") :clock-in t :clock-resume t)
+        ("a" "Anki card" entry (file+headline "~/org/workload/anki.org" "Inbox")
+         (file "~/.doom.d/templates/anki.org") :immediate-finish t)))
 
 (defun zyro/capture-template-selector ()
   "Prompt to select template"
