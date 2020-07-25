@@ -1,7 +1,7 @@
 ;;------ Agenda Settings
 ;(after! org (setq org-agenda-files (directory-files-recursively "~/.org/" "\.org$")))
-(after! org (setq org-agenda-files (append (file-expand-wildcards "~/org/*/tasks/*.org") (file-expand-wildcards "~/org/*/*.org"))))
-(after! org (setq org-agenda-diary-file "~/org/workload/diary.org"
+(after! org (setq org-agenda-files (append (file-expand-wildcards "~/org/tasks/*.org") (file-expand-wildcards "~/org/*/*.org"))))
+(after! org (setq org-agenda-diary-file "~/org/tasks/diary.org"
                   org-agenda-window-setup 'only-window
                   org-agenda-dim-blocked-tasks t
                   org-agenda-use-time-grid t
@@ -26,13 +26,13 @@
       '(("c" "Captures")
         ("d" "Diary" plain (file zyro/capture-file-name)
          (file "~/.doom.d/templates/diary.org"))
-        ("cc" "Capture" entry (file+headline "~/org/workload/inbox.org" "INBOX")
+        ("!" "Capture" entry (file+headline "~/org/tasks/inbox.org" "INBOX")
          (file "~/.doom.d/templates/capture.org"))
-        ("cb" "Breakfix" entry (file+headline "~/org/workload/inbox.org" "INBOX")
+        ("cb" "Breakfix" entry (file+headline "~/org/tasks/inbox.org" "INBOX")
          (file "~/.doom.d/templates/breakfix.org"))
-        ("ce" "Email" entry (file+headline "~/org/workload/inbox.org" "EMAILS")
+        ("ce" "Email" entry (file+headline "~/org/tasks/inbox.org" "EMAILS")
          (file "~/.doom.d/templates/email.org") :immediate-finish t)
-        ("cx" "Case Review" entry (file+headline "~/org/workload/inbox.org" "CASES")
+        ("cx" "Case Review" entry (file+headline "~/org/tasks/inbox.org" "CASES")
          (file "~/.doom.d/templates/case.org") :immediate-finish t)
         ("cr" "Reference" entry (function +org-capture-central-project-todo-file))
         ("m" "Metrics Tracker" plain (file+olp+datetree diary-file "Metrics Tracker")
@@ -41,9 +41,9 @@
          (file "~/.doom.d/templates/habitstracker.org") :immediate-finish t)
         ("ca" "Article" plain (file+headline (concat (doom-project-root) "articles.org") "Inbox")
          "%(call-interactively #'org-cliplink-capture)")
-        ("x" "Time Tracker" entry (file+headline "~/org/workload/timetracking.org" "Time Tracker")
+        ("x" "Time Tracker" entry (file+headline "~/org/tasks/timetracking.org" "Time Tracker")
          (file "~/.doom.d/templates/timetracker.org") :clock-in t :clock-resume t)
-        ("a" "Anki card" entry (file+headline "~/org/workload/anki.org" "Inbox")
+        ("a" "Anki card" entry (file+headline "~/org/tasks/anki.org" "Inbox")
          (file "~/.doom.d/templates/anki.org") :immediate-finish t)))
 
 (defun zyro/capture-template-selector ()
@@ -77,7 +77,7 @@
 (require 'org-id)
 ;(setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 (setq org-link-file-path-type 'relative)
-;(setq org-passwords-file "~/org/workload/passwords.org")
+;(setq org-passwords-file "~/org/tasks/passwords.org")
 
 ;;------ TODO Keywords
 (setq org-todo-keywords
@@ -116,8 +116,14 @@
                      :base-extension "jpg\\|jpeg\\|png\\|pdf\\|css"
                      :publishing-directory "~/publish_html"
                      :publishing-function org-publish-attachment)
+                    ("notes-to-orgfiles"
+                     :base-directory "~/org/notes/"
+                     :publishing-directory "~/notes/"
+                     :base-extension "org"
+                     :recursive t
+                     :publishing-function org-org-publish-to-org)
                     ("notes"
-                     :base-directory "~/org/"
+                     :base-directory "~/org/notes/elisp/"
                      :publishing-directory "~/publish_html"
                      :section-numbers nil
                      :base-extension "org"
@@ -136,7 +142,7 @@
                      :html-link-up "../../index.html"
                      :auto-preamble t
                      :with-toc t)
-                    ("myprojectweb" :components("attachments" "notes")))))
+                    ("myprojectweb" :components("attachments" "notes" "notes-to-orgfiles")))))
 
 ;;----- Refiling
 (after! org (setq org-refile-targets '((nil :maxlevel . 9)
@@ -150,4 +156,5 @@
                   org-startup-folded 'content
                   org-src-tab-acts-natively t))
 (add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'org-mode-hook #'+org-pretty-mode)
 (add-hook 'org-mode-hook 'turn-off-auto-fill)
