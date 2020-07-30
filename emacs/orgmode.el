@@ -44,7 +44,9 @@
         ("x" "Time Tracker" entry (file+headline "~/org/tasks/timetracking.org" "Time Tracker")
          (file "~/.doom.d/templates/timetracker.org") :clock-in t :clock-resume t)
         ("a" "Anki card" entry (file+headline "~/org/tasks/anki.org" "Inbox")
-         (file "~/.doom.d/templates/anki.org") :immediate-finish t)))
+         (file "~/.doom.d/templates/anki.org") :immediate-finish t)
+        ("H" "Hugo Articles" entry (file+headline "~/org/tasks/hugo.org" "Inbox")
+         (file "~/.doom.d/templates/hugo.org") :immediate-finish t)))
 
 (defun zyro/capture-template-selector ()
   "Prompt to select template"
