@@ -414,7 +414,8 @@
                   org-export-with-section-numbers nil
                   org-export-with-properties nil
                   org-export-with-smart-quotes t
-                  org-export-backends '(pdf ascii html latex odt md pandoc)))
+;                 org-export-backends '(pdf ascii html latex odt md pandoc)))
+                  org-export-backends '(ascii html latex odt md pandoc)))
 
 (setq org-agenda-files (append (file-expand-wildcards (concat org-gtd-tasks-folder "*.org"))))
 
@@ -502,8 +503,8 @@
  window-combination-resize t
  x-stretch-cursor t)
 
-(use-package org-pdftools
-  :hook (org-load . org-pdftools-setup-link))
+;(use-package org-pdftools
+;  :hook (org-load . org-pdftools-setup-link))
 
 ; GNUPLOT
 (use-package gnuplot
