@@ -17,6 +17,10 @@ if [ -e $(which emacs) -a ! -e ~/.emacs.d/ ]; then
   ~/.emacs.d/bin/doom doctor
 fi
 
+if [ -e $(which tmux) -a ! -e ~/.tmux/ ]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 if [ $SHELL = $(which bash) -a -e $(which zsh) ]; then
   chsh -s $(which zsh)
 fi
