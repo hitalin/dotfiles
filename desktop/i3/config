@@ -34,14 +34,14 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run -show combi"
-bindsym $mod+g exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' 
+bindsym $mod+g exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+Shift+d exec --no-startup-id rofi -show window
 bindsym Mod1+Tab exec --no-startup-id rofi -show window
 
@@ -190,7 +190,6 @@ exec --no-startup-id sh $HOME/dotfiles/desktop/wallpaper/.fehbg
 exec --no-startup-id picom -b --config $HOME/dotfiles/desktop/xorg/picom.conf
 exec --no-startup-id fcitx
 exec --no-startup-id dunst
-exec --no-startup-id urxvtd --quiet --fork --opendisplay
 exec --no-startup-id dropbox
 exec --no-startup-id greenclip daemon
 exec --no-startup-id LC_CTYPE=ja_JP.UTF-8 emacs --daemon
