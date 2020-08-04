@@ -124,6 +124,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
 
+alias gcd='ghq look `ghq list |fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*"`'
+
 alias ocaml="rlwrap ocaml"
 alias ghc="stack ghc"
 alias ghci="stack ghci"
