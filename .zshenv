@@ -13,8 +13,9 @@ export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 fpath+=$HOME/.zinit/plugins/sindresorhus---pure
 
 # fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
 # lang
 export PATH=$PATH:/home/taka/.local/bin
