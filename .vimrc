@@ -70,6 +70,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('justinmk/vim-sneak')
   call dein#add('unblevable/quick-scope')
   call dein#add('kassio/neoterm')
+  call dein#add('Shougo/vinarise.vim')
   " add features
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
@@ -512,14 +513,3 @@ hi VertSplit ctermbg=NONE guibg=NONE
 if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
-
-" to vim -b
-augroup BinaryEditVimrcCommands
-  autocmd!
-  autocmd BufReadPre  *.bin let &binary = 1
-  autocmd BufReadPost * if &binary | silent %!xxd -g
-  autocmd BufReadPost * set ft=xxd | endif
-  autocmd BufWritePre * if &binary | %!xxd -r | endif
-  autocmd BufWritePost * if &binary | silent %!xxd -g
-  autocmd BufWritePost * set nomod | endif
-augroup END
