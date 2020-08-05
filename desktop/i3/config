@@ -188,6 +188,7 @@ new_window 1pixel
 # startup
 exec --no-startup-id sh $HOME/dotfiles/desktop/wallpaper/.fehbg
 exec --no-startup-id picom -b --config $HOME/dotfiles/desktop/xorg/picom.conf
+exec --no-startup-id udiskie --tray
 exec --no-startup-id fcitx
 exec --no-startup-id dunst
 exec --no-startup-id dropbox
