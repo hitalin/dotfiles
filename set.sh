@@ -11,14 +11,14 @@ if [ -e $(which nvim) -a ! -e ~/.config/nvim/ ]; then
 fi
 
 if [ -e $(which emacs) -a ! -e ~/.emacs.d/ ]; then
-  git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-  ln -s $SCRIPT_DIR/emacs ~/.doom.d
+  git clone git@github.com:hlissner/doom-emacs ~/.emacs.d
+  git clone git@github.com:i0z0m/.doom.d.git
   ~/.emacs.d/bin/doom sync
   ~/.emacs.d/bin/doom doctor
 fi
 
 if [ -e $(which tmux) -a ! -e ~/.tmux/ ]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  git clone git@github.com:tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
 if [ $SHELL = $(which bash) -a -e $(which zsh) ]; then
