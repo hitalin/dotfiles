@@ -12,7 +12,7 @@ fi
 
 if [ -e $(which emacs) -a ! -e ~/.emacs.d/ ]; then
   git clone git@github.com:hlissner/doom-emacs ~/.emacs.d
-  git clone git@github.com:i0z0m/.doom.d.git
+  git clone git@github.com:i0z0m/.doom.d ~/.doom.d
   ~/.emacs.d/bin/doom sync
   ~/.emacs.d/bin/doom doctor
 fi
