@@ -64,6 +64,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
   " extending standard features
+  call dein#add('vim-jp/vimdoc-ja')
   call dein#add('terryma/vim-expand-region')
   call dein#add('junegunn/vim-easy-align')
   call dein#add('preservim/nerdcommenter')
@@ -519,6 +520,9 @@ hi VertSplit ctermbg=NONE guibg=NONE
 "hi SpellBad cterm=underline ctermfg=LightBlue
 "hi SpellCap cterm=underline ctermfg=LightBlue
 "hi SpellLocal cterm=underline ctermfg=LightBlue
+
+" Change my 1st language for help
+set helplang=ja,en
 
 " Check whether plugins should be installed or not
 if has('vim_starting') && dein#check_install()
