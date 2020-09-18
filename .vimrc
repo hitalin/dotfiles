@@ -1,7 +1,13 @@
+" Encode
+set encoding=UTF-8
+scriptencoding=UTF-8
+" Change my 1st language for help
+set helplang=ja,en
+
 " enable plugin, indent
 filetype plugin on
 
-"set nowrap
+" set nowrap
 syntax enable
 
 " Set default indent width
@@ -18,9 +24,6 @@ if has('persistent_undo')
   set undofile
   set undolevels=1000
 endif
-
-" Encode
-set encoding=UTF-8
 
 " Indentation settings {{{
 au Filetype rust setlocal ts=4 sts=4 sw=4
@@ -520,9 +523,6 @@ hi VertSplit ctermbg=NONE guibg=NONE
 "hi SpellBad cterm=underline ctermfg=LightBlue
 "hi SpellCap cterm=underline ctermfg=LightBlue
 "hi SpellLocal cterm=underline ctermfg=LightBlue
-
-" Change my 1st language for help
-set helplang=ja,en
 
 " Check whether plugins should be installed or not
 if has('vim_starting') && dein#check_install()
