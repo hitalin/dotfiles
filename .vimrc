@@ -464,7 +464,6 @@ set incsearch
 
 " Accessing the system clipboard
 set clipboard=unnamed
-
 " Avoid automatic indentation
 autocmd InsertLeave *
       \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
@@ -513,20 +512,6 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 hi Visual cterm=reverse
 hi Search cterm=reverse ctermfg=yellow
 hi VertSplit ctermbg=NONE guibg=NONE
-
-" paste from clipboard
-if &term =~ "xterm"
-  let &t_SI .= "\e[?2004h"
-  let &t_EI .= "\e[?2004l"
-  let &pastetoggle = "\e[201~"
-
-  function XTermPasteBegin(ret)
-    set paste
-    return a:ret
-  endfunction
-
-  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-endif
 
 " enable mouse in terminal
 if has('mouse')
