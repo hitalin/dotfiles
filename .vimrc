@@ -463,7 +463,8 @@ set ruler
 set incsearch
 
 " Accessing the system clipboard
-set clipboard=unnamed
+set clipboard&
+set clipboard=unnamedplus
 " Avoid automatic indentation
 autocmd InsertLeave *
       \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
