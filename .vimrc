@@ -347,11 +347,11 @@ endif
 " vinarise.vim
 " https://kivantium.hateblo.jp/entry/2015/04/30/235007
 augroup BinaryXXD
-	autocmd!
-	autocmd BufReadPre  *.bin let &binary =1
-	autocmd BufReadPost * if &binary | Vinarise
-	autocmd BufWritePre * if &binary | Vinarise | endif
-	autocmd BufWritePost * if &binary | Vinarise
+  autocmd!
+  autocmd BufReadPre  *.bin let &binary =1
+  autocmd BufReadPost * if &binary | Vinarise
+  autocmd BufWritePre * if &binary | Vinarise | endif
+  autocmd BufWritePost * if &binary | Vinarise
 augroup END
 
 " depend on pynvim
@@ -513,6 +513,20 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 hi Visual cterm=reverse
 hi Search cterm=reverse ctermfg=yellow
 hi VertSplit ctermbg=NONE guibg=NONE
+
+" paste from clipboard
+if &term =~ "xterm"
+  let &t_SI .= "\e[?2004h"
+  let &t_EI .= "\e[?2004l"
+  let &pastetoggle = "\e[201~"
+
+  function XTermPasteBegin(ret)
+    set paste
+    return a:ret
+  endfunction
+
+  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
 
 " Spell configuration
 "autocmd BufRead,BufNewFile *.md  set spelllang=en_us,cjk spell
