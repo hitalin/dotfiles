@@ -1,7 +1,13 @@
+" Encode
+set encoding=UTF-8
+scriptencoding=UTF-8
+" Change my 1st language for help
+set helplang=ja,en
+
 " enable plugin, indent
 filetype plugin on
 
-"set nowrap
+" set nowrap
 syntax enable
 
 " Set default indent width
@@ -18,9 +24,6 @@ if has('persistent_undo')
   set undofile
   set undolevels=1000
 endif
-
-" Encode
-set encoding=UTF-8
 
 " Indentation settings {{{
 au Filetype rust setlocal ts=4 sts=4 sw=4
@@ -64,6 +67,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
   " extending standard features
+  call dein#add('vim-jp/vimdoc-ja')
   call dein#add('terryma/vim-expand-region')
   call dein#add('junegunn/vim-easy-align')
   call dein#add('preservim/nerdcommenter')
@@ -343,11 +347,11 @@ endif
 " vinarise.vim
 " https://kivantium.hateblo.jp/entry/2015/04/30/235007
 augroup BinaryXXD
-	autocmd!
-	autocmd BufReadPre  *.bin let &binary =1
-	autocmd BufReadPost * if &binary | Vinarise
-	autocmd BufWritePre * if &binary | Vinarise | endif
-	autocmd BufWritePost * if &binary | Vinarise
+  autocmd!
+  autocmd BufReadPre  *.bin let &binary =1
+  autocmd BufReadPost * if &binary | Vinarise
+  autocmd BufWritePre * if &binary | Vinarise | endif
+  autocmd BufWritePost * if &binary | Vinarise
 augroup END
 
 " depend on pynvim
@@ -459,8 +463,8 @@ set ruler
 set incsearch
 
 " Accessing the system clipboard
-set clipboard=unnamed
-
+set clipboard&
+set clipboard=unnamedplus
 " Avoid automatic indentation
 autocmd InsertLeave *
       \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
@@ -509,6 +513,18 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 hi Visual cterm=reverse
 hi Search cterm=reverse ctermfg=yellow
 hi VertSplit ctermbg=NONE guibg=NONE
+
+" enable mouse in terminal
+if has('mouse')
+  set mouse=a
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  elseif v:version > 703 || v:version is 703 && has('patch632')
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
+endif
 
 " Spell configuration
 "autocmd BufRead,BufNewFile *.md  set spelllang=en_us,cjk spell
