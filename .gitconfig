@@ -4,3 +4,14 @@
 
 [core]
 	editor = vim -c \"set fenc=utf-8\"
+	quotepath = false
+	ignorecase = false
+
+[color]
+	ui = true
+	diff = auto
+	status = auto
+	branch = auto
+
+[merge]
+	conflictStyle = diff3
