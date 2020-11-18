@@ -22,6 +22,12 @@ export PATH=$PATH:/home/taka/.local/bin
 
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+# IM
+export DefaultImModule=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
 # WSL
 if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
 ## for WSL1

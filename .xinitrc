@@ -37,11 +37,6 @@ xsetroot -cursor_name left_ptr
 setxkbmap -layout jp
 test -r $usermodmap && xmodmap $usermodmap
 
-export DefaultImModule=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-
 exec i3
 #exec i3 -V >> ~/.config/i3/i3log-$(date +'%F-%k-%M-%S') 2>&1
 #end
