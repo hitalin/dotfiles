@@ -498,9 +498,6 @@ set hidden
 " Do not create swap files
 set noswapfile
 
-" Set clipboard
-set clipboard+=unnamedplus
-
 " Colorscheme
 colorscheme molokai
 "" make background transparent
@@ -509,22 +506,25 @@ highlight NonText ctermbg=NONE guibg=NONE
 highlight SpecialKey ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
-" gui configuration
+" GUI configuration
 hi Visual cterm=reverse
 hi Search cterm=reverse ctermfg=yellow
 hi VertSplit ctermbg=NONE guibg=NONE
 
-" enable mouse in terminal
-"if has('mouse')
-"  set mouse=a
-"  if has('mouse_sgr')
-"    set ttymouse=sgr
-"  elseif v:version > 703 || v:version is 703 && has('patch632')
-"    set ttymouse=sgr
-"  else
-"    set ttymouse=xterm2
-"  endif
-"endif
+" Enable mouse in terminal
+if has('mouse')
+  set mouse=a
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  elseif v:version > 703 || v:version is 703 && has('patch632')
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
+endif
+
+" Set clipboard
+set clipboard+=unnamedplus
 
 " Spell configuration
 "autocmd BufRead,BufNewFile *.md  set spelllang=en_us,cjk spell
