@@ -29,13 +29,11 @@ tags
 *.hi
 
 # python
-*_venv/
 .ropeproject/
 __pycache__/
 *.pyc
 
 # haskell
-*_venv/
 cabal.sandbox.config
 .cabal-sandbox
 
