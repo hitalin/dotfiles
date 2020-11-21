@@ -15,4 +15,6 @@
 	branch = auto
 
 [merge]
-	conflictStyle = diff3
+  tool = vimdiff
+  keepBackup = false
+  conflictStyle = diff3
