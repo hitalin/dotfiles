@@ -29,17 +29,20 @@ tags
 *.hi
 
 # python
-*_venv/
 .ropeproject/
 __pycache__/
 *.pyc
 
 # haskell
-*_venv/
 cabal.sandbox.config
 .cabal-sandbox
 
 # latex
+*.bbl
+*.dvi
+*.pdf
+*.run.xml
+*.synctex.gz
 *.aux
 *.fdb_latexmk
 *.fls

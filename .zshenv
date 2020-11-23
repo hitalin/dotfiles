@@ -18,9 +18,15 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
 # lang
+## python
 export PATH=$PATH:/home/taka/.local/bin
-
+## ocaml
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+## go
+if [ -x "`which go`" ]; then
+  export GOPATH=$HOME/go
+  export PATH="$GOPATH/bin:$PATH"
+fi
 
 # WSL
 if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
