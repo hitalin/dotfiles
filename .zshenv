@@ -24,7 +24,7 @@ export PATH=$PATH:/home/taka/.local/bin
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 ## go
 if [ -x "`which go`" ]; then
-  export GOPATH=$HOME/go
+  export GOPATH=$HOME/.go
   export PATH="$GOPATH/bin:$PATH"
 fi
 
