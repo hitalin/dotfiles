@@ -67,6 +67,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
   " extending standard features
+  call dein#add('SirVer/ultisnips')
   call dein#add('vim-jp/vimdoc-ja')
   call dein#add('terryma/vim-expand-region')
   call dein#add('junegunn/vim-easy-align')
@@ -468,6 +469,11 @@ if dein#tap('vimtex')
   let g:vimtex_view_general_options = ''@line @pdf @tex'
   let g:vimtex_compiler_progname = nvr'
 endif
+
+" ultisnets
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 " vim-better-whitespace
 if dein#tap('vim-better-whitespace')
