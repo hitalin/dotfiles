@@ -95,6 +95,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-python/python-syntax')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('lervag/vimtex')
   call dein#add('jceb/vim-orgmode')
   call dein#add('tpope/vim-speeddating')
   " preview documents
