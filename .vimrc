@@ -67,6 +67,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
   " extending standard features
+  call dein#add('SirVer/ultisnips')
   call dein#add('vim-jp/vimdoc-ja')
   call dein#add('terryma/vim-expand-region')
   call dein#add('junegunn/vim-easy-align')
@@ -124,7 +125,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-clangd',
   \ 'coc-python',
-  \ 'coc-texlab',
+  \ 'coc-vimtex',
   \ ]
 " from README.md
 "" if hidden is not set, TextEdit might fail.
@@ -438,6 +439,41 @@ if dein#tap('vim-cpp-enhanced-highlight')
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_concepts_highlight = 1
 endif
+
+" vimtex
+if dein#tap('vimtex')
+  let g:vimtex_latexmk_enabled = 1
+  let g:vimtex_quickfix_mode = 0
+  let g:vimtex_quickfix_latexlog = {'default' : 0}
+  let g:vimtex_quickfix_autoclose_after_keystrokes = 1
+  let g:tex_flavor='platex'
+  let g:vimtex_compiler_latexmk_engines =  {_'' : -pdfdvi' }'
+  let g:vimtex_compiler_latexmk = '
+        \ '{backend': nvim',
+        \ ''background' : 0,
+        \ 'build_dir' : '',
+        \ 'continuous' : 1,
+        \ 'options' : [
+        \   '-pdfdvi,
+        \   ''-verbose',
+        \   '-shell-escape,
+        \   ''-file-line-error,
+        \   ''-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+  set conceallevel = 1
+  let g:tex_conceal = 'abdmg'
+  let g:vimtex_view_method = 'zathura'
+  let g:vimtex_view_general_viewer = '/usr/bin/zathura
+  let g:vimtex_view_general_options = ''@line @pdf @tex'
+  let g:vimtex_compiler_progname = nvr'
+endif
+
+" ultisnets
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 " vim-better-whitespace
 if dein#tap('vim-better-whitespace')
