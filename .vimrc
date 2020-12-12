@@ -124,6 +124,7 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-json',
+  \ 'coc-vimlsp',
   \ 'coc-clangd',
   \ 'coc-python',
   \ 'coc-vimtex',
