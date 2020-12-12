@@ -480,6 +480,12 @@ if dein#tap('vim-better-whitespace')
   autocmd FileType markdown EnableWhitespace
 endif
 
+" coc-vimlsp
+let g:markdown_fenced_languages = [
+      \ 'vim',
+      \ 'help'
+      \]
+
 " Basic settings {{{
 
 " Set statusline
