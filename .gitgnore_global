@@ -22,7 +22,7 @@ tags
 *.o
 
 # rust
-/target/
+target/
 Cargo.lock
 
 # ocaml
