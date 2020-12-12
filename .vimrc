@@ -95,6 +95,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-python/python-syntax')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('cespare/vim-toml')
   call dein#add('lervag/vimtex')
   call dein#add('jceb/vim-orgmode')
   call dein#add('tpope/vim-speeddating')
@@ -124,8 +125,10 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-json',
+  \ 'coc-vimlsp',
   \ 'coc-clangd',
   \ 'coc-python',
+  \ 'coc-rls',
   \ 'coc-vimtex',
   \ ]
 " from README.md
@@ -478,6 +481,12 @@ if dein#tap('vim-better-whitespace')
   let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
   autocmd FileType markdown EnableWhitespace
 endif
+
+" coc-vimlsp
+let g:markdown_fenced_languages = [
+      \ 'vim',
+      \ 'help'
+      \]
 
 " Basic settings {{{
 

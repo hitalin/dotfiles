@@ -2,6 +2,7 @@
 *
 !*.*
 !*/
+.bin
 
 # archive
 *.zip
@@ -19,6 +20,10 @@ tags
 
 # c/cpp
 *.o
+
+# rust
+target/
+Cargo.lock
 
 # ocaml
 *.cmi
