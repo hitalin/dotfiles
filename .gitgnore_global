@@ -20,6 +20,12 @@ tags
 # c/cpp
 *.o
 
+# rust
+debug/
+target/
+Cargo.lock
+**/*.rs.bk
+
 # ocaml
 *.cmi
 *.cmo
