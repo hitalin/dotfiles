@@ -21,6 +21,7 @@ tags
 # c/cpp
 a.out
 *.o
+.clangd/
 
 # rust
 target/
