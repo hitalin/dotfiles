@@ -2,7 +2,8 @@
 *
 !*.*
 !*/
-.bin
+a.out
+*.bin
 
 # archive
 *.zip
@@ -20,6 +21,7 @@ tags
 
 # c/cpp
 *.o
+.clangd/
 
 # rust
 target/
