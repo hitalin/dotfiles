@@ -17,6 +17,10 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
+# emacs-application-framework
+eval $(dbus-launch)
+export DBUS_SESSION_BUS_ADDRESS
+
 # lang
 ## python
 export PATH=$PATH:/home/taka/.local/bin
