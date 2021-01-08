@@ -14,7 +14,7 @@ if [ -e $(which emacs) ] && [ ! -e ~/.emacs.d/ ]; then
   git clone git@github.com:hlissner/doom-emacs ~/.emacs.d
   git clone git@github.com:i0z0m/.doom.d ~/.doom.d
 
-  git clone https://github.com/org-roam/org-roam-server
+  git clone https://github.com/org-roam/org-roam-server ~/.emacs.d/org-roam-server
 
   git clone https://github.com/manateelazycat/emacs-application-framework.git --depth=1 ~/.emacs.d/site-lisp/emacs-application-framework/
   chmod +x ~/.emacs.d/site-lisp/emacs-application-framework/install-eaf.sh
