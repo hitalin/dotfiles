@@ -21,4 +21,4 @@
 
 [ghq]
   vcs = git
-  root = ~/ghq
+  root = ~/projects
