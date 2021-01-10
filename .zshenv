@@ -18,7 +18,8 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
 # emacs-application-framework
-eval $(dbus-launch)
+eval $(dbus-launch --sh-syntax --exit-with-session)
+## --sh-syntax --exit-with-session is needed for fcitx
 export DBUS_SESSION_BUS_ADDRESS
 
 # lang
