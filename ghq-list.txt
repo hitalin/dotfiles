@@ -1,3 +1,2 @@
 github.com/itchyny/llvm-brainfuck
-github.com/i0z0m/program
 github.com/oldgeese/toysynth
