@@ -266,6 +266,12 @@ if dein#tap('coc.nvim')
   nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 endif
 
+" coc-vimlsp
+let g:markdown_fenced_languages = [
+      \ 'vim',
+      \ 'help'
+      \]
+
 " vista.vim
 if dein#tap('vista.vim')
   function! NearestMethodOrFunction() abort
@@ -481,12 +487,6 @@ if dein#tap('vim-better-whitespace')
   let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
   autocmd FileType markdown EnableWhitespace
 endif
-
-" coc-vimlsp
-let g:markdown_fenced_languages = [
-      \ 'vim',
-      \ 'help'
-      \]
 
 " Basic settings {{{
 
