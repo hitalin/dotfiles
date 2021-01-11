@@ -124,6 +124,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
 
+alias glg='git log --graph --oneline --decorate --all'
+
 alias ocaml="rlwrap ocaml"
 alias ghc="stack ghc"
 alias ghci="stack ghci"
