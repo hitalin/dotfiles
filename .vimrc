@@ -31,7 +31,14 @@ au Filetype python setlocal ts=4 sts=4 sw=4
 au Filetype rst  setlocal ts=3 sts=3 sw=3
 " }}}
 
-" Flags {{{
+" Leader
+let mapleader = "\<Space>"
+
+nnoremap <Leader>w :w<CR>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>r :source ~/.vimrc<cr>
+
+    " Flags {{{
 let s:use_dein = 1
 " }}}
 
