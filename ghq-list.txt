@@ -1,3 +1,5 @@
-github.com/itchyny/llvm-brainfuck
+github.com/yosupo06/Algorithm
 github.com/oldgeese/toysynth
 github.com/TheAlgorithms/Python
+github.com/itchyny/llvm-brainfuck
+github.com/nayuki/Project-Euler-solutions
