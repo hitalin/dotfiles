@@ -1,8 +1,6 @@
 " Encode
 set encoding=UTF-8
 scriptencoding=UTF-8
-" Change my 1st language for help
-set helplang=ja,en
 
 " enable plugin, indent
 filetype plugin on
@@ -75,7 +73,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('airblade/vim-rooter')
   " extending standard features
   call dein#add('SirVer/ultisnips')
-  call dein#add('vim-jp/vimdoc-ja')
   call dein#add('terryma/vim-expand-region')
   call dein#add('junegunn/vim-easy-align')
   call dein#add('preservim/nerdcommenter')
