@@ -1,4 +1,6 @@
 if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
+  export LANG=ja_JP.UTF-8
+
   export GTK_IM_MODULE='uim'
   export QT_IM_MODULE='uim'
   export XMODIFIERS='@im=uim'
@@ -10,7 +12,6 @@ if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
 #  export GTK_IM_MODULE='fcitx'
 #  export QT_IM_MODULE='fcitx'
 #  export XMODIFIERS='@im=fcitx'
-#  export DefaultIMModule=fcitx
 #  if [ $SHLVL = 1 ] ; then
 #    (fcitx-autostart > /dev/null 2>&1 &)
 #    xset -r 49  > /dev/null 2>&1
