@@ -135,6 +135,8 @@ alias gdb="gdb -q"
 alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
+alias man='LANG=ja_JP.UTF-8 man'
+
 alias emacs='LANG=ja_JP.UTF-8 emacs'
 alias erun='LC_CTYPE=ja_JP.UTF-8 emacs --daemon'
 alias e='emacsclient -nw -a ""'
