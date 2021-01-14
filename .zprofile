@@ -1,6 +1,4 @@
 if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
-  export LANG=ja_JP.UTF-8
-
   export GTK_IM_MODULE='uim'
   export QT_IM_MODULE='uim'
   export XMODIFIERS='@im=uim'
