@@ -1,5 +1,6 @@
-github.com/yosupo06/Algorithm
 github.com/oldgeese/toysynth
-github.com/TheAlgorithms/Python
-github.com/itchyny/llvm-brainfuck
+github.com/yosupo06/Algorithm
 github.com/nayuki/Project-Euler-solutions
+github.com/itchyny/llvm-brainfuck
+github.com/TheAlgorithms/Python
+github.com/segfo/conways_life_of_game_rust
