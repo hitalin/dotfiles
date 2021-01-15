@@ -73,6 +73,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('airblade/vim-rooter')
   " extending standard features
   call dein#add('mbbill/undotree')
+  call dein#add('tpope/vim-surround')
+  call dein#add('tpope/vim-repeat')
   call dein#add('SirVer/ultisnips')
   call dein#add('honza/vim-snippets')
   call dein#add('terryma/vim-expand-region')
