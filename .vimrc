@@ -72,6 +72,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
   " extending standard features
+  call dein#add('mbbill/undotree')
   call dein#add('SirVer/ultisnips')
   call dein#add('honza/vim-snippets')
   call dein#add('terryma/vim-expand-region')
@@ -489,6 +490,9 @@ if dein#tap('vimtex')
   let g:vimtex_view_general_viewer = '/usr/bin/zathura'
   let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
+
+" undotree
+nnoremap <F5> :UndotreeToggle<CR>
 
 " ultisnets
 let g:UltiSnipsExpandTrigger = '<tab>'
