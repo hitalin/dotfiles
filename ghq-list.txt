@@ -1,8 +1,12 @@
-github.com/nayuki/Project-Euler-solutions
+github.com/oldgeese/toysynth
 github.com/yosupo06/Algorithm
+github.com/careercup/CtCI-6th-Edition-cpp
 github.com/UCSD-PL/nano-smt
+github.com/shift-crops/x86emu
+github.com/nayuki/Project-Euler-solutions
 github.com/TheAlgorithms/Python
 github.com/ntddk/userstream_image_downloader
-github.com/oldgeese/toysynth
 github.com/segfo/conways_life_of_game_rust
+github.com/xoreaxeaxeax/movfuscator
 github.com/itchyny/llvm-brainfuck
+github.com/shigemk2/compiler
