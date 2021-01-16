@@ -23,6 +23,7 @@ fi
 
 if [ ! -d ~/.gdb/voltron/ ]; then
   git clone https://github.com/snare/voltron.git ~/.gdb/voltron
+  ~/.gdb/voltron/install.sh
 fi
 
 echo "Finished!"
