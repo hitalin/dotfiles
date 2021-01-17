@@ -135,10 +135,9 @@ alias gdb="gdb -q"
 alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
-alias emacs='LANG=ja_JP.UTF-8 emacs'
 alias erun='LC_CTYPE=ja_JP.UTF-8 emacs --daemon'
 alias e='emacsclient -nw -a ""'
-alias ge='emacsclient -c -a "" &'
+alias ge='LANG=ja_JP.UTF-8 emacsclient -c -a "" &'
 alias ekill='emacsclient -e "(kill-emacs)"'
 
 alias mac='ifconfig eth0 | egrep -o "([[:xdigit:]]{2}[:]){5}[[:xdigit:]]{2}"'
