@@ -170,7 +170,7 @@ function cdworktree() {
 
 ## https://dev.classmethod.jp/articles/shuntaka-rust-20190816/#toc-7
 function fd-fzf() {
-  local target_dir=$(fd -t d -I -H -E ".git"| fzf --reverse --query="$LBUFFER")
+  local target_dir=$(fd -t d -I -H -E ".git"| fzf --query="$LBUFFER")
   local current_dir=$(pwd)
 
   if [ -n "$target_dir" ]; then
