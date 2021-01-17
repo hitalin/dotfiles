@@ -124,6 +124,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
 
+alias glg='git log --graph --oneline --decorate --all'
+
 alias ocaml="rlwrap ocaml"
 alias ghc="stack ghc"
 alias ghci="stack ghci"
@@ -134,8 +136,8 @@ alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
 alias erun='LC_CTYPE=ja_JP.UTF-8 emacs --daemon'
-alias e='emacsclient -nw -a ""'
-alias ge='emacsclient -c -a "" &'
+alias e='emacsclient -nw'
+alias ge='emacsclient -c &'
 alias ekill='emacsclient -e "(kill-emacs)"'
 
 alias mac='ifconfig eth0 | egrep -o "([[:xdigit:]]{2}[:]){5}[[:xdigit:]]{2}"'
@@ -165,9 +167,24 @@ function cdworktree() {
     cd ${selectedWorkTreeDir}
 }
 
+## https://dev.classmethod.jp/articles/shuntaka-rust-20190816/#toc-7
+function fd-fzf() {
+  local target_dir=$(fd -t d -I -H -E ".git" | fzf --query="$LBUFFER")
+  local current_dir=$(pwd)
+
+  if [ -n "$target_dir" ]; then
+    BUFFER="cd ${current_dir}/${target_dir}"
+    zle accept-line
+  fi
+
+  zle reset-prompt
+}
+zle -N fd-fzf
+bindkey "^f" fd-fzf
+
 ## https://qiita.com/tomoyamachi/items/e51d2906a5bb24cf1684#%E3%81%95%E3%82%89%E3%81%AB%E4%BD%BF%E3%81%84%E3%82%84%E3%81%99%E3%81%8F--zsh%E3%81%AE%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0
 function ghq-fzf() {
-  local src=$(ghq list | fzf --preview "ls -la $(ghq root)/{} | tail -n+4 | awk '{print \$9\"/\"\$6\"/\"\$7 \" \" \$10}'")
+  local src=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
   if [ -n "$src" ]; then
     BUFFER="cd $(ghq root)/$src"
     zle accept-line

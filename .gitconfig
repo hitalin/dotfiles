@@ -2,6 +2,9 @@
 	name = i0z0m
 	email = i0z0m.prog@gmail.com
 
+[init]
+	defaultBranch = master
+
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 	quotepath = false
@@ -19,6 +22,17 @@
   keepBackup = false
   conflictStyle = diff3
 
+[pull]
+	rebase = false
+
 [ghq]
   vcs = git
   root = ~/ghq
+
+[credential]
+	helper = cache --timeout=3600
+
+[url "git@github.com:i0z0m"]
+  insteadOf = https://github.com/i0z0m
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/

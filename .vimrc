@@ -1,8 +1,6 @@
 " Encode
 set encoding=UTF-8
 scriptencoding=UTF-8
-" Change my 1st language for help
-set helplang=ja,en
 
 " enable plugin, indent
 filetype plugin on
@@ -31,7 +29,14 @@ au Filetype python setlocal ts=4 sts=4 sw=4
 au Filetype rst  setlocal ts=3 sts=3 sw=3
 " }}}
 
-" Flags {{{
+" Leader
+let mapleader = "\<Space>"
+
+nnoremap <Leader>w :w<CR>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>r :source ~/.vimrc<cr>
+
+    " Flags {{{
 let s:use_dein = 1
 " }}}
 
@@ -67,8 +72,11 @@ if dein#load_state(s:dein_dir)
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
   " extending standard features
+  call dein#add('mbbill/undotree')
+  call dein#add('tpope/vim-surround')
+  call dein#add('tpope/vim-repeat')
   call dein#add('SirVer/ultisnips')
-  call dein#add('vim-jp/vimdoc-ja')
+  call dein#add('honza/vim-snippets')
   call dein#add('terryma/vim-expand-region')
   call dein#add('junegunn/vim-easy-align')
   call dein#add('preservim/nerdcommenter')
@@ -266,6 +274,12 @@ if dein#tap('coc.nvim')
   nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 endif
 
+" coc-vimlsp
+let g:markdown_fenced_languages = [
+      \ 'vim',
+      \ 'help'
+      \]
+
 " vista.vim
 if dein#tap('vista.vim')
   function! NearestMethodOrFunction() abort
@@ -348,6 +362,14 @@ if dein#tap('fzf.vim')
           \ 'down':    '40%' })
   endfunction
 endif
+
+" neoterm
+let g:neoterm_default_mod='belowright'
+let g:neoterm_size=10
+let g:neoterm_autoscroll=1
+tnoremap <silent> <C-w> <C-\><C-n><C-w>
+nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
+vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
 
 " vinarise.vim
 " https://kivantium.hateblo.jp/entry/2015/04/30/235007
@@ -471,6 +493,9 @@ if dein#tap('vimtex')
   let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
 
+" undotree
+nnoremap <F5> :UndotreeToggle<CR>
+
 " ultisnets
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
@@ -481,12 +506,6 @@ if dein#tap('vim-better-whitespace')
   let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
   autocmd FileType markdown EnableWhitespace
 endif
-
-" coc-vimlsp
-let g:markdown_fenced_languages = [
-      \ 'vim',
-      \ 'help'
-      \]
 
 " Basic settings {{{
 
@@ -557,13 +576,17 @@ hi VertSplit ctermbg=NONE guibg=NONE
 " Enable mouse in terminal
 if has('mouse')
   set mouse=a
-  if has('mouse_sgr')
-    set ttymouse=sgr
-  elseif v:version > 703 || v:version is 703 && has('patch632')
-    set ttymouse=sgr
-  else
-    set ttymouse=xterm2
+
+  if !has('nvim')
+    if has('mouse_sgr')
+      set ttymouse=sgr
+    elseif v:version > 703 || v:version is 703 && has('patch632')
+      set ttymouse=sgr
+    else
+      set ttymouse=xterm2
+    endif
   endif
+
 endif
 
 " Set clipboard
