@@ -25,6 +25,3 @@
 [ghq]
   vcs = git
   root = ~/ghq
-
-[url "git://github.com/"]
-	insteadOf = https://github.com/
