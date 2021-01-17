@@ -181,7 +181,7 @@ function fd-fzf() {
   zle reset-prompt
 }
 zle -N fd-fzf
-bindkey "^n" fd-fzf
+bindkey "^f" fd-fzf
 
 ## https://qiita.com/tomoyamachi/items/e51d2906a5bb24cf1684#%E3%81%95%E3%82%89%E3%81%AB%E4%BD%BF%E3%81%84%E3%82%84%E3%81%99%E3%81%8F--zsh%E3%81%AE%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0
 function ghq-fzf() {
