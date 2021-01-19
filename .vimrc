@@ -597,9 +597,6 @@ if has('mouse')
 
 endif
 
-" Set clipboard
-set clipboard+=unnamedplus
-
 " Spell configuration
 "autocmd BufRead,BufNewFile *.md  set spelllang=en_us,cjk spell
 "autocmd BufRead,BufNewFile *.tex set spelllang=en_us,cjk spell
