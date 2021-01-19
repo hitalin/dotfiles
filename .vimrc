@@ -536,6 +536,21 @@ set clipboard=unnamedplus
 autocmd InsertLeave *
       \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
     \ if &l:diff | diffupdate | endif
+" Enable mouse in terminal
+if has('mouse')
+  set mouse=a
+
+  if !has('nvim')
+    if has('mouse_sgr')
+      set ttymouse=sgr
+    elseif v:version > 703 || v:version is 703 && has('patch632')
+      set ttymouse=sgr
+    else
+      set ttymouse=xterm2
+    endif
+  endif
+
+endif
 
 " Switch on highlighting the last used search pattern
 set hlsearch
@@ -550,6 +565,11 @@ nnoremap <silent><C-Space> :call BufferDeleteExceptFiler()<CR>
 " imap <C-j> <Down>
 " imap <C-h> <Left>
 " imap <C-l> <Right>
+
+" GUI configuration
+hi Visual cterm=reverse
+hi Search cterm=reverse ctermfg=yellow
+hi VertSplit ctermbg=NONE guibg=NONE
 
 if !has('gui_running')
   augroup term_vim_c_space
@@ -567,7 +587,6 @@ set noswapfile
 
 " syntax highlight
 syntax enable
-
 " Colorscheme
 colorscheme molokai
 "" make background transparent
@@ -575,27 +594,6 @@ highlight Normal ctermbg=NONE guibg=NONE
 highlight NonText ctermbg=NONE guibg=NONE
 highlight SpecialKey ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
-
-" GUI configuration
-hi Visual cterm=reverse
-hi Search cterm=reverse ctermfg=yellow
-hi VertSplit ctermbg=NONE guibg=NONE
-
-" Enable mouse in terminal
-if has('mouse')
-  set mouse=a
-
-  if !has('nvim')
-    if has('mouse_sgr')
-      set ttymouse=sgr
-    elseif v:version > 703 || v:version is 703 && has('patch632')
-      set ttymouse=sgr
-    else
-      set ttymouse=xterm2
-    endif
-  endif
-
-endif
 
 " Spell configuration
 "autocmd BufRead,BufNewFile *.md  set spelllang=en_us,cjk spell
