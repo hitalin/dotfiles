@@ -10,6 +10,11 @@ syntax enable
 
 " Set default indent width
 set expandtab
+let _curfile=expand("%:r")
+if _curfile == 'Makefile'
+  set noexpandtab
+endif
+
 set smartindent
 set wildmenu
 set wildmode=full
