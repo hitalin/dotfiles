@@ -1,5 +1,3 @@
-syntax enable
-
 " encoding
 set encoding=UTF-8
 scriptencoding=UTF-8
@@ -36,6 +34,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>r :source ~/.vimrc<cr>
 
+" undo
 if has('persistent_undo')
   set undodir=~/.vim/undo
   set undofile
@@ -565,6 +564,9 @@ set hidden
 
 " Do not create swap files
 set noswapfile
+
+" syntax highlight
+syntax enable
 
 " Colorscheme
 colorscheme molokai
