@@ -1,38 +1,33 @@
-" Encode
+syntax enable
+
+" encoding
 set encoding=UTF-8
 scriptencoding=UTF-8
 
-" enable plugin, indent
-filetype plugin on
+" tab
+set wildmenu
+set wildmode=full
 
-" set nowrap
-syntax enable
-
-" Set default indent width
 set expandtab
 let _curfile=expand("%:r")
 if _curfile == 'Makefile'
   set noexpandtab
 endif
 
+set smarttab
+au FileType make setlocal noexpandtab nosmarttab
+
+" indent
 set smartindent
-set wildmenu
-set wildmode=full
+
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set virtualedit=block
-if has('persistent_undo')
-  set undodir=~/.vim/undo
-  set undofile
-  set undolevels=1000
-endif
-
-" Indentation settings {{{
 au Filetype rust setlocal ts=4 sts=4 sw=4
 au Filetype python setlocal ts=4 sts=4 sw=4
 au Filetype rst  setlocal ts=3 sts=3 sw=3
-" }}}
+
+set virtualedit=block
 
 " Leader
 let mapleader = "\<Space>"
@@ -40,6 +35,12 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>r :source ~/.vimrc<cr>
+
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+  set undolevels=1000
+endif
 
     " Flags {{{
 let s:use_dein = 1
