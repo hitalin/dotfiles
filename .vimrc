@@ -143,6 +143,7 @@ let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-rls',
   \ 'coc-vimtex',
+  \ 'coc-tabnine',
   \ ]
 " from README.md
 "" if hidden is not set, TextEdit might fail.
