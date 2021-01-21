@@ -18,14 +18,12 @@ github.com/i0z0m/mist
 github.com/i0z0m/sound-py
 github.com/i0z0m/CTF
 github.com/i0z0m/intro-hs
-github.com/ntddk/userstream_image_downloader
 github.com/denisarnaud/hanoi-towers
 github.com/i0z0m/intro-asm
 github.com/i0z0m/intro-rs
 github.com/i0z0m/competition
 github.com/i0z0m/intro-ml
 github.com/herumi/xbyak
-github.com/tkmru/pwn_server
 github.com/TheAlgorithms/Python
 github.com/segfo/conways_life_of_game_rust
 github.com/shigemk2/compiler
