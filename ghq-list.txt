@@ -5,7 +5,6 @@ github.com/careercup/CtCI-6th-Edition-cpp
 github.com/oldgeese/toysynth
 github.com/shift-crops/x86emu
 github.com/nayuki/Project-Euler-solutions
-github.com/devzero2000/shellcoderhandbook
 github.com/i0z0m/intro-py
 github.com/i0z0m/intro-scm
 github.com/i0z0m/PythonChallenge
