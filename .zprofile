@@ -15,6 +15,8 @@ if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
     xset -r 49  > /dev/null 2>&1
   fi
 
+  LC_CTYPE=ja_JP.UTF-8 emacs --daemon
+
 fi
 
 if [ ! -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
