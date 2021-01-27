@@ -112,6 +112,7 @@ unset caseglob
 
 # alias
 eval $(thefuck --alias)
+alias f='fuck'
 
 alias q='exit'
 
