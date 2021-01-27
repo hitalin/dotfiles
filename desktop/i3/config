@@ -193,4 +193,3 @@ exec --no-startup-id fcitx
 exec --no-startup-id dunst
 exec --no-startup-id dropbox
 exec --no-startup-id greenclip daemon
-#exec --no-startup-id LC_CTYPE=ja_JP.UTF-8 emacs --daemon
