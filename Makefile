@@ -15,7 +15,5 @@ vim:
 	- make -C ~/local/vimrc
 
 others:
-	- ln -s $(CURDIR)/gitconfig ~/.gitconfig
-	- ln -s $(CURDIR)/gdbinit ~/.gdbinit
 	- mkdir ~/.ghc
-	- ln -s $(CURDIR)/ghci.conf ~/.ghc/ghci.conf
+	- ln -s $(CURDIR)/haskell/ghci.conf ~/.ghc/ghci.conf
