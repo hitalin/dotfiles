@@ -504,7 +504,7 @@ endif
 nnoremap <F5> :UndotreeToggle<CR>
 
 " sonictemplate
-let g:sonictemplate_vim_template_dir = expand('~/dotfiles/vim/sonictemplate')
+let g:sonictemplate_vim_template_dir = expand('~/.vim/sonictemplate')
 
 " ultisnets
 let g:UltiSnipsExpandTrigger="<s-tab>"
