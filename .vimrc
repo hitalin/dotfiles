@@ -512,6 +512,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/dotfiles/vim/ultisnips']
 
 " vim-better-whitespace
 if dein#tap('vim-better-whitespace')
