@@ -111,6 +111,9 @@ setopt prompt_subst
 unset caseglob
 
 # alias
+eval $(thefuck --alias)
+alias f='fuck'
+
 alias q='exit'
 
 eval $(dircolors -b)
@@ -127,9 +130,6 @@ alias mkdir='mkdir -p'
 alias glg='git log --graph --oneline --decorate --all'
 
 alias ocaml="rlwrap ocaml"
-alias ghc="stack ghc"
-alias ghci="stack ghci"
-alias runghc="stack runghc"
 
 alias gdb="gdb -q"
 alias objdump="objdump -M intel"
@@ -147,7 +147,14 @@ function ipv6todecimal(){
     dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
 }
 
-# functions for integrate with fzf
+# productive
+
+## https://qiita.com/2357gi/items/0ab1297357dedb90bbb1
+#chpwd() {
+#    if [[ $(pwd) != $HOME ]]; then;
+#        ls
+#    fi
+#}
 
 ## https://qiita.com/kamykn/items/aa9920f07487559c0c7e#%E8%87%AA%E5%88%86%E3%81%8C%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8Bfzf%E3%81%AE%E4%BE%8B
 function cdworktree() {
@@ -213,4 +220,5 @@ if [[ ! -n $TMUX && $- == *l* ]]; then
   fi
 fi
 
+# load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

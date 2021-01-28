@@ -1,3 +1,7 @@
+# editor
+export EDITOR=vim
+export VISUAL="emacsclient -c -a emacs"
+
 # less
 export LESS='--tabs=4 --no-init --LONG-PROMPT --RAW-CONTROL-CHARS --ignore-case'
 export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
@@ -24,8 +28,11 @@ export DBUS_SESSION_BUS_ADDRESS
 # lang
 ## python
 export PATH=$PATH:/home/taka/.local/bin
-## ocaml
-. ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+export PYTHONSTARTUP=/home/taka/dotfiles/python/startup.py
+# ocaml
+test -r /home/taka/.opam/opam-init/init.zsh && . /home/taka/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+## haskell
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 ## go
 if [ -x "`which go`" ]; then
   export GOPATH=$HOME/.go

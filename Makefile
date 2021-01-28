@@ -11,11 +11,12 @@ zsh:
 	- ln -s $(CURDIR)/zsh/zshrc ~/.zshrc
 
 vim:
-	- git clone https://github.com/kmyk/vimrc ~/local/vimrc
-	- make -C ~/local/vimrc
+
+  - ln -s $(CURDIR)/vim/coc-settings.json ~/.vim/coc-settings.json
+  - ln -s $(CURDIR)/vim/UltiSnips/ ~/.vim/UltiSnips
+  - ln -s $(CURDIR)/vim/sonictemplate/ ~/.vim/sonictemplate
+
 
 others:
-	- ln -s $(CURDIR)/gitconfig ~/.gitconfig
-	- ln -s $(CURDIR)/gdbinit ~/.gdbinit
 	- mkdir ~/.ghc
-	- ln -s $(CURDIR)/ghci.conf ~/.ghc/ghci.conf
+	- ln -s $(CURDIR)/haskell/ghci.conf ~/.ghc/ghci.conf

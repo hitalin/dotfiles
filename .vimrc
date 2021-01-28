@@ -1,33 +1,31 @@
-" Encode
+" encoding
 set encoding=UTF-8
 scriptencoding=UTF-8
 
-" enable plugin, indent
-filetype plugin on
-
-" set nowrap
-syntax enable
-
-" Set default indent width
-set expandtab
-set smartindent
+" tab
 set wildmenu
 set wildmode=full
+
+set expandtab
+let _curfile=expand("%:r")
+if _curfile == 'Makefile'
+  set noexpandtab
+endif
+
+set smarttab
+au FileType make setlocal noexpandtab nosmarttab
+
+" indent
+set smartindent
+
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set virtualedit=block
-if has('persistent_undo')
-  set undodir=~/.vim/undo
-  set undofile
-  set undolevels=1000
-endif
-
-" Indentation settings {{{
 au Filetype rust setlocal ts=4 sts=4 sw=4
 au Filetype python setlocal ts=4 sts=4 sw=4
 au Filetype rst  setlocal ts=3 sts=3 sw=3
-" }}}
+
+set virtualedit=block
 
 " Leader
 let mapleader = "\<Space>"
@@ -35,6 +33,13 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>r :source ~/.vimrc<cr>
+
+" undo
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+  set undolevels=1000
+endif
 
     " Flags {{{
 let s:use_dein = 1
@@ -75,6 +80,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('mbbill/undotree')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-repeat')
+  call dein#add('mattn/sonictemplate-vim')
   call dein#add('SirVer/ultisnips')
   call dein#add('honza/vim-snippets')
   call dein#add('terryma/vim-expand-region')
@@ -138,6 +144,7 @@ let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-rls',
   \ 'coc-vimtex',
+  \ 'coc-tabnine',
   \ ]
 " from README.md
 "" if hidden is not set, TextEdit might fail.
@@ -496,10 +503,15 @@ endif
 " undotree
 nnoremap <F5> :UndotreeToggle<CR>
 
+" sonictemplate
+let g:sonictemplate_vim_template_dir = expand('~/.vim/sonictemplate')
+
 " ultisnets
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsEditSplit="vertical"
 
 " vim-better-whitespace
 if dein#tap('vim-better-whitespace')
@@ -531,48 +543,6 @@ set clipboard=unnamedplus
 autocmd InsertLeave *
       \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
     \ if &l:diff | diffupdate | endif
-
-" Switch on highlighting the last used search pattern
-set hlsearch
-
-" Fastest way to move buffer
-nnoremap <silent><Left> :bp<CR>
-nnoremap <silent><Right> :bn<CR>
-nnoremap <silent><C-Space> :call BufferDeleteExceptFiler()<CR>
-
-" Move with Ctrl+jkhl in insert mode
-" imap <C-k> <Up>
-" imap <C-j> <Down>
-" imap <C-h> <Left>
-" imap <C-l> <Right>
-
-if !has('gui_running')
-  augroup term_vim_c_space
-    autocmd!
-    autocmd VimEnter * map <Nul> <C-Space>
-    autocmd VimEnter * map! <Nul> <C-Space>
-  augroup END
-endif
-
-" Display another buffer when current buffer isn't saved.
-set hidden
-
-" Do not create swap files
-set noswapfile
-
-" Colorscheme
-colorscheme molokai
-"" make background transparent
-highlight Normal ctermbg=NONE guibg=NONE
-highlight NonText ctermbg=NONE guibg=NONE
-highlight SpecialKey ctermbg=NONE guibg=NONE
-highlight EndOfBuffer ctermbg=NONE guibg=NONE
-
-" GUI configuration
-hi Visual cterm=reverse
-hi Search cterm=reverse ctermfg=yellow
-hi VertSplit ctermbg=NONE guibg=NONE
-
 " Enable mouse in terminal
 if has('mouse')
   set mouse=a
@@ -589,8 +559,48 @@ if has('mouse')
 
 endif
 
-" Set clipboard
-set clipboard+=unnamedplus
+" Switch on highlighting the last used search pattern
+set hlsearch
+
+" Fastest way to move buffer
+nnoremap <silent><Left> :bp<CR>
+nnoremap <silent><Right> :bn<CR>
+nnoremap <silent><C-Space> :call BufferDeleteExceptFiler()<CR>
+
+" Move with Ctrl+jkhl in insert mode
+" imap <C-k> <Up>
+" imap <C-j> <Down>
+" imap <C-h> <Left>
+" imap <C-l> <Right>
+
+" GUI configuration
+hi Visual cterm=reverse
+hi Search cterm=reverse ctermfg=yellow
+hi VertSplit ctermbg=NONE guibg=NONE
+
+if !has('gui_running')
+  augroup term_vim_c_space
+    autocmd!
+    autocmd VimEnter * map <Nul> <C-Space>
+    autocmd VimEnter * map! <Nul> <C-Space>
+  augroup END
+endif
+
+" Display another buffer when current buffer isn't saved.
+set hidden
+
+" Do not create swap files
+set noswapfile
+
+" syntax highlight
+syntax enable
+" Colorscheme
+colorscheme molokai
+"" make background transparent
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight SpecialKey ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
 " Spell configuration
 "autocmd BufRead,BufNewFile *.md  set spelllang=en_us,cjk spell
