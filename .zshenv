@@ -28,6 +28,7 @@ export DBUS_SESSION_BUS_ADDRESS
 # lang
 ## python
 export PATH=$PATH:/home/taka/.local/bin
+export PYTHONSTARTUP=/home/taka/dotfiles/python/startup.py
 # ocaml
 test -r /home/taka/.opam/opam-init/init.zsh && . /home/taka/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 ## haskell
