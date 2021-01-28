@@ -24,53 +24,44 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-
-snippet    function
-options    head
-	function! ${1}() abort " {{{
-	endfunction " }}}
+snippet function
+function! ${1}() abort " {{{
+endfunction " }}}
 endsnippet
 
-snippet    functiond
-options    head
-	function! ${1}() dict abort " {{{
-	endfunction " }}}
+snippet functiond
+function! ${1}() dict abort " {{{
+endfunction " }}}
 endsnippet
 
 snippet if
-options head
-	if ${1:cond}
-	endif
+if ${1:cond}
+endif
 endsnippet
 
 snippet while
-options head
-	while ${1:cond}
-	endwhile
+while ${1:cond}
+endwhile
 endsnippet
 
 snippet for
-options head
-	for ${1:cond}
-	endfor
+for ${1:cond}
+endfor
 endsnippet
 
 snippet aug
-options head
-	augroup ${1:name}
-		autocmd!
-		${2:au}
-	augroup END
+augroup ${1:name}
+	autocmd!
+	${2:au}
+augroup END
 endsnippet
 
 snippet fold
-options head
-    " {{{
-    " }}}
+" {{{
+" }}}
 endsnippet
 
 snippet {
-    " {{{
-    " }}}
+" {{{
+" }}}
 endsnippet
-
