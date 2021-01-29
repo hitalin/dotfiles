@@ -13,7 +13,10 @@ if _curfile == 'Makefile'
 endif
 
 set smarttab
+augroup MakefileTab
+au!
 au FileType make setlocal noexpandtab nosmarttab
+augroup END
 
 " indent
 set smartindent
