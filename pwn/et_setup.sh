@@ -75,7 +75,7 @@ cd ../..
   sudo make install
 
   # build qemu-support
-  sudo apt-get -y install libtool automake bison libglib2.0-dev
+  sudo apt -y install libtool automake bison libglib2.0-dev
   ./build_qemu_support.sh
 )
 
