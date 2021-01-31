@@ -35,11 +35,9 @@ if has('persistent_undo')
   set undolevels=1000
 endif
 
-    " Flags {{{
-let s:use_dein = 1
-" }}}
-
 " Dein {{{
+let s:use_dein = 1
+
 let s:vimdir = $HOME . '/.vim'
 let s:dein_dir = s:vimdir . '/dein'
 let s:dein_github = s:dein_dir . '/repos/github.com'
@@ -605,6 +603,7 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "hi SpellBad cterm=underline ctermfg=LightBlue
 "hi SpellCap cterm=underline ctermfg=LightBlue
 "hi SpellLocal cterm=underline ctermfg=LightBlue
+"}}}
 
 " Check whether plugins should be installed or not
 if has('vim_starting') && dein#check_install()
