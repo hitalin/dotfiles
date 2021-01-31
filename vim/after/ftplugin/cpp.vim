@@ -3,7 +3,7 @@ if exists('b:did_after_ftplugin')
 endif
 let b:did_after_ftplugin = 1
 
-source $HOME/.vim/bundle/opengl.vim/syntax/opengl.vim
+#source $HOME/.vim/bundle/opengl.vim/syntax/opengl.vim
 
 " 演算子の間に空白を入れる
 "inoremap <buffer><expr> / smartchr#one_of('/', '// ', '/// ')
