@@ -7,16 +7,7 @@ set wildmenu
 set wildmode=full
 
 set expandtab
-let _curfile=expand("%:r")
-if _curfile == 'Makefile'
-  set noexpandtab
-endif
-
 set smarttab
-augroup MakefileTab
-au!
-au FileType make setlocal noexpandtab nosmarttab
-augroup END
 
 " indent
 set smartindent
