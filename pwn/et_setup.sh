@@ -6,6 +6,7 @@ INSTALL_DIR=$HOME/.pwn
 # Updates
 sudo apt -y update
 
+sudo apt -y install stow
 sudo apt -y install python3-pip
 sudo apt -y install gdb-multiarch
 sudo apt -y install unzip
@@ -101,8 +102,5 @@ sudo apt -y install libc6-dev-i386
 git clone https://github.com/JonathanSalwan/ROPgadget
 cd ROPgadget
 sudo python setup.py install
-
-# Install stow
-sudo sudo apt -y install stow
 
 echo "Finished!"
