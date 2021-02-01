@@ -33,9 +33,9 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 export PATH=$PATH:/home/taka/.local/bin
 export PYTHONSTARTUP=/home/taka/dotfiles/python/startup.py
 ## python2
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
-source /usr/bin/virtualenvwrapper.sh
+#export WORKON_HOME=$HOME/.virtualenvs
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+#source /usr/bin/virtualenvwrapper.sh
 
 # ocaml
 test -r /home/taka/.opam/opam-init/init.zsh && . /home/taka/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
