@@ -65,7 +65,7 @@ sudo pip install angr --upgrade
 
 # Install american-fuzzy-lop
 sudo apt -y install clang llvm
-cd $HOME/$INSTALL_DIR
+cd $INSTALL_DIR
 wget --quiet http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
 tar -xzvf afl-latest.tgz
 rm afl-latest.tgz
