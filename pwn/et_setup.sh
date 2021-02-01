@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
+INSTALL_DIR=$HOME/.pwn
 
 # Updates
 sudo apt -y update
@@ -35,7 +36,6 @@ sudo apt update
 echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 
 # Switch to tools dir for installation
-INSTALL_DIR=$HOME/.pwn
 cd
 mkdir $INSTALL_DIR
 cd $INSTALL_DIR
