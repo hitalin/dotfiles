@@ -15,10 +15,8 @@ setl autoindent
 setl nosmartindent
 setl cindent
 " setl textwidth=80 " this is annoying
-setl colorcolumn=80
+"setl colorcolumn=80
 
 " Folding
-setl foldmethod=indent
-setl foldlevel=99
-
-let g:jedi#popup_on_dot = 0
+"setl foldmethod=indent
+"setl foldlevel=99

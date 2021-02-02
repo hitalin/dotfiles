@@ -9,7 +9,7 @@
 	editor = vim -c \"set fenc=utf-8\"
 	quotepath = false
 	ignorecase = false
-	excludesfile = /home/taka/.gitignore_global
+	excludesfile = ~/.gitignore_global
 
 [color]
 	ui = true
@@ -28,9 +28,6 @@
 [ghq]
   vcs = git
   root = ~/ghq
-
-[credential]
-	helper = cache --timeout=3600
 
 [url "git@github.com:i0z0m"]
   insteadOf = https://github.com/i0z0m

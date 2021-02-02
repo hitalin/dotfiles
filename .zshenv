@@ -13,6 +13,9 @@ export LESS_TERMCAP_so=$(tput bold; tput setaf 3)  # begin standout-mode (yellow
 export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)     # end underline
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 
+# ssh
+eval "$(ssh-agent)" > /dev/null
+
 # theme
 fpath+=$HOME/.zinit/plugins/sindresorhus---pure
 
@@ -25,12 +28,20 @@ export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --lin
 eval $(dbus-launch)
 export DBUS_SESSION_BUS_ADDRESS
 
+# personal scripts
+export PATH="$HOME/dotfiles/bin:$PATH"
+
 # lang
-## python
-export PATH=$PATH:/home/taka/.local/bin
-export PYTHONSTARTUP=/home/taka/dotfiles/python/startup.py
+## python3
+export PATH=$PATH:$HOME/.local/bin
+export PYTHONSTARTUP=$HOME/dotfiles/python/startup.py
+## python2
+#export WORKON_HOME=$HOME/.virtualenvs
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+#source /usr/bin/virtualenvwrapper.sh
+
 # ocaml
-test -r /home/taka/.opam/opam-init/init.zsh && . /home/taka/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 ## haskell
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 ## go

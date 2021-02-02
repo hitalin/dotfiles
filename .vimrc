@@ -7,16 +7,7 @@ set wildmenu
 set wildmode=full
 
 set expandtab
-let _curfile=expand("%:r")
-if _curfile == 'Makefile'
-  set noexpandtab
-endif
-
 set smarttab
-augroup MakefileTab
-au!
-au FileType make setlocal noexpandtab nosmarttab
-augroup END
 
 " indent
 set smartindent
@@ -44,11 +35,9 @@ if has('persistent_undo')
   set undolevels=1000
 endif
 
-    " Flags {{{
-let s:use_dein = 1
-" }}}
-
 " Dein {{{
+let s:use_dein = 1
+
 let s:vimdir = $HOME . '/.vim'
 let s:dein_dir = s:vimdir . '/dein'
 let s:dein_github = s:dein_dir . '/repos/github.com'
@@ -109,8 +98,9 @@ if dein#load_state(s:dein_dir)
   call dein#add('chrisbra/Colorizer')
   call dein#add('flazz/vim-colorschemes')
   " syntax highlight
-  call dein#add('vim-python/python-syntax')
   call dein#add('octol/vim-cpp-enhanced-highlight')
+  call dein#add('vim-python/python-syntax')
+  call dein#add('neovimhaskell/haskell-vim')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('cespare/vim-toml')
   call dein#add('lervag/vimtex')
@@ -614,6 +604,7 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "hi SpellBad cterm=underline ctermfg=LightBlue
 "hi SpellCap cterm=underline ctermfg=LightBlue
 "hi SpellLocal cterm=underline ctermfg=LightBlue
+"}}}
 
 " Check whether plugins should be installed or not
 if has('vim_starting') && dein#check_install()
