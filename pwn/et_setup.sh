@@ -6,7 +6,6 @@ INSTALL_DIR=$HOME/.pwn
 # Updates
 sudo apt -y update
 
-sudo apt -y install stow
 sudo apt -y install python3-pip
 sudo apt -y install gdb-multiarch
 sudo apt -y install unzip
