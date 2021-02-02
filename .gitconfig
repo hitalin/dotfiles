@@ -9,7 +9,7 @@
 	editor = vim -c \"set fenc=utf-8\"
 	quotepath = false
 	ignorecase = false
-	excludesfile = /home/taka/.gitignore_global
+	excludesfile = ~/.gitignore_global
 
 [color]
 	ui = true

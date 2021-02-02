@@ -33,15 +33,15 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 
 # lang
 ## python3
-export PATH=$PATH:/home/taka/.local/bin
-export PYTHONSTARTUP=/home/taka/dotfiles/python/startup.py
+export PATH=$PATH:$HOME/.local/bin
+export PYTHONSTARTUP=$HOME/dotfiles/python/startup.py
 ## python2
 #export WORKON_HOME=$HOME/.virtualenvs
 #export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
 #source /usr/bin/virtualenvwrapper.sh
 
 # ocaml
-test -r /home/taka/.opam/opam-init/init.zsh && . /home/taka/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 ## haskell
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 ## go
