@@ -29,9 +29,6 @@
   vcs = git
   root = ~/ghq
 
-[credential]
-	helper = cache --timeout=3600
-
 [url "git@github.com:i0z0m"]
   insteadOf = https://github.com/i0z0m
 [url "git@github.com:"]
