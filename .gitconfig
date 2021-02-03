@@ -29,7 +29,7 @@
   vcs = git
   root = ~/ghq
 
-#[url "git@github.com:i0z0m"]
-#  insteadOf = https://github.com/i0z0m
+[url "git@github.com:i0z0m"]
+  insteadOf = https://github.com/i0z0m
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
