@@ -10,7 +10,7 @@ vim:
 
 ghc:
 	- mkdir -p ~/.ghc
-	- ln -s $(CURDIR)/haskell/ghci.conf ~/.ghc/ghci.conf
+	- ln -s $(CURDIR)/ghc/ghci.conf ~/.ghc/ghci.conf
 
 mlterm:
 	- mkdir -p ~/.mlterm
