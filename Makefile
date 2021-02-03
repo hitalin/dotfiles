@@ -4,9 +4,9 @@ default:        vim ghc mlterm
 vim:
 	- mkdir -p ~/.vim
 	- ln -s $(CURDIR)/vim/coc-settings.json ~/.vim/coc-settings.json
-	- ln -s $(CURDIR)/vim/after/ ~/.vim/after
-	- ln -s $(CURDIR)/vim/sonictemplate/ ~/.vim/sonictemplate
-	- ln -s $(CURDIR)/vim/UltiSnips/ ~/.vim/UltiSnips
+	- ln -s $(CURDIR)/vim/after ~/.vim/
+	- ln -s $(CURDIR)/vim/sonictemplate ~/.vim/
+	- ln -s $(CURDIR)/vim/UltiSnips ~/.vim/
 
 ghc:
 	- mkdir -p ~/.ghc
