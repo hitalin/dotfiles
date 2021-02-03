@@ -2,6 +2,7 @@ default:        vim ghc mlterm
 .PHONY: default vim ghc mlterm
 
 vim:
+	mkdir ~/.vim
 	- ln -s $(CURDIR)/vim/after/ ~/.vim/after
 	- ln -s $(CURDIR)/vim/coc-settings.json ~/.vim/coc-settings.json
 	- ln -s $(CURDIR)/vim/UltiSnips/ ~/.vim/UltiSnips
@@ -12,14 +13,13 @@ ghc:
 	- ln -s $(CURDIR)/haskell/ghci.conf ~/.ghc/ghci.conf
 
 mlterm:
-	- mkdir -p ~/.mlterm
+	- mkdir ~/.mlterm
 	- ln -Fi $(CURDIR)/mlterm/main    ~/.mlterm/main
 	- ln -Fi $(CURDIR)/mlterm/aafont  ~/.mlterm/aafont
 	- ln -Fi $(CURDIR)/mlterm/color   ~/.mlterm/color
 	- ln -Fi $(CURDIR)/mlterm/font    ~/.mlterm/font
 	- ln -Fi $(CURDIR)/mlterm/font-fb ~/.mlterm/font-fb
 	- ln -Fi $(CURDIR)/mlterm/key     ~/.mlterm/key
-	- ln -Fi $(CURDIR)/mlterm/main    ~/.mlterm/main
 	- ln -Fi $(CURDIR)/mlterm/menu    ~/.mlterm/menu
 	- ln -Fi $(CURDIR)/mlterm/taafont ~/.mlterm/taafont
 	- ln -Fi $(CURDIR)/mlterm/termcap ~/.mlterm/termcap
