@@ -23,7 +23,7 @@ if [ -e $(which emacs) ] && [ ! -e ~/.emacs.d/ ]; then
 fi
 
 if [ -e $(which tmux) ] && [ ! -e ~/.tmux/ ]; then
-  git clone https://github.com:tmux-plugins/tpm ~/.tmux/plugins/tpm
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
 if [ $SHELL = $(which bash) ] && [ -e $(which zsh) ]; then
