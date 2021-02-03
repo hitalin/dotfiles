@@ -2,7 +2,11 @@ default:        vim ghc mlterm
 .PHONY: default vim ghc mlterm
 
 vim:
-	- ln -s $(CURDIR)/vim/ ~/.vim
+	- mkdir -p ~/.vim
+	- ln -s $(CURDIR)/vim/coc-settings.json ~/.vim/coc-settings.json
+	- ln -s $(CURDIR)/vim/after/ ~/.vim/after
+	- ln -s $(CURDIR)/vim/sonictemplate/ ~/.vim/sonictemplate
+	- ln -s $(CURDIR)/vim/UltiSnips/ ~/.vim/UltiSnips
 
 ghc:
 	- mkdir -p ~/.ghc
