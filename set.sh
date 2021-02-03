@@ -11,8 +11,8 @@ if [ -e $(which nvim) ] && [ ! -e ~/.config/nvim/ ]; then
 fi
 
 if [ -e $(which emacs) ] && [ ! -e ~/.emacs.d/ ]; then
-  git clone git@github.com:hlissner/doom-emacs ~/.emacs.d
-  git clone git@github.com:i0z0m/.doom.d ~/.doom.d
+  git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+  git clone https://github.com/i0z0m/.doom.d ~/.doom.d
 
   git clone https://github.com/manateelazycat/emacs-application-framework.git --depth=1 ~/.emacs.d/site-lisp/emacs-application-framework/
   chmod +x ~/.emacs.d/site-lisp/emacs-application-framework/install-eaf.sh
@@ -23,7 +23,7 @@ if [ -e $(which emacs) ] && [ ! -e ~/.emacs.d/ ]; then
 fi
 
 if [ -e $(which tmux) ] && [ ! -e ~/.tmux/ ]; then
-  git clone git@github.com:tmux-plugins/tpm ~/.tmux/plugins/tpm
+  git clone https://github.com:tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
 if [ $SHELL = $(which bash) ] && [ -e $(which zsh) ]; then
