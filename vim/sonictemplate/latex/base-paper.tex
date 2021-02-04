@@ -1,57 +1,53 @@
-:%! sh -c "`cat`"
-cat <<EOF
-\documentclass[pdflatex,a4paper,11pt]{article}
-\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
-\usepackage[whole]{bxcjkjatype}
-\usepackage{latexsym}
-\usepackage{amsmath,amssymb}
-\usepackage{listings}
-\usepackage{here}
-\usepackage{url}
-\usepackage{colortbl}
-\usepackage{tikz}
-\usetikzlibrary{positioning}
+\documentclass[uplatex]{jsarticle}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{mytest.bib}
 
-\lstset{
-    language={C},
-    numbers=left,
-    breaklines=true,
-}
+\usepackage[dvipdfmx]{graphicx}
 
-\renewcommand{\figurename}{図}
-\renewcommand{\tablename}{表}
+% 日本語での栞の文字化けを防ぐ
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2 \AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
 
-% \documentclass[pdflatex,17pt]{beamer}
-% \usetheme{Frankfurt}
-% %% use triangles for enumeration {{{
-% \setbeamertemplate{itemize items}[default]
-% \setbeamertemplate{enumerate items}[default]
-% % }}}
-% %% enable navigation circles {{{
-% \usepackage{remreset}
-% \makeatletter
-% \@removefromreset{subsection}{section}
-% \makeatother
-% \setcounter{subsection}{1}
-% % }}}
-% %% remove navigation symbols, which menu icons exists at bottom of slides {{{
-% \setbeamertemplate{navigation symbols}{}
-% % }}}
-% %% enable japanese {{{
-% \usepackage[whole]{bxcjkjatype}
-% % }}}
-% %% draw diagrams {{{
-% \usepackage[all]{xy}
-% % }}}
-% \usepackage{listings}
+\usepackage[dvipdfmx]{hyperref}
 
-\title{}
+% floating image
+\usepackage{float}
+
+% ams series
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ascmac}
+
+% 改ページの許可
+\allowdisplaybreaks[1]
+
+% definition, theorem
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}
+\newtheorem*{theorem*}{定理}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem*{definition*}{定義}
+
+% "\vector{a}" でベクトル
+\def\vector#1{\mbox{\boldmath \(#1\)}}
+
+
+\title{タイトル}
 \author{`git config user.name`}
 \date{\today}
 
 \begin{document}
 \maketitle
-\section{}
+
+\begin{abstract}
+これは数式の Tex 記法の練習です．\cite{y.}
+\end{abstract}
+
+% bib reference
+%\bibliographystyle{junsrt}
+
+\printbibliography
 
 \end{document}
-EOF
