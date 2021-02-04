@@ -1,6 +1,6 @@
 # editor
 export EDITOR=vim
-export VISUAL="emacsclient -c -a emacs"
+export VISUAL="emacsclient -c"
 
 # less
 export LESS='--tabs=4 --no-init --LONG-PROMPT --RAW-CONTROL-CHARS --ignore-case'

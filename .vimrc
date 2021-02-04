@@ -18,6 +18,7 @@ set softtabstop=2
 au Filetype rust setlocal ts=4 sts=4 sw=4
 au Filetype python setlocal ts=4 sts=4 sw=4
 au Filetype rst  setlocal ts=3 sts=3 sw=3
+au FileType diff setlocal ts=4 sts=4 sw=4 noexpandtab
 
 set virtualedit=block
 
