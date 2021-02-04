@@ -34,7 +34,7 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 # lang
 ## python3
 export PATH=$PATH:$HOME/.local/bin
-export PYTHONSTARTUP=$HOME/dotfiles/python/pythonrc.py
+export PYTHONSTARTUP=$HOME/dotfiles/python/startup.py
 ## python2
 #export WORKON_HOME=$HOME/.virtualenvs
 #export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
