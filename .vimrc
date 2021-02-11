@@ -488,7 +488,7 @@ if dein#tap('vimtex')
         \   '-interaction=nonstopmode',
         \ ],
         \}
-  set conceallevel=1
+  set conceallevel=0
   let g:tex_conceal = 'abdmg'
   let g:vimtex_view_method = 'zathura'
   let g:vimtex_view_general_viewer = '/usr/bin/zathura'
