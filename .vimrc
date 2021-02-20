@@ -136,7 +136,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-vimlsp',
   \ 'coc-clangd',
-  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-rls',
   \ 'coc-vimtex',
   \ 'coc-tabnine',
