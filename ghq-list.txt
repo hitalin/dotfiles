@@ -4,7 +4,6 @@ github.com/careercup/CtCI-6th-Edition-cpp
 github.com/kenjiaiko/binarybook
 github.com/oldgeese/toysynth
 github.com/nayuki/Project-Euler-solutions
-github.com/P488-Git/Java
 github.com/shift-crops/x86emu
 github.com/mytechnotalent/Reverse-Engineering-Tutorial
 github.com/i0z0m/intro-py

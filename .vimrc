@@ -107,6 +107,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('lervag/vimtex')
   call dein#add('jceb/vim-orgmode')
   call dein#add('tpope/vim-speeddating')
+  call dein#add('plasticboy/vim-markdown')
   " preview documents
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
          \ 'build': 'sh -c "cd app & yarn install"' })
@@ -135,7 +136,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-vimlsp',
   \ 'coc-clangd',
-  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-rls',
   \ 'coc-vimtex',
   \ 'coc-tabnine',
@@ -472,7 +473,6 @@ if dein#tap('vimtex')
   let g:vimtex_compiler_progname = 'nvr'
   let g:vimtex_quickfix_mode = 0
   let g:vimtex_quickfix_autoclose_after_keystrokes = 1
-  let g:tex_flavor='platex'
   let g:vimtex_compiler_latexmk_engines =  { '_' : '-pdfdvi' }
   let g:vimtex_compiler_latexmk = {
         \ 'backend': 'nvim',
@@ -487,8 +487,6 @@ if dein#tap('vimtex')
         \   '-interaction=nonstopmode',
         \ ],
         \}
-  set conceallevel=1
-  let g:tex_conceal = 'abdmg'
   let g:vimtex_view_method = 'zathura'
   let g:vimtex_view_general_viewer = '/usr/bin/zathura'
   let g:vimtex_view_general_options = '@line @pdf @tex'
