@@ -33,3 +33,6 @@
   insteadOf = https://github.com/i0z0m
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
+
+[credential "https://github.com"]
+	helper = !gh auth git-credential
