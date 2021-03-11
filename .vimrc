@@ -105,8 +105,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('cespare/vim-toml')
   call dein#add('lervag/vimtex')
-  call dein#add('jceb/vim-orgmode')
-  call dein#add('tpope/vim-speeddating')
   " depend on pynvim
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
