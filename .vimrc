@@ -559,12 +559,6 @@ nnoremap <silent><Left> :bp<CR>
 nnoremap <silent><Right> :bn<CR>
 nnoremap <silent><C-Space> :call BufferDeleteExceptFiler()<CR>
 
-" Move with Ctrl+jkhl in insert mode
-" imap <C-k> <Up>
-" imap <C-j> <Down>
-" imap <C-h> <Left>
-" imap <C-l> <Right>
-
 " GUI configuration
 hi Visual cterm=reverse
 hi Search cterm=reverse ctermfg=yellow
@@ -604,6 +598,12 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "hi SpellCap cterm=underline ctermfg=LightBlue
 "hi SpellLocal cterm=underline ctermfg=LightBlue
 "}}}
+
+"" Move with Ctrl+jkhl in insert mode
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-h> <Left>
+imap <C-l> <Right>
 
 " Check whether plugins should be installed or not
 if has('vim_starting') && dein#check_install()
