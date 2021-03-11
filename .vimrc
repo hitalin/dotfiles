@@ -104,6 +104,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('neovimhaskell/haskell-vim')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('cespare/vim-toml')
+  call dein#add('lervag/vimtex')
   " depend on pynvim
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -131,6 +132,7 @@ let g:coc_global_extensions = [
   \ 'coc-clangd',
   \ 'coc-pyright',
   \ 'coc-rls',
+  \ 'coc-vimtex',
   \ 'coc-tabnine',
   \ ]
 " from README.md
@@ -459,6 +461,30 @@ if dein#tap('vim-cpp-enhanced-highlight')
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_concepts_highlight = 1
 endif
+
+" vimtex
+	if dein#tap('vimtex')
+	  let g:vimtex_compiler_progname = 'nvr'
+	  let g:vimtex_quickfix_mode = 0
+	  let g:vimtex_quickfix_autoclose_after_keystrokes = 1
+	  let g:vimtex_compiler_latexmk_engines =  { '_' : '-pdfdvi' }
+	  let g:vimtex_compiler_latexmk = {
+	        \ 'backend': 'nvim',
+	        \ 'background' : 0,
+	        \ 'build_dir' : '',
+	        \ 'continuous' : 1,
+	        \ 'options' : [
+	        \   '-pdfdvi',
+	        \   '-verbose',
+	        \   '-file-line-error',
+	        \   '-synctex=1',
+	        \   '-interaction=nonstopmode',
+	        \ ],
+	        \}
+	  let g:vimtex_view_method = 'zathura'
+	  let g:vimtex_view_general_viewer = '/usr/bin/zathura'
+	  let g:vimtex_view_general_options = '@line @pdf @tex'
+	endif
 
 " undotree
 nnoremap <F5> :UndotreeToggle<CR>
