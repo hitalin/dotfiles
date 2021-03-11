@@ -598,6 +598,25 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "hi SpellCap cterm=underline ctermfg=LightBlue
 "hi SpellLocal cterm=underline ctermfg=LightBlue
 
+" Comfortable Japanese input
+
+"" https://arimasou16.com/blog/2018/05/06/00257/
+set iminsert=0
+set imsearch=0
+
+set imactivatefunc=ImActivate
+function! ImActivate(active)
+  if a:active
+    call system('fcitx-remote -o')
+  else
+    call system('fcitx-remote -c')
+  endif
+endfunction
+set imstatusfunc=ImStatus
+function! ImStatus()
+  return system('fcitx-remote')[0] is# '2'
+endfunction
+
 "" Move with Ctrl+jkhl in insert mode
 imap <C-j> <Down>
 imap <C-k> <Up>
