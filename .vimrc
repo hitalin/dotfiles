@@ -582,16 +582,6 @@ highlight NonText ctermbg=NONE guibg=NONE
 highlight SpecialKey ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
-" Spell configuration
-"autocmd BufRead,BufNewFile *.md  set spelllang=en_us,cjk spell
-"autocmd BufRead,BufNewFile *.tex set spelllang=en_us,cjk spell
-"hi clear SpellBad
-"hi clear SpellCap
-"hi clear SpellLocal
-"hi SpellBad cterm=underline ctermfg=LightBlue
-"hi SpellCap cterm=underline ctermfg=LightBlue
-"hi SpellLocal cterm=underline ctermfg=LightBlue
-
 " Comfortable Japanese input
 
 "" https://arimasou16.com/blog/2018/05/06/00257/
