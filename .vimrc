@@ -597,13 +597,14 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "hi SpellBad cterm=underline ctermfg=LightBlue
 "hi SpellCap cterm=underline ctermfg=LightBlue
 "hi SpellLocal cterm=underline ctermfg=LightBlue
-"}}}
 
 "" Move with Ctrl+jkhl in insert mode
 imap <C-j> <Down>
 imap <C-k> <Up>
 imap <C-h> <Left>
 imap <C-l> <Right>
+
+"}}}
 
 " Check whether plugins should be installed or not
 if has('vim_starting') && dein#check_install()
