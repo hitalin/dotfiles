@@ -52,6 +52,7 @@ fi
 
 # WSL
 if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
+  export zenhan='/mnt/c/Users/USER/scoop/apps/zenhan/current/zenhan.exe'
 ## for WSL1
 #  export DISPLAY=localhost:0.0
 ## for WSL2
