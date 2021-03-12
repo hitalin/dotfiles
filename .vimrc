@@ -71,6 +71,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
   " extending standard features
+  call dein#add('lilydjwg/fcitx.vim')
   call dein#add('mbbill/undotree')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-repeat')
@@ -602,8 +603,6 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 " Comfortable Japanese input
 "autocmd InsertLeave * :call system('${zenhan} 0')
 "autocmd CmdlineLeave * :call system('${zenhan} 0')
-autocmd InsertLeave * :call system('fcitx-remote -c')
-autocmd CmdlineLeave * :call system('fcitx-remote -c')
 
 "" Move with Ctrl+jkhl in insert mode
 imap <C-j> <Down>
