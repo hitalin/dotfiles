@@ -601,10 +601,10 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
 " Comfortable Japanese input
 "" https://wonwon-eater.com/linux-vim-neovim-ime/
-autocmd InsertLeave * :call system($OFFIM)
-autocmd CmdlineLeave * :call system($OFFIM)
+autocmd InsertLeave * :call system('${zenhan} 0')
+autocmd CmdlineLeave * :call system('${zenhan} 0')
 
-"" Move with Ctrl+jkhl in insert mode
+  "" Move with Ctrl+jkhl in insert mode
 imap <C-j> <Down>
 imap <C-k> <Up>
 imap <C-h> <Left>
