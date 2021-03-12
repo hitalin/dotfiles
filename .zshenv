@@ -56,6 +56,7 @@ if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
 #  export DISPLAY=localhost:0.0
 ## for WSL2
   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+  export FCITX_SOCKET=/tmp/fcitx-socket-:0
 fi
 
 # terminal
