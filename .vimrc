@@ -559,12 +559,6 @@ nnoremap <silent><Left> :bp<CR>
 nnoremap <silent><Right> :bn<CR>
 nnoremap <silent><C-Space> :call BufferDeleteExceptFiler()<CR>
 
-" Move with Ctrl+jkhl in insert mode
-" imap <C-k> <Up>
-" imap <C-j> <Down>
-" imap <C-h> <Left>
-" imap <C-l> <Right>
-
 " GUI configuration
 hi Visual cterm=reverse
 hi Search cterm=reverse ctermfg=yellow
@@ -603,6 +597,32 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "hi SpellBad cterm=underline ctermfg=LightBlue
 "hi SpellCap cterm=underline ctermfg=LightBlue
 "hi SpellLocal cterm=underline ctermfg=LightBlue
+
+" Comfortable Japanese input
+
+"" https://arimasou16.com/blog/2018/05/06/00257/
+set iminsert=0
+set imsearch=0
+
+set imactivatefunc=ImActivate
+function! ImActivate(active)
+  if a:active
+    call system('fcitx-remote -o')
+  else
+    call system('fcitx-remote -c')
+  endif
+endfunction
+set imstatusfunc=ImStatus
+function! ImStatus()
+  return system('fcitx-remote')[0] is# '2'
+endfunction
+
+"" Move with Ctrl+jkhl in insert mode
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-h> <Left>
+imap <C-l> <Right>
+
 "}}}
 
 " Check whether plugins should be installed or not
