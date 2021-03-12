@@ -603,9 +603,6 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 if executable('${zenhan}')
   autocmd InsertLeave * :call system('${zenhan} 0')
   autocmd CmdlineLeave * :call system('${zenhan} 0')
-else
-  autocmd InsertLeave * :call system('fcitx-remote -c')
-  autocmd CmdlineLeave * :call system('fcitx-remote -c')
 endif
 
 "" Move with Ctrl+jkhl in insert mode
