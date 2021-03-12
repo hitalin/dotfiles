@@ -602,8 +602,8 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 " Comfortable Japanese input
 "" https://wonwon-eater.com/linux-vim-neovim-ime/
 if executable('fcitx')
-   autocmd InsertLeave * :call system('fcitx-remote -c')
-   autocmd CmdlineLeave * :call system('fcitx-remote -c')
+  autocmd InsertLeave * :call system('fcitx-remote -c')
+  autocmd CmdlineLeave * :call system('fcitx-remote -c')
 endif
 
 "" Move with Ctrl+jkhl in insert mode
