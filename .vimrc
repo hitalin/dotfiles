@@ -600,10 +600,8 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "hi SpellLocal cterm=underline ctermfg=LightBlue
 
 " Comfortable Japanese input
-if executable('${zenhan}')
-  autocmd InsertLeave * :call system('${zenhan} 0')
-  autocmd CmdlineLeave * :call system('${zenhan} 0')
-endif
+autocmd InsertLeave * :call system('${zenhan} 0')
+autocmd CmdlineLeave * :call system('${zenhan} 0')
 
 "" Move with Ctrl+jkhl in insert mode
 imap <C-j> <Down>
