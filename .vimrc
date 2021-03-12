@@ -24,6 +24,7 @@ set virtualedit=block
 
 " Leader
 let mapleader = "\<Space>"
+let localleader = "\<Space>"
 
 nnoremap <Leader>w :w<CR>
 nnoremap <leader>q :q<cr>
