@@ -600,11 +600,15 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "hi SpellLocal cterm=underline ctermfg=LightBlue
 
 " Comfortable Japanese input
-"" https://wonwon-eater.com/linux-vim-neovim-ime/
-autocmd InsertLeave * :call system('${zenhan} 0')
-autocmd CmdlineLeave * :call system('${zenhan} 0')
+if executable('${zenhan}')
+  autocmd InsertLeave * :call system('${zenhan} 0')
+  autocmd CmdlineLeave * :call system('${zenhan} 0')
+else
+  autocmd InsertLeave * :call system('fcitx-remote -c')
+  autocmd CmdlineLeave * :call system('fcitx-remote -c')
+endif
 
-  "" Move with Ctrl+jkhl in insert mode
+"" Move with Ctrl+jkhl in insert mode
 imap <C-j> <Down>
 imap <C-k> <Up>
 imap <C-h> <Left>
