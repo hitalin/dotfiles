@@ -27,8 +27,8 @@
 
 [ghq]
   vcs = git
-  root = ~/projects
-  root = ~/ghq
+  root = ~/ghq/tool
+  root = ~/ghq/code
 
 [url "git@github.com:i0z0m"]
   insteadOf = https://github.com/i0z0m
