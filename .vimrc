@@ -602,9 +602,22 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
 " Comfortable Japanese input
 
-"" turn on insert mode by command in Japanese
-noremap あ a
-noremap い i
+"" for Japanese IME mode
+"" https://qiita.com/ssh0/items/9e7f0d8b8f033183dd0b
+nnoremap あ a
+nnoremap い i
+nnoremap う u
+nnoremap え e
+nnoremap お o
+nnoremap っd dd
+nnoremap っy yy
+nnoremap し” ci"
+nnoremap し’ ci'
+nnoremap せ ce
+nnoremap で de
+inoremap <silent> っj <ESC>
+nnoremap っz zz
+nnoremap ・ /
 
 "" Leave insert mode and turn off Japanese input
 autocmd InsertLeave * :call system('${zenhan} 0')
