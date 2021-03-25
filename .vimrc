@@ -601,6 +601,12 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "hi SpellLocal cterm=underline ctermfg=LightBlue
 
 " Comfortable Japanese input
+
+"" turn on insert mode by command in Japanese
+noremap あ a
+noremap い i
+
+"" Leave insert mode and turn off Japanese input
 autocmd InsertLeave * :call system('${zenhan} 0')
 autocmd CmdlineLeave * :call system('${zenhan} 0')
 
