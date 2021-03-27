@@ -5,6 +5,9 @@
 a.out
 *.bin
 
+# git
+*.orig
+
 # archive
 *.zip
 *.tar

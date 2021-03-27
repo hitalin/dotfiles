@@ -111,9 +111,6 @@ setopt prompt_subst
 unset caseglob
 
 # alias
-eval $(thefuck --alias)
-alias f='fuck'
-
 alias q='exit'
 
 eval $(dircolors -b)

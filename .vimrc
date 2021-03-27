@@ -24,6 +24,7 @@ set virtualedit=block
 
 " Leader
 let mapleader = "\<Space>"
+let localleader = "\<Space>"
 
 nnoremap <Leader>w :w<CR>
 nnoremap <leader>q :q<cr>
@@ -70,6 +71,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
   " extending standard features
+  call dein#add('lilydjwg/fcitx.vim')
   call dein#add('mbbill/undotree')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-repeat')
@@ -600,22 +602,26 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
 " Comfortable Japanese input
 
-"" https://arimasou16.com/blog/2018/05/06/00257/
-set iminsert=0
-set imsearch=0
+"" for Japanese IME mode
+"" https://qiita.com/ssh0/items/9e7f0d8b8f033183dd0b
+nnoremap あ a
+nnoremap い i
+nnoremap う u
+nnoremap え e
+nnoremap お o
+nnoremap っd dd
+nnoremap っy yy
+nnoremap し” ci"
+nnoremap し’ ci'
+nnoremap せ ce
+nnoremap で de
+inoremap <silent> っj <ESC>
+nnoremap っz zz
+nnoremap ・ /
 
-set imactivatefunc=ImActivate
-function! ImActivate(active)
-  if a:active
-    call system('fcitx-remote -o')
-  else
-    call system('fcitx-remote -c')
-  endif
-endfunction
-set imstatusfunc=ImStatus
-function! ImStatus()
-  return system('fcitx-remote')[0] is# '2'
-endfunction
+"" Leave insert mode and turn off Japanese input
+autocmd InsertLeave * :call system('${zenhan} 0')
+autocmd CmdlineLeave * :call system('${zenhan} 0')
 
 "" Move with Ctrl+jkhl in insert mode
 imap <C-j> <Down>
