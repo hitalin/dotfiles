@@ -603,25 +603,25 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 " Comfortable Japanese input
 
 "" https://qiita.com/ssh0/items/9e7f0d8b8f033183dd0b
-imap <C-j> <Down>
-imap <C-k> <Up>
-imap <C-h> <Left>
-imap <C-l> <Right>
+"imap <C-j> <Down>
+"imap <C-k> <Up>
+"imap <C-h> <Left>
+"imap <C-l> <Right>
 
-nnoremap あ a
-nnoremap い i
-nnoremap う u
-nnoremap え e
-nnoremap お o
-nnoremap っd dd
-nnoremap っy yy
-nnoremap し” ci"
-nnoremap し’ ci'
-nnoremap せ ce
-nnoremap で de
-inoremap <silent> っj <ESC>
-nnoremap っz zz
-nnoremap ・ /
+"nnoremap あ a
+"nnoremap い i
+"nnoremap う u
+"nnoremap え e
+"nnoremap お o
+"nnoremap っd dd
+"nnoremap っy yy
+"nnoremap し” ci"
+"nnoremap し’ ci'
+"nnoremap せ ce
+"nnoremap で de
+"inoremap <silent> っj <ESC>
+"nnoremap っz zz
+"nnoremap ・ /
 
 "" Leave insert mode and turn off Japanese input
 autocmd InsertLeave * :call system('${zenhan} 0')
