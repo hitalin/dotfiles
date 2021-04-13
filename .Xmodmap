@@ -5,3 +5,8 @@ keysym Control_L = Caps_Lock
 keysym Caps_Lock = Control_L
 add Lock = Caps_Lock
 add Control = Control_L
+
+!! カタカナひらがなをHyper keyにする
+keysym Hiragana_Katakana = Hyper_L
+remove mod4 = Hyper_L
+add mod3 = Hyper_L
