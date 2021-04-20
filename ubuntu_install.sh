@@ -36,5 +36,11 @@ sudo apt install xsel
 git clone https://github.com/manateelazycat/emacs-application-framework.git ~/.emacs-application-framework
 chmod +x ~/.emacs-application-framework/install-eaf.sh
 ~/.emacs-application-framework/install-eaf.sh
+## initial setting for file browser
+sudo mkdir -p /usr/share/filebrowser/storage
+cd /usr/share/filebrowser/storage
+sudo filebrowser config init
+#sudo filebrowser config export /etc/filebrowser/config.json
+#sudo systemctl enable --now filebrowser@config
 
 echo "Finished!"
