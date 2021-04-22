@@ -1,5 +1,6 @@
 # editor
 export EDITOR=vim
+export GIT_EDITOR=vim
 export VISUAL="emacsclient -c"
 
 # less
