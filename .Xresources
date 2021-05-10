@@ -76,9 +76,3 @@ URxvt.tabbed.tab-bg:    #001020
 !URxvt.perl-ext-common: xim-onthespot
 URxvt.inputMethod:     fcitx
 URxvt.preeditType:     OnTheSpot
-
-
-!-------------------------------------------------------------------------------
-! Other settings
-!-------------------------------------------------------------------------------
-Emacs*useXIM: false
