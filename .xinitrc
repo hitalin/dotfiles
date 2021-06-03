@@ -42,6 +42,8 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+[ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
+
 #exec i3
 exec i3 -V >> ~/.config/i3/i3-$(date +'%F-%k-%M-%S').log 2>&1
 #end
