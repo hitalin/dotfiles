@@ -216,6 +216,14 @@ if [[ ! -n $TMUX && $- == *l* ]]; then
   fi
 fi
 
+## https://www.ebiebievidence.com/posts/tmux-ls-attach-new-alias/
+t () {
+	tmux attach -t $1 2> /dev/null || tmux new -s $1 2> /dev/null || tmux ls
+}
+
+_t() { _values 'sessions' "${(@f)$(tmux ls -F '#S' 2>/dev/null )}" }
+compdef _t t
+
 ## https://github.com/akermu/emacs-libvterm#shell-side-configuration
 vterm_printf(){
     if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
