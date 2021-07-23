@@ -34,7 +34,8 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 
 # lang
 ## python3
-export PATH=$PATH:$HOME/.local/bin
+export PATH="/home/taka/.local/bin:$PATH"
+export PYTHONPATH="$HOME/dotfiles/python:$PYTHONPATH"
 export PYTHONSTARTUP=$HOME/dotfiles/python/startup.py
 ## python2
 #export WORKON_HOME=$HOME/.virtualenvs
