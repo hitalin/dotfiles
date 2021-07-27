@@ -24,4 +24,3 @@ import angelheap
 angelheap.init_angelheap()
 end
 end
-source ~/.local/lib/python3.9/site-packages/voltron/entry.py
