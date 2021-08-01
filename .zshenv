@@ -3,7 +3,8 @@ export EDITOR=vim
 export GIT_EDITOR=vim
 export VISUAL="emacsclient -c"
 
-# less
+# pager
+export PAGER=less
 export LESS='--tabs=4 --no-init --LONG-PROMPT --RAW-CONTROL-CHARS --ignore-case'
 export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
 export LESS_TERMCAP_mb=$(tput bold)                # begin blinking
