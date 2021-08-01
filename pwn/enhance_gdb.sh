@@ -22,9 +22,4 @@ if [ ! -f $INSTALL_DIR/.gdbinit-gef.py ]; then
   gdb -ex 'gef config gef.extra_plugins_dir "~/.gdb/gef-extras/scripts"' -ex 'gef save' -ex quit
 fi
 
-if [ ! -d $INSTALL_DIR/voltron/ ]; then
-  git clone https://github.com/snare/voltron.git $INSTALL_DIR/voltron
-  $INSTALL_DIR/voltron/install.sh
-fi
-
 echo "Finished!"
