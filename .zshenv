@@ -38,6 +38,13 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 export PATH="/home/taka/.local/bin:$PATH"
 export PYTHONPATH="$HOME/dotfiles/python:$PYTHONPATH"
 export PYTHONSTARTUP=$HOME/dotfiles/python/startup.py
+chpwd() {
+  if [ -d .venv ]; then
+    source .venv/bin/activate
+  elif [ "$VIRTUAL_ENV" != "" ]; then
+    deactivate
+  fi
+}
 ## python2
 #export WORKON_HOME=$HOME/.virtualenvs
 #export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
