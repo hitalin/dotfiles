@@ -116,9 +116,6 @@ alias q='exit'
 eval $(dircolors -b)
 alias ls='ls -F --color=auto'
 
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
