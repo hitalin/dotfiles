@@ -38,11 +38,22 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 export PATH="/home/taka/.local/bin:$PATH"
 export PYTHONPATH="$HOME/dotfiles/python:$PYTHONPATH"
 export PYTHONSTARTUP=$HOME/dotfiles/python/startup.py
-chpwd() {
-  if [ -d .venv ]; then
-    source .venv/bin/activate
-  elif [ "$VIRTUAL_ENV" != "" ]; then
-    deactivate
+function cd() {
+  builtin cd "$@"
+
+  if [[ -z "$VIRTUAL_ENV" ]] ; then
+    ## If env folder is found then activate the vitualenv
+      if [[ -d ./.venv ]] ; then
+        source ./.venv/bin/activate
+      fi
+  else
+    ## check the current folder belong to earlier VIRTUAL_ENV folder
+    # if yes then do nothing
+    # else deactivate
+      parentdir="$(dirname "$VIRTUAL_ENV")"
+      if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+        deactivate
+      fi
   fi
 }
 ## python2
