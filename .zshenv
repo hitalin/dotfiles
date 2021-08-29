@@ -16,8 +16,8 @@ export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)     # end underline
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 
 # ssh-agent
-eval "$(ssh-agent)" > /dev/null
-ssh-add $HOME/.ssh/id_rsa_github
+#eval "$(ssh-agent)" > /dev/null
+#ssh-add $HOME/.ssh/id_rsa_github
 
 # theme
 fpath+=$HOME/.zinit/plugins/sindresorhus---pure
