@@ -26,6 +26,7 @@
 	rebase = false
 
 [ghq]
+  user = i0z0m
   vcs = git
   root = ~/ghq
 
