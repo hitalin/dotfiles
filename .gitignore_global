@@ -39,6 +39,7 @@ Cargo.lock
 *.hi
 
 # python
+poetry.lock
 .ropeproject/
 __pycache__/
 *.pyc
