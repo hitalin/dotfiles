@@ -5,6 +5,9 @@
 a.out
 *.bin
 
+# binary
+.wav
+
 # git
 *.orig
 
@@ -30,6 +33,12 @@ tags
 target/
 Cargo.lock
 
+# python
+poetry.lock
+.ropeproject/
+__pycache__/
+*.pyc
+
 # ocaml
 *.cmi
 *.cmo
@@ -37,16 +46,11 @@ Cargo.lock
 
 # haskll
 *.hi
-
-# python
-poetry.lock
-.ropeproject/
-__pycache__/
-*.pyc
-
-# haskell
 cabal.sandbox.config
 .cabal-sandbox
+
+# ansible
+*.retry
 
 # latex
 *.bbl
@@ -58,6 +62,3 @@ cabal.sandbox.config
 *.fdb_latexmk
 *.fls
 *.log
-
-# ansible
-*.retry
