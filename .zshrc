@@ -24,6 +24,9 @@ prompt pure
 zinit for \
     light-mode  zsh-users/zsh-completions \
 
+### https://github.com/wfxr/forgit
+zinit load wfxr/forgit
+
 # bindkey
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
