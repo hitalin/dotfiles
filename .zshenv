@@ -78,8 +78,8 @@ if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
 fi
 
 # keychain
-keychain --nogui --quiet ~/.ssh/id_rsa_github
-source ~/.keychain/$HOST-sh
+keychain --nogui --quiet $HOME/.ssh/id_rsa_github
+source $HOME/.keychain/$HOST-sh
 
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
