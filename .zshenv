@@ -77,6 +77,10 @@ if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
   export FCITX_SOCKET=/tmp/fcitx-socket-:0
 fi
 
+# keychain
+keychain --nogui --quiet ~/.ssh/id_rsa_github
+source ~/.keychain/$HOST-sh
+
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
