@@ -10,7 +10,6 @@ github.com/i0z0m/IoT-For-Beginners
 github.com/i0z0m/ProjectEuler
 github.com/i0z0m/PythonChallenge
 github.com/i0z0m/book-KenjiAiko-hack
-github.com/i0z0m/book-MeikaiC
 github.com/i0z0m/book-WatanabeChiemi-SysIntro
 github.com/i0z0m/coding-interview-university
 github.com/i0z0m/command
