@@ -467,6 +467,26 @@ if dein#tap('lightline.vim')
 endif
 "}}}
 
+" kassio/neoterm {{{2
+let g:neoterm_default_mod='belowright'
+let g:neoterm_size=10
+let g:neoterm_autoscroll=1
+tnoremap <silent> <C-w> <C-\><C-n><C-w>
+nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
+vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
+"}}}
+
+" Shougo/vinarise.vim {{{2
+" https://kivantium.hateblo.jp/entry/2015/04/30/235007
+augroup BinaryXXD
+  autocmd!
+  autocmd BufReadPre  *.bin let &binary =1
+  autocmd BufReadPost * if &binary | Vinarise
+  autocmd BufWritePre * if &binary | Vinarise | endif
+  autocmd BufWritePost * if &binary | Vinarise
+augroup END
+"}}}
+
 " junegunn/fzf.vim {{{2
 if dein#tap('fzf.vim')
   command! -bang -nargs=* Rg
@@ -509,26 +529,6 @@ if dein#tap('fzf.vim')
           \ 'down':    '40%' })
   endfunction
 endif
-"}}}
-
-" kassio/neoterm {{{2
-let g:neoterm_default_mod='belowright'
-let g:neoterm_size=10
-let g:neoterm_autoscroll=1
-tnoremap <silent> <C-w> <C-\><C-n><C-w>
-nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
-vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
-"}}}
-
-" Shougo/vinarise.vim {{{2
-" https://kivantium.hateblo.jp/entry/2015/04/30/235007
-augroup BinaryXXD
-  autocmd!
-  autocmd BufReadPre  *.bin let &binary =1
-  autocmd BufReadPost * if &binary | Vinarise
-  autocmd BufWritePre * if &binary | Vinarise | endif
-  autocmd BufWritePost * if &binary | Vinarise
-augroup END
 "}}}
 
 " ntpeters/vim-better-whitespace {{{2
