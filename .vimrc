@@ -158,9 +158,9 @@ filetype plugin indent on
 
 "}}}
 
-" Dein {{{
+" Dein plugin manager {{{
 
-" Set variables {{{2
+" et variables {{{2
 let s:use_dein = 1
 
 let s:vimdir = $HOME . '/.vim'
