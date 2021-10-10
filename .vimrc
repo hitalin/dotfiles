@@ -153,6 +153,9 @@ if has('persistent_undo')
   set undolevels=1000
 endif
 
+" plugin
+filetype plugin indent on
+
 "}}}
 
 " Dein {{{
@@ -243,13 +246,16 @@ if dein#load_state(s:dein_dir)
 
   call dein#end()
 endif
+
+" Check whether plugins should be installed or not
+if has('vim_starting') && dein#check_install()
+  call dein#install()
+endif
 " }}}
 
 " Plugin settings {{{
 
-filetype plugin indent on
-
-" coc
+" neoclide/coc.nvim {{{2
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
@@ -261,7 +267,7 @@ let g:coc_global_extensions = [
   \ 'coc-vimtex',
   \ 'coc-tabnine',
   \ ]
-" from README.md
+
 "" if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -401,8 +407,25 @@ let g:markdown_fenced_languages = [
       \ 'vim',
       \ 'help'
       \]
+"}}}
 
-" vista.vim
+" mbbill/undotree {{{2
+nnoremap <F5> :UndotreeToggle<CR>
+"}}}
+
+" mattn/sonictemplate-vim {{{2
+let g:sonictemplate_vim_template_dir = expand('~/.vim/sonictemplate')
+"}}}
+
+" SirVer/ultisnips {{{2
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsEditSplit="vertical"
+"}}}
+
+" liuchengxu/vista.vim {{{2
 if dein#tap('vista.vim')
   function! NearestMethodOrFunction() abort
     return get(b:, 'vista_nearest_method_or_function', '')
@@ -415,8 +438,9 @@ if dein#tap('vista.vim')
   nmap <silent> <C-f><C-v> :<C-u>Vista coc<CR>
   nmap <silent> <C-f><C-s> :<C-u>Vista finder coc<CR>
 endif
+"}}}
 
-" lightline.vim
+" itchyny/lightline.vim {{{2
 if dein#tap('lightline.vim')
   set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
@@ -441,8 +465,9 @@ if dein#tap('lightline.vim')
         \ },
         \ }
 endif
+"}}}
 
-" fzf.vim
+" junegunn/fzf.vim {{{2
 if dein#tap('fzf.vim')
   command! -bang -nargs=* Rg
         \ call fzf#vim#grep(
@@ -484,16 +509,18 @@ if dein#tap('fzf.vim')
           \ 'down':    '40%' })
   endfunction
 endif
+"}}}
 
-" neoterm
+" kassio/neoterm {{{2
 let g:neoterm_default_mod='belowright'
 let g:neoterm_size=10
 let g:neoterm_autoscroll=1
 tnoremap <silent> <C-w> <C-\><C-n><C-w>
 nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
 vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
+"}}}
 
-" vinarise.vim
+" Shougo/vinarise.vim {{{2
 " https://kivantium.hateblo.jp/entry/2015/04/30/235007
 augroup BinaryXXD
   autocmd!
@@ -502,8 +529,9 @@ augroup BinaryXXD
   autocmd BufWritePre * if &binary | Vinarise | endif
   autocmd BufWritePost * if &binary | Vinarise
 augroup END
+"}}}
 
-" depend on pynvim
+" Shougo/defx.nvim {{{2
 let g:python3_host_prog = '/usr/bin/python3'
 
 if dein#tap('defx.nvim')
@@ -568,18 +596,32 @@ function! BufferDeleteExceptFiler()
     bd!
   endif
 endfunction
+"}}}
 
-" Colorizer
+" ntpeters/vim-better-whitespace {{{2
+if dein#tap('vim-better-whitespace')
+  let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
+  autocmd FileType markdown EnableWhitespace
+endif
+"}}}
+
+" chrisbra/Colorizer {{{2
 if dein#tap('Colorizer')
   autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
 endif
+"}}}
 
-" python-syntax
+" flazz/vim-colorschemes {{{2
+colorscheme molokai
+"}}}
+
+" vim-python/python-syntax {{{2
 if dein#tap('python-syntax')
   let g:python_highlight_all = 1
 endif
+"}}}
 
-" vim-cpp-enhanced-highlight
+" octol/vim-cpp-enhanced-highlight {{{2
 if dein#tap('vim-cpp-enhanced-highlight')
   let g:cpp_class_scope_highlight = 1
   let g:cpp_member_variable_highlight = 1
@@ -587,8 +629,9 @@ if dein#tap('vim-cpp-enhanced-highlight')
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_concepts_highlight = 1
 endif
+"}}}
 
-" vimtex
+" lervag/vimtex {{{2
 if dein#tap('vimtex')
   let g:vimtex_compiler_progname = 'nvr'
   let g:vimtex_quickfix_mode = 0
@@ -611,30 +654,4 @@ if dein#tap('vimtex')
   let g:vimtex_view_general_viewer = '/usr/bin/zathura'
   let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
-
-" undotree
-nnoremap <F5> :UndotreeToggle<CR>
-
-" sonictemplate
-let g:sonictemplate_vim_template_dir = expand('~/.vim/sonictemplate')
-
-" ultisnets
-let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-let g:UltiSnipsEditSplit="vertical"
-
-" vim-better-whitespace
-if dein#tap('vim-better-whitespace')
-  let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
-  autocmd FileType markdown EnableWhitespace
-endif
-
-" flazz/vim-colorschemes
-colorscheme molokai
-
-" Check whether plugins should be installed or not
-if has('vim_starting') && dein#check_install()
-  call dein#install()
-endif
+"}}}
