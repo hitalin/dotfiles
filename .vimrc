@@ -159,6 +159,8 @@ filetype plugin indent on
 "}}}
 
 " Dein {{{
+
+" Set variables {{{2
 let s:use_dein = 1
 
 let s:vimdir = $HOME . '/.vim'
@@ -167,17 +169,20 @@ let s:dein_github = s:dein_dir . '/repos/github.com'
 let s:dein_repo_name = "Shougo/dein.vim"
 let s:dein_repo_dir = s:dein_github . '/' . s:dein_repo_name
 
-"  Install dein automatically
-if !isdirectory(s:dein_repo_dir)
-  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
-endif
-
 if &compatible
   set nocompatible
 endif
 
 let &runtimepath = &runtimepath . "," . s:dein_repo_dir
+"}}}
 
+" Install dein automatically {{{2
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+"}}}
+
+" Install plugins {{{2
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
@@ -246,11 +251,14 @@ if dein#load_state(s:dein_dir)
 
   call dein#end()
 endif
+"}}}
 
-" Check whether plugins should be installed or not
+" Check whether plugins should be installed or not {{{2
 if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
+"}}}
+
 " }}}
 
 " Plugin settings {{{
@@ -656,4 +664,4 @@ function! BufferDeleteExceptFiler()
 endfunction
 "}}}
 
-"}}}
+" }}}
