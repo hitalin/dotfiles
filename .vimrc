@@ -531,6 +531,64 @@ augroup BinaryXXD
 augroup END
 "}}}
 
+" ntpeters/vim-better-whitespace {{{2
+if dein#tap('vim-better-whitespace')
+  let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
+  autocmd FileType markdown EnableWhitespace
+endif
+"}}}
+
+" chrisbra/Colorizer {{{2
+if dein#tap('Colorizer')
+  autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
+endif
+"}}}
+
+" flazz/vim-colorschemes {{{2
+colorscheme molokai
+"}}}
+
+" vim-python/python-syntax {{{2
+if dein#tap('python-syntax')
+  let g:python_highlight_all = 1
+endif
+"}}}
+
+" octol/vim-cpp-enhanced-highlight {{{2
+if dein#tap('vim-cpp-enhanced-highlight')
+  let g:cpp_class_scope_highlight = 1
+  let g:cpp_member_variable_highlight = 1
+  let g:cpp_class_decl_highlight = 1
+  let g:cpp_experimental_template_highlight = 1
+  let g:cpp_concepts_highlight = 1
+endif
+"}}}
+
+" lervag/vimtex {{{2
+if dein#tap('vimtex')
+  let g:vimtex_compiler_progname = 'nvr'
+  let g:vimtex_quickfix_mode = 0
+  let g:vimtex_quickfix_autoclose_after_keystrokes = 1
+  let g:vimtex_compiler_latexmk_engines =  { '_' : '-pdfdvi' }
+  let g:vimtex_compiler_latexmk = {
+        \ 'backend': 'nvim',
+        \ 'background' : 0,
+        \ 'build_dir' : '',
+        \ 'continuous' : 1,
+        \ 'options' : [
+        \   '-pdfdvi',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+  let g:vimtex_view_method = 'zathura'
+  let g:vimtex_view_general_viewer = '/usr/bin/zathura'
+  let g:vimtex_view_general_options = '@line @pdf @tex'
+endif
+"}}}
+
 " Shougo/defx.nvim {{{2
 let g:python3_host_prog = '/usr/bin/python3'
 
@@ -596,62 +654,4 @@ function! BufferDeleteExceptFiler()
     bd!
   endif
 endfunction
-"}}}
-
-" ntpeters/vim-better-whitespace {{{2
-if dein#tap('vim-better-whitespace')
-  let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
-  autocmd FileType markdown EnableWhitespace
-endif
-"}}}
-
-" chrisbra/Colorizer {{{2
-if dein#tap('Colorizer')
-  autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
-endif
-"}}}
-
-" flazz/vim-colorschemes {{{2
-colorscheme molokai
-"}}}
-
-" vim-python/python-syntax {{{2
-if dein#tap('python-syntax')
-  let g:python_highlight_all = 1
-endif
-"}}}
-
-" octol/vim-cpp-enhanced-highlight {{{2
-if dein#tap('vim-cpp-enhanced-highlight')
-  let g:cpp_class_scope_highlight = 1
-  let g:cpp_member_variable_highlight = 1
-  let g:cpp_class_decl_highlight = 1
-  let g:cpp_experimental_template_highlight = 1
-  let g:cpp_concepts_highlight = 1
-endif
-"}}}
-
-" lervag/vimtex {{{2
-if dein#tap('vimtex')
-  let g:vimtex_compiler_progname = 'nvr'
-  let g:vimtex_quickfix_mode = 0
-  let g:vimtex_quickfix_autoclose_after_keystrokes = 1
-  let g:vimtex_compiler_latexmk_engines =  { '_' : '-pdfdvi' }
-  let g:vimtex_compiler_latexmk = {
-        \ 'backend': 'nvim',
-        \ 'background' : 0,
-        \ 'build_dir' : '',
-        \ 'continuous' : 1,
-        \ 'options' : [
-        \   '-pdfdvi',
-        \   '-verbose',
-        \   '-file-line-error',
-        \   '-synctex=1',
-        \   '-interaction=nonstopmode',
-        \ ],
-        \}
-  let g:vimtex_view_method = 'zathura'
-  let g:vimtex_view_general_viewer = '/usr/bin/zathura'
-  let g:vimtex_view_general_options = '@line @pdf @tex'
-endif
 "}}}
