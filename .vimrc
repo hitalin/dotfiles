@@ -264,18 +264,7 @@ endif
 " Plugin settings {{{
 
 " neoclide/coc.nvim {{{2
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-json',
-  \ 'coc-vimlsp',
-  \ 'coc-clangd',
-  \ 'coc-pyright',
-  \ 'coc-rls',
-  \ 'coc-vimtex',
-  \ 'coc-tabnine',
-  \ ]
-
+" README.md {{{3
 "" if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -409,13 +398,29 @@ if dein#tap('coc.nvim')
   "" Resume latest coc list.
   nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 endif
+"""}}}
 
-" coc-vimlsp
+" coc extensions {{{3
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-json',
+  \ 'coc-vimlsp',
+  \ 'coc-clangd',
+  \ 'coc-pyright',
+  \ 'coc-rls',
+  \ 'coc-vimtex',
+  \ 'coc-tabnine',
+  \ ]
+
+"" coc-vimlsp
 let g:markdown_fenced_languages = [
       \ 'vim',
       \ 'help'
       \]
 "}}}
+
+" }}}
 
 " mbbill/undotree {{{2
 nnoremap <F5> :UndotreeToggle<CR>
