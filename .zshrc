@@ -126,9 +126,6 @@ alias mkdir='mkdir -p'
 
 alias glg='git log --graph --oneline --decorate --all'
 
-#alias ssha='ssh-add -D > /dev/null 2>&1; kill -0 ${SSH_AGENT_PID} > /dev/null 2>&1; if [ $? -ne 0 ]; then eval `ssh-agent`; fi; ssh-add ~/.ssh/id_rsa_github'
-#alias sshk='ssh-agent -k'
-
 alias ocaml="rlwrap ocaml"
 
 alias gdb="gdb -q"
