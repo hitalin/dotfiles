@@ -185,7 +185,7 @@ filetype plugin indent on
 
 " Dein plugin manager {{{
 
-" et variables {{{2
+" Set variables {{{2
 let s:use_dein = 1
 
 let s:vimdir = $HOME . '/.vim'
