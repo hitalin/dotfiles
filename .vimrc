@@ -1,20 +1,26 @@
 " Basic settings {{{
 
-" Set statusline
+" Set statusline {{{2
 set laststatus=2
+"}}}
 
-" Display line number
+" Display line number {{{2
 set nu
+"}}}
 
-" Highlight a matching opening or closing parenthesis, square bracket or a curly brace
+" Highlight a matching opening or closing parenthesis, square bracket or a curly brace {{{2
 set showmatch
+"}}}
 
-" Display ruler
+" Display ruler {{{2
 set ruler
+"}}}
 
-" Enable incsearch
+" Enable incsearch {{{2
 set incsearch
+"}}}
 
+" Clipboard {{{2
 " Accessing the system clipboard
 set clipboard&
 set clipboard=unnamedplus
@@ -37,16 +43,19 @@ if has('mouse')
   endif
 
 endif
+"}}}
 
-" Switch on highlighting the last used search pattern
+" Switch on highlighting the last used search pattern {{{2
 set hlsearch
+"}}}
 
-" Fastest way to move buffer
+" Fastest way to move buffer {{{2
 nnoremap <silent><Left> :bp<CR>
 nnoremap <silent><Right> :bn<CR>
 nnoremap <silent><C-Space> :call BufferDeleteExceptFiler()<CR>
+"}}}
 
-" GUI configuration
+" GUI configuration {{{2
 hi Visual cterm=reverse
 hi Search cterm=reverse ctermfg=yellow
 hi VertSplit ctermbg=NONE guibg=NONE
@@ -58,26 +67,34 @@ if !has('gui_running')
     autocmd VimEnter * map! <Nul> <C-Space>
   augroup END
 endif
+"}}}
 
-" Display another buffer when current buffer isn't saved.
+" Display another buffer when current buffer isn't saved. {{{2
 set hidden
+"}}}
 
-" Do not create swap files
+" Do not create swap files {{{2
 set noswapfile
+"}}}
 
-" syntax highlight
+" Enable syntax highlight {{{2
 syntax enable
-" true color
+"}}}
+
+" True color {{{2
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"" make background transparent
+"}}}
+
+" Make background transparent {{{2
 highlight Normal ctermbg=NONE guibg=NONE
 highlight NonText ctermbg=NONE guibg=NONE
 highlight SpecialKey ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
+"}}}
 
-" Spell configuration
+" Spell configuration {{{2
 "autocmd BufRead,BufNewFile *.md  set spelllang=en_us,cjk spell
 "autocmd BufRead,BufNewFile *.tex set spelllang=en_us,cjk spell
 "hi clear SpellBad
@@ -86,9 +103,9 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "hi SpellBad cterm=underline ctermfg=LightBlue
 "hi SpellCap cterm=underline ctermfg=LightBlue
 "hi SpellLocal cterm=underline ctermfg=LightBlue
+"}}}
 
-" Comfortable Japanese input
-
+" Comfortable Japanese input {{{2
 "" https://qiita.com/ssh0/items/9e7f0d8b8f033183dd0b
 "imap <C-j> <Down>
 "imap <C-k> <Up>
@@ -109,23 +126,27 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "inoremap <silent> っj <ESC>
 "nnoremap っz zz
 "nnoremap ・ /
+"}}}
 
-"" Leave insert mode and turn off Japanese input
+" Leave insert mode and turn off Japanese input {{{2
 autocmd InsertLeave * :call system('${zenhan} 0')
 autocmd CmdlineLeave * :call system('${zenhan} 0')
+"}}}
 
-" encoding
+" Encoding {{{2
 set encoding=UTF-8
 scriptencoding=UTF-8
+"}}}
 
-" tab
+" Tab {{{2
 set wildmenu
 set wildmode=full
 
 set expandtab
 set smarttab
+"}}}
 
-" indent
+" Indent {{{2
 set smartindent
 
 set tabstop=2
@@ -137,24 +158,28 @@ au Filetype rst  setlocal ts=3 sts=3 sw=3
 au FileType diff setlocal ts=4 sts=4 sw=4 noexpandtab
 
 set virtualedit=block
+"}}}
 
-" Leader
+" Leader {{{2
 let mapleader = "\<Space>"
 let localleader = "\<Space>"
 
 nnoremap <Leader>w :w<CR>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>r :source ~/.vimrc<cr>
+"}}}
 
-" undo
+" Undo {{{2
 if has('persistent_undo')
   set undodir=~/.vim/undo
   set undofile
   set undolevels=1000
 endif
+"}}}
 
-" plugin
+" Enable plugin {{{2
 filetype plugin indent on
+"}}}
 
 "}}}
 
