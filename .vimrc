@@ -8,16 +8,20 @@ set laststatus=2
 set nu
 "}}}
 
-" Highlight a matching opening or closing parenthesis, square bracket or a curly brace {{{2
-set showmatch
-"}}}
-
 " Display ruler {{{2
 set ruler
 "}}}
 
+" Highlight a matching opening or closing parenthesis, square bracket or a curly brace {{{2
+set showmatch
+"}}}
+
 " Enable incsearch {{{2
 set incsearch
+"}}}
+
+" Switch on highlighting the last used search pattern {{{2
+set hlsearch
 "}}}
 
 " Clipboard {{{2
@@ -45,16 +49,6 @@ if has('mouse')
 endif
 "}}}
 
-" Switch on highlighting the last used search pattern {{{2
-set hlsearch
-"}}}
-
-" Fastest way to move buffer {{{2
-nnoremap <silent><Left> :bp<CR>
-nnoremap <silent><Right> :bn<CR>
-nnoremap <silent><C-Space> :call BufferDeleteExceptFiler()<CR>
-"}}}
-
 " GUI configuration {{{2
 hi Visual cterm=reverse
 hi Search cterm=reverse ctermfg=yellow
@@ -67,6 +61,12 @@ if !has('gui_running')
     autocmd VimEnter * map! <Nul> <C-Space>
   augroup END
 endif
+"}}}
+
+" Fastest way to move buffer {{{2
+nnoremap <silent><Left> :bp<CR>
+nnoremap <silent><Right> :bn<CR>
+nnoremap <silent><C-Space> :call BufferDeleteExceptFiler()<CR>
 "}}}
 
 " Display another buffer when current buffer isn't saved. {{{2
@@ -160,15 +160,26 @@ if has('persistent_undo')
 endif
 "}}}
 
-" Enable plugin {{{2
-filetype plugin indent on
+" Syntax highlight {{{2
+syntax enable
+" }}}
+
+" True color {{{2
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 "}}}
 
+" Background transparent {{{2
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight SpecialKey ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
+"}}}
 "}}}
 
 " Dein plugin manager {{{
 
-" Set variables {{{2
 let s:use_dein = 1
 
 let s:vimdir = $HOME . '/.vim'
@@ -182,7 +193,6 @@ if &compatible
 endif
 
 let &runtimepath = &runtimepath . "," . s:dein_repo_dir
-"}}}
 
 " Install dein automatically {{{2
 if !isdirectory(s:dein_repo_dir)
@@ -269,11 +279,11 @@ endif
 "}}}
 
 " Plugin settings {{{
-
+" don't move this !
 filetype plugin indent on
 
-" coc
-" from README.md
+" neoclide/coc.nvim {{{2
+" README.md {{{3
 "" if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -407,7 +417,9 @@ if dein#tap('coc.nvim')
   "" Resume latest coc list.
   nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 endif
+"""}}}
 
+" coc extensions {{{3
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
@@ -419,14 +431,33 @@ let g:coc_global_extensions = [
   \ 'coc-vimtex',
   \ 'coc-tabnine',
   \ ]
-"
-" coc-vimlsp
+
+"" coc-vimlsp
 let g:markdown_fenced_languages = [
       \ 'vim',
       \ 'help'
       \]
+"}}}
 
-" vista.vim
+" }}}
+
+" mbbill/undotree {{{2
+nnoremap <F5> :UndotreeToggle<CR>
+"}}}
+
+" mattn/sonictemplate-vim {{{2
+let g:sonictemplate_vim_template_dir = expand('~/.vim/sonictemplate')
+"}}}
+
+" SirVer/ultisnips {{{2
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsEditSplit="vertical"
+"}}}
+
+" liuchengxu/vista.vim {{{2
 if dein#tap('vista.vim')
   function! NearestMethodOrFunction() abort
     return get(b:, 'vista_nearest_method_or_function', '')
@@ -439,8 +470,9 @@ if dein#tap('vista.vim')
   nmap <silent> <C-f><C-v> :<C-u>Vista coc<CR>
   nmap <silent> <C-f><C-s> :<C-u>Vista finder coc<CR>
 endif
+"}}}
 
-" lightline.vim
+" itchyny/lightline.vim {{{2
 if dein#tap('lightline.vim')
   set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
@@ -465,8 +497,29 @@ if dein#tap('lightline.vim')
         \ },
         \ }
 endif
+"}}}
 
-" fzf.vim
+" kassio/neoterm {{{2
+let g:neoterm_default_mod='belowright'
+let g:neoterm_size=10
+let g:neoterm_autoscroll=1
+tnoremap <silent> <C-w> <C-\><C-n><C-w>
+nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
+vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
+"}}}
+
+" Shougo/vinarise.vim {{{2
+" https://kivantium.hateblo.jp/entry/2015/04/30/235007
+augroup BinaryXXD
+  autocmd!
+  autocmd BufReadPre  *.bin let &binary =1
+  autocmd BufReadPost * if &binary | Vinarise
+  autocmd BufWritePre * if &binary | Vinarise | endif
+  autocmd BufWritePost * if &binary | Vinarise
+augroup END
+"}}}
+
+" junegunn/fzf.vim {{{2
 if dein#tap('fzf.vim')
   command! -bang -nargs=* Rg
         \ call fzf#vim#grep(
@@ -508,26 +561,67 @@ if dein#tap('fzf.vim')
           \ 'down':    '40%' })
   endfunction
 endif
+"}}}
 
-" neoterm
-let g:neoterm_default_mod='belowright'
-let g:neoterm_size=10
-let g:neoterm_autoscroll=1
-tnoremap <silent> <C-w> <C-\><C-n><C-w>
-nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
-vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
+" ntpeters/vim-better-whitespace {{{2
+if dein#tap('vim-better-whitespace')
+  let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
+  autocmd FileType markdown EnableWhitespace
+endif
+"}}}
 
-" vinarise.vim
-" https://kivantium.hateblo.jp/entry/2015/04/30/235007
-augroup BinaryXXD
-  autocmd!
-  autocmd BufReadPre  *.bin let &binary =1
-  autocmd BufReadPost * if &binary | Vinarise
-  autocmd BufWritePre * if &binary | Vinarise | endif
-  autocmd BufWritePost * if &binary | Vinarise
-augroup END
+" chrisbra/Colorizer {{{2
+if dein#tap('Colorizer')
+  autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
+endif
+"}}}
 
-" depend on pynvim
+" flazz/vim-colorschemes {{{2
+colorscheme molokai
+"}}}
+
+" vim-python/python-syntax {{{2
+if dein#tap('python-syntax')
+  let g:python_highlight_all = 1
+endif
+"}}}
+
+" octol/vim-cpp-enhanced-highlight {{{2
+if dein#tap('vim-cpp-enhanced-highlight')
+  let g:cpp_class_scope_highlight = 1
+  let g:cpp_member_variable_highlight = 1
+  let g:cpp_class_decl_highlight = 1
+  let g:cpp_experimental_template_highlight = 1
+  let g:cpp_concepts_highlight = 1
+endif
+"}}}
+
+" lervag/vimtex {{{2
+if dein#tap('vimtex')
+  let g:vimtex_compiler_progname = 'nvr'
+  let g:vimtex_quickfix_mode = 0
+  let g:vimtex_quickfix_autoclose_after_keystrokes = 1
+  let g:vimtex_compiler_latexmk_engines =  { '_' : '-pdfdvi' }
+  let g:vimtex_compiler_latexmk = {
+        \ 'backend': 'nvim',
+        \ 'background' : 0,
+        \ 'build_dir' : '',
+        \ 'continuous' : 1,
+        \ 'options' : [
+        \   '-pdfdvi',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+  let g:vimtex_view_method = 'zathura'
+  let g:vimtex_view_general_viewer = '/usr/bin/zathura'
+  let g:vimtex_view_general_options = '@line @pdf @tex'
+endif
+"}}}
+
+" Shougo/defx.nvim {{{2
 let g:python3_host_prog = '/usr/bin/python3'
 
 if dein#tap('defx.nvim')
@@ -592,91 +686,6 @@ function! BufferDeleteExceptFiler()
     bd!
   endif
 endfunction
-
-" Colorizer
-if dein#tap('Colorizer')
-  autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
-endif
-
-" python-syntax
-if dein#tap('python-syntax')
-  let g:python_highlight_all = 1
-endif
-
-" vim-cpp-enhanced-highlight
-if dein#tap('vim-cpp-enhanced-highlight')
-  let g:cpp_class_scope_highlight = 1
-  let g:cpp_member_variable_highlight = 1
-  let g:cpp_class_decl_highlight = 1
-  let g:cpp_experimental_template_highlight = 1
-  let g:cpp_concepts_highlight = 1
-endif
-
-" vimtex
-if dein#tap('vimtex')
-  let g:vimtex_compiler_progname = 'nvr'
-  let g:vimtex_quickfix_mode = 0
-  let g:vimtex_quickfix_autoclose_after_keystrokes = 1
-  let g:vimtex_compiler_latexmk_engines =  { '_' : '-pdfdvi' }
-  let g:vimtex_compiler_latexmk = {
-        \ 'backend': 'nvim',
-        \ 'background' : 0,
-        \ 'build_dir' : '',
-        \ 'continuous' : 1,
-        \ 'options' : [
-        \   '-pdfdvi',
-        \   '-verbose',
-        \   '-file-line-error',
-        \   '-synctex=1',
-        \   '-interaction=nonstopmode',
-        \ ],
-        \}
-  let g:vimtex_view_method = 'zathura'
-  let g:vimtex_view_general_viewer = '/usr/bin/zathura'
-  let g:vimtex_view_general_options = '@line @pdf @tex'
-endif
-
-" undotree
-nnoremap <F5> :UndotreeToggle<CR>
-
-" sonictemplate
-let g:sonictemplate_vim_template_dir = expand('~/.vim/sonictemplate')
-
-" ultisnets
-let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-let g:UltiSnipsEditSplit="vertical"
-
-" vim-better-whitespace
-if dein#tap('vim-better-whitespace')
-  let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
-  autocmd FileType markdown EnableWhitespace
-endif
-"}}}
-
-" Color settings {{{
-
-" syntax highlight {{{2
-syntax enable
-" }}}
-
-" true color {{{2
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"}}}
-
-" flazz/vim-colorschemes {{{2
-colorscheme molokai
-"}}}
-
-" make background transparent {{{2
-highlight Normal ctermbg=NONE guibg=NONE
-highlight NonText ctermbg=NONE guibg=NONE
-highlight SpecialKey ctermbg=NONE guibg=NONE
-highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "}}}
 
 " }}}
