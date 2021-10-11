@@ -159,10 +159,10 @@ if has('persistent_undo')
   set undolevels=1000
 endif
 "}}}
-
-" Syntax highlight {{{2
-syntax enable
 " }}}
+
+" Color settings {{{
+syntax enable
 
 " True color {{{2
 set termguicolors
@@ -176,7 +176,7 @@ highlight NonText ctermbg=NONE guibg=NONE
 highlight SpecialKey ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
 "}}}
-"}}}
+" }}}
 
 " Dein plugin manager {{{
 
