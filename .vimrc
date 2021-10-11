@@ -273,17 +273,6 @@ endif
 filetype plugin indent on
 
 " coc
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-json',
-  \ 'coc-vimlsp',
-  \ 'coc-clangd',
-  \ 'coc-pyright',
-  \ 'coc-rls',
-  \ 'coc-vimtex',
-  \ 'coc-tabnine',
-  \ ]
 " from README.md
 "" if hidden is not set, TextEdit might fail.
 set hidden
@@ -419,6 +408,18 @@ if dein#tap('coc.nvim')
   nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 endif
 
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-json',
+  \ 'coc-vimlsp',
+  \ 'coc-clangd',
+  \ 'coc-pyright',
+  \ 'coc-rls',
+  \ 'coc-vimtex',
+  \ 'coc-tabnine',
+  \ ]
+"
 " coc-vimlsp
 let g:markdown_fenced_languages = [
       \ 'vim',
