@@ -29,6 +29,7 @@ github.com/i0z0m/reversing
 github.com/i0z0m/sound-py
 github.com/i0z0m/starter-hugo-academic
 github.com/itchyny/llvm-brainfuck
+github.com/jptomoya/Project-Euler
 github.com/kabuku/algorithmer
 github.com/kaitou-ryaku/x86-simulator
 github.com/kenjiaiko/binarybook
