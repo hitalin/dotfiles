@@ -205,6 +205,7 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   call dein#add('Shougo/dein.vim')
+  call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('Shougo/vimproc.vim', {
        \ 'build' : {
        \     'windows' : 'tools\\update-dll-mingw',
