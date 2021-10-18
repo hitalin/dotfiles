@@ -1,8 +1,3 @@
-# TODO
-use [rcm](https://github.com/thoughtbot/rcm) to manage dotfiles.
-
-
-
 # setting
 ```console
 $ ./symlinker.sh
