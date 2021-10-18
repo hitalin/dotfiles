@@ -35,9 +35,4 @@ if [ $SHELL = $(which bash) ] && [ -e $(which zsh) ]; then
   chsh -s $(which zsh)
 fi
 
-if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
-  echo "Let's create hard link '/etc/wsl.conf' => '~/config/wsl.conf"
-  sudo ln $SCRIPT_DIR/wsl.conf /etc/wsl.conf
-fi
-
 echo "Finished!"
