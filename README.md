@@ -1,3 +1,8 @@
+# TODO
+use [rcm](https://github.com/thoughtbot/rcm) to manage dotfiles.
+
+
+
 # setting
 ```console
 $ ./symlinker.sh
@@ -8,6 +13,4 @@ $ ./set.sh
 # ghq
 
 ```console
-$ ghq list > ghq-list.txt
 $ ghq get < ghq-list.txt
-```
