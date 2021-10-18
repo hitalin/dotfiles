@@ -31,7 +31,7 @@ export DBUS_SESSION_BUS_ADDRESS
 export PATH="$HOME/dotfiles/bin:$PATH"
 
 # lang
-## python3
+## python
 export PATH="/home/taka/.local/bin:$PATH"
 export PYTHONPATH="$HOME/dotfiles/python:$PYTHONPATH"
 export PYTHONSTARTUP=$HOME/dotfiles/python/startup.py
@@ -53,12 +53,7 @@ function cd() {
       fi
   fi
 }
-## python2
-#export WORKON_HOME=$HOME/.virtualenvs
-#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
-#source /usr/bin/virtualenvwrapper.sh
-
-# ocaml
+## ocaml
 test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 ## haskell
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
