@@ -233,6 +233,7 @@ if dein#load_state(s:dein_dir)
   " add features
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('yuki-yano/fzf-preview.vim', { 'rev': 'release/rpc' })
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
   " customize the layout
@@ -422,6 +423,7 @@ endif
 
 " coc extensions {{{3
 let g:coc_global_extensions = [
+  \ 'coc-fzf-preview',
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-json',
