@@ -9,3 +9,4 @@ $ ./set.sh
 
 ```console
 $ ghq get < ghq-list.txt
+```
