@@ -216,7 +216,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
   " extending standard features
-  call dein#add('lilydjwg/fcitx.vim', {'rev': 'fcitx4'})
+  call dein#add('lilydjwg/fcitx.vim', {'rev': 'fcitx5'})
   call dein#add('mbbill/undotree')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-repeat')
