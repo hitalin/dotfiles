@@ -26,7 +26,9 @@ github.com/i0z0m/intro-py
 github.com/i0z0m/intro-rs
 github.com/i0z0m/intro-scm
 github.com/i0z0m/mist
+github.com/i0z0m/orgmode
 github.com/i0z0m/reversing
+github.com/i0z0m/runaway
 github.com/i0z0m/sound-py
 github.com/i0z0m/starter-hugo-academic
 github.com/itchyny/llvm-brainfuck
