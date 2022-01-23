@@ -1,5 +1,6 @@
 github.com/TheAlgorithms/Python
 github.com/UCSD-PL/nano-smt
+github.com/adi1090x/polybar-themes
 github.com/akiym/adctf2014
 github.com/akiym/akictf2013
 github.com/brainsmoke/minemu
@@ -16,7 +17,6 @@ github.com/i0z0m/coding-interview-university
 github.com/i0z0m/command
 github.com/i0z0m/competition
 github.com/i0z0m/cscx
-github.com/i0z0m/i0z0m.github.io
 github.com/i0z0m/intro-asm
 github.com/i0z0m/intro-c
 github.com/i0z0m/intro-cpp
@@ -30,7 +30,6 @@ github.com/i0z0m/orgmode
 github.com/i0z0m/reversing
 github.com/i0z0m/runaway
 github.com/i0z0m/sound-py
-github.com/i0z0m/starter-hugo-academic
 github.com/itchyny/llvm-brainfuck
 github.com/jptomoya/Project-Euler
 github.com/kabuku/algorithmer
