@@ -232,7 +232,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/vinarise.vim')
   " add features
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#add('yuki-yano/fzf-preview.vim', { 'rev': 'release/rpc' })
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
@@ -523,50 +522,6 @@ augroup BinaryXXD
   autocmd BufWritePre * if &binary | Vinarise | endif
   autocmd BufWritePost * if &binary | Vinarise
 augroup END
-"}}}
-
-" junegunn/fzf.vim {{{2
-if dein#tap('fzf.vim')
-  command! -bang -nargs=* Rg
-        \ call fzf#vim#grep(
-        \   'rg -g "!node_modules/*" --column --line-number  --no-heading --color=always '.shellescape(<q-args>), 0,
-        \   fzf#vim#with_preview(
-        \      {'options': '--exact --delimiter : --nth 3.. --preview "rougify {2..-1} | head -'.&lines.'"'}, 'right:50%'))
-  nnoremap <silent> <C-t> :call Fzf_dev()<CR>
-  nnoremap ,g :Rg<CR>
-
-  function! Fzf_dev()
-    let l:fzf_files_options = '--preview "rougify {2..-1} | head -'.&lines.'"'
-
-    function! s:files()
-      let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-      return s:prepend_icon(l:files)
-    endfunction
-
-    function! s:prepend_icon(candidates)
-      let l:result = []
-      for l:candidate in a:candidates
-        let l:filename = fnamemodify(l:candidate, ':p:t')
-        let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-        call add(l:result, printf('%s %s', l:icon, l:candidate))
-      endfor
-
-      return l:result
-    endfunction
-
-    function! s:edit_file(item)
-      let l:pos = stridx(a:item, ' ')
-      let l:file_path = a:item[pos+1:-1]
-      execute 'silent e' l:file_path
-    endfunction
-
-    call fzf#run({
-          \ 'source': <sid>files(),
-          \ 'sink':   function('s:edit_file'),
-          \ 'options': '-m ' . l:fzf_files_options,
-          \ 'down':    '40%' })
-  endfunction
-endif
 "}}}
 
 " ntpeters/vim-better-whitespace {{{2
