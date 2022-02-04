@@ -633,7 +633,9 @@ endfunction
 " Color settings {{{
 syntax enable
 
-colorscheme gotham
+colorscheme gotham256
+let g:lightline = { 'colorscheme': 'gotham' }
+let g:lightline = { 'colorscheme': 'gotham256' }
 
 " True color {{{2
 set termguicolors
