@@ -161,23 +161,6 @@ endif
 "}}}
 " }}}
 
-" Color settings {{{
-syntax enable
-
-" True color {{{2
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"}}}
-
-" Background transparent {{{2
-highlight Normal ctermbg=NONE guibg=NONE
-highlight NonText ctermbg=NONE guibg=NONE
-highlight SpecialKey ctermbg=NONE guibg=NONE
-highlight EndOfBuffer ctermbg=NONE guibg=NONE
-"}}}
-" }}}
-
 " Dein plugin manager {{{
 
 let s:use_dein = 1
@@ -244,7 +227,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('ntpeters/vim-better-whitespace')
   call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#add('chrisbra/Colorizer')
-  call dein#add('flazz/vim-colorschemes')
+  call dein#add('whatyouhide/vim-gotham')
   " syntax highlight
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('vim-python/python-syntax')
@@ -537,10 +520,6 @@ if dein#tap('Colorizer')
 endif
 "}}}
 
-" flazz/vim-colorschemes {{{2
-colorscheme molokai
-"}}}
-
 " vim-python/python-syntax {{{2
 if dein#tap('python-syntax')
   let g:python_highlight_all = 1
@@ -649,4 +628,23 @@ function! BufferDeleteExceptFiler()
 endfunction
 "}}}
 
+" }}}
+
+" Color settings {{{
+syntax enable
+
+colorscheme gotham
+
+" True color {{{2
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"}}}
+
+" Background transparent {{{2
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight SpecialKey ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
+"}}}
 " }}}
