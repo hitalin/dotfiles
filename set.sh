@@ -15,9 +15,7 @@ fi
 
 if [ -e $(which nvim) ] && [ ! -e ~/.config/nvim/ ]; then
   pip3 install --user pynvim neovim-remote
-#  mkdir -p ~/.config/nvim/
-#  ln -Fis $SCRIPT_DIR/.vimrc ~/.config/nvim/init.vim
-#  ln -Fis $HOME/.cache/dein/repos/github.com/whatyouhide/vim-gotham/colors $HOME/.config/nvim/colors
+  ln -Fis $HOME/.cache/nvim/dein/repos/github.com/whatyouhide/vim-gotham/colors $HOME/.config/nvim/colors
 fi
 
 if [ -e $(which emacs) ] && [ ! -e ~/.emacs.d/ ]; then
