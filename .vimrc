@@ -162,7 +162,7 @@ nnoremap <leader>r :source ~/.vimrc<cr>
 
 " Undo {{{2
 if has('persistent_undo')
-  set undodir=~/.vim/undo
+  set undodir=~/.cache/vim/undo
   set undofile
   set undolevels=1000
 endif
@@ -174,7 +174,7 @@ endif
 let s:use_dein = 1
 
 let s:vimdir = $HOME . '/.vim'
-let s:dein_dir = s:vimdir . '/dein'
+let s:dein_dir = expand('~/.cache/dein')
 let s:dein_github = s:dein_dir . '/repos/github.com'
 let s:dein_repo_name = "Shougo/dein.vim"
 let s:dein_repo_dir = s:dein_github . '/' . s:dein_repo_name
