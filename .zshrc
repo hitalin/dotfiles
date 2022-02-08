@@ -132,6 +132,8 @@ alias gdb="gdb -q"
 alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
+alias v='nvim'
+
 alias erun='LC_CTYPE=ja_JP.UTF-8 emacs --daemon'
 alias e='TERM=xterm-24bit emacsclient -nw'
 alias ekill='emacsclient -e "(kill-emacs)"'
