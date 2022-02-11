@@ -67,7 +67,7 @@ URxvt.perl-lib:        /lib64/urxvt/perl/
 URxvt.perl-ext-common: default,selection-to-clipboard,osc-xterm-clipboard,matcher,tabbed,xim-onthespot
 !! matcher
 !URxvt.perl-ext-common: matcher
-URxvt.url-launcher:    /usr/bin/firefox
+URxvt.url-launcher:    /usr/bin/vivaldi-stable
 URxvt.matcher.button:   1
 !! tabbed
 !URxvt.perl-ext-common:  tabbed
