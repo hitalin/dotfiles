@@ -257,9 +257,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/defx.nvim')
   call dein#add('kristijanhusak/defx-icons')
   call dein#add('kristijanhusak/defx-git')
-  if has('nvim')
-    call dein#add('numirias/semshi')
-  endif
 
   call dein#end()
 endif
