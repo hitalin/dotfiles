@@ -477,6 +477,7 @@ if dein#tap('lightline.vim')
   endfunction
 
   let g:lightline = {
+        \ 'colorscheme' : 'gotham',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
@@ -659,7 +660,6 @@ syntax enable
 
 " Color scheme {{{2
 colorscheme gotham256
-let g:lightline = { 'colorscheme': 'gotham256' }
 "}}}
 
 " True color {{{2
