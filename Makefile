@@ -2,14 +2,9 @@ EXCLUDE_FILES  = .git .gitmodules .gitignore
 INSTALL_TARGET = $(wildcard .??*)
 DOTFILES       = $(filter-out $(EXCLUDE_FILES), $(INSTALL_TARGET))
 
-CONFIG_DIR     = $(HOME)/.config
-
-VIM_PATH      = $(CONFIG_DIR)/vim
+VIM_PATH      = $(HOME)/.vim
 
 .PHONY: deploy init list
-
-$(CONFIG_DIR):
-	mkdir -p $@
 
 $(VIM_PATH):
 	ln -sfnv $(PWD)/.vim $@
@@ -17,7 +12,7 @@ $(VIM_PATH):
 deploy: init
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
-init: $(CONFIG_DIR) $(VIM_PATH)
+init: $(VIM_PATH)
 
 uninstall:
 	@unlink $(VIM_PATH)
