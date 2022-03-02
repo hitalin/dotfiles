@@ -7,7 +7,7 @@ VIM_PATH      = $(HOME)/.vim
 .PHONY: deploy init list
 
 $(VIM_PATH):
-	ln -sfnv $(PWD)/.vim $@
+	ln -sfnv $(PWD)/vim $@
 
 deploy: init
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
