@@ -72,7 +72,7 @@ if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
 fi
 
 # keychain
-keychain --nogui --quiet $HOME/.ssh/id_rsa_github
+keychain --nogui --quiet $HOME/.ssh/id_ed25519_github
 source $HOME/.keychain/$HOST-sh
 
 # terminal
