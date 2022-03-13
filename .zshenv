@@ -72,8 +72,8 @@ if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
 fi
 
 # keychain
-keychain --nogui --quiet $HOME/.ssh/id_ed25519_github
 source $HOME/.keychain/$HOST-sh
+#eval $(keychain --eval --quiet id_ed25519_github)
 
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
