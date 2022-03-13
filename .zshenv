@@ -73,8 +73,7 @@ fi
 
 # keychain
 source $HOME/.keychain/$HOST-sh
-eval $(keychain --eval --quiet --agents ssh)
-eval $(keychain --eval --quiet --agents gpg)
+eval $(keychain --eval --quiet)
 
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
