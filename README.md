@@ -1,7 +1,6 @@
 # setting
 ```console
-$ ./symlinker.sh
-$ make
+$ make deploy
 $ ./set.sh
 ```
 
