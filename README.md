@@ -1,11 +1,13 @@
 # setting
 ```console
-$ make deploy
-$ ./set.sh
+git clone https://gitlab.com/i0z0m/dotfiles.git ~/
+cd ~/dotfiles
+make deploy
+./set.sh
 ```
 
 # ghq
 
 ```console
-$ ghq get < ghq-list.txt
+ghq get < ghq-list.txt
 ```
