@@ -22,10 +22,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
-# emacs-application-framework
-eval $(dbus-launch)
-export DBUS_SESSION_BUS_ADDRESS
-
 # personal scripts
 export PATH="$HOME/dotfiles/bin:$PATH"
 
@@ -60,15 +56,6 @@ export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 if [ -x "`which go`" ]; then
   export GOPATH=$HOME/.go
   export PATH="$GOPATH/bin:$PATH"
-fi
-
-# WSL
-if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
-## for WSL1
-#  export DISPLAY=localhost:0.0
-## for WSL2
-  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-  export FCITX_SOCKET=/tmp/fcitx-socket-:0
 fi
 
 # keychain
