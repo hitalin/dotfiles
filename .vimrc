@@ -423,7 +423,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-clangd',
   \ 'coc-pyright',
-  \ 'coc-rls',
+  \ 'coc-rust-analyzer',
   \ 'coc-vimtex',
   \ 'coc-tabnine',
   \ ]
