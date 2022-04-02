@@ -5,7 +5,9 @@ github.com/akiym/adctf2014
 github.com/akiym/akictf2013
 github.com/brainsmoke/minemu
 github.com/careercup/CtCI-6th-Edition-cpp
+github.com/cupnes/os5
 github.com/denisarnaud/hanoi-towers
+github.com/esumii/min-caml
 github.com/herumi/xbyak
 github.com/i0z0m/CTF
 github.com/i0z0m/ProjectEuler
@@ -34,6 +36,8 @@ github.com/jptomoya/Project-Euler
 github.com/kabuku/algorithmer
 github.com/kaitou-ryaku/x86-simulator
 github.com/kenjiaiko/binarybook
+github.com/mit-pdos/xv6-public
+github.com/mortdeus/legacy-cc
 github.com/msakai/toysolver
 github.com/nayuki/Project-Euler-solutions
 github.com/oldgeese/toysynth
@@ -43,5 +47,6 @@ github.com/sh8/vimrc
 github.com/shift-crops/x86emu
 github.com/shigemk2/compiler
 github.com/shigemk2/haskell_abc
+github.com/sksat/emu
 github.com/xoreaxeaxeax/movfuscator
 github.com/yosupo06/Algorithm
