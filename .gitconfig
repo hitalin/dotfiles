@@ -1,36 +1,36 @@
 [user]
-	name = i0z0m
-	email = i0z0mu@gmail.com
+  name = i0z0m
+  email = i0z0mu@gmail.com
 
 [init]
-	defaultBranch = master
+  defaultBranch = master
 
 [core]
-	editor = vim -c \"set fenc=utf-8\"
-	quotepath = false
-	ignorecase = false
-	excludesfile = ~/.gitignore_global
+  editor = vim -c \"set fenc=utf-8\"
+  quotepath = false
+  ignorecase = false
+  excludesfile = ~/.gitignore_global
 
 [color]
-	ui = true
-	diff = auto
-	status = auto
-	branch = auto
+  ui = true
+  diff = auto
+  status = auto
+  branch = auto
 
 [pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
 
 [delta]
-    plus-style = "syntax #012800"
-    minus-style = "syntax #340001"
-    syntax-theme = Monokai Extended
-    navigate = true
+  plus-style = "syntax #012800"
+  minus-style = "syntax #340001"
+  syntax-theme = Monokai Extended
+  navigate = true
 
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 
 [merge]
   tool = vimdiff
@@ -38,7 +38,7 @@
   conflictStyle = diff3
 
 [pull]
-	rebase = false
+  rebase = false
 
 [ghq]
   user = i0z0m
@@ -48,7 +48,7 @@
 [url "git@github.com:i0z0m"]
   insteadOf = https://github.com/i0z0m
 [url "git@github.com:"]
-	pushInsteadOf = https://github.com/
+  pushInsteadOf = https://github.com/
 
 [credential "https://github.com"]
-	helper = !gh auth git-credential
+  helper = !gh auth git-credential
