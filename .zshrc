@@ -135,7 +135,7 @@ alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 alias v='nvim'
 
 alias erun='LC_CTYPE=ja_JP.UTF-8 emacs --daemon'
-alias e='TERM=xterm-24bit emacsclient -nw'
+alias e='emacsclient -nw'
 alias ekill='emacsclient -e "(kill-emacs)"'
 
 alias mac='ifconfig eth0 | egrep -o "([[:xdigit:]]{2}[:]){5}[[:xdigit:]]{2}"'
