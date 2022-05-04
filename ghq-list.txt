@@ -22,7 +22,7 @@ github.com/i0z0m/intro-asm
 github.com/i0z0m/intro-c
 github.com/i0z0m/intro-cpp
 github.com/i0z0m/intro-hs
-github.com/i0z0m/intro-js
+github.com/i0z0m/intro-ts
 github.com/i0z0m/intro-ml
 github.com/i0z0m/intro-py
 github.com/i0z0m/intro-rs
