@@ -28,7 +28,7 @@ github.com/i0z0m/intro-py
 github.com/i0z0m/intro-rs
 github.com/i0z0m/intro-scm
 github.com/i0z0m/intro-sol
-github.com/i0z0m/intro-ts
+github.com/i0z0m/intro-js
 github.com/i0z0m/mist
 github.com/i0z0m/orgmode
 github.com/i0z0m/paper
