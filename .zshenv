@@ -27,7 +27,7 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 
 # lang
 ## python
-export PATH="/home/taka/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PYTHONPATH="$HOME/dotfiles/python:$PYTHONPATH"
 export PYTHONSTARTUP=$HOME/dotfiles/python/startup.py
 function cd() {
