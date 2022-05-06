@@ -12,15 +12,3 @@ cd ~/dotfiles
 make deploy
 ./set.sh
 ```
-
-# ghq
-
-```console
-go get github.com/x-motemen/ghq
-ghq get < ~/dotfiles/ghq-list.txt
-```
-
-```console
-ghq list > ~/dotfiles/ghq-list.txt
-ghq list | ghq get --update --parallel
-```
