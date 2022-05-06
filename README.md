@@ -16,6 +16,7 @@ make deploy
 # ghq
 
 ```console
+go get github.com/x-motemen/ghq
 ghq get < ~/dotfiles/ghq-list.txt
 ```
 
