@@ -1,7 +1,7 @@
 DOTPATH=~/dotfiles
 
 if has "curl" || has "wget"; then
-  tarball="https://github.com/i0z0m/dotfiles/archive/master.tar.gz"
+  tarball="https://gitlab.com/i0z0m/dotfiles/-/archive/master/dotfiles-master.tar.gz"
 
   if has "curl"; then
     curl -L "$tarball"
