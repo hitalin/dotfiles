@@ -22,6 +22,7 @@ github.com/i0z0m/intro-asm
 github.com/i0z0m/intro-c
 github.com/i0z0m/intro-cpp
 github.com/i0z0m/intro-cs
+github.com/i0z0m/intro-fsx
 github.com/i0z0m/intro-hs
 github.com/i0z0m/intro-js
 github.com/i0z0m/intro-ml
