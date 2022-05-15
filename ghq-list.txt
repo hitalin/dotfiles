@@ -18,7 +18,6 @@ github.com/i0z0m/command
 github.com/i0z0m/competition
 github.com/i0z0m/cscx
 github.com/i0z0m/github
-github.com/i0z0m/hitari.pages.dev
 github.com/i0z0m/intro-asm
 github.com/i0z0m/intro-c
 github.com/i0z0m/intro-cpp
