@@ -35,9 +35,6 @@ github.com/i0z0m/mist
 github.com/i0z0m/orgmode
 github.com/i0z0m/paper
 github.com/i0z0m/reversing
-github.com/i0z0m/set-arch
-github.com/i0z0m/set-deb
-github.com/i0z0m/set-gentoo
 github.com/i0z0m/sound-py
 github.com/itchyny/llvm-brainfuck
 github.com/jptomoya/Project-Euler
@@ -59,3 +56,6 @@ github.com/sksat/emu
 github.com/xoreaxeaxeax/movfuscator
 github.com/yosupo06/Algorithm
 gitlab.com/i0z0m/gitlab_proof
+gitlab.com/i0z0m/set-arch
+gitlab.com/i0z0m/set-deb
+gitlab.com/i0z0m/set-gentoo
