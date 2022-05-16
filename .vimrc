@@ -232,6 +232,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('itchyny/vim-gitbranch')
   if !has('nvim')
     call dein#add('mhinz/vim-startify')
+    call dein#add('ryanoasis/vim-devicons')
   endif
   " colorization
   call dein#add('ntpeters/vim-better-whitespace')
