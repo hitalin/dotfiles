@@ -14,13 +14,13 @@ if [ -e /mnt/c/WINDOWS/System32/wsl.exe ]; then
   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
   #export FCITX_SOCKET=/tmp/fcitx-socket-:0
 
+  export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+  export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+
 else
 
   #eval $(dbus-launch)
   #export DBUS_SESSION_BUS_ADDRESS
-
-  export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
-  export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 
   if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
       exec startx
