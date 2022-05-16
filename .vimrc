@@ -230,7 +230,9 @@ if dein#load_state(s:dein_dir)
   call dein#add('liuchengxu/vista.vim')
   call dein#add('itchyny/lightline.vim')
   call dein#add('itchyny/vim-gitbranch')
-  call dein#add('mhinz/vim-startify')
+  if !has('nvim')
+    call dein#add('mhinz/vim-startify')
+  endif
   " colorization
   call dein#add('ntpeters/vim-better-whitespace')
   call dein#add('vim-scripts/AnsiEsc.vim')
