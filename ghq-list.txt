@@ -54,10 +54,9 @@ github.com/shigemk2/haskell_abc
 github.com/sksat/emu
 github.com/xoreaxeaxeax/movfuscator
 github.com/yosupo06/Algorithm
+gitlab.com/i0z0m/env-boot
 gitlab.com/i0z0m/gitlab_proof
-gitlab.com/i0z0m/metasploitable3
+gitlab.com/i0z0m/overlay
 gitlab.com/i0z0m/set-arch
 gitlab.com/i0z0m/set-deb
 gitlab.com/i0z0m/set-gentoo
-gitlab.com/i0z0m/vagrant-CTF
-gitlab.com/i0z0m/vagrant-pentest
