@@ -22,6 +22,9 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
+# snap
+export PATH="/var/lib/snapd/snap/bin:$PATH"
+
 # personal scripts
 export PATH="$HOME/dotfiles/bin:$PATH"
 
