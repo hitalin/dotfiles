@@ -425,6 +425,7 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-prettier',
   \ 'coc-eslint',
+  \ 'coc-tsserver',
   \ 'coc-deno',
   \ 'coc-clangd',
   \ 'coc-pyright',
