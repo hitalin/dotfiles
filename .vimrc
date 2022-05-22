@@ -240,6 +240,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('chrisbra/Colorizer')
   call dein#add('whatyouhide/vim-gotham')
   " syntax highlight
+  call dein#add('pangloss/vim-javascript')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('vim-python/python-syntax')
   call dein#add('neovimhaskell/haskell-vim')
@@ -424,6 +425,7 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-prettier',
   \ 'coc-eslint',
+  \ 'coc-deno',
   \ 'coc-clangd',
   \ 'coc-pyright',
   \ 'coc-rust-analyzer',
