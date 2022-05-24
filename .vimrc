@@ -243,6 +243,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('pangloss/vim-javascript')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('vim-python/python-syntax')
+  call dein#add('rust-lang/rust.vim')
   call dein#add('neovimhaskell/haskell-vim')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('cespare/vim-toml')
@@ -548,6 +549,10 @@ if dein#tap('vim-cpp-enhanced-highlight')
   let g:cpp_experimental_template_highlight = 1
   let g:cpp_concepts_highlight = 1
 endif
+"}}}
+
+" rust-lang/rust.vim {{{2
+let g:rustfmt_autosave = 1
 "}}}
 
 " lervag/vimtex {{{2
