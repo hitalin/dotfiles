@@ -35,11 +35,13 @@ github.com/i0z0m/orgmode
 github.com/i0z0m/paper
 github.com/i0z0m/reversing
 github.com/i0z0m/sound-py
+github.com/i0z0m/stats
 github.com/itchyny/llvm-brainfuck
 github.com/jptomoya/Project-Euler
 github.com/kabuku/algorithmer
 github.com/kaitou-ryaku/x86-simulator
 github.com/kenjiaiko/binarybook
+github.com/misskey-dev/misskey
 github.com/mit-pdos/xv6-public
 github.com/mortdeus/legacy-cc
 github.com/msakai/toysolver
@@ -51,6 +53,7 @@ github.com/sh8/vimrc
 github.com/shift-crops/x86emu
 github.com/shigemk2/compiler
 github.com/shigemk2/haskell_abc
+github.com/shingetsu/saku
 github.com/sksat/emu
 github.com/xoreaxeaxeax/movfuscator
 github.com/yosupo06/Algorithm
