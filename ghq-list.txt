@@ -63,3 +63,6 @@ gitlab.com/i0z0m/overlay
 gitlab.com/i0z0m/set-arch
 gitlab.com/i0z0m/set-deb
 gitlab.com/i0z0m/set-gentoo
+gitlab.com/i0z0m/vagrant-CTF
+gitlab.com/i0z0m/vagrant-IoT
+gitlab.com/i0z0m/vagrant-pentest
