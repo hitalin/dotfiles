@@ -434,6 +434,7 @@ let g:coc_global_extensions = [
   \ 'coc-clangd',
   \ 'coc-pyright',
   \ 'coc-rust-analyzer',
+  \ 'coc-elixir' ,
   \ 'coc-vimtex',
   \ 'coc-tabnine',
   \ ]
