@@ -246,7 +246,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-python/python-syntax')
   call dein#add('rust-lang/rust.vim')
   call dein#add('neovimhaskell/haskell-vim')
-  call dein#add('elixir-editors/vim-elixir')
   call dein#add('TovarishFin/vim-solidity')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('cespare/vim-toml')
@@ -434,7 +433,6 @@ let g:coc_global_extensions = [
   \ 'coc-clangd',
   \ 'coc-pyright',
   \ 'coc-rust-analyzer',
-  \ 'coc-elixir' ,
   \ 'coc-vimtex',
   \ 'coc-tabnine',
   \ ]
