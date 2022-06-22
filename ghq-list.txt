@@ -1,6 +1,7 @@
 github.com/TheAlgorithms/Python
 github.com/UCSD-PL/nano-smt
 github.com/adi1090x/polybar-themes
+github.com/adi1090x/rofi
 github.com/akiym/adctf2014
 github.com/akiym/akictf2013
 github.com/brainsmoke/minemu
