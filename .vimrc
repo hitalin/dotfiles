@@ -250,6 +250,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('cespare/vim-toml')
   call dein#add('lervag/vimtex')
+  call dein#add('jceb/vim-orgmode')
+  call dein#add('tpope/vim-speeddating')
   call dein#add('plasticboy/vim-markdown')
   " preview documents
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
