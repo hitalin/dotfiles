@@ -1,3 +1,5 @@
+akkoma.dev/AkkomaGang/akkoma
+akkoma.dev/FoundKeyGang/FoundKey
 git.disroot.org/i0z0m/gitea_proof
 github.com/TheAlgorithms/Python
 github.com/UCSD-PL/nano-smt
