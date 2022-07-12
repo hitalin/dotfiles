@@ -23,8 +23,4 @@ if [ -e $(which tmux) ] && [ ! -e ~/.tmux/ ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-if [ $SHELL = $(which bash) ] && [ -e $(which zsh) ]; then
-  chsh -s $(which zsh)
-fi
-
 echo "Finished!"
