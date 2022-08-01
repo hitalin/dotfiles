@@ -1,9 +1,5 @@
 {
   "languageserver": {
-    "zls" : {
-      "command": "command_or_path_to_zls",
-      "filetypes": ["zig"]
-    },
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
