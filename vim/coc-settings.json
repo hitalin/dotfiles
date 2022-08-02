@@ -9,6 +9,6 @@
   },
   "zig.enabled": true,
   "zig.startUpMessage": true,
-  "zig.path": "zls",
+  "zig.path": "~/.zig/zls",
   "zig.debugLog": false
 }
