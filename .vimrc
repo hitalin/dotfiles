@@ -587,7 +587,7 @@ endif
 "}}}
 
 " glidenote/memolist.vim {{{2
-let g:memolist_path = "~/Dropbox/markdown/memolist"
+let g:memolist_path = "~/Dropbox/md/memolist"
 let g:memolist_memo_suffix = "markdown"
 let g:memolist_fzf = 1
 nnoremap <Leader>mn  :MemoNew<CR>
