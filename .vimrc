@@ -254,7 +254,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('lervag/vimtex')
   call dein#add('jceb/vim-orgmode')
   call dein#add('tpope/vim-speeddating')
-  call dein#add('glidenote/memolist.vim')
   call dein#add('plasticboy/vim-markdown')
   " preview documents
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
@@ -584,15 +583,6 @@ if dein#tap('vimtex')
   let g:vimtex_view_general_viewer = '/usr/bin/zathura'
   let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
-"}}}
-
-" glidenote/memolist.vim {{{2
-let g:memolist_path = "~/Dropbox/md/memolist"
-let g:memolist_memo_suffix = "markdown"
-let g:memolist_fzf = 1
-nnoremap <Leader>mn  :MemoNew<CR>
-nnoremap <Leader>ml  :MemoList<CR>
-nnoremap <Leader>mg  :MemoGrep<CR>
 "}}}
 
 " Shougo/defx.nvim {{{2
