@@ -65,6 +65,8 @@ github.com/shigemk2/compiler
 github.com/shigemk2/haskell_abc
 github.com/shingetsu/saku
 github.com/sksat/emu
+github.com/vinceliuice/WhiteSur-gtk-theme
+github.com/vinceliuice/WhiteSur-icon-theme
 github.com/xoreaxeaxeax/movfuscator
 github.com/yosupo06/Algorithm
 gitlab.com/i0z0m/env-boot
