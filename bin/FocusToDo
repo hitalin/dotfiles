@@ -4,4 +4,4 @@
 # https://chrome.google.com/webstore/detail/focus-to-do-pomodoro-time/ngceodoilcgpmkijopinlkmohnfifjfb
 #=#=
 
-/usr/bin/brave --profile-directory=Default --app=chrome-extension://ngceodoilcgpmkijopinlkmohnfifjfb/index.html#popout
+/usr/bin/brave --profile-directory=Default --app=chrome-extension://ngceodoilcgpmkijopinlkmohnfifjfb/WebContent/index.html#popout
