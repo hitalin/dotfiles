@@ -1,6 +1,7 @@
 akkoma.dev/AkkomaGang/akkoma
 akkoma.dev/FoundKeyGang/FoundKey
 git.disroot.org/i0z0m/gitea_proof
+github.com/Neos21/c-cowsay
 github.com/TheAlgorithms/Python
 github.com/UCSD-PL/nano-smt
 github.com/adi1090x/polybar-themes
