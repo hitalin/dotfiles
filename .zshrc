@@ -248,3 +248,6 @@ function ssh() {
 
 # load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# bun completions
+[ -s ~/.bun/_bun ] && source ~/.bun/_bun

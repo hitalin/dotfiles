@@ -51,6 +51,9 @@ function cd() {
       fi
   fi
 }
+## zig
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 ## rust
 export PATH="$HOME/.cargo/bin:$HOME/.cargo/bin:$PATH"
 ## ocaml
