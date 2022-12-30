@@ -31,6 +31,12 @@ tags
 *.o
 .clangd/
 
+# javascript
+node_modules/
+
+# zig
+zig-cache/
+
 # rust
 target/
 Cargo.lock
