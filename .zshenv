@@ -52,6 +52,7 @@ function cd() {
   fi
 }
 ## zig
+export PATH="$HOME/.zig/zls:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 ## rust
