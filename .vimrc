@@ -577,6 +577,10 @@ endif
 let g:rustfmt_autosave = 1
 "}}}
 
+" ziglang/zig.vim {{{2
+let g:zig_fmt_autosave = 1
+"}}}
+
 " lervag/vimtex {{{2
 if dein#tap('vimtex')
   let g:vimtex_compiler_progname = 'nvr'
