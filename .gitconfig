@@ -11,7 +11,7 @@
 	gpgsign = true
 
 [init]
-  defaultBranch = master
+  defaultBranch = main
 
 [core]
   editor = vim -c \"set fenc=utf-8\"
