@@ -196,7 +196,7 @@ zle -N ghq-fzf
 bindkey '^g' ghq-fzf
 
 ##  https://qiita.com/kamykn/items/aa9920f07487559c0c7e#z%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E7%A7%BB%E5%8B%95%E3%82%92%E5%BF%AB%E9%81%A9%E3%81%AB%E3%81%99%E3%82%8B
-fzf-z-search() {
+function fzf-z-search() {
     local res=$(z | sort -rn | cut -c 12- | fzf)
     if [ -n "$res" ]; then
         BUFFER+="cd $res"
