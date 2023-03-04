@@ -27,6 +27,9 @@ zinit for \
 ### https://github.com/wfxr/forgit
 zinit load wfxr/forgit
 
+### https://github.com/rupa/z
+zinit load rupa/z
+
 # bindkey
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
@@ -191,6 +194,19 @@ function ghq-fzf() {
 }
 zle -N ghq-fzf
 bindkey '^g' ghq-fzf
+
+##  https://qiita.com/kamykn/items/aa9920f07487559c0c7e#z%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E7%A7%BB%E5%8B%95%E3%82%92%E5%BF%AB%E9%81%A9%E3%81%AB%E3%81%99%E3%82%8B
+fzf-z-search() {
+    local res=$(z | sort -rn | cut -c 12- | fzf)
+    if [ -n "$res" ]; then
+        BUFFER+="cd $res"
+        zle accept-line
+    else
+        return 1
+    fi
+}
+zle -N fzf-z-search
+bindkey '^z' fzf-z-search
 
 ## https://qiita.com/ssh0/items/a9956a74bff8254a606a#solution-6-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%A7%E3%81%AF%E9%81%B8%E6%8A%9E%E7%94%BB%E9%9D%A2%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%AA%E3%81%84
 if [[ ! -n $TMUX && $- == *l* ]]; then
