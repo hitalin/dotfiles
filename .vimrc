@@ -491,7 +491,11 @@ if dein#tap('vista.vim')
 
   set statusline+=%{NearestMethodOrFunction()}
 
-  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" By default vista.vim never run if you don't call it explicitly.
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+  "autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" Adding this setting will interfere with the text at vim startup in tilda.
 
   nmap <silent> <C-f><C-v> :<C-u>Vista coc<CR>
   nmap <silent> <C-f><C-s> :<C-u>Vista finder coc<CR>
