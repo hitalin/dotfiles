@@ -228,7 +228,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('yuki-yano/fzf-preview.vim', { 'rev': 'release/rpc' })
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
-" call dein#add('wakatime/vim-wakatime')
+  call dein#add('wakatime/vim-wakatime')
   " customize the layout
   call dein#add('liuchengxu/vista.vim')
   call dein#add('itchyny/lightline.vim')
