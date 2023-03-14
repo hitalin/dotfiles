@@ -29,7 +29,7 @@ tags
 
 # c/cpp
 *.o
-.clangd/
+.cache/clangd/
 
 # javascript
 node_modules/
