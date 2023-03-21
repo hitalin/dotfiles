@@ -23,6 +23,7 @@ github.com/mit-pdos/xv6-public
 github.com/mortdeus/legacy-cc
 github.com/msakai/toysolver
 github.com/nayuki/Project-Euler-solutions
+github.com/ntddk/echo
 github.com/oldgeese/toysynth
 github.com/orumin/dotfiles
 github.com/searxng/searxng
