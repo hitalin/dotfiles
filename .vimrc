@@ -443,6 +443,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-yaml',
   \ 'coc-toml',
+  \ 'coc-lua',
   \ 'coc-vimlsp',
   \ 'coc-prettier',
   \ 'coc-eslint',
