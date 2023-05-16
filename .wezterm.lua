@@ -14,5 +14,8 @@ end
 config.font = wezterm.font 'Cica'
 -- For example, changing the color scheme:
 config.color_scheme = 'Gotham (Gogh)'
+
+config.window_background_opacity = 0.99
+
 -- and finally, return the configuration to wezterm
 return config
