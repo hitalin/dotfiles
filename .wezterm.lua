@@ -10,6 +10,7 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+config.font_size = 14.0
 -- This is where you actually apply your config choices
 config.font = wezterm.font 'Cica'
 -- For example, changing the color scheme:
