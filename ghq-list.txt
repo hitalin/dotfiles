@@ -8,6 +8,7 @@ github.com/adi1090x/rofi
 github.com/akiym/adctf2014
 github.com/akiym/akictf2013
 github.com/brainsmoke/minemu
+github.com/brenns10/lsh
 github.com/careercup/CtCI-6th-Edition-cpp
 github.com/cupnes/os5
 github.com/denisarnaud/hanoi-towers
@@ -18,6 +19,7 @@ github.com/itchyny/minivm
 github.com/jptomoya/Project-Euler
 github.com/kabuku/algorithmer
 github.com/kaitou-ryaku/x86-simulator
+github.com/kanorimon/pdp11
 github.com/kenjiaiko/binarybook
 github.com/misskey-dev/misskey
 github.com/mit-pdos/xv6-public
