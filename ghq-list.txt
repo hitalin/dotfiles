@@ -38,6 +38,7 @@ github.com/shigemk2/compiler
 github.com/shigemk2/haskell_abc
 github.com/shingetsu/saku
 github.com/sksat/emu
+github.com/thblt/write-yourself-a-git
 github.com/vinceliuice/WhiteSur-gtk-theme
 github.com/vinceliuice/WhiteSur-icon-theme
 github.com/xoreaxeaxeax/movfuscator
