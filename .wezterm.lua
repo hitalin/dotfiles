@@ -4,13 +4,11 @@ local act = wezterm.action
 return {
   initial_cols = 100,
   initial_rows = 40,
-  font_size = 14.0,
+  font_size = 16.0,
   cell_width = 1.0,
   line_height = 1.0,
   color_scheme = 'Gotham (Gogh)',
-  font = wezterm.font_with_fallback({
-    {family="PlemolJP Console NF", weight="Medium"},
-  }),
+  font = wezterm.font 'Cica',
   use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = true,
   window_background_opacity = 0.99,
