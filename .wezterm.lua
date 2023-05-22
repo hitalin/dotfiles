@@ -18,7 +18,5 @@ config.color_scheme = 'Gotham (Gogh)'
 
 config.window_background_opacity = 1.0
 
-config.enable_tab_bar = false
-
 -- and finally, return the configuration to wezterm
 return config
