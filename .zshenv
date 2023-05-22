@@ -15,7 +15,10 @@ export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)     # end underline
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 
 # theme
+## pure
 fpath+=$HOME/.zinit/plugins/sindresorhus---pure
+## startship
+#eval "$(starship init zsh)"
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
