@@ -1,4 +1,4 @@
-printWidth: 200
+printWidth: 160
 tabWidth: 4
 useTabs: false
 semi: true
@@ -16,3 +16,8 @@ vueIndentScriptAndStyle: false
 endOfLine: lf
 embeddedLanguageFormatting: auto
 singleAttributePerLine: false
+
+overrides:
+  - files: '*.js'
+    options:
+      tabWidth: 2
