@@ -42,10 +42,9 @@ target/
 Cargo.lock
 
 # python
-poetry.lock
-.ropeproject/
+requirements-dev.lock
+requirements.lock
 __pycache__/
-*.pyc
 
 # ocaml
 *.cmi
