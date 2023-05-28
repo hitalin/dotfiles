@@ -269,4 +269,4 @@ function ssh() {
 [ -s ~/.bun/_bun ] && source ~/.bun/_bun
 
 # load shims in rye
-[ -e $(which rye) ] && source ~/.rye/shims
+[ -e $(which rye) ] && source ~/.rye/env
