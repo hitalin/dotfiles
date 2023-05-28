@@ -10,6 +10,7 @@ github.com/akiym/akictf2013
 github.com/brainsmoke/minemu
 github.com/brenns10/lsh
 github.com/careercup/CtCI-6th-Edition-cpp
+github.com/cs01/pycowsay
 github.com/cupnes/os5
 github.com/denisarnaud/hanoi-towers
 github.com/esumii/min-caml
