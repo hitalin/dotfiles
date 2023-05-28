@@ -267,3 +267,6 @@ function ssh() {
 
 # bun completions
 [ -s ~/.bun/_bun ] && source ~/.bun/_bun
+
+# load shims in rye
+[ -d ~/.rye/shims ] && source ~/.rye/shims
