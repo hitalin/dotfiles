@@ -269,4 +269,4 @@ function ssh() {
 [ -s $BUN_INSTALL/_bun ] && source $BUN_INSTALL/_bun
 
 # load shims in rye
-[ -e $RYE_HOME ] && source $RYE_HOME/env
+[ -s ~/.rye/env ] && source ~/.rye/env

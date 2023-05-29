@@ -36,7 +36,6 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PYTHONPATH="$HOME/dotfiles/python:$PYTHONPATH"
 export PYTHONSTARTUP=$HOME/dotfiles/python/startup.py
-export RYE_HOME="$HOME/.rye"
 function cd() {
   builtin cd "$@"
 
