@@ -43,4 +43,5 @@ github.com/thblt/write-yourself-a-git
 github.com/vinceliuice/WhiteSur-gtk-theme
 github.com/vinceliuice/WhiteSur-icon-theme
 github.com/xoreaxeaxeax/movfuscator
+github.com/xtekky/gpt4free
 github.com/yosupo06/Algorithm
