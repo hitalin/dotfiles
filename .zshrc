@@ -265,7 +265,7 @@ function ssh() {
 # load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# bun completions
+# load completions in bun
 [ -s $BUN_INSTALL/_bun ] && source $BUN_INSTALL/_bun
 
 # load shims in rye
