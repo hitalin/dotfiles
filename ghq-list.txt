@@ -13,6 +13,7 @@ github.com/careercup/CtCI-6th-Edition-cpp
 github.com/cs01/pycowsay
 github.com/cupnes/os5
 github.com/denisarnaud/hanoi-towers
+github.com/emilwallner/Corewar
 github.com/esumii/min-caml
 github.com/herumi/xbyak
 github.com/itchyny/llvm-brainfuck
