@@ -148,6 +148,7 @@ au Filetype rust setlocal ts=4 sts=4 sw=4
 au Filetype zig setlocal ts=4 sts=4 sw=4 et
 au Filetype python setlocal ts=4 sts=4 sw=4
 au Filetype solidity setlocal ts=4 sts=4 sw=4
+au Filetype lua setlocal ts=3 sts=3 sw=3
 au Filetype rst  setlocal ts=3 sts=3 sw=3
 au Filetype diff setlocal ts=4 sts=4 sw=4 noexpandtab
 
