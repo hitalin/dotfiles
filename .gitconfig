@@ -44,9 +44,11 @@
   tool = vimdiff
   keepBackup = false
   conflictStyle = diff3
+  ff = false
 
 [pull]
   rebase = false
+  ff = only
 
 [ghq]
   user = i0z0m
