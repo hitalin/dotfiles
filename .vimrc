@@ -5,7 +5,8 @@ set laststatus=2
 "}}}
 
 " Display line number {{{2
-set nu
+set number relativenumber
+set nu rnu
 "}}}
 
 " Display ruler {{{2
