@@ -127,7 +127,9 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
 
-alias glg='git log --graph --oneline --decorate --all'
+alias gs='git status -s'
+alias gl="git log --graph --abbrev-commit --oneline -n 20 --decorate --format=format:'%C(yellow)%h%  %C(blue)%an%C(red)%d %C(white)%s'"
+alias gg='git grep --textconv'
 
 alias ocaml="rlwrap ocaml"
 
