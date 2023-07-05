@@ -13,6 +13,10 @@ if [ -e $(which gdb) ] && [ ! -e ~/.gdb/ ]; then
   gdb -ex 'gef config gef.extra_plugins_dir "~/.gdb/gef-extras/scripts"' -ex 'gef save' -ex quit
 fi
 
+if [ -e $(which nvim) ] && [ ! -e ~/.config/nvim ]; then
+  git clone https://github.com/i0z0m/AstroNvim ~/.config/nvim
+fi
+
 if [ -e $(which emacs) ] && [ ! -e ~/.emacs.d/ ]; then
   git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
   git clone https://github.com/i0z0m/.doom.d ~/.doom.d
