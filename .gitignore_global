@@ -21,6 +21,9 @@ a.out
 
 # tag
 tags
+GPATH
+GRTAGS
+GTAGS
 
 # c/cpp
 *.o
