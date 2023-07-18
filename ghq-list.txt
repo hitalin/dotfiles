@@ -7,6 +7,7 @@ github.com/adi1090x/polybar-themes
 github.com/adi1090x/rofi
 github.com/akiym/adctf2014
 github.com/akiym/akictf2013
+github.com/anwari-fikri/habitica-clone
 github.com/brainsmoke/minemu
 github.com/brenns10/lsh
 github.com/careercup/CtCI-6th-Edition-cpp
@@ -25,6 +26,7 @@ github.com/kanorimon/pdp11
 github.com/kenjiaiko/binarybook
 github.com/misskey-dev/misskey
 github.com/mit-pdos/xv6-public
+github.com/miyabilink/sukkiri-java3-codes
 github.com/mortdeus/legacy-cc
 github.com/msakai/toysolver
 github.com/nayuki/Project-Euler-solutions
@@ -33,6 +35,7 @@ github.com/oldgeese/toysynth
 github.com/orumin/dotfiles
 github.com/penpenpng/skylight
 github.com/searxng/searxng
+github.com/sebastiencs/icons-in-terminal
 github.com/segfo/conways_life_of_game_rust
 github.com/sh8/vimrc
 github.com/shift-crops/x86emu
