@@ -607,6 +607,10 @@ if dein#tap('vimtex')
 endif
 "}}}
 
+" vimwiki/vimwiki {{{2
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+" }}}
+
 " Shougo/defx.nvim {{{2
 let g:python3_host_prog = '/usr/bin/python3'
 
