@@ -112,9 +112,7 @@ set noswapfile
 "nnoremap ・ /
 "}}}
 
-" Leave insert mode and turn off Japanese input {{{2
-autocmd InsertLeave * :call system('${zenhan} 0')
-autocmd CmdlineLeave * :call system('${zenhan} 0')
+" Leave insert mode and turn off Japanese input {{{2 autocmd InsertLeave * :call system('${zenhan} 0') autocmd CmdlineLeave * :call system('${zenhan} 0')
 "}}}
 
 " Encoding {{{2
@@ -252,6 +250,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('neovimhaskell/haskell-vim')
   call dein#add('TovarishFin/vim-solidity')
   call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('mattn/emmet-vim')
   call dein#add('cespare/vim-toml')
   call dein#add('lervag/vimtex')
   call dein#add('freitass/todo.txt-vim')
