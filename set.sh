@@ -14,7 +14,7 @@ if [ -e $(which gdb) ] && [ ! -e ~/.gdb/ ]; then
 fi
 
 if [ -e $(which nvim) ] && [ ! -e ~/.config/nvim ]; then
-  git clone https://github.com/i0z0m/AstroNvim ~/.config/nvim
+  git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 fi
 
 if [ -e $(which emacs) ] && [ ! -e ~/.emacs.d/ ]; then
