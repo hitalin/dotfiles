@@ -34,7 +34,6 @@ import socket
 import string
 import struct
 import subprocess
-import telnetlib
 import time
 try:
     import Crypto
