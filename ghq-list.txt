@@ -1,5 +1,6 @@
 akkoma.dev/FoundKeyGang/FoundKey
 github.com/CTFd/CTFd
+github.com/Harrelix/Minesweeper
 github.com/Neos21/c-cowsay
 github.com/TheAlgorithms/Python
 github.com/UCSD-PL/nano-smt
@@ -16,6 +17,7 @@ github.com/cupnes/os5
 github.com/denisarnaud/hanoi-towers
 github.com/emilwallner/Corewar
 github.com/esumii/min-caml
+github.com/fujinov/maze
 github.com/herumi/xbyak
 github.com/itchyny/llvm-brainfuck
 github.com/itchyny/minivm
