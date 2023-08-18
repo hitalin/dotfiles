@@ -20,6 +20,9 @@ fpath+=$HOME/.zinit/plugins/sindresorhus---pure
 ## startship
 #eval "$(starship init zsh)"
 
+# xoxide
+eval "$(zoxide init zsh)"
+
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'

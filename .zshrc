@@ -28,7 +28,7 @@ zinit for \
 zinit load wfxr/forgit
 
 ### https://github.com/rupa/z
-zinit load rupa/z
+#zinit load rupa/z
 
 # bindkey
 bindkey -e
