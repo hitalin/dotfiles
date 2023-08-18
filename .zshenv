@@ -20,6 +20,9 @@ fpath+=$HOME/.zinit/plugins/sindresorhus---pure
 ## startship
 #eval "$(starship init zsh)"
 
+# thefuck
+eval "$(thefuck --alias)"
+
 # xoxide
 eval "$(zoxide init zsh)"
 
