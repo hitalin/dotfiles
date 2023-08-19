@@ -18,6 +18,7 @@ github.com/denisarnaud/hanoi-towers
 github.com/emilwallner/Corewar
 github.com/esumii/min-caml
 github.com/fujinov/maze
+github.com/geohot/haskell-scheme
 github.com/herumi/xbyak
 github.com/itchyny/llvm-brainfuck
 github.com/itchyny/minivm
