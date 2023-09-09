@@ -1,4 +1,3 @@
-akkoma.dev/FoundKeyGang/FoundKey
 github.com/CTFd/CTFd
 github.com/Harrelix/Minesweeper
 github.com/Neos21/c-cowsay
