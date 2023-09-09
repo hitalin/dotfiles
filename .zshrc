@@ -32,6 +32,9 @@ zinit load wfxr/forgit
 ### https://github.com/rupa/z
 #zinit load rupa/z
 
+### https://github.com/azu/ni.zsh
+zinit load azu/ni.zsh
+
 # bindkey
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
