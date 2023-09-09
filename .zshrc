@@ -125,12 +125,16 @@ unset caseglob
 alias q='exit'
 
 eval $(dircolors -b)
-alias ls='ls -F --color=auto'
+
+alias ls='eza'
+alias la="eza -a --git -g -h"
 
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
+
+alias sudo='sudo -v; sudo '
 
 alias gs='git status -s'
 alias gl="git log --graph --abbrev-commit --oneline -n 20 --decorate --format=format:'%C(yellow)%h%  %C(blue)%an%C(red)%d %C(white)%s'"
