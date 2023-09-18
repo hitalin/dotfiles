@@ -16,9 +16,9 @@ export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 
 # theme
 ## pure
-fpath+=$HOME/.zinit/plugins/sindresorhus---pure
+#fpath+=$HOME/.zinit/plugins/sindresorhus---pure
 ## startship
-#eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
 # thefuck
 eval "$(thefuck --alias)"
