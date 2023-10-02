@@ -4,15 +4,15 @@ DOTFILES       = $(filter-out $(EXCLUDE_FILES), $(INSTALL_TARGET))
 
 VIM_PATH      = $(HOME)/.vim
 
-.PHONY: deploy init list
+.PHONY: init deploy uninstall list
 
 $(VIM_PATH):
 	ln -sfnv $(PWD)/vim $@
 
+init: $(VIM_PATH)
+
 deploy: init
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
-
-init: $(VIM_PATH)
 
 uninstall:
 	@unlink $(VIM_PATH)
