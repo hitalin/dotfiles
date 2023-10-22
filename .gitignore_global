@@ -2,6 +2,8 @@
 *
 !*.*
 !*/
+!Makefile
+!Dockerfile
 a.out
 *.bin
 
