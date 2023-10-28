@@ -136,8 +136,13 @@ set shiftwidth=2
 set softtabstop=2
 
 au BufNewFile,BufRead *.ts set filetype=typescript
-au BufNewFile,BufRead *.tsx set filetype=typescript
 au BufNewFile,BufRead *.toml set filetype=toml
+
+augroup ReactFiletypes
+  autocmd!
+  autocmd BufRead,BufNewFile *.jsx set filetype=javascriptreact
+  autocmd BufRead,BufNewFile *.tsx set filetype=typescriptreact
+augroup END
 
 au Filetype html setlocal ts=4 sts=4 sw=4
 au Filetype css setlocal ts=4 sw=4 sts=0
