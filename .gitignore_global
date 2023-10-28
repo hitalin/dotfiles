@@ -37,6 +37,10 @@ GTAGS
 
 # javascript
 node_modules/
+.next/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # zig
 zig-cache/
