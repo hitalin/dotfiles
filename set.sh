@@ -15,6 +15,7 @@ fi
 
 if [ -e $(which nvim) ] && [ ! -e ~/.config/nvim ]; then
   git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+  git clone https://github.com/i0z0m/user_AstroNvim ~/.config/nvim/lua/user
 fi
 
 if [ -e $(which emacs) ] && [ ! -e ~/.emacs.d/ ]; then
