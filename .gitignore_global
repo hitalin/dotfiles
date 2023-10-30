@@ -77,3 +77,6 @@ cabal.sandbox.config
 *.fdb_latexmk
 *.fls
 *.log
+
+# PaaS
+.firebase/
