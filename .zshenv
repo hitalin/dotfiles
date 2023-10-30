@@ -38,6 +38,10 @@ export PATH="/var/lib/snapd/snap/bin:$PATH"
 export PATH="$HOME/dotfiles/bin:$PATH"
 
 # lang
+## javascript
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 ## python
 export PATH="$HOME/.local/bin:$PATH"
 export PYTHONPATH="$HOME/dotfiles/python:$PYTHONPATH"
