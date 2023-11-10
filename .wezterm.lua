@@ -2,13 +2,21 @@ local wezterm = require 'wezterm';
 local act = wezterm.action
 
 return {
+   use_ime = true,
+   check_for_updates = false,
+   audible_bell = "Disabled",
+
    initial_cols = 100,
    initial_rows = 40,
-   font_size = 16.0,
+   font_size = 14.0,
    cell_width = 1.0,
    line_height = 1.0,
-   color_scheme = 'Gotham',
-   font = wezterm.font('Migu 1M', { weight = 'Thin' }),
+   color_scheme = 'Catppuccin Mocha',
+   font = wezterm.font_with_fallback({
+   	{ family = "JetBrainsMono Nerd Font", weight = "Regular" },
+   	{ family = "JetBrainsMono Nerd Font", weight = "Regular", assume_emoji_presentation = true },
+   	{ family = "Noto Sans CJK JP" },
+   }),
    use_fancy_tab_bar = false,
    hide_tab_bar_if_only_one_tab = true,
    window_background_opacity = 0.99,
@@ -21,10 +29,10 @@ return {
    -- },
    skip_close_confirmation_for_processes_named = { "" },
    window_padding = {
-      left = 0,
-      right = 0,
-      top = 0,
-      bottom = 0,
+      left = 10,
+      right = 10,
+      top = 10,
+      bottom = 10,
    },
    wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
       return {
