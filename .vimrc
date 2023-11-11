@@ -220,7 +220,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-repeat')
   call dein#add('mattn/sonictemplate-vim')
-  call dein#add('SirVer/ultisnips')
+  "call dein#add('SirVer/ultisnips')
   call dein#add('honza/vim-snippets')
   call dein#add('terryma/vim-expand-region')
   call dein#add('junegunn/vim-easy-align')
@@ -251,7 +251,7 @@ if dein#load_state(s:dein_dir)
   " syntax highlight
   call dein#add('pangloss/vim-javascript')
   call dein#add('octol/vim-cpp-enhanced-highlight')
-  call dein#add('vim-python/python-syntax')
+  "call dein#add('vim-python/python-syntax')
   call dein#add('neovimhaskell/haskell-vim')
   call dein#add('TovarishFin/vim-solidity')
   call dein#add('editorconfig/editorconfig-vim')
@@ -271,9 +271,9 @@ if dein#load_state(s:dein_dir)
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  call dein#add('Shougo/defx.nvim')
-  call dein#add('kristijanhusak/defx-icons')
-  call dein#add('kristijanhusak/defx-git')
+  "call dein#add('Shougo/defx.nvim')
+  "call dein#add('kristijanhusak/defx-icons')
+  "call dein#add('kristijanhusak/defx-git')
 
   call dein#end()
 endif
@@ -459,7 +459,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-deno',
   \ 'coc-clangd',
-  \ 'coc-pyright',
+  "\ 'coc-pyright',
   \ 'coc-rust-analyzer',
   \ 'coc-zig',
   \ 'coc-vimtex',
@@ -483,11 +483,11 @@ let g:sonictemplate_vim_template_dir = expand('~/.vim/sonictemplate')
 "}}}
 
 " SirVer/ultisnips {{{2
-let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsExpandTrigger="<s-tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"
+"let g:UltiSnipsEditSplit="vertical"
 "}}}
 
 " liuchengxu/vista.vim {{{2
