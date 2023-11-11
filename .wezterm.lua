@@ -18,6 +18,7 @@ return {
    	{ family = "Noto Sans CJK JP" },
    }),
    use_fancy_tab_bar = false,
+   hide_mouse_cursor_when_typing = false,
    hide_tab_bar_if_only_one_tab = true,
    window_background_opacity = 0.99,
    text_background_opacity = 0.95,
