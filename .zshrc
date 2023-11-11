@@ -150,7 +150,7 @@ alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
 alias t='todo.sh'
 alias m='memo'
-
+alias fx='felix'
 alias f='fuck'
 
 alias v='nvim'
