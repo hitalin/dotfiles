@@ -18,13 +18,19 @@ export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 ## pure
 #fpath+=$HOME/.zinit/plugins/sindresorhus---pure
 ## startship
-eval "$(starship init zsh)"
+if [ -x "`which starship`" ]; then
+  eval "$(starship init zsh)"
+fi
 
 # thefuck
-eval "$(thefuck --alias)"
+if [ -x "`which thefuck`" ]; then
+  eval "$(thefuck --alias)"
+fi
 
-# xoxide
-eval "$(zoxide init zsh)"
+# zoxide
+if [ -x "`which zoxide`" ]; then
+  eval "$(zoxide init zsh)"
+fi
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
@@ -81,8 +87,10 @@ if [ -x "`which go`" ]; then
 fi
 
 # keychain
-source $HOME/.keychain/$HOST-sh
-eval $(keychain --eval --quiet)
+if [ -x "`which keychain`" ]; then
+  source $HOME/.keychain/$HOST-sh
+  eval $(keychain --eval --quiet)
+fi
 
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
