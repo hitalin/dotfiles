@@ -29,7 +29,6 @@ if [ -e $(which tmux) ] && [ ! -e ~/.tmux/ ]; then
 fi
 
 if [ -e $(which go) ] && [ ! -e ~/.go/ ]; then
-  go install github.com/x-motemen/ghq@latest
   go install github.com/mattn/memo@latest
   go install github.com/rhysd/actionlint/cmd/actionlint@latest
 fi
