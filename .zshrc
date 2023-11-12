@@ -23,8 +23,11 @@ autoload -Uz _zinit
 ### https://github.com/zdharma/zinit/blob/master/README.md
 zinit for \
     light-mode  zsh-users/zsh-completions \
-    light-mode  zsh-users/zsh-syntax-highlighting \
+#    light-mode  zsh-users/zsh-syntax-highlighting \
 #    light-mode  zsh-users/zsh-autosuggestions \
+
+# https://github.com/zdharma-continuum/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 ### https://github.com/wfxr/forgit
 zinit load wfxr/forgit
