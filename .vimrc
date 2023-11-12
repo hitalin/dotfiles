@@ -247,7 +247,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('ntpeters/vim-better-whitespace')
   call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#add('chrisbra/Colorizer')
-  call dein#add('whatyouhide/vim-gotham')
+  call dein#add('catppuccin/vim', { 'name': 'catppuccin' })
   " syntax highlight
   call dein#add('pangloss/vim-javascript')
   call dein#add('octol/vim-cpp-enhanced-highlight')
@@ -518,7 +518,7 @@ if dein#tap('lightline.vim')
   endfunction
 
   let g:lightline = {
-        \ 'colorscheme' : 'gotham',
+        \ 'colorscheme' : 'catppuccin_mocha',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
@@ -704,7 +704,7 @@ endfunction
 syntax enable
 
 " Color scheme {{{2
-colorscheme gotham256
+colorscheme catppuccin_mocha
 "}}}
 
 " True color {{{2
