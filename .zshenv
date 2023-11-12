@@ -32,6 +32,9 @@ if [ -x "`which zoxide`" ]; then
   eval "$(zoxide init zsh)"
 fi
 
+# bat
+export BAT_THEME="Catppuccin-mocha"
+
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
