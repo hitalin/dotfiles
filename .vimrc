@@ -151,7 +151,6 @@ au Filetype go setlocal ts=4 sw=4 sts=4
 au Filetype rust setlocal ts=4 sts=4 sw=4
 au Filetype zig setlocal ts=4 sts=4 sw=4 et
 au Filetype python setlocal ts=4 sts=4 sw=4
-au Filetype solidity setlocal ts=4 sts=4 sw=4
 au Filetype lua setlocal ts=3 sts=3 sw=3
 au Filetype rst  setlocal ts=3 sts=3 sw=3
 au Filetype diff setlocal ts=4 sts=4 sw=4 noexpandtab
@@ -253,7 +252,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('octol/vim-cpp-enhanced-highlight')
   "call dein#add('vim-python/python-syntax')
   call dein#add('neovimhaskell/haskell-vim')
-  call dein#add('TovarishFin/vim-solidity')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('cespare/vim-toml')
   call dein#add('LnL7/vim-nix')
