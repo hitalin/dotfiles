@@ -147,7 +147,6 @@ alias ocaml="rlwrap ocaml"
 
 alias gdb="gdb -q"
 alias objdump="objdump -M intel"
-alias hexedit="hexedit --sector --color"
 
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
