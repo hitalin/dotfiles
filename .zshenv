@@ -15,8 +15,6 @@ export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)     # end underline
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 
 # theme
-## pure
-#fpath+=$HOME/.zinit/plugins/sindresorhus---pure
 ## startship
 if [ -x "`which starship`" ]; then
   eval "$(starship init zsh)"
@@ -39,9 +37,6 @@ export BAT_THEME="Catppuccin-mocha"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
-
-# snap
-export PATH="/var/lib/snapd/snap/bin:$PATH"
 
 # personal scripts
 export PATH="$HOME/dotfiles/bin:$PATH"
