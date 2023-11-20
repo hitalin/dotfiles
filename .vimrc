@@ -461,6 +461,8 @@ let g:coc_global_extensions = [
   \ 'coc-deno',
   \ 'coc-clangd',
   \ 'coc-pyright',
+  \ 'coc-phpls',
+  \ 'coc-go',
   \ 'coc-rust-analyzer',
   \ 'coc-zig',
   \ 'coc-vimtex',
