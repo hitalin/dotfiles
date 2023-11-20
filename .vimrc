@@ -146,7 +146,6 @@ augroup END
 
 au Filetype html setlocal ts=4 sts=4 sw=4
 au Filetype css setlocal ts=4 sw=4 sts=0
-au Filetype php setlocal ts=4 sw=4 sts=4
 au Filetype go setlocal ts=4 sw=4 sts=4
 au Filetype rust setlocal ts=4 sts=4 sw=4
 au Filetype zig setlocal ts=4 sts=4 sw=4 et
@@ -462,7 +461,6 @@ let g:coc_global_extensions = [
   \ 'coc-deno',
   \ 'coc-clangd',
   \ 'coc-pyright',
-  \ 'coc-phpls',
   \ 'coc-go',
   \ 'coc-rust-analyzer',
   \ 'coc-zig',
