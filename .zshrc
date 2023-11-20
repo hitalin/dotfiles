@@ -283,4 +283,5 @@ function ssh() {
 # load shims in rye
 [ -s ~/.rye/env ] && source ~/.rye/env
 
+# load key bindings for inshellisense
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
