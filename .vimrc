@@ -291,6 +291,7 @@ endif
 filetype plugin indent on
 
 " neoclide/coc.nvim {{{2
+let g:node_host_prog = '/usr/bin/node'
 " README.md {{{3
 " Some servers have issues with backup files, see #649.
 set nobackup
