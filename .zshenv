@@ -48,8 +48,10 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 
 # lang
 ## javascript
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+if [ -x "`which volta`" ]; then
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
+fi
 
 ## python
 export PATH="$HOME/.local/bin:$PATH"
