@@ -17,7 +17,6 @@ autoload -Uz _zinit
 ### https://github.com/zdharma/zinit/blob/master/README.md
 zinit for \
     light-mode  zsh-users/zsh-completions \
-#    light-mode  zsh-users/zsh-autosuggestions \
 
 # https://github.com/zdharma-continuum/fast-syntax-highlighting
 zinit light zdharma-continuum/fast-syntax-highlighting
@@ -283,3 +282,5 @@ function ssh() {
 
 # load shims in rye
 [ -s ~/.rye/env ] && source ~/.rye/env
+
+[ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
