@@ -1,5 +1,6 @@
 # editor
-export EDITOR=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export GIT_EDITOR=vim
 
 # pager
