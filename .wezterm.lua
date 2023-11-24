@@ -12,11 +12,6 @@ return {
    cell_width = 1.0,
    line_height = 1.0,
    color_scheme = 'Catppuccin Mocha',
-   font = wezterm.font_with_fallback({
-   	{ family = "JetBrainsMono Nerd Font", weight = "Regular" },
-   	{ family = "JetBrainsMono Nerd Font", weight = "Regular", assume_emoji_presentation = true },
-   	{ family = "Noto Sans CJK JP" },
-   }),
    use_fancy_tab_bar = false,
    hide_mouse_cursor_when_typing = false,
    hide_tab_bar_if_only_one_tab = true,
