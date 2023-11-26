@@ -266,7 +266,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('plasticboy/vim-markdown')
   " preview documents
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-         \ 'build': 'sh -c "cd app & yarn install"' })
+					\ 'build': 'sh -c "cd app && npx --yes yarn install"' })
   " depend on pynvim
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
