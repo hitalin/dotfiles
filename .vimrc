@@ -149,6 +149,7 @@ au Filetype css setlocal ts=4 sw=4 sts=0
 au Filetype go setlocal ts=4 sw=4 sts=4
 au Filetype rust setlocal ts=4 sts=4 sw=4
 au Filetype zig setlocal ts=4 sts=4 sw=4 et
+au Filetype php setlocal ts=4 sw=4 sts=4
 au Filetype python setlocal ts=4 sts=4 sw=4
 au Filetype solidity setlocal ts=4 sts=4 sw=4
 au Filetype lua setlocal ts=3 sts=3 sw=3
@@ -250,6 +251,7 @@ if dein#load_state(s:dein_dir)
   " syntax highlight
   call dein#add('pangloss/vim-javascript')
   call dein#add('octol/vim-cpp-enhanced-highlight')
+  call dein#add('phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'})
   "call dein#add('vim-python/python-syntax')
   call dein#add('neovimhaskell/haskell-vim')
   call dein#add('TovarishFin/vim-solidity')
@@ -460,6 +462,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-deno',
   \ 'coc-clangd',
+  \ 'coc-phpactor',
   \ 'coc-pyright',
   \ 'coc-go',
   \ 'coc-rust-analyzer',
