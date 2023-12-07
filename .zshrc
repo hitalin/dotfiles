@@ -121,8 +121,8 @@ alias q='exit'
 
 eval $(dircolors -b)
 
-#alias ls='eza'
-#alias la="eza -a --git -g -h"
+alias ls='eza'
+alias la="eza -a --git -g -h"
 
 alias rm='rm -i'
 alias cp='cp -i'
