@@ -50,8 +50,6 @@ target/
 Cargo.lock
 
 # python
-requirements-dev.lock
-requirements.lock
 __pycache__/
 
 # ocaml
