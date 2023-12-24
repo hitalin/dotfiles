@@ -24,14 +24,12 @@ github.com/i0z0m/2048-pygame
 github.com/i0z0m/activitypub-next
 github.com/i0z0m/assessment
 github.com/i0z0m/avoid-wario-ware-love2d
-github.com/i0z0m/avoid-wario-ware-love2d-syakyo
 github.com/i0z0m/blog-hugo
 github.com/i0z0m/blog-zola
 github.com/i0z0m/bot-hello
 github.com/i0z0m/bot-todo
 github.com/i0z0m/brainfuck-rs
 github.com/i0z0m/breakout-js
-github.com/i0z0m/capture-the-flag
 github.com/i0z0m/chess-pygame
 github.com/i0z0m/cloud-storage-actrix
 github.com/i0z0m/contents-dl
@@ -78,9 +76,7 @@ github.com/i0z0m/lifegame-js
 github.com/i0z0m/logic-puzzles
 github.com/i0z0m/meet-meat
 github.com/i0z0m/memorize-numbers-lua
-github.com/i0z0m/memorize-numbers-lua-syakyo
 github.com/i0z0m/memorize-numbers-py
-github.com/i0z0m/memorize-numbers-py-syakyo
 github.com/i0z0m/minesweeper-js
 github.com/i0z0m/minesweeper-windows-forms
 github.com/i0z0m/nn-chat
@@ -105,7 +101,6 @@ github.com/i0z0m/puyo-programming
 github.com/i0z0m/pwgen-node
 github.com/i0z0m/pwgen-py
 github.com/i0z0m/race-wario-ware-love2d
-github.com/i0z0m/race-wario-ware-love2d-syakyo
 github.com/i0z0m/rdb-study
 github.com/i0z0m/react-next-study
 github.com/i0z0m/redirect-study
@@ -113,6 +108,7 @@ github.com/i0z0m/schedule-arranger
 github.com/i0z0m/schedule-arranger-4023
 github.com/i0z0m/shoot-wario-ware-love2d
 github.com/i0z0m/shooting-js
+github.com/i0z0m/solutions
 github.com/i0z0m/spaced-repetition-py
 github.com/i0z0m/tetris-js
 github.com/i0z0m/tetris-pygame
@@ -127,6 +123,7 @@ github.com/i0z0m/ts-intro
 github.com/i0z0m/tutor-love2d
 github.com/i0z0m/vipprog-hs
 github.com/i0z0m/wordle-pygame
+github.com/i0z0m/writeups
 github.com/i0z0m/yarn-training
 github.com/itchyny/llvm-brainfuck
 github.com/itchyny/minivm
