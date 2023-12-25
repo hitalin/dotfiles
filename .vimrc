@@ -215,7 +215,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
   " extending standard features
-" call dein#add('lilydjwg/fcitx.vim', {'rev': 'fcitx5'})
   call dein#add('mbbill/undotree')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-repeat')
@@ -249,7 +248,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('pangloss/vim-javascript')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'})
-  "call dein#add('vim-python/python-syntax')
   call dein#add('neovimhaskell/haskell-vim')
   call dein#add('TovarishFin/vim-solidity')
   call dein#add('editorconfig/editorconfig-vim')
@@ -269,9 +267,6 @@ if dein#load_state(s:dein_dir)
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  "call dein#add('Shougo/defx.nvim')
-  "call dein#add('kristijanhusak/defx-icons')
-  "call dein#add('kristijanhusak/defx-git')
 
   call dein#end()
 endif
@@ -547,7 +542,7 @@ augroup END
 
 " ntpeters/vim-better-whitespace {{{2
 if dein#tap('vim-better-whitespace')
-  let g:better_whitespace_filetypes_blacklist=['denite', 'defx', 'diff', 'gitcommit', 'unite', 'qf', 'help']
+  let g:better_whitespace_filetypes_blacklist=['diff', 'gitcommit', 'unite', 'qf', 'help']
   autocmd FileType markdown EnableWhitespace
 endif
 "}}}
@@ -555,12 +550,6 @@ endif
 " chrisbra/Colorizer {{{2
 if dein#tap('Colorizer')
   autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
-endif
-"}}}
-
-" vim-python/python-syntax {{{2
-if dein#tap('python-syntax')
-  let g:python_highlight_all = 1
 endif
 "}}}
 
@@ -602,83 +591,6 @@ endif
 " vimwiki/vimwiki {{{2
 let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 " }}}
-
-" Shougo/defx.nvim {{{2
-let g:python3_host_prog = '/usr/bin/python3'
-
-if dein#tap('defx.nvim')
-  autocmd FileType defx call s:defx_my_settings()
-    function! s:defx_my_settings() abort
-      " Define mappings
-      nnoremap <silent><buffer><expr> o
-        \ defx#is_directory() ?
-        \ defx#do_action('open_tree') :
-        \ defx#do_action('multi', ['drop', 'quit'])
-      nnoremap <silent><buffer><expr> l
-        \ defx#is_directory() ?
-        \ defx#do_action('open_tree') :
-        \ defx#do_action('multi', ['drop', 'quit'])
-      nnoremap <silent><buffer><expr> h
-        \ defx#do_action('close_tree')
-      nnoremap <silent><buffer><expr> c
-        \ defx#do_action('copy')
-      nnoremap <silent><buffer><expr> C
-        \ defx#do_action('open')
-      nnoremap <silent><buffer><expr> m
-        \ defx#do_action('move')
-      nnoremap <silent><buffer><expr> p
-        \ defx#do_action('paste')
-      nnoremap <silent><buffer><expr> K
-        \ defx#do_action('new_directory')
-      nnoremap <silent><buffer><expr> N
-        \ defx#do_action('new_file')
-      nnoremap <silent><buffer><expr> d
-       \ defx#do_action('remove')
-      nnoremap <silent><buffer><expr> r
-        \ defx#do_action('rename')
-      nnoremap <silent><buffer><expr> x
-        \ defx#do_action('execute_system')
-      nnoremap <silent><buffer><expr> yy
-        \ defx#do_action('yank_path')
-      nnoremap <silent><buffer><expr> .
-        \ defx#do_action('toggle_ignored_files')
-      nnoremap <silent><buffer><expr> ~
-        \ defx#do_action('cd')
-      nnoremap <silent><buffer><expr> <Space>
-        \ defx#do_action('toggle_select') . 'j'
-      nnoremap <silent><buffer><expr> *
-        \ defx#do_action('toggle_select_all')
-      nnoremap <silent><buffer><expr> j
-        \ line('.') == line('$') ? 'gg' : 'j'
-      nnoremap <silent><buffer><expr> k
-        \ line('.') == 1 ? 'G' : 'k'
-      nnoremap <silent><buffer><expr> <C-l>
-        \ defx#do_action('redraw')
-      nnoremap <silent><buffer><expr> <C-g>
-        \ defx#do_action('print')
-      nnoremap <silent><buffer><expr> cd
-        \ defx#do_action('change_vim_cwd')
-    endfunction
-
-    map <silent> <C-\>
-      \ :Defx -toggle -split=vertical
-      \ -winwidth=40 -direction=topleft -resume<CR>
-
-    call defx#custom#option('_', {
-        \ 'columns': 'git:icons:indent:filename:type',
-        \ })
-
-    call defx#custom#column('git', 'indicators', {
-    \ 'Modified'  : '✹',
-    \ 'Staged'    : '✚',
-    \ 'Untracked' : '✭',
-    \ 'Renamed'   : '➜',
-    \ 'Unmerged'  : '═',
-    \ 'Ignored'   : '☒',
-    \ 'Deleted'   : '✖',
-    \ 'Unknown'   : '?'
-    \ })
-endif
 
 function! BufferDeleteExceptFiler()
   if (&filetype !=# 'defx')
