@@ -219,9 +219,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('mbbill/undotree')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-repeat')
-  call dein#add('mattn/sonictemplate-vim')
-  "call dein#add('SirVer/ultisnips')
-  call dein#add('honza/vim-snippets')
   call dein#add('terryma/vim-expand-region')
   call dein#add('junegunn/vim-easy-align')
   call dein#add('preservim/nerdcommenter')
@@ -449,7 +446,6 @@ endif
 " coc extensions {{{3
 let g:coc_global_extensions = [
   \ 'coc-fzf-preview',
-  \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-json',
   \ 'coc-yaml',
@@ -481,18 +477,6 @@ let g:markdown_fenced_languages = [
 
 " mbbill/undotree {{{2
 nnoremap <F5> :UndotreeToggle<CR>
-"}}}
-
-" mattn/sonictemplate-vim {{{2
-let g:sonictemplate_vim_template_dir = expand('~/.vim/sonictemplate')
-"}}}
-
-" SirVer/ultisnips {{{2
-"let g:UltiSnipsExpandTrigger="<s-tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"
-"let g:UltiSnipsEditSplit="vertical"
 "}}}
 
 " liuchengxu/vista.vim {{{2
