@@ -231,6 +231,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
   call dein#add('wakatime/vim-wakatime')
+  call dein#add('github/copilot.vim')
   " customize the layout
   call dein#add('liuchengxu/vista.vim')
   call dein#add('itchyny/lightline.vim')
