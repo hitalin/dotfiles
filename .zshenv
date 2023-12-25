@@ -51,8 +51,6 @@ fi
 
 ## python
 export PATH="$HOME/.local/bin:$PATH"
-export PYTHONPATH="$HOME/dotfiles/python:$PYTHONPATH"
-export PYTHONSTARTUP=$HOME/dotfiles/python/startup.py
 function cd() {
   builtin cd "$@"
 
