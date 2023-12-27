@@ -31,7 +31,6 @@ github.com/i0z0m/bot-todo
 github.com/i0z0m/brainfuck-rs
 github.com/i0z0m/breakout-js
 github.com/i0z0m/chess-pygame
-github.com/i0z0m/cloud-storage-actrix
 github.com/i0z0m/contents-dl
 github.com/i0z0m/cookie-study
 github.com/i0z0m/csrf-study
@@ -40,7 +39,6 @@ github.com/i0z0m/debugger-cpp
 github.com/i0z0m/disassembler-hs
 github.com/i0z0m/express-study
 github.com/i0z0m/express-ts
-github.com/i0z0m/factorio-love2d
 github.com/i0z0m/fibonacci
 github.com/i0z0m/hello-laravel
 github.com/i0z0m/home-yew
