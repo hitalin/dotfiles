@@ -3,7 +3,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export GIT_EDITOR=vim
 ## doom emacs
-export DOOM_INSTALL="$HOME/.config/emacs"
+export DOOM_INSTALL="$HOME/.emacs.d"
 export PATH="$DOOM_INSTALL/bin:$PATH"
 
 # pager
