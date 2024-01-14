@@ -19,7 +19,7 @@ if [ -e $(which nvim) ] && [ ! -e ~/.config/nvim ]; then
 fi
 
 if [ -e $(which emacs) ] && [ ! -e ~/.config/emacs ]; then
-  git clone https://github.com/doomemacs/doomemacs ~/.config/emacs
+  git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
   git clone https://github.com/i0z0m/.doom.d ~/.doom.d
   ~/.config/emacs/bin/doom sync
 fi
