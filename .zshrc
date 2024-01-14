@@ -151,6 +151,7 @@ alias v='nvim'
 
 alias erun='LC_CTYPE=ja_JP.UTF-8 emacs --daemon'
 alias e='emacsclient -nw'
+alias ge='emacsclient -c $@ &'
 alias ekill='emacsclient -e "(kill-emacs)"'
 
 alias mac='ifconfig eth0 | grep -E -o "([[:xdigit:]]{2}[:]){5}[[:xdigit:]]{2}"'
