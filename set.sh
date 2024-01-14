@@ -18,10 +18,10 @@ if [ -e $(which nvim) ] && [ ! -e ~/.config/nvim ]; then
   git clone https://github.com/i0z0m/user_AstroNvim ~/.config/nvim/lua/user
 fi
 
-if [ -e $(which emacs) ] && [ ! -e ~/.emacs.d/ ]; then
-  git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+if [ -e $(which emacs) ] && [ ! -e ~/.config/emacs ]; then
+  git clone https://github.com/doomemacs/doomemacs ~/.config/emacs
   git clone https://github.com/i0z0m/.doom.d ~/.doom.d
-  ~/.emacs.d/bin/doom sync
+  ~/.config/emacs/bin/doom sync
 fi
 
 if [ -e $(which tmux) ] && [ ! -e ~/.tmux/ ]; then
