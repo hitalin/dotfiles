@@ -451,6 +451,7 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-prettier',
   \ 'coc-eslint',
+  \ 'coc-biome',
   \ 'coc-tsserver',
   \ 'coc-deno',
   \ 'coc-clangd',
