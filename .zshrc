@@ -131,7 +131,10 @@ alias mkdir='mkdir -p'
 
 alias sudo='sudo -v; sudo '
 
-alias gs='git status -s'
+alias gs='git switch'
+alias gr='git restore'
+alias gw='git worktree'
+alias gn='git status -s'
 alias gl="git log --graph --abbrev-commit --oneline -n 20 --decorate --format=format:'%C(yellow)%h%  %C(blue)%an%C(red)%d %C(white)%s'"
 alias gg='git grep --textconv'
 
