@@ -28,6 +28,11 @@ if [ -e $(which tmux) ] && [ ! -e ~/.tmux/ ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
+if [ -e $(which rye) ] && [ ! -e ~/.rye/ ]; then
+  rye init
+  rye config --set-bool behavior.use-uv=true
+fi
+
 if [ -e $(which go) ] && [ ! -e ~/.go/ ]; then
   go install github.com/mattn/memo@latest
   go install github.com/rhysd/actionlint/cmd/actionlint@latest
