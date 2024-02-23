@@ -138,6 +138,8 @@ alias gn='git status -s'
 alias gl="git log --graph --abbrev-commit --oneline -n 20 --decorate --format=format:'%C(yellow)%h%  %C(blue)%an%C(red)%d %C(white)%s'"
 alias gg='git grep --textconv'
 
+alias pip="uv pip"
+
 alias ocaml="rlwrap ocaml"
 
 alias gdb="gdb -q"
