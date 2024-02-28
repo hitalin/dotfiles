@@ -44,6 +44,8 @@ export XMODIFIERS=@im=fcitx
 
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
+#exec ~/.local/bin/xmonad-x86_64-linux
 exec i3
 #exec i3 -V >> ~/.config/i3/i3-$(date +'%F-%k-%M-%S').log 2>&1
+
 #end
