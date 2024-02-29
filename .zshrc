@@ -136,7 +136,7 @@ alias gr='git ls-files | fzf --exit-0 | xargs -r git restore'
 alias gw='git worktree list | fzf --exit-0 | awk "{print \$1}" | xargs -I {} git worktree switch {}'
 alias gn='git status -s'
 alias gl="git log --graph --abbrev-commit --oneline -n 20 --decorate --format=format:'%C(yellow)%h%  %C(blue)%an%C(red)%d %C(white)%s'"
-alias gg='function _gg(){ git grep --textconv "$1" | fzf --preview "echo {}" --preview-window=down:3:wrap; }; _'
+alias gg='function _gg(){ git grep --textconv "$1" | fzf --preview "echo {}" --preview-window=down:3:wrap; }; _gg'
 
 alias pip="uv pip"
 
