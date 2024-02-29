@@ -1,25 +1,16 @@
 {
-//  "coc.preferences.formatOnSave": true,
-
-//  "snippets.ultisnips.enable": false,
-  "snippets.ultisnips.pythonPrompt": false,
+  "coc.preferences.formatOnSave": true,
 
   "languageserver": {
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
-      "rootPatterns": [
-        "*.cabal",
-        "stack.yaml",
-        "cabal.project",
-        "package.yaml",
-        "hie.yaml"
-      ],
+      "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
       "filetypes": ["haskell", "lhaskell"]
     }
   },
   "zig.enabled": true,
   "zig.startUpMessage": true,
-  "zig.path": "~/.zig/zls",
+  "zig.path": "/usr/bin/zls",
   "zig.debugLog": false
 }
