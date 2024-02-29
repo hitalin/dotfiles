@@ -2,6 +2,16 @@
   "coc.preferences.formatOnSave": true,
 
   "languageserver": {
+    "nix": {
+      "command": "nil",
+      "filetypes": ["nix"],
+      "rootPatterns": ["flake.nix"],
+      "settings": {
+        "nil": {
+          "formatting": { "command": ["nixpkgs-fmt"] }
+        }
+      }
+    },
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
