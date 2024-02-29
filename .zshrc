@@ -131,12 +131,12 @@ alias mkdir='mkdir -p'
 
 alias sudo='sudo -v; sudo '
 
-alias gs='git switch'
-alias gr='git restore'
-alias gw='git worktree'
+alias gs='git branch -a | fzf --exit-0 | sed "s/.* //" | xargs -r git switch'
+alias gr='git ls-files | fzf --exit-0 | xargs -r git restore'
+alias gw='git worktree list | fzf --exit-0 | awk "{print \$1}" | xargs -I {} git worktree switch {}'
 alias gn='git status -s'
 alias gl="git log --graph --abbrev-commit --oneline -n 20 --decorate --format=format:'%C(yellow)%h%  %C(blue)%an%C(red)%d %C(white)%s'"
-alias gg='git grep --textconv'
+alias gg='function _gg(){ git grep --textconv "$1" | fzf --preview "echo {}" --preview-window=down:3:wrap; }; _
 
 alias pip="uv pip"
 
