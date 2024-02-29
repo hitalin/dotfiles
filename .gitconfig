@@ -64,22 +64,12 @@
   helper = !gh auth git-credential
 
 [alias]
+    s = "status -s"
+    l = "log --graph --abbrev-commit --oneline -n 20 --decorate --format=format:'%C(yellow)%h% %C(blue)%an%C(red)%d %C(white)%s'"
     di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-
-    # 最新のcommitと現在の状態の差分を表示する
     d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-
-    # 全部addしてcommit
     ca = !git add -A && git commit -av
-
-    # 特定のcommitを含むブランチの検索(find branch)
     fb = "!f() { git branch -a --contains $1; }; f"
-
-    # ソースコードでlogを検索(find by code)
     fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
-
-    # commit messageでlogを検索(find by message)
     fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
-
-    # masterにmerge済みのブランチ削除(delete merged)
     dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
