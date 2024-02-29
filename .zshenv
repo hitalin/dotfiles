@@ -91,6 +91,11 @@ if [ -x "`which keychain`" ]; then
   eval $(keychain --eval --quiet)
 fi
 
+# direnv
+if [ -x "`which direnv`" ]; then
+  eval "$(direnv hook zsh)"
+fi
+
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
