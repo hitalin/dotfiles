@@ -78,3 +78,6 @@ cabal.sandbox.config
 
 # PaaS
 .firebase/
+
+# direnv
+.envrc
