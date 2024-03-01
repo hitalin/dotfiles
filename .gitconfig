@@ -65,6 +65,7 @@
 
 [alias]
     s = "status -s"
+    f = "commit --amend -C HEAD"
     l = "log --graph --abbrev-commit --oneline -n 20 --decorate --format=format:'%C(yellow)%h% %C(blue) %an%C(red)%d %C(white)%s'"
     di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
     d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
