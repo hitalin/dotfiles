@@ -31,8 +31,8 @@ set clipboard&
 set clipboard=unnamedplus
 " Avoid automatic indentation
 autocmd InsertLeave *
-      \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
-    \ if &l:diff | diffupdate | endif
+  \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
+  \ if &l:diff | diffupdate | endif
 " Enable mouse in terminal
 if has('mouse')
   set mouse=a
@@ -206,11 +206,11 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/dein.vim')
   call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('Shougo/vimproc.vim', {
-       \ 'build' : {
-       \     'windows' : 'tools\\update-dll-mingw',
-       \     'unix' : 'make -f make_unix.mak',
-       \    },
-       \ })
+        \ 'build' : {
+        \     'windows' : 'tools\\update-dll-mingw',
+        \     'unix' : 'make -f make_unix.mak',
+        \    },
+        \ })
   " support coding
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('airblade/vim-rooter')
@@ -262,7 +262,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('plasticboy/vim-markdown')
   " preview documents
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-					\ 'build': 'sh -c "cd app && npx --yes yarn install"' })
+        \ 'build': 'sh -c "cd app && npx --yes yarn install"' })
   " depend on pynvim
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -312,7 +312,7 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -587,10 +587,6 @@ if dein#tap('vimtex')
   let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
 "}}}
-
-" vimwiki/vimwiki {{{2
-let g:vimwiki_ext2syntax = {'.md': 'markdown'}
-" }}}
 
 "}}}
 
