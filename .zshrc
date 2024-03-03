@@ -2,11 +2,11 @@
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+  print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+  command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+  command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
+    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+    print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
@@ -16,7 +16,7 @@ autoload -Uz _zinit
 
 ### https://github.com/zdharma/zinit/blob/master/README.md
 zinit for \
-    light-mode  zsh-users/zsh-completions \
+  light-mode  zsh-users/zsh-completions \
 
 # https://github.com/zdharma-continuum/fast-syntax-highlighting
 zinit light zdharma-continuum/fast-syntax-highlighting
@@ -51,19 +51,19 @@ zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:s
 bindkey '^]' insert-last-word
 
 function _delete-char-or-list-expand() {
-    if [[ -z "${RBUFFER}" ]]; then
-        zle list-expand
-    else
-        zle delete-char
-    fi
+  if [[ -z "${RBUFFER}" ]]; then
+    zle list-expand
+  else
+    zle delete-char
+  fi
 }
 zle -N _delete-char-or-list-expand
 bindkey '^D' _delete-char-or-list-expand
 
 function _kill-backward-blank-word() {
-    zle set-mark-command
-    zle vi-backward-blank-word
-    zle kill-region
+  zle set-mark-command
+  zle vi-backward-blank-word
+  zle kill-region
 }
 zle -N _kill-backward-blank-word
 bindkey '^Y' _kill-backward-blank-word
@@ -74,16 +74,16 @@ bindkey "^O" history-beginning-search-backward-end
 
 autoload -U modify-current-argument
 _quote-previous-word-in-single() {
-    modify-current-argument '${(qq)${(Q)ARG}}'
-    zle vi-forward-blank-word
+  modify-current-argument '${(qq)${(Q)ARG}}'
+  zle vi-forward-blank-word
 }
 
 zle -N _quote-previous-word-in-single
 bindkey '^[s' _quote-previous-word-in-single
 
 quote-previous-word-in-double() {
-    modify-current-argument '${(qqq)${(Q)ARG}}'
-    zle vi-forward-blank-word
+  modify-current-argument '${(qqq)${(Q)ARG}}'
+  zle vi-forward-blank-word
 }
 zle -N _quotus-previous-word-in-double
 bindkey '^[d' _quote-previous-word-in-double
@@ -161,27 +161,27 @@ alias mac='ifconfig eth0 | grep -E -o "([[:xdigit:]]{2}[:]){5}[[:xdigit:]]{2}"'
 alias ipv4='ifconfig eth0 | grep -E -o "([0-9]{1,3}\.){3}[0-9]{1,3}" | sed -n 1p'
 alias ipv6='ifconfig eth0 | grep -E -o "([[:xdigit:]]{0,4}[:]){7}[[:xdigit:]]{0,4}" | sed -n 1p'
 function ipv6todecimal(){
-    dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
+  dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
 }
 
 # productive
 
 ## https://qiita.com/kamykn/items/aa9920f07487559c0c7e#%E8%87%AA%E5%88%86%E3%81%8C%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8Bfzf%E3%81%AE%E4%BE%8B
 function cdworktree() {
-    git rev-parse &>/dev/null
-    if [ $? -ne 0 ]; then
-        echo fatal: Not a git repository.
-        return
-    fi
+  git rev-parse &>/dev/null
+  if [ $? -ne 0 ]; then
+    echo fatal: Not a git repository.
+    return
+  fi
 
-    local selectedWorkTreeDir=`git worktree list | fzf | awk '{print $1}'`
+  local selectedWorkTreeDir=`git worktree list | fzf | awk '{print $1}'`
 
-    if [ "$selectedWorkTreeDir" = "" ]; then
-        # Ctrl-C.
-        return
-    fi
+  if [ "$selectedWorkTreeDir" = "" ]; then
+    # Ctrl-C.
+    return
+  fi
 
-    cd ${selectedWorkTreeDir}
+  cd ${selectedWorkTreeDir}
 }
 
 ## https://dev.classmethod.jp/articles/shuntaka-rust-20190816/#toc-7
@@ -213,13 +213,13 @@ bindkey '^g' ghq-fzf
 
 ##  https://qiita.com/kamykn/items/aa9920f07487559c0c7e#z%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E7%A7%BB%E5%8B%95%E3%82%92%E5%BF%AB%E9%81%A9%E3%81%AB%E3%81%99%E3%82%8B
 function fzf-z-search() {
-    local res=$(z | sort -rn | cut -c 12- | fzf)
-    if [ -n "$res" ]; then
-        BUFFER+="cd $res"
-        zle accept-line
-    else
-        return 1
-    fi
+  local res=$(z | sort -rn | cut -c 12- | fzf)
+  if [ -n "$res" ]; then
+    BUFFER+="cd $res"
+    zle accept-line
+  else
+    return 1
+  fi
 }
 zle -N fzf-z-search
 bindkey '^z' fzf-z-search
@@ -245,36 +245,36 @@ fi
 
 ## https://github.com/akermu/emacs-libvterm#shell-side-configuration
 vterm_printf(){
-    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
-        # Tell tmux to pass the escape sequences through
-        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-    elif [ "${TERM%%-*}" = "screen" ]; then
-        # GNU screen (screen, screen-256color, screen-256color-bce)
-        printf "\eP\e]%s\007\e\\" "$1"
-    else
-        printf "\e]%s\e\\" "$1"
-    fi
+  if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
+    # Tell tmux to pass the escape sequences through
+    printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+  elif [ "${TERM%%-*}" = "screen" ]; then
+    # GNU screen (screen, screen-256color, screen-256color-bce)
+    printf "\eP\e]%s\007\e\\" "$1"
+  else
+    printf "\e]%s\e\\" "$1"
+  fi
 }
 ## https://zenn.dev/yutakatay/articles/yarakashi-reboot
 function ssh() {
   # tmux起動時
   if [[ -n $(printenv TMUX) ]] ; then
-      # 現在のペインIDを記録
-      local pane_id=$(tmux display -p '#{pane_id}')
-      # 接続先ホスト名に応じて背景色を切り替え
-      if [[ `echo $1 | grep 'prd'` ]] ; then
-          tmux select-pane -P 'bg=colour52,fg=white'
-      elif [[ `echo $1 | grep 'stg'` ]] ; then
-          tmux select-pane -P 'bg=colour25,fg=white'
-      fi
+    # 現在のペインIDを記録
+    local pane_id=$(tmux display -p '#{pane_id}')
+    # 接続先ホスト名に応じて背景色を切り替え
+    if [[ `echo $1 | grep 'prd'` ]] ; then
+      tmux select-pane -P 'bg=colour52,fg=white'
+    elif [[ `echo $1 | grep 'stg'` ]] ; then
+      tmux select-pane -P 'bg=colour25,fg=white'
+    fi
 
-      # 通常通りssh続行
-      command ssh $@
+    # 通常通りssh続行
+    command ssh $@
 
-      # デフォルトの背景色に戻す
-      tmux select-pane -t $pane_id -P 'default'
+    # デフォルトの背景色に戻す
+    tmux select-pane -t $pane_id -P 'default'
   else
-      command ssh $@
+    command ssh $@
   fi
 }
 
