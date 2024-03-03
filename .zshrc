@@ -281,6 +281,12 @@ function ssh() {
 # load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# load ghcup
+if [ -x "$(command -v ghcup)" ]; then
+  test -r $HOME/.ghcup/env && . $HOME/.ghcup/env
+fi
+
+
 # load completions in bun
 [ -s $BUN_INSTALL/_bun ] && source $BUN_INSTALL/_bun
 

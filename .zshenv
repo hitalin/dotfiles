@@ -1,10 +1,14 @@
 # editor
-export EDITOR=nvim
-export VISUAL=nvim
 export GIT_EDITOR=vim
+if command -v nvim >/dev/null 2>&1; then
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+fi
 ## doom emacs
 export DOOM_INSTALL="$HOME/.emacs.d"
-export PATH="$DOOM_INSTALL/bin:$PATH"
+if command -v emacs >/dev/null 2>&1 && [ -d "$DOOM_INSTALL" ]; then
+  export PATH="$DOOM_INSTALL/bin(N-/):$PATH"
+fi
 
 # pager
 export PAGER='less -R'
@@ -20,17 +24,17 @@ export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 
 # theme
 ## startship
-if [ -x "`which starship`" ]; then
+if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
 
 # thefuck
-if [ -x "`which thefuck`" ]; then
+if command -v thefuck >/dev/null 2>&1; then
   eval "$(thefuck --alias)"
 fi
 
 # zoxide
-if [ -x "`which zoxide`" ]; then
+if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
 
@@ -43,18 +47,17 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
 # personal scripts
-export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/dotfiles/bin(N-/):$PATH"
 
 # lang
 ## javascript
-if [ -x "`which volta`" ]; then
-  export VOLTA_HOME="$HOME/.volta"
-  export PATH="$VOLTA_HOME/bin:$PATH"
+if command -v volta >/dev/null 2>&1; then
+  export PATH="$VOLTA_HOME/bin(N-/):$PATH"
   export VOLTA_FEATURE_PNPM=1
 fi
 
 ## python
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin(N-/):$PATH"
 function cd() {
   builtin cd "$@"
 
@@ -74,25 +77,25 @@ function cd() {
   fi
 }
 ## rust
-export PATH="$HOME/.cargo/bin:$HOME/.cargo/bin:$PATH"
+if command -v cargo >/dev/null 2>&1; then
+  export PATH="$HOME/.cargo/bin(N-/):$PATH"
+fi
 ## ocaml
 test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-## haskell
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 ## go
-if [ -x "`which go`" ]; then
+if command -v go >/dev/null 2>&1; then
   export GOPATH=$HOME/.go
-  export PATH="$GOPATH/bin:$PATH"
+  export PATH="$GOPATH/bin(N-/):$PATH"
 fi
 
 # keychain
-if [ -x "`which keychain`" ]; then
+if command -v keychain >/dev/null 2>&1; then
   source $HOME/.keychain/$HOST-sh
   eval $(keychain --eval --quiet)
 fi
 
 # direnv
-if [ -x "`which direnv`" ]; then
+if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 fi
 
