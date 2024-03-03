@@ -82,6 +82,11 @@ if command -v cargo >/dev/null 2>&1; then
 fi
 ## ocaml
 test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+## haskell
+if [ -x "$(command -v ghcup)" ]; then
+  export PATH="$HOME/.cabal/bin(N-/):$HOME/.ghcup/bin(N-/):$PATH"
+  export GHCUP_SKIP_UPDATE_CHECK=yes
+fi
 ## go
 if command -v go >/dev/null 2>&1; then
   export GOPATH=$HOME/.go
