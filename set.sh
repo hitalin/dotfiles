@@ -1,8 +1,7 @@
 #!/bin/sh
 set -e
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-if [ -e $(which gdb) ] && [ ! -e ~/.gdb/ ]; then
+if command -v gdb >/dev/null 2>&1 && [ ! -e ~/.gdb/ ]; then
   mkdir -p ~/.gdb
   git clone https://github.com/longld/peda.git ~/.gdb/peda
   git clone https://github.com/scwuaptx/Pwngdb.git ~/.gdb/pwngdb
@@ -13,27 +12,27 @@ if [ -e $(which gdb) ] && [ ! -e ~/.gdb/ ]; then
   gdb -ex 'gef config gef.extra_plugins_dir "~/.gdb/gef-extras/scripts"' -ex 'gef save' -ex quit
 fi
 
-if [ -e $(which nvim) ] && [ ! -e ~/.config/nvim ]; then
+if command -v nvim >/dev/null 2>&1 && [ ! -e ~/.config/nvim ]; then
   git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
   git clone https://github.com/i0z0m/user_AstroNvim ~/.config/nvim/lua/user
 fi
 
-if [ -e $(which emacs) ] && [ ! -e ~/.emacs.d ]; then
+if command -v emacs >/dev/null 2>&1 && [ ! -e ~/.emacs.d ]; then
   git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
   git clone https://github.com/i0z0m/.doom.d ~/.doom.d
   ~/.emacs.d/bin/doom sync
 fi
 
-if [ -e $(which tmux) ] && [ ! -e ~/.tmux/ ]; then
+if command -v tmux >/dev/null 2>&1 && [ ! -e ~/.tmux/ ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-if [ -e $(which rye) ] && [ ! -e ~/.rye/ ]; then
+if command -v rye >/dev/null 2>&1 && [ ! -e ~/.rye/ ]; then
   rye init
   rye config --set-bool behavior.use-uv=true
 fi
 
-if [ -e $(which go) ] && [ ! -e ~/.go/ ]; then
+if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
   go install github.com/mattn/memo@latest
   go install github.com/rhysd/actionlint/cmd/actionlint@latest
 fi
