@@ -441,6 +441,7 @@ endif
 
 " coc extensions {{{3
 let g:coc_global_extensions = [
+  \ 'coc-sh',
   \ 'coc-fzf-preview',
   \ 'coc-pairs',
   \ 'coc-json',
@@ -453,11 +454,8 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-biome',
   \ 'coc-tsserver',
-  \ 'coc-deno',
   \ 'coc-clangd',
-  \ 'coc-phpactor',
   \ 'coc-pyright',
-  \ 'coc-go',
   \ 'coc-rust-analyzer',
   \ 'coc-zig',
   \ 'coc-vimtex',
