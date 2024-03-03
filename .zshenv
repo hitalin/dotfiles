@@ -55,7 +55,6 @@ if command -v volta >/dev/null 2>&1; then
   export PATH="$VOLTA_HOME/bin(N-/):$PATH"
   export VOLTA_FEATURE_PNPM=1
 fi
-
 ## python
 export PATH="$HOME/.local/bin(N-/):$PATH"
 function cd() {
@@ -83,9 +82,11 @@ fi
 ## ocaml
 test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 ## haskell
-if [ -x "$(command -v ghcup)" ]; then
-  export PATH="$HOME/.cabal/bin(N-/):$HOME/.ghcup/bin(N-/):$PATH"
-  export GHCUP_SKIP_UPDATE_CHECK=yes
+if command -v ghcup >/dev/null 2>&1; then
+  export PATH="$HOME/.ghcup/bin(N-/):$PATH"
+  if command -v cabal >/dev/null 2>&1; then
+    export PATH="$HOME/.cabal/bin(N-/):$PATH"
+  fi
 fi
 ## go
 if command -v go >/dev/null 2>&1; then
