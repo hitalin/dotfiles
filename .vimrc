@@ -248,7 +248,6 @@ if dein#load_state(s:dein_dir)
   " syntax highlight
   call dein#add('pangloss/vim-javascript')
   call dein#add('octol/vim-cpp-enhanced-highlight')
-  call dein#add('phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'})
   call dein#add('neovimhaskell/haskell-vim')
   call dein#add('TovarishFin/vim-solidity')
   call dein#add('ionide/Ionide-vim')
@@ -452,6 +451,7 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-prettier',
   \ 'coc-eslint',
+  \ 'coc-deno',
   \ 'coc-biome',
   \ 'coc-tsserver',
   \ 'coc-clangd',
