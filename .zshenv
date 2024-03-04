@@ -83,7 +83,7 @@ fi
 test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 ## haskell
 if command -v ghcup >/dev/null 2>&1; then
-  export PATH="$HOME/.ghcup/bin(N-/):$PATH"
+  export PATH="$HOME/.ghcup/bin:$PATH"
   if command -v cabal >/dev/null 2>&1; then
     export PATH="$HOME/.cabal/bin(N-/):$PATH"
   fi
