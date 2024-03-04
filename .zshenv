@@ -7,7 +7,7 @@ fi
 ## doom emacs
 export DOOM_INSTALL="$HOME/.emacs.d"
 if command -v emacs >/dev/null 2>&1 && [ -d "$DOOM_INSTALL" ]; then
-  export PATH="$DOOM_INSTALL/bin(N-/):$PATH"
+  export PATH="$DOOM_INSTALL/bin:$PATH"
 fi
 
 # pager
@@ -47,16 +47,16 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
 # personal scripts
-export PATH="$HOME/dotfiles/bin(N-/):$PATH"
+export PATH="$HOME/dotfiles/bin:$PATH"
 
 # lang
 ## javascript
 if command -v volta >/dev/null 2>&1; then
-  export PATH="$VOLTA_HOME/bin(N-/):$PATH"
+  export PATH="$VOLTA_HOME/bin:$PATH"
   export VOLTA_FEATURE_PNPM=1
 fi
 ## python
-export PATH="$HOME/.local/bin(N-/):$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 function cd() {
   builtin cd "$@"
 
@@ -77,7 +77,7 @@ function cd() {
 }
 ## rust
 if command -v cargo >/dev/null 2>&1; then
-  export PATH="$HOME/.cargo/bin(N-/):$PATH"
+  export PATH="$HOME/.cargo/bin:$PATH"
 fi
 ## ocaml
 test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
@@ -85,13 +85,13 @@ test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /de
 if command -v ghcup >/dev/null 2>&1; then
   export PATH="$HOME/.ghcup/bin:$PATH"
   if command -v cabal >/dev/null 2>&1; then
-    export PATH="$HOME/.cabal/bin(N-/):$PATH"
+    export PATH="$HOME/.cabal/bin:$PATH"
   fi
 fi
 ## go
 if command -v go >/dev/null 2>&1; then
   export GOPATH=$HOME/.go
-  export PATH="$GOPATH/bin(N-/):$PATH"
+  export PATH="$GOPATH/bin:$PATH"
 fi
 
 # keychain
