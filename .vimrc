@@ -247,6 +247,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('catppuccin/vim', { 'name': 'catppuccin' })
   " syntax highlight
   call dein#add('pangloss/vim-javascript')
+  call dein#add('phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'})
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('neovimhaskell/haskell-vim')
   call dein#add('TovarishFin/vim-solidity')
