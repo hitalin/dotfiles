@@ -33,6 +33,7 @@ if command -v rye >/dev/null 2>&1 && [ ! -e ~/.rye/ ]; then
 fi
 
 if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
+  go install github.com/x-motemen/ghq@latest
   go install github.com/mattn/memo@latest
   go install github.com/rhysd/actionlint/cmd/actionlint@latest
 fi
