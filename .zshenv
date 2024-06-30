@@ -114,3 +114,6 @@ fi
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
+
+# gpg-agent
+export GPG_TTY=$(tty)
