@@ -1,8 +1,8 @@
 # editor
 export GIT_EDITOR=vim
 if command -v nvim >/dev/null 2>&1; then
-  export EDITOR='nvim'
-  export VISUAL='nvim'
+  export EDITOR='vim'
+  export VISUAL='vim'
 fi
 ## doom emacs
 export DOOM_INSTALL="$HOME/.emacs.d"
