@@ -13,8 +13,7 @@ if command -v gdb >/dev/null 2>&1 && [ ! -e ~/.gdb/ ]; then
 fi
 
 if command -v nvim >/dev/null 2>&1 && [ ! -e ~/.config/nvim ]; then
-  git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-  git clone https://github.com/i0z0m/user_AstroNvim ~/.config/nvim/lua/user
+  git clone https://github.com/i0z0m/AstroNvim ~/.config/nvim/
 fi
 
 if command -v emacs >/dev/null 2>&1 && [ ! -e ~/.emacs.d ]; then
