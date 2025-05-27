@@ -4,6 +4,7 @@
 !*/
 !Makefile
 !Dockerfile
+!Gemfile
 a.out
 *.bin
 
