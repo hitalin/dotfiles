@@ -291,8 +291,7 @@ function ssh() {
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
 
 # load wsl2-ssh-agent
-eval $(/usr/bin/wsl2-ssh-agent)
-
+[[ -x /usr/bin/wsl2-ssh-agent ]] && eval $(/usr/bin/wsl2-ssh-agent)
 
 # filen-cli
 PATH=$PATH:~/.filen-cli/bin
