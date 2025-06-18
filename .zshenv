@@ -51,9 +51,10 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 
 # lang
 ## javascript
-if command -v volta >/dev/null 2>&1; then
-  export PATH="$VOLTA_HOME/bin:$PATH"
-  export VOLTA_FEATURE_PNPM=1
+if command -v proto >/dev/null 2>&1; then
+  export PROTO_HOME="$HOME/.proto"
+  export PATH="$PROTO_HOME/shims:$PATH"
+  eval "$(proto activate)"
 fi
 ## python
 export PATH="$HOME/.local/bin:$PATH"

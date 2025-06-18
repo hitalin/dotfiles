@@ -37,4 +37,9 @@ if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
   go install github.com/rhysd/actionlint/cmd/actionlint@latest
 fi
 
+if command -v proto >/dev/null 2>&1 && [ ! -e ~/.proto/ ]; then
+  proto run pnpm -- install -g @anthropic-ai/claude-code
+  proto run pnpm -- install -g wrangler@latest
+fi
+
 echo "Finished!"
