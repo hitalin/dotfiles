@@ -5,6 +5,7 @@
 !Makefile
 !Dockerfile
 !Gemfile
+!Rakefile
 a.out
 *.bin
 !bin/
