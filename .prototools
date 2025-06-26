@@ -1,2 +1,4 @@
 node = "22.15.0"
 pnpm = "10.12.1"
+[settings.build]
+exclude-packages = ["libncurses5-dev", "libreadline6-dev", "libgdbm6"]
