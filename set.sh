@@ -39,6 +39,7 @@ fi
 
 if command -v proto >/dev/null 2>&1 && [ ! -e ~/.proto/ ]; then
   proto run pnpm -- install -g @anthropic-ai/claude-code
+  proto run pnpm -- install -g @google/gemini-cli
   proto run pnpm -- install -g wrangler@latest
 fi
 
