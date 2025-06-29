@@ -43,4 +43,15 @@ if command -v proto >/dev/null 2>&1 && [ ! -e ~/.proto/ ]; then
   proto run pnpm -- install -g wrangler@latest
 fi
 
+if grep -qi microsoft /proc/version; then
+  curl -L -o $HOME/wsl2-ssh-agent https://github.com/mame/wsl2-ssh-agent/releases/latest/download/wsl2-ssh-agent
+  chmod 755 $HOME/wsl2-ssh-agent
+
+  cd /tmp
+  curl -L -o release.tar.gz https://github.com/nullpo-head/WSL-Hello-sudo/releases/latest/download/release.tar.gz
+  tar xzf release.tar.gz
+  cd release
+  ./install.sh
+fi
+
 echo "Finished!"

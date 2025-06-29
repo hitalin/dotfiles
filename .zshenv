@@ -114,5 +114,8 @@ fi
 export SDL_VIDEO_X11_DGAMOUSE=0
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
+# wsl2-ssh-agent
+[[ -x $HOME/wsl2-ssh-agent ]] && eval $($HOME/wsl2-ssh-agent)
+
 # gpg-agent
 export GPG_TTY=$(tty)
