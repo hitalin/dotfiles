@@ -3,3 +3,6 @@ vim/undo/
 claude/.credentials.json
 claude/statsig/
 claude/todos/
+gemini/oauth_creds.json
+gemini/tmp/
+gemini/user_id
