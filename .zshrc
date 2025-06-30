@@ -146,7 +146,7 @@ alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
 alias t='todo.sh'
-alias m='memo'
+alias m='mise run'
 alias fx='felix'
 alias f='fuck'
 
