@@ -13,6 +13,7 @@ a.out
 # dotenv
 .env
 .env.build
+.envrc
 
 # git
 *.orig
