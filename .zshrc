@@ -278,6 +278,18 @@ function ssh() {
   fi
 }
 
+function fzf_mise_tasks() {
+  local selected=$(mise tasks --no-header 2>/dev/null | awk '{print $1}' | fzf --height=50% --reverse --exit-0)
+
+  if [[ -n "$selected" ]]; then
+    BUFFER="mise run $selected"
+    zle accept-line
+  fi
+}
+
+zle -N fzf_mise_tasks
+bindkey "^E" fzf_mise_tasks
+
 # load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
