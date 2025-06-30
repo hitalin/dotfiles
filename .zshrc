@@ -286,9 +286,38 @@ function fzf_mise_tasks() {
     zle accept-line
   fi
 }
-
 zle -N fzf_mise_tasks
 bindkey "^E" fzf_mise_tasks
+
+function fzf_npm_scripts() {
+  # package.jsonの存在確認
+  if [[ ! -e package.json ]]; then
+    echo "No package.json found"
+    return 1
+  fi
+
+  # jqの存在確認
+  if ! command -v jq > /dev/null 2>&1; then
+    echo "jq command is required"
+    return 1
+  fi
+
+  # npm or pnpm の判定
+  local prefix="npm"
+  if [[ -e pnpm-lock.yaml ]]; then
+    prefix="pnpm"
+  fi
+
+  # scriptsを取得してfzfで選択
+  local selected=$(jq -r '.scripts | keys[]' package.json 2>/dev/null | fzf --height=50% --reverse --exit-0)
+
+  if [[ -n "$selected" ]]; then
+    BUFFER="$prefix run $selected"
+    zle accept-line
+  fi
+}
+zle -N fzf_npm_scripts
+bindkey "^N" fzf_npm_scripts
 
 # load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
