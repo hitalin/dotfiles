@@ -50,10 +50,6 @@ export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --lin
 export PATH="$HOME/dotfiles/bin:$PATH"
 
 # lang
-## javascript
-export PROTO_HOME="$HOME/.proto";
-export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH";
-
 ## python
 export PATH="$HOME/.local/bin:$PATH"
 function cd() {
