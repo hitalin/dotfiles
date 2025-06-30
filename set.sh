@@ -37,12 +37,6 @@ if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
   go install github.com/rhysd/actionlint/cmd/actionlint@latest
 fi
 
-if command -v proto >/dev/null 2>&1 && [ ! -e ~/.proto/ ]; then
-  proto run pnpm -- install -g @anthropic-ai/claude-code
-  proto run pnpm -- install -g @google/gemini-cli
-  proto run pnpm -- install -g wrangler@latest
-fi
-
 if grep -qi microsoft /proc/version; then
   curl -L -o $HOME/wsl2-ssh-agent https://github.com/mame/wsl2-ssh-agent/releases/latest/download/wsl2-ssh-agent
   chmod 755 $HOME/wsl2-ssh-agent
