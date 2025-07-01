@@ -49,6 +49,10 @@ export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --lin
 # personal scripts
 export PATH="$HOME/dotfiles/bin:$PATH"
 
+# fly.io
+export FLYCTL_INSTALL="/home/taka/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
 # lang
 ## python
 export PATH="$HOME/.local/bin:$PATH"
