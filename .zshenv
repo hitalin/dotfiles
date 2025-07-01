@@ -53,6 +53,8 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 export FLYCTL_INSTALL="/home/taka/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
+eval "$(mise activate zsh)"
+
 # lang
 ## python
 export PATH="$HOME/.local/bin:$PATH"
