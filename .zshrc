@@ -225,7 +225,8 @@ zle -N fzf-z-search
 bindkey '^z' fzf-z-search
 
 ## https://qiita.com/ssh0/items/a9956a74bff8254a606a#solution-6-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%A7%E3%81%AF%E9%81%B8%E6%8A%9E%E7%94%BB%E9%9D%A2%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%AA%E3%81%84
-if [[ ! -n $TMUX && $- == *l* ]]; then
+# Skip tmux session selection when running non-interactive commands like claude code
+if [[ ! -n $TMUX && $- == *l* && -t 0 ]]; then
   # get the IDs
   ID="`tmux list-sessions`"
   if [[ -z "$ID" ]]; then
