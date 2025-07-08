@@ -164,6 +164,9 @@ function ipv6todecimal(){
   dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
 }
 
+alias c='claude'
+alias g='gemini'
+
 # productive
 
 ## https://qiita.com/kamykn/items/aa9920f07487559c0c7e#%E8%87%AA%E5%88%86%E3%81%8C%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8Bfzf%E3%81%AE%E4%BE%8B
