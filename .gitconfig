@@ -1,7 +1,9 @@
-[user]
-  name = i0z0m
-  email = i0z0mu@gmail.com
-	signingkey = 9EA63C033B7D9207
+[includeIf "gitdir:~/.ghq/github.com/hitalin/"]
+  path = ~/.gitconfig-priv
+[includeIf "gitdir:~/.ghq/github.com/yamisskey-dev/"]
+  path = ~/.gitconfig-priv
+[include]
+  path = ~/.gitconfig-work
 
 [commit]
 	gpgsign = true
