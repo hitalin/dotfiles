@@ -5,6 +5,7 @@ claude/statsig/
 claude/todos/
 claude/projects/
 claude/ide
+claude/shell-snapshots
 gemini/oauth_creds.json
 gemini/tmp/
 gemini/user_id
