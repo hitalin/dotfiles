@@ -25,10 +25,7 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit load wfxr/forgit
 
 ### https://github.com/rupa/z
-#zinit load rupa/z
-
-### https://github.com/azu/ni.zsh
-zinit load azu/ni.zsh
+zinit load rupa/z
 
 # bindkey
 bindkey -e

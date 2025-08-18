@@ -26,6 +26,18 @@ if command -v tmux >/dev/null 2>&1 && [ ! -e ~/.tmux/ ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
+
+if command -v volta >/dev/null 2>&1 && [ ! -e ~/.volta/ ]; then
+  volta setup
+  volta install node@lts
+  volta install npm@latest
+  volta install @anthropic-ai/claude-code@latest
+  volta install @google/gemini-cli@latest
+  volta install @openai/codex@latest
+  volta install wrangler@latest
+  volta install @devcontainers/cli@latest
+fi
+
 if command -v rye >/dev/null 2>&1 && [ ! -e ~/.rye/ ]; then
   rye init
   rye config --set-bool behavior.use-uv=true
