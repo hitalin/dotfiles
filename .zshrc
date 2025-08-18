@@ -146,7 +146,6 @@ alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
 alias t='todoist list'
-alias m='mise run'
 alias fx='felix'
 alias f='fuck'
 
@@ -281,17 +280,6 @@ function ssh() {
     command ssh $@
   fi
 }
-
-function fzf_mise_tasks() {
-  local selected=$(mise tasks --no-header 2>/dev/null | awk '{print $1}' | fzf --height=50% --reverse --exit-0)
-
-  if [[ -n "$selected" ]]; then
-    BUFFER="mise run $selected"
-    zle accept-line
-  fi
-}
-zle -N fzf_mise_tasks
-bindkey "^E" fzf_mise_tasks
 
 function fzf_npm_scripts() {
   # package.jsonの存在確認

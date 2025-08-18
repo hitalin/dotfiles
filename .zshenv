@@ -49,9 +49,6 @@ export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --lin
 # personal scripts
 export PATH="$HOME/dotfiles/bin:$PATH"
 
-# mise
-eval "$(mise activate zsh)"
-
 # lang
 ## python
 export PATH="$HOME/.local/bin:$PATH"
