@@ -104,11 +104,6 @@ if command -v direnv >/dev/null 2>&1; then
   export DIRENV_LOG_FORMAT=""
 fi
 
-# gh
-if command -v gh >/dev/null 2>&1; then
-  eval "$(gh copilot alias -- zsh)"
-fi
-
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
