@@ -1,9 +1,9 @@
-[includeIf "gitdir:~/.ghq/github.com/hitalin/"]
-  path = ~/.gitconfig-priv
-[includeIf "gitdir:~/.ghq/github.com/yamisskey-dev/"]
-  path = ~/.gitconfig-priv
 [include]
-  path = ~/.gitconfig-work
+  path = ./.gitconfig-work
+[includeIf "gitdir:~/.ghq/github.com/hitalin/**"]
+  path = ./.gitconfig-priv
+[includeIf "gitdir:~/.ghq/github.com/yamisskey-dev/**"]
+  path = ./.gitconfig-priv
 
 [commit]
 	gpgsign = true
