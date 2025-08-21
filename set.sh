@@ -43,6 +43,10 @@ if command -v rye >/dev/null 2>&1 && [ ! -e ~/.rye/ ]; then
   rye config --set-bool behavior.use-uv=true
 fi
 
+if command -v uv >/dev/null 2>&1 then
+  uv tool install claude-monitor
+fi
+
 if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
   go install github.com/x-motemen/ghq@latest
   go install github.com/sachaos/todoist@latest
