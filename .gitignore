@@ -6,6 +6,7 @@ claude/todos/
 claude/projects/
 claude/ide
 claude/shell-snapshots
+claude/config
 gemini/oauth_creds.json
 gemini/tmp/
 gemini/user_id
