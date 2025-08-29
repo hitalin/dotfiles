@@ -45,6 +45,7 @@ fi
 
 if command -v uv >/dev/null 2>&1 then
   uv tool install claude-monitor
+  uv tool install linode-cli
 fi
 
 if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
