@@ -123,7 +123,6 @@ alias la="eza -a --git -g -h"
 
 alias rm='rm -i'
 alias cp='cp -i'
-alias mv='mv -i'
 alias mkdir='mkdir -p'
 
 alias sudo='sudo -v; sudo '
@@ -165,23 +164,17 @@ alias g='gemini'
 
 # productive
 
-## https://qiita.com/kamykn/items/aa9920f07487559c0c7e#%E8%87%AA%E5%88%86%E3%81%8C%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8Bfzf%E3%81%AE%E4%BE%8B
-function cdworktree() {
-  git rev-parse &>/dev/null
-  if [ $? -ne 0 ]; then
-    echo fatal: Not a git repository.
-    return
+## gwq with fzf (git worktree manager)
+function gwq-fzf() {
+  local selected=$(gwq list | fzf --exit-0)
+  if [ -n "$selected" ]; then
+    BUFFER="cd $selected"
+    zle accept-line
   fi
-
-  local selectedWorkTreeDir=`git worktree list | fzf | awk '{print $1}'`
-
-  if [ "$selectedWorkTreeDir" = "" ]; then
-    # Ctrl-C.
-    return
-  fi
-
-  cd ${selectedWorkTreeDir}
+  zle -R -c
 }
+zle -N gwq-fzf
+bindkey '^w' gwq-fzf
 
 ## https://dev.classmethod.jp/articles/shuntaka-rust-20190816/#toc-7
 function fd-fzf() {
