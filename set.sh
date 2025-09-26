@@ -53,6 +53,7 @@ if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
   go install github.com/d-kuro/gwq/cmd/gwq@latest
   go install github.com/sachaos/todoist@latest
   go install github.com/mikoto2000/devcontainer.vim@latest
+  go install github.com/rhysd/actionlint/cmd/actionlint@latest
 fi
 
 if grep -qi microsoft /proc/version; then
