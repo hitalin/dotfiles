@@ -30,7 +30,6 @@ zinit load rupa/z
 # bindkey
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
-bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^[^B' vi-backward-blank-word
 bindkey '^[^F' vi-forward-blank-word
 bindkey '^[^U' backward-delete-word
