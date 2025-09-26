@@ -142,7 +142,7 @@ alias objdump="objdump -M intel"
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 
 alias t='todoist list'
-alias fx='felix'
+alias y='yazi'
 alias f='fuck'
 
 alias v='nvim'
