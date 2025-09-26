@@ -27,10 +27,7 @@ export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
-# atuin
-if command -v starship >/dev/null 2>&1; then
-  eval "$(atuin init zsh)"
-fi
+
 # thefuck
 if command -v thefuck >/dev/null 2>&1; then
   eval "$(thefuck --alias)"
