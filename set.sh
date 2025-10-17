@@ -54,7 +54,7 @@ if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
   go install github.com/sachaos/todoist@latest
   go install github.com/mikoto2000/devcontainer.vim@latest
   go install github.com/rhysd/actionlint/cmd/actionlint@latest
-  go install github.com/getsops/sops/v3/cmd/sops@latest
+  go install github.com/go-task/task/v3/cmd/task@latest
 fi
 
 if grep -qi microsoft /proc/version; then
