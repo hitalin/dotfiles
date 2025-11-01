@@ -36,6 +36,7 @@ if command -v volta >/dev/null 2>&1 && [ ! -e ~/.volta/ ]; then
   volta install @openai/codex@latest
   volta install wrangler@latest
   volta install @devcontainers/cli@latest
+  volta install @biomejs/biome
 fi
 
 if command -v rye >/dev/null 2>&1 && [ ! -e ~/.rye/ ]; then
