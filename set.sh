@@ -31,12 +31,15 @@ if command -v volta >/dev/null 2>&1 && [ ! -e ~/.volta/ ]; then
   volta setup
   volta install node@lts
   volta install npm@latest
-  volta install @anthropic-ai/claude-code@latest
   volta install @google/gemini-cli@latest
   volta install @openai/codex@latest
   volta install wrangler@latest
   volta install @devcontainers/cli@latest
   volta install @biomejs/biome
+fi
+
+if command -v claude >/dev/null 2>&1 && [ ! -e ~/.claude/ ]; then
+  curl -fsSL https://claude.ai/install.sh | bash
 fi
 
 if command -v rye >/dev/null 2>&1 && [ ! -e ~/.rye/ ]; then
