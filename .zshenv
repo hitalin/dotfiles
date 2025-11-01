@@ -118,3 +118,7 @@ export SDL_VIDEO_X11_DGAMOUSE=0
 
 # gpg-agent
 export GPG_TTY=$(tty)
+
+# fly.io
+export FLYCTL_INSTALL="/home/taka/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
