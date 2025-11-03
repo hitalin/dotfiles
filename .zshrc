@@ -129,7 +129,6 @@ alias sudo='sudo -v; sudo '
 
 alias gs='git branch -a | fzf --exit-0 | sed "s/.* //" | xargs -r git switch'
 alias gr='git ls-files | fzf --exit-0 | xargs -r git restore'
-alias gw='git worktree list | fzf --exit-0 | awk "{print \$1}" | xargs -I {} git worktree switch {}'
 alias gg='function _gg(){ git grep --textconv "$1" | fzf --preview "echo {}" --preview-window=down:3:wrap; }; _gg'
 
 alias pip="uv pip"
@@ -164,9 +163,20 @@ alias g='gemini'
 
 # productive
 
-## gwq with fzf (git worktree manager)
+## gwq (git worktree manager)
+# Ctrl+w: Switch to worktree interactively
+# Inside git repo: show worktrees for current repo
+# Outside git repo: show all worktrees globally
 function gwq-fzf() {
-  local selected=$(gwq list | fzf --exit-0)
+  local selected
+  if git rev-parse --git-dir > /dev/null 2>&1; then
+    # Inside git repository: use local worktrees
+    selected=$(gwq get)
+  else
+    # Outside git repository: use global worktrees
+    selected=$(gwq get -g)
+  fi
+
   if [ -n "$selected" ]; then
     BUFFER="cd $selected"
     zle accept-line
@@ -336,3 +346,6 @@ if [ -f '/home/taka/google-cloud-sdk/path.zsh.inc' ]; then . '/home/taka/google-
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/taka/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/taka/google-cloud-sdk/completion.zsh.inc'; fi
+
+# gwq
+source <(gwq completion zsh)
