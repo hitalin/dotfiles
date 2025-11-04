@@ -121,10 +121,6 @@ eval $(dircolors -b)
 alias ls='eza'
 alias la="eza -a --git -g -h"
 
-alias rm='rm -i'
-alias cp='cp -i'
-alias mkdir='mkdir -p'
-
 alias sudo='sudo -v; sudo '
 
 alias gs='git branch -a | fzf --exit-0 | sed "s/.* //" | xargs -r git switch'
