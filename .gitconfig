@@ -1,8 +1,16 @@
 [include]
   path = ./.gitconfig-work
+
+# ghq（閲覧専用リポジトリ）
 [includeIf "gitdir:~/.ghq/github.com/hitalin/**"]
   path = ./.gitconfig-priv
 [includeIf "gitdir:~/.ghq/github.com/yamisskey-dev/**"]
+  path = ./.gitconfig-priv
+
+# gwq（開発用worktree）
+[includeIf "gitdir:~/.gwq/github.com/hitalin/**"]
+  path = ./.gitconfig-priv
+[includeIf "gitdir:~/.gwq/github.com/yamisskey-dev/**"]
   path = ./.gitconfig-priv
 
 [commit]

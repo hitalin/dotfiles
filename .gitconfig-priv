@@ -2,3 +2,9 @@
   name = hitalin
   email = hitalin@proton.me
   signingkey = 5FB7F0B34A843F61760ECBC0100D62AA6BAB3E55
+
+[core]
+  # hitalin/yamisskey-dev のリポジトリ専用の SSH 鍵を使用
+  # リモート URL は git@github.com:owner/repo の標準形式を使い、
+  # SSH 鍵だけをこの設定で上書きする
+  sshCommand = ssh -i ~/.ssh/id_ed25519_github_hitalin
