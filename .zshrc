@@ -125,6 +125,11 @@ alias gg='function _gg(){ git grep --textconv "$1" | fzf --preview "echo {}" --p
 
 alias pip="uv pip"
 
+# Debian/Ubuntu では bat が batcat としてインストールされる
+if command -v batcat > /dev/null 2>&1 && ! command -v bat > /dev/null 2>&1; then
+  alias bat='batcat'
+fi
+
 alias ocaml="rlwrap ocaml"
 
 alias gdb="gdb -q"
@@ -191,7 +196,8 @@ bindkey "^f" fd-fzf
 
 ## https://qiita.com/tomoyamachi/items/e51d2906a5bb24cf1684#%E3%81%95%E3%82%89%E3%81%AB%E4%BD%BF%E3%81%84%E3%82%84%E3%81%99%E3%81%8F--zsh%E3%81%AE%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0
 function ghq-fzf() {
-  local src=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
+  local bat_cmd="${commands[bat]:-${commands[batcat]:-cat}}"
+  local src=$(ghq list | fzf --preview "$bat_cmd --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
   if [ -n "$src" ]; then
     BUFFER="cd $(ghq root)/$src"
     zle accept-line
