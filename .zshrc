@@ -102,7 +102,6 @@ setopt print_eight_bit
 setopt no_flow_control
 setopt interactive_comments
 setopt auto_cd
-setopt auto_pushd
 setopt pushd_ignore_dups
 setopt share_history
 setopt hist_ignore_all_dups
@@ -114,8 +113,6 @@ unset caseglob
 
 # alias
 alias q='exit'
-
-eval $(dircolors -b)
 
 alias ls='eza'
 alias la="eza -a --git -g -h"
@@ -141,9 +138,11 @@ alias f='fuck'
 
 alias v='nvim'
 
-alias mac='ifconfig eth0 | grep -E -o "([[:xdigit:]]{2}[:]){5}[[:xdigit:]]{2}"'
-alias ipv4='ifconfig eth0 | grep -E -o "([0-9]{1,3}\.){3}[0-9]{1,3}" | sed -n 1p'
-alias ipv6='ifconfig eth0 | grep -E -o "([[:xdigit:]]{0,4}[:]){7}[[:xdigit:]]{0,4}" | sed -n 1p'
+# ネットワーク情報取得（デフォルトインターフェースを自動検出）
+function _get_default_iface() { ip route show default 2>/dev/null | awk '/default/ {print $5; exit}'; }
+alias mac='ip link show $(_get_default_iface) 2>/dev/null | grep -oP "link/ether \K[^ ]+"'
+alias ipv4='ip -4 addr show $(_get_default_iface) 2>/dev/null | grep -oP "inet \K[0-9.]+"'
+alias ipv6='ip -6 addr show $(_get_default_iface) 2>/dev/null | grep -oP "inet6 \K[0-9a-f:]+" | head -1'
 function ipv6todecimal(){
   dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
 }
