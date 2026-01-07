@@ -141,11 +141,6 @@ alias f='fuck'
 
 alias v='nvim'
 
-alias erun='LC_CTYPE=ja_JP.UTF-8 emacs --daemon'
-alias e='emacsclient -nw'
-alias ge='emacsclient -c $@ &'
-alias ekill='emacsclient -e "(kill-emacs)"'
-
 alias mac='ifconfig eth0 | grep -E -o "([[:xdigit:]]{2}[:]){5}[[:xdigit:]]{2}"'
 alias ipv4='ifconfig eth0 | grep -E -o "([0-9]{1,3}\.){3}[0-9]{1,3}" | sed -n 1p'
 alias ipv6='ifconfig eth0 | grep -E -o "([[:xdigit:]]{0,4}[:]){7}[[:xdigit:]]{0,4}" | sed -n 1p'

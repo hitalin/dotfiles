@@ -11,12 +11,6 @@ if command -v nvim >/dev/null 2>&1 && [ ! -e ~/.config/nvim ]; then
   git clone https://github.com/i0z0m/AstroNvim ~/.config/nvim/
 fi
 
-if command -v emacs >/dev/null 2>&1 && [ ! -e ~/.emacs.d ]; then
-  git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
-  git clone https://github.com/i0z0m/.doom.d ~/.doom.d
-  ~/.emacs.d/bin/doom sync
-fi
-
 if command -v tmux >/dev/null 2>&1 && [ ! -e ~/.tmux/ ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi

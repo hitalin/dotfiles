@@ -4,12 +4,6 @@ if command -v nvim >/dev/null 2>&1; then
   export EDITOR='vim'
   export VISUAL='vim'
 fi
-## doom emacs
-export DOOM_INSTALL="$HOME/.emacs.d"
-if command -v emacs >/dev/null 2>&1 && [ -d "$DOOM_INSTALL" ]; then
-  export PATH="$DOOM_INSTALL/bin:$PATH"
-fi
-
 # pager
 export PAGER='less -R'
 export LESS='--tabs=4 --no-init --LONG-PROMPT --RAW-CONTROL-CHARS --ignore-case'
