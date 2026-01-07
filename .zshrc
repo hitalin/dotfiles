@@ -154,7 +154,6 @@ function ipv6todecimal(){
 }
 
 alias c='claude'
-alias g='gemini'
 
 # productive
 

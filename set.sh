@@ -31,8 +31,6 @@ if command -v volta >/dev/null 2>&1 && [ ! -e ~/.volta/ ]; then
   volta setup
   volta install node@lts
   volta install npm@latest
-  volta install @google/gemini-cli@latest
-  volta install @openai/codex@latest
   volta install wrangler@latest
   volta install @devcontainers/cli@latest
   volta install @biomejs/biome
