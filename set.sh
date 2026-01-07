@@ -16,13 +16,15 @@ if command -v tmux >/dev/null 2>&1 && [ ! -e ~/.tmux/ ]; then
 fi
 
 
-if command -v volta >/dev/null 2>&1 && [ ! -e ~/.volta/ ]; then
-  volta setup
-  volta install node@lts
-  volta install npm@latest
-  volta install wrangler@latest
-  volta install @devcontainers/cli@latest
-  volta install @biomejs/biome
+# proto (version manager for Node.js, pnpm, etc.)
+# https://moonrepo.dev/proto
+if [ ! -e ~/.proto/ ]; then
+  curl -fsSL https://moonrepo.dev/install/proto.sh | bash
+  export PATH="$HOME/.proto/bin:$PATH"
+  proto install node lts
+  proto install pnpm latest
+  # Global npm packages via pnpm
+  pnpm add -g wrangler @devcontainers/cli @biomejs/biome
 fi
 
 if command -v claude >/dev/null 2>&1 && [ ! -e ~/.claude/ ]; then
