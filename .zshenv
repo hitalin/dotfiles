@@ -41,6 +41,7 @@ fi
 # direnv
 if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
+  export DIRENV_LOG_FORMAT=""
 fi
 
 # bat
@@ -78,10 +79,7 @@ function cd() {
     fi
   fi
 }
-## rust
-if command -v cargo >/dev/null 2>&1; then
-  export PATH="$HOME/.cargo/bin:$PATH"
-fi
+## rust (sourced at end of file via .cargo/env)
 ## ocaml
 test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 ## haskell
@@ -103,12 +101,6 @@ if command -v keychain >/dev/null 2>&1; then
   eval $(keychain --eval --quiet)
 fi
 
-# direnv
-if command -v direnv >/dev/null 2>&1; then
-  eval "$(direnv hook zsh)"
-  export DIRENV_LOG_FORMAT=""
-fi
-
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
@@ -122,3 +114,4 @@ export GPG_TTY=$(tty)
 # fly.io
 export FLYCTL_INSTALL="/home/taka/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+. "$HOME/.cargo/env"
