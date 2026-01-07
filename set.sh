@@ -1,15 +1,10 @@
 #!/bin/sh
 set -e
 
-if command -v gdb >/dev/null 2>&1 && [ ! -e ~/.gdb/ ]; then
-  mkdir -p ~/.gdb
-  git clone https://github.com/longld/peda.git ~/.gdb/peda
-  git clone https://github.com/scwuaptx/Pwngdb.git ~/.gdb/pwngdb
-
-  wget -O ~/.gdb/.gdbinit-gef.py -q https://github.com/hugsy/gef/raw/master/gef.py
-  pip3 install --user rpyc capstone unicorn keystone-engine ropper
-  git clone https://github.com/hugsy/gef-extras.git ~/.gdb/gef-extras
-  gdb -ex 'gef config gef.extra_plugins_dir "~/.gdb/gef-extras/scripts"' -ex 'gef save' -ex quit
+# pwndbg (modern GDB plugin for CTF/exploit development)
+# https://github.com/pwndbg/pwndbg
+if command -v gdb >/dev/null 2>&1 && [ ! -e ~/.pwndbg/ ]; then
+  curl -qsL 'https://install.pwndbg.re' | sh -s -- -t pwndbg-gdb
 fi
 
 if command -v nvim >/dev/null 2>&1 && [ ! -e ~/.config/nvim ]; then
@@ -45,9 +40,16 @@ if command -v rye >/dev/null 2>&1 && [ ! -e ~/.rye/ ]; then
   rye config --set-bool behavior.use-uv=true
 fi
 
-if command -v uv >/dev/null 2>&1 then
+if command -v uv >/dev/null 2>&1; then
   uv tool install claude-monitor
   uv tool install linode-cli
+  # CTF/Security tools
+  uv tool install pwntools
+  uv tool install ropper
+  uv tool install ROPgadget
+  # GhidraMCP (AI-assisted reverse engineering)
+  # https://github.com/LaurieWired/GhidraMCP
+  uv tool install ghidra-mcp
 fi
 
 if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
