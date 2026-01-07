@@ -6,11 +6,15 @@
   path = ./.gitconfig-priv
 [includeIf "gitdir:~/.ghq/github.com/yamisskey-dev/**"]
   path = ./.gitconfig-priv
+[includeIf "gitdir:~/.ghq/github.com/hiki-co/**"]
+  path = ./.gitconfig-priv
 
 # gwq（開発用worktree）
 [includeIf "gitdir:~/.gwq/github.com/hitalin/**"]
   path = ./.gitconfig-priv
 [includeIf "gitdir:~/.gwq/github.com/yamisskey-dev/**"]
+  path = ./.gitconfig-priv
+[includeIf "gitdir:~/.gwq/github.com/hiki-co/**"]
   path = ./.gitconfig-priv
 
 [commit]
