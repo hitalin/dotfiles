@@ -41,9 +41,9 @@ if command -v uv >/dev/null 2>&1; then
   uv tool install pwntools
   uv tool install ropper
   uv tool install ROPgadget
-  # GhidraMCP (AI-assisted reverse engineering)
-  # https://github.com/LaurieWired/GhidraMCP
-  uv tool install ghidra-mcp
+  # pyghidra-mcp (AI-assisted reverse engineering)
+  # https://github.com/clearbluejar/pyghidra-mcp
+  uv tool install pyghidra-mcp
 fi
 
 if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
