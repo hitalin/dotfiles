@@ -16,13 +16,14 @@ if command -v tmux >/dev/null 2>&1 && [ ! -e ~/.tmux/ ]; then
 fi
 
 
-# proto (version manager for Node.js, pnpm, etc.)
+# proto (version manager for Node.js, pnpm, bun, etc.)
 # https://moonrepo.dev/proto
 if [ ! -e ~/.proto/ ]; then
   curl -fsSL https://moonrepo.dev/install/proto.sh | bash
   export PATH="$HOME/.proto/bin:$PATH"
   proto install node lts
   proto install pnpm latest
+  proto install bun latest
   # Global npm packages via pnpm
   pnpm add -g wrangler @devcontainers/cli @biomejs/biome
 fi

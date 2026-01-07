@@ -302,9 +302,6 @@ bindkey "^N" fzf_npm_scripts
 # load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# load completions in bun
-[ -s $BUN_INSTALL/_bun ] && source $BUN_INSTALL/_bun
-
 # load shims in rye
 [ -s ~/.rye/env ] && source ~/.rye/env
 
@@ -312,20 +309,7 @@ bindkey "^N" fzf_npm_scripts
 # filen-cli
 PATH=$PATH:~/.filen-cli/bin
 
-# pnpm
-export PNPM_HOME="/home/taka/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# bun completions
-[ -s "/home/taka/.bun/_bun" ] && source "/home/taka/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# pnpm/bun are managed by proto
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/taka/google-cloud-sdk/path.zsh.inc' ]; then . '/home/taka/google-cloud-sdk/path.zsh.inc'; fi
