@@ -11,4 +11,9 @@ set follow-fork-mode child
 
 # pwndbg (primary - installed via official installer)
 # Install: curl -qsL 'https://install.pwndbg.re' | sh -s -- -t pwndbg-gdb
-source ~/.pwndbg/gdbinit.py
+python
+import os
+pwndbg_init = os.path.expanduser("~/.pwndbg/gdbinit.py")
+if os.path.exists(pwndbg_init):
+    gdb.execute(f"source {pwndbg_init}")
+end
