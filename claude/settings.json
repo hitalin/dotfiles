@@ -3,6 +3,11 @@
 
   "language": "ja",
   "cleanupPeriodDays": 30,
+  "showTurnDuration": true,
+  "statusLine": {
+    "command": "\"$HOME/.claude/hooks/statusline.sh\"",
+    "timeout": 3000
+  },
 
   "env": {
     "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "70"
@@ -176,6 +181,18 @@
   },
 
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/pre-bash-secret-guard.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "matcher": "compact",
@@ -195,7 +212,32 @@
           {
             "type": "command",
             "command": "\"$HOME/.claude/hooks/post-edit-format.sh\"",
-            "timeout": 30000
+            "timeout": 30000,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/stop-uncommitted-reminder.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/subagent-context-inject.sh\"",
+            "timeout": 3000
           }
         ]
       }
