@@ -25,6 +25,15 @@ STAGED=$(printf '%s' "$STATUS" | grep -c '^[MADRC]' || true)
 MODIFIED=$(printf '%s' "$STATUS" | grep -c '^.[MD]' || true)
 UNTRACKED=$(printf '%s' "$STATUS" | grep -c '^??' || true)
 
+# 変更ファイルのサマリー（先頭5件）
+FILES=$(printf '%s' "$STATUS" | head -5 | sed 's/^.../  /')
+TOTAL=$(printf '%s' "$STATUS" | wc -l | tr -d ' ')
+SUMMARY="$FILES"
+if [ "$TOTAL" -gt 5 ]; then
+  SUMMARY="${SUMMARY}
+  ...他 $((TOTAL - 5)) ファイル"
+fi
+
 cat <<EOF
-{"decision":"block","reason":"未コミットの変更があります（staged: ${STAGED}, modified: ${MODIFIED}, untracked: ${UNTRACKED}）。コミットしますか？ /commit で Conventional Commits 形式でコミットできます。"}
+{"decision":"block","reason":"未コミットの変更があります（staged: ${STAGED}, modified: ${MODIFIED}, untracked: ${UNTRACKED}）:\n${SUMMARY}\n\nコミットしますか？ /commit で Conventional Commits 形式でコミットできます。"}
 EOF
