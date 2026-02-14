@@ -2,50 +2,53 @@
 
 すべてのプロジェクトで共通の設定。`make deploy` で `~/.claude/` にリンクされます。
 
-## 言語・コミュニケーション
+## 言語
 
-- 常に日本語で会話する
-- 技術用語は英語のまま使用（変に翻訳しない）
-- 簡潔に、要点を押さえて回答する
+- 常に日本語で会話
+- 技術用語は英語のまま（変に翻訳しない）
+- 簡潔に、要点を押さえて回答
 
 ## 開発哲学
 
-### Test-Driven Development (TDD)
+### 過剰エンジニアリングを避ける
 
-- 原則としてテスト駆動開発（TDD）で進める
-- まずテストを作成し、失敗を確認してからコミット
-- 実装中はテストを変更せず、コードを修正し続ける
-
-### コード品質
-
-- IMPORTANT: 過剰なエンジニアリングを避ける
-- 依頼された変更のみを行う（余計な「改善」はしない）
+- 依頼された変更のみ行う（余計な「改善」はしない）
 - シンプルさを優先（3行の類似コードは抽象化より良い）
-- コメントは自明でないロジックにのみ追加
+- 仮想的な将来の要件に対応しない
+- コメントは自明でないロジックにのみ
+
+### TDD
+
+- テスト駆動開発を推奨
+- まずテスト作成 → 失敗確認 → 実装
+- 実装中はテスト変更せずコードを修正
 
 ### Git
 
-- Conventional Commits形式を使用
-- 1つのPRに1つの課題
-- コミットメッセージは「何を」ではなく「なぜ」を説明
+- Conventional Commits形式（feat/fix/refactor/docs/test/chore）
+- 1 PR = 1 課題
+- コミットメッセージは「なぜ」を説明
 
-## よく使うツール
+## ツールスタック
 
-### パッケージ管理
+| 用途 | ツール |
+|------|--------|
+| Node.js | proto + pnpm |
+| Python | rye + uv |
+| Go | go install |
+| Rust | cargo |
+| GDB | pwndbg |
+| RE | Ghidra + pyghidra-mcp |
 
-- Node.js: proto + pnpm
-- Python: rye + uv
-- Go: go install
-- Rust: cargo
+## Skills（/コマンド）
 
-### CTF/セキュリティ
+- `/commit` - Conventional Commitsでコミット
+- `/review-pr [番号]` - PRレビュー
+- `/test [パターン]` - テスト実行
+- `/fix-issue [番号]` - Issue修正
 
-- GDB: pwndbg
-- Python: pwntools, ropper, ROPgadget
-- リバースエンジニアリング: Ghidra + pyghidra-mcp
+## Tips
 
-## セッション管理
-
-- 大きなタスク変更前に `/compact` を検討
-- 複雑なタスクは Plan Mode (Shift+Tab x2) を活用
-- 難しいデバッグには Ultrathink を使用
+- 大きなタスク前に `/compact`
+- 複雑なタスクは Plan Mode (Shift+Tab x2)
+- 難しいデバッグは extended thinking

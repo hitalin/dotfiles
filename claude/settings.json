@@ -1,9 +1,15 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+
   "permissions": {
     "allow": [
       "Read(*)",
       "List(*)",
       "Fetch(https://*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:code.claude.com)",
+
       "Bash(ls:*)",
       "Bash(rg:*)",
       "Bash(fd:*)",
@@ -25,42 +31,99 @@
       "Bash(uniq:*)",
       "Bash(cut:*)",
       "Bash(jq:*)",
+      "Bash(yq:*)",
       "Bash(which:*)",
       "Bash(whereis:*)",
+      "Bash(command -v:*)",
       "Bash(pwd:*)",
       "Bash(date:*)",
       "Bash(echo:*)",
       "Bash(env:*)",
+      "Bash(printenv:*)",
+
       "Bash(git:*)",
       "Bash(gh:*)",
+      "Bash(ghq:*)",
+      "Bash(gwq:*)",
+
       "Bash(proto:*)",
       "Bash(pnpm:*)",
       "Bash(npm:*)",
+      "Bash(npx:*)",
       "Bash(bun:*)",
+      "Bash(bunx:*)",
+      "Bash(node:*)",
+
       "Bash(uv:*)",
+      "Bash(uvx:*)",
       "Bash(rye:*)",
       "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pip:*)",
+      "Bash(pytest:*)",
+
       "Bash(go:*)",
       "Bash(cargo:*)",
       "Bash(rustc:*)",
+      "Bash(rustup:*)",
+
       "Bash(docker:*)",
       "Bash(docker-compose:*)",
+      "Bash(podman:*)",
+
       "Bash(task:*)",
+      "Bash(just:*)",
+
       "Bash(biome:*)",
+      "Bash(eslint:*)",
+      "Bash(prettier:*)",
       "Bash(actionlint:*)",
+      "Bash(shellcheck:*)",
+
+      "Bash(zoxide:*)",
+      "Bash(fzf:*)",
+      "Bash(bat:*)",
+      "Bash(batcat:*)",
+      "Bash(eza:*)",
+      "Bash(tree:*)",
+
       "mcp__github__*",
-      "mcp__filesystem__*"
+      "mcp__filesystem__*",
+
+      "Skill(commit)",
+      "Skill(review-pr)",
+      "Skill(test)",
+      "Skill(fix-issue)",
+      "Task(Explore)",
+      "Task(Plan)"
     ],
     "deny": [
       "Bash(rm -rf /)*",
       "Bash(sudo rm:*)",
       "Bash(git push --force:*)",
       "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(chmod 777:*)",
       "Read(.env*)",
       "Read(**/credentials*)",
       "Read(**/*secret*)",
       "Read(**/.aws/*)",
-      "Read(**/.ssh/*)"
+      "Read(**/.ssh/*)",
+      "Read(**/.gnupg/*)"
+    ]
+  },
+
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "notify-send 'Claude Code' 'Claude Code needs your attention' 2>/dev/null || true"
+          }
+        ]
+      }
     ]
   }
 }
