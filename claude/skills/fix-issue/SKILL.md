@@ -1,6 +1,7 @@
 ---
 name: fix-issue
 description: GitHub Issueを読み込んで修正を実装
+user-invocable: true
 disable-model-invocation: true
 argument-hint: "[Issue番号 or URL]"
 context: fork

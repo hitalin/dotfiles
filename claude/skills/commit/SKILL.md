@@ -1,6 +1,7 @@
 ---
 name: commit
 description: 変更をコミット。Conventional Commits形式でメッセージを生成
+user-invocable: true
 disable-model-invocation: true
 argument-hint: "[type: feat|fix|refactor|docs|test|chore]"
 allowed-tools: Bash(git *)

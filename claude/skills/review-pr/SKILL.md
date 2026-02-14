@@ -1,6 +1,7 @@
 ---
 name: review-pr
 description: GitHub Pull Requestをレビュー
+user-invocable: true
 disable-model-invocation: true
 argument-hint: "[PR番号 or URL]"
 context: fork

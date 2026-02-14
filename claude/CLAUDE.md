@@ -37,6 +37,8 @@
 | Python | rye + uv |
 | Go | go install |
 | Rust | cargo |
+| タスクランナー | task / just |
+| リンター | biome, shellcheck |
 | GDB | pwndbg |
 | RE | Ghidra + pyghidra-mcp |
 
@@ -49,6 +51,8 @@
 
 ## Tips
 
-- 大きなタスク前に `/compact`
-- 複雑なタスクは Plan Mode (Shift+Tab x2)
-- 難しいデバッグは extended thinking
+- 大きなタスク前に `/compact` でコンテキスト圧縮
+- 複雑なタスクは Plan Mode（Shift+Tab x2）
+- 難しいデバッグは extended thinking（`think harder` / `ultrathink`）
+- `@ファイル名` でファイルをコンテキストに追加
+- `/memory` でプロジェクト固有のメモを管理

@@ -1,6 +1,7 @@
 ---
 name: test
 description: テストを実行し結果を分析
+user-invocable: true
 disable-model-invocation: true
 argument-hint: "[テストパターン or ファイルパス]"
 allowed-tools: Bash(npm *), Bash(pnpm *), Bash(bun *), Bash(pytest *), Bash(go test *), Bash(cargo test *), Read
