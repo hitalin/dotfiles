@@ -3,26 +3,29 @@ INSTALL_TARGET = $(wildcard .??*)
 DOTFILES       = $(filter-out $(EXCLUDE_FILES), $(INSTALL_TARGET))
 
 VIM_PATH      = $(HOME)/.vim
-CLAUDE_PATH      = $(HOME)/.claude
-GEMINI_PATH      = $(HOME)/.gemini
+CLAUDE_PATH   = $(HOME)/.claude
+GEMINI_PATH   = $(HOME)/.gemini
 
-.PHONY: init deploy uninstall list
+CLAUDE_LINKS  = CLAUDE.md settings.json rules skills hooks
+
+.PHONY: init deploy uninstall list claude-deploy
 
 $(VIM_PATH):
 	ln -sfnv $(PWD)/vim $@
-$(CLAUDE_PATH):
-	ln -sfnv $(PWD)/claude $@
+claude-deploy:
+	@mkdir -p $(CLAUDE_PATH)
+	@$(foreach item, $(CLAUDE_LINKS), ln -sfnv $(PWD)/claude/$(item) $(CLAUDE_PATH)/$(item);)
 $(GEMINI_PATH):
 	ln -sfnv $(PWD)/gemini $@
 
-init: $(VIM_PATH) $(CLAUDE_PATH) $(GEMINI_PATH)
+init: $(VIM_PATH) claude-deploy $(GEMINI_PATH)
 
 deploy: init
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 uninstall:
 	@unlink $(VIM_PATH)
-	@unlink $(CLAUDE_PATH)
+	@$(foreach item, $(CLAUDE_LINKS), unlink $(CLAUDE_PATH)/$(item) 2>/dev/null || true;)
 	@$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
 
 list:

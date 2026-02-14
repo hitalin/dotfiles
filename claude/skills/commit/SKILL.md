@@ -27,6 +27,6 @@ allowed-tools: Bash(git *)
 
 - 1行目: 50文字以内、命令形（日本語可）
 - 本文: 「何を」ではなく「なぜ」を説明
-- フッター: `Co-Authored-By: Claude <noreply@anthropic.com>` を追加
+- フッター: `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>` を追加
 
 $ARGUMENTS が指定されていればそのタイプを優先。

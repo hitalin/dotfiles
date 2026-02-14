@@ -10,24 +10,7 @@
 
 ## 開発哲学
 
-### 過剰エンジニアリングを避ける
-
-- 依頼された変更のみ行う（余計な「改善」はしない）
-- シンプルさを優先（3行の類似コードは抽象化より良い）
-- 仮想的な将来の要件に対応しない
-- コメントは自明でないロジックにのみ
-
-### TDD
-
-- テスト駆動開発を推奨
-- まずテスト作成 → 失敗確認 → 実装
-- 実装中はテスト変更せずコードを修正
-
-### Git
-
-- Conventional Commits形式（feat/fix/refactor/docs/test/chore）
-- 1 PR = 1 課題
-- コミットメッセージは「なぜ」を説明
+`@rules/` に詳細ルールを分離。Claude Code が自動ロードする。
 
 ## ツールスタック
 
@@ -49,11 +32,17 @@
 - `/test [パターン]` - テスト実行
 - `/fix-issue [番号]` - Issue修正
 - `/security-audit [パス]` - セキュリティ監査
+- `/refactor [対象]` - テスト駆動リファクタリング
+- `/deps [audit|check|update]` - 依存関係の監査・更新
 
 ## Tips
 
-- 大きなタスク前に `/compact` でコンテキスト圧縮
+- コンテキスト70%超えたら `/compact <要約指示>` を実行
+- `/context` でコンテキスト使用状況を確認
 - 複雑なタスクは Plan Mode（Shift+Tab x2）
-- 難しいデバッグは extended thinking（`think harder` / `ultrathink`）
+- `/effort low|medium|high|max` で推論の深さを調整
+- `/fast` で高速出力モード切替（同じ Opus 4.6 モデル）
 - `@ファイル名` でファイルをコンテキストに追加
 - `/memory` でプロジェクト固有のメモを管理
+- `CLAUDE.local.md` で個人設定（.gitignore 対象）
+- 調査はサブエージェント委任でメインコンテキストを保護

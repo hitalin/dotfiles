@@ -4,8 +4,12 @@
   "language": "ja",
   "cleanupPeriodDays": 30,
 
+  "env": {
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "70"
+  },
+
   "attribution": {
-    "commit": "\nCo-Authored-By: Claude <noreply@anthropic.com>"
+    "commit": "\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
   },
 
   "permissions": {
@@ -17,6 +21,9 @@
       "WebFetch(domain:code.claude.com)",
       "WebFetch(domain:zenn.dev)",
       "WebFetch(domain:developer.mozilla.org)",
+
+      "Bash(*--help*)",
+      "Bash(*--version*)",
 
       "Bash(ls *)",
       "Bash(mv *)",
@@ -36,6 +43,10 @@
       "Bash(sort *)",
       "Bash(uniq *)",
       "Bash(cut *)",
+      "Bash(sed *)",
+      "Bash(awk *)",
+      "Bash(tr *)",
+      "Bash(tee *)",
       "Bash(jq *)",
       "Bash(yq *)",
       "Bash(which *)",
@@ -105,6 +116,10 @@
       "Bash(prettier *)",
       "Bash(actionlint *)",
       "Bash(shellcheck *)",
+      "Bash(shfmt *)",
+      "Bash(ruff *)",
+      "Bash(gofmt *)",
+      "Bash(rustfmt *)",
 
       "Bash(zoxide *)",
       "Bash(fzf *)",
@@ -121,6 +136,8 @@
       "Skill(test)",
       "Skill(fix-issue)",
       "Skill(security-audit)",
+      "Skill(refactor)",
+      "Skill(deps)",
       "Task(Explore)",
       "Task(Plan)"
     ],
@@ -144,8 +161,14 @@
       "Bash(wget * | sh)",
 
       "Read(.env*)",
+      "Edit(.env*)",
+      "Write(.env*)",
       "Read(**/credentials*)",
+      "Edit(**/credentials*)",
+      "Write(**/credentials*)",
       "Read(**/*secret*)",
+      "Edit(**/*secret*)",
+      "Write(**/*secret*)",
       "Read(**/.aws/*)",
       "Read(**/.ssh/*)",
       "Read(**/.gnupg/*)"
@@ -153,13 +176,37 @@
   },
 
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/post-compact-reminder.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/post-edit-format.sh\"",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
     "Notification": [
       {
         "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send 'Claude Code' 'Claude Code needs your attention' 2>/dev/null || true"
+            "command": "notify-send -u normal 'Claude Code' '入力待ちです' 2>/dev/null || true"
           }
         ]
       }
