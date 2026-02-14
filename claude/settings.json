@@ -5,6 +5,7 @@
   "cleanupPeriodDays": 30,
   "showTurnDuration": true,
   "statusLine": {
+    "type": "command",
     "command": "\"$HOME/.claude/hooks/statusline.sh\"",
     "timeout": 3000
   },
