@@ -48,6 +48,7 @@
 - `/review-pr [番号]` - PRレビュー
 - `/test [パターン]` - テスト実行
 - `/fix-issue [番号]` - Issue修正
+- `/security-audit [パス]` - セキュリティ監査
 
 ## Tips
 
