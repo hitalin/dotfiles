@@ -8,7 +8,7 @@ if command -v gdb >/dev/null 2>&1 && [ ! -e ~/.pwndbg/ ]; then
 fi
 
 if command -v nvim >/dev/null 2>&1 && [ ! -e ~/.config/nvim ]; then
-  git clone https://github.com/i0z0m/AstroNvim ~/.config/nvim/
+  git clone https://github.com/hitalin/AstroNvim ~/.config/nvim/
 fi
 
 if command -v tmux >/dev/null 2>&1 && [ ! -e ~/.tmux/ ]; then

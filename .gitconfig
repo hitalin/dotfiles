@@ -1,21 +1,11 @@
 [include]
+  path = ./.gitconfig-priv
+
+# i0z0m 名義のリポジトリのみ work 設定を適用
+[includeIf "gitdir:~/.ghq/github.com/i0z0m/**"]
   path = ./.gitconfig-work
-
-# ghq（閲覧専用リポジトリ）
-[includeIf "gitdir:~/.ghq/github.com/hitalin/**"]
-  path = ./.gitconfig-priv
-[includeIf "gitdir:~/.ghq/github.com/yamisskey-dev/**"]
-  path = ./.gitconfig-priv
-[includeIf "gitdir:~/.ghq/github.com/hiki-co/**"]
-  path = ./.gitconfig-priv
-
-# gwq（開発用worktree）
-[includeIf "gitdir:~/.gwq/github.com/hitalin/**"]
-  path = ./.gitconfig-priv
-[includeIf "gitdir:~/.gwq/github.com/yamisskey-dev/**"]
-  path = ./.gitconfig-priv
-[includeIf "gitdir:~/.gwq/github.com/hiki-co/**"]
-  path = ./.gitconfig-priv
+[includeIf "gitdir:~/.gwq/github.com/i0z0m/**"]
+  path = ./.gitconfig-work
 
 [commit]
 	gpgsign = true
@@ -65,12 +55,12 @@
   ff = only
 
 [ghq]
-  user = i0z0m
+  user = hitalin
   vcs = git
   root = ~/.ghq
 
-[url "git@github.com:i0z0m"]
-  insteadOf = https://github.com/i0z0m
+[url "git@github.com:hitalin"]
+  insteadOf = https://github.com/hitalin
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/
 

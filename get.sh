@@ -3,7 +3,7 @@ set -e
 DOTPATH=~/dotfiles
 
 if [ -e $(which curl) ] || [ -e $(which wget) ]; then
-  TARBALL="https://gitlab.com/i0z0m/dotfiles/-/archive/master/dotfiles-master.tar.gz"
+  TARBALL="https://github.com/hitalin/dotfiles/archive/refs/heads/master.tar.gz"
 
   if  [ -e $(which curl) ]; then
     curl -L "$TARBALL"
