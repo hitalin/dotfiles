@@ -1,36 +1,18 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-
-  "language": "ja",
   "cleanupPeriodDays": 30,
-  "showTurnDuration": true,
-  "statusLine": {
-    "type": "command",
-    "command": "\"$HOME/.claude/hooks/statusline.sh\"",
-    "timeout": 3000
-  },
-
   "env": {
     "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "70"
   },
-
   "attribution": {
     "commit": "\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
   },
-
   "permissions": {
-    "defaultMode": "acceptEdits",
-
     "allow": [
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:docs.anthropic.com)",
-      "WebFetch(domain:code.claude.com)",
-      "WebFetch(domain:zenn.dev)",
-      "WebFetch(domain:developer.mozilla.org)",
-
+      "WebFetch",
+      "WebSearch",
       "Bash(*--help*)",
       "Bash(*--version*)",
-
       "Bash(ls *)",
       "Bash(mv *)",
       "Bash(make *)",
@@ -65,7 +47,9 @@
       "Bash(printenv *)",
       "Bash(rg *)",
       "Bash(fd *)",
-
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(xargs *)",
       "Bash(git status*)",
       "Bash(git diff*)",
       "Bash(git log*)",
@@ -85,10 +69,13 @@
       "Bash(git rev-parse *)",
       "Bash(git config *)",
       "Bash(git clone *)",
+      "Bash(git sparse-checkout *)",
+      "Bash(git -C *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
       "Bash(gh *)",
       "Bash(ghq *)",
       "Bash(gwq *)",
-
       "Bash(proto *)",
       "Bash(pnpm *)",
       "Bash(npm *)",
@@ -96,7 +83,6 @@
       "Bash(bun *)",
       "Bash(bunx *)",
       "Bash(node *)",
-
       "Bash(uv *)",
       "Bash(uvx *)",
       "Bash(rye *)",
@@ -104,19 +90,17 @@
       "Bash(python3 *)",
       "Bash(pip *)",
       "Bash(pytest *)",
-
       "Bash(go *)",
       "Bash(cargo *)",
       "Bash(rustc *)",
       "Bash(rustup *)",
-
+      "Bash(dotnet *)",
+      "Bash(nix *)",
       "Bash(docker *)",
       "Bash(docker-compose *)",
       "Bash(podman *)",
-
       "Bash(task *)",
       "Bash(just *)",
-
       "Bash(biome *)",
       "Bash(eslint *)",
       "Bash(prettier *)",
@@ -126,17 +110,17 @@
       "Bash(ruff *)",
       "Bash(gofmt *)",
       "Bash(rustfmt *)",
-
       "Bash(zoxide *)",
       "Bash(fzf *)",
       "Bash(bat *)",
       "Bash(batcat *)",
       "Bash(eza *)",
       "Bash(tree *)",
-
+      "Bash(source *)",
+      "Bash(export *)",
+      "Bash(SOPS_AGE_KEY_FILE=*)",
       "mcp__github__*",
       "mcp__filesystem__*",
-
       "Skill(commit)",
       "Skill(review-pr)",
       "Skill(test)",
@@ -145,14 +129,10 @@
       "Skill(refactor)",
       "Skill(deps)",
       "Task(Explore)",
-      "Task(Plan)"
+      "Task(Plan)",
+      "Read(//home/taka/**)",
+      "Read(//tmp/**)"
     ],
-
-    "ask": [
-      "Bash(git push *)",
-      "Bash(rm *)"
-    ],
-
     "deny": [
       "Bash(rm -rf /)",
       "Bash(rm -rf /*)",
@@ -165,7 +145,6 @@
       "Bash(curl * | sh)",
       "Bash(wget * | bash)",
       "Bash(wget * | sh)",
-
       "Read(.env*)",
       "Edit(.env*)",
       "Write(.env*)",
@@ -178,9 +157,18 @@
       "Read(**/.aws/*)",
       "Read(**/.ssh/*)",
       "Read(**/.gnupg/*)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(rm *)"
+    ],
+    "defaultMode": "acceptEdits",
+    "additionalDirectories": [
+      "/home/taka/.ghq/github.com/hitalin/notedeck/src/{adapters/misskey,adapters/sharkey,adapters/cherrypick,core,stores,composables,components",
+      "/tmp/notedeck-init/public",
+      "/home/taka/.claude/projects/-home-taka--ghq-github-com-hitalin-notedeck"
     ]
   },
-
   "hooks": {
     "PreToolUse": [
       {
@@ -254,5 +242,11 @@
         ]
       }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "\"$HOME/.claude/hooks/statusline.sh\""
+  },
+  "language": "ja",
+  "showTurnDuration": true
 }
