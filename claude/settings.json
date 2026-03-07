@@ -19,7 +19,16 @@
       "Task",
       "mcp__github__*",
       "mcp__filesystem__*",
-      "mcp__claude_ai_*"
+      "mcp__claude_ai_*",
+      "Bash(curl -s \"https://raw.githubusercontent.com/HanaMisskey/misskey/hanami/packages/backend/src/server/api/stream/ChannelsService.ts\")",
+      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/df3dff1/src/**)",
+      "Read(//home/taka/.ghq/github.com/hitalin/notecli/src/**)",
+      "Read(//home/taka/.ghq/github.com/hitalin/notecli/**)",
+      "Read(//home/taka/.ghq/github.com/misskey-dev/misskey/packages/frontend/src/ui/_common_/**)",
+      "Read(//home/taka/.ghq/github.com/hitalin/notedeck/**)",
+      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/01637d7/src/**)",
+      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/d4e8512/src/**)",
+      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/0f54eb7/src/**)"
     ],
     "deny": [
       "Bash(rm -rf /)",
