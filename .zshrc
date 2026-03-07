@@ -311,6 +311,9 @@ bindkey "^N" fzf_npm_scripts
 [ -s ~/.rye/env ] && source ~/.rye/env
 
 
+# custom scripts
+PATH=$PATH:~/dotfiles/bin
+
 # filen-cli
 PATH=$PATH:~/.filen-cli/bin
 
