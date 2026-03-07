@@ -1,0 +1,140 @@
+#!/bin/sh
+# env2vault - Import .env files into Vaultwarden via rbw
+#
+# Usage:
+#   env2vault .env                    # interactive: choose entry name
+#   env2vault .env -n myproject       # specify entry name
+#   env2vault --scan ~/projects       # find all .env files under directory
+#   env2vault --dry-run .env          # preview without importing
+#
+# Each KEY=VALUE pair becomes an rbw entry:
+#   Entry name: <project>  Username: KEY  Password: VALUE
+# Retrieve: rbw get <project> KEY
+
+set -eu
+
+DRY_RUN=false
+SCAN_MODE=false
+ENTRY_NAME=""
+
+usage() {
+    echo "Usage: env2vault [options] <.env file or directory>"
+    echo ""
+    echo "Options:"
+    echo "  -n NAME      Entry name (default: directory name)"
+    echo "  --dry-run    Preview entries without importing"
+    echo "  --scan DIR   Find and list all .env files under DIR"
+    echo "  -h           Show this help"
+    echo ""
+    echo "Each KEY=VALUE becomes: entry=NAME, username=KEY, password=VALUE"
+    echo "Retrieve with: rbw get NAME KEY"
+    exit 0
+}
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -n) ENTRY_NAME="$2"; shift 2 ;;
+        --dry-run) DRY_RUN=true; shift ;;
+        --scan) SCAN_MODE=true; shift ;;
+        -h) usage ;;
+        -*) echo "Unknown option: $1" >&2; exit 1 ;;
+        *)  break ;;
+    esac
+done
+
+if [ $# -eq 0 ]; then
+    usage
+fi
+
+TARGET="$1"
+
+# Scan mode: just list .env files
+if [ "$SCAN_MODE" = true ]; then
+    echo "=== .env files found under $TARGET ==="
+    find "$TARGET" -name ".env" -not -path "*/.git/*" -not -path "*/node_modules/*" 2>/dev/null | while read -r f; do
+        dir="$(dirname "$f")"
+        dirname="$(basename "$dir")"
+        count=$(grep -c -E '^[A-Za-z_][A-Za-z0-9_]*=.+' "$f" 2>/dev/null || echo 0)
+        echo "  $f  ($count keys, suggested name: $dirname)"
+    done
+    exit 0
+fi
+
+# Import mode
+if [ ! -f "$TARGET" ]; then
+    echo "Error: $TARGET not found" >&2
+    exit 1
+fi
+
+# Auto-detect entry name from parent directory name
+if [ -z "$ENTRY_NAME" ]; then
+    dir="$(cd "$(dirname "$TARGET")" && pwd)"
+    ENTRY_NAME="$(basename "$dir")"
+    printf "Entry name [%s]: " "$ENTRY_NAME"
+    read -r input
+    [ -n "$input" ] && ENTRY_NAME="$input"
+fi
+
+# Check rbw is unlocked
+if ! rbw unlocked 2>/dev/null; then
+    echo "rbw is locked. Running 'rbw unlock'..." >&2
+    rbw unlock
+fi
+
+imported=0
+skipped=0
+
+while IFS= read -r line || [ -n "$line" ]; do
+    # Skip comments and empty lines
+    case "$line" in
+        "#"*|"") continue ;;
+    esac
+
+    # Extract KEY=VALUE
+    key="${line%%=*}"
+    value="${line#*=}"
+
+    # Skip if no value or key looks invalid
+    case "$key" in
+        *[!A-Za-z0-9_]*) continue ;;
+    esac
+    [ -z "$value" ] && continue
+
+    # Strip surrounding quotes
+    case "$value" in
+        \"*\") value="${value#\"}"; value="${value%\"}" ;;
+        \'*\') value="${value#\'}"; value="${value%\'}" ;;
+    esac
+
+    if [ "$DRY_RUN" = true ]; then
+        echo "[dry-run] entry=$ENTRY_NAME user=$key (value: ${#value} chars)"
+        imported=$((imported + 1))
+        continue
+    fi
+
+    # Check if entry already exists
+    if rbw get "$ENTRY_NAME" "$key" >/dev/null 2>&1; then
+        echo "  SKIP $key (already exists)"
+        skipped=$((skipped + 1))
+        continue
+    fi
+
+    # Add to rbw: use EDITOR=tee to pipe password via stdin
+    printf '%s' "$value" | EDITOR='tee' rbw add "$ENTRY_NAME" "$key" >/dev/null 2>&1
+    if rbw get "$ENTRY_NAME" "$key" >/dev/null 2>&1; then
+        echo "  ADD  $key"
+        imported=$((imported + 1))
+    else
+        echo "  FAIL $key" >&2
+    fi
+done < "$TARGET"
+
+rbw sync 2>/dev/null
+
+echo ""
+echo "Done: $imported imported, $skipped skipped (entry: $ENTRY_NAME)"
+if [ "$DRY_RUN" = false ] && [ $imported -gt 0 ]; then
+    echo ""
+    echo "Retrieve with: rbw get $ENTRY_NAME <KEY>"
+    echo "envault format: KEY=rbw:$ENTRY_NAME/<KEY>"
+fi

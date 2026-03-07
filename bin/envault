@@ -1,0 +1,125 @@
+#!/bin/sh
+# envault - Generate .env from .env.example using rbw (Bitwarden CLI)
+#
+# Usage:
+#   envault                  # .env.example -> .env (interactive)
+#   envault -e .env.example  # specify example file
+#   envault -o /tmp/.env     # output to specific path
+#   envault -x command       # inject env vars and exec command (no .env file created)
+#
+# .env.example format:
+#   KEY=rbw:entry-name/username  # rbw get entry-name username
+#   KEY=rbw:entry-name           # rbw get entry-name (password field)
+#   KEY=literal-value            # kept as-is (no rbw: prefix)
+#   KEY=                         # prompt interactively
+#   # comment                    # ignored
+
+set -eu
+
+EXAMPLE_FILE=".env.example"
+OUTPUT_FILE=".env"
+EXEC_MODE=""
+
+usage() {
+    echo "Usage: envault [-e example_file] [-o output_file] [-x command...]"
+    echo ""
+    echo "Options:"
+    echo "  -e FILE    Input example file (default: .env.example)"
+    echo "  -o FILE    Output file (default: .env)"
+    echo "  -x CMD     Exec mode: inject vars and run command (no file written)"
+    echo "  -h         Show this help"
+    exit 0
+}
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -e) EXAMPLE_FILE="$2"; shift 2 ;;
+        -o) OUTPUT_FILE="$2"; shift 2 ;;
+        -x) shift; EXEC_MODE="$*"; break ;;
+        -h) usage ;;
+        *)  echo "Unknown option: $1" >&2; exit 1 ;;
+    esac
+done
+
+if [ ! -f "$EXAMPLE_FILE" ]; then
+    echo "Error: $EXAMPLE_FILE not found" >&2
+    exit 1
+fi
+
+# Check rbw is unlocked
+if ! rbw unlocked 2>/dev/null; then
+    echo "rbw is locked. Running 'rbw unlock'..." >&2
+    rbw unlock
+fi
+
+resolve_value() {
+    value="$1"
+    key="$2"
+
+    case "$value" in
+        rbw:*/*)
+            entry="${value#rbw:}"
+            name="${entry%%/*}"
+            username="${entry#*/}"
+            rbw get "$name" "$username" 2>/dev/null || {
+                echo "Error: failed to get rbw:$name user:$username" >&2
+                return 1
+            }
+            ;;
+        rbw:*)
+            entry="${value#rbw:}"
+            rbw get "$entry" 2>/dev/null || {
+                echo "Error: failed to get rbw:$entry" >&2
+                return 1
+            }
+            ;;
+        "")
+            printf "Enter value for %s: " "$key" >&2
+            read -r val
+            echo "$val"
+            ;;
+        *)
+            echo "$value"
+            ;;
+    esac
+}
+
+if [ -n "$EXEC_MODE" ]; then
+    # Exec mode: export vars and run command
+    while IFS= read -r line || [ -n "$line" ]; do
+        case "$line" in
+            "#"*|"") continue ;;
+        esac
+        key="${line%%=*}"
+        value="${line#*=}"
+        resolved="$(resolve_value "$value" "$key")"
+        export "$key=$resolved"
+    done < "$EXAMPLE_FILE"
+    exec $EXEC_MODE
+else
+    # File mode: generate .env
+    tmpfile="$(mktemp)"
+    trap 'rm -f "$tmpfile"' EXIT
+
+    while IFS= read -r line || [ -n "$line" ]; do
+        case "$line" in
+            "#"*)
+                echo "$line" >> "$tmpfile"
+                continue
+                ;;
+            "")
+                echo "" >> "$tmpfile"
+                continue
+                ;;
+        esac
+        key="${line%%=*}"
+        value="${line#*=}"
+        resolved="$(resolve_value "$value" "$key")"
+        echo "$key=$resolved" >> "$tmpfile"
+    done < "$EXAMPLE_FILE"
+
+    mv "$tmpfile" "$OUTPUT_FILE"
+    chmod 600 "$OUTPUT_FILE"
+    trap - EXIT
+    echo "Generated $OUTPUT_FILE from $EXAMPLE_FILE" >&2
+fi
