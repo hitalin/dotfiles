@@ -2,37 +2,42 @@
 # envault - Generate .env from .env.example using rbw (Bitwarden CLI)
 #
 # Usage:
-#   envault                  # .env.example -> .env (interactive)
-#   envault -e .env.example  # specify example file
-#   envault -o /tmp/.env     # output to specific path
-#   envault -x command       # inject env vars and exec command (no .env file created)
+#   envault -n yamix                # auto-resolve keys from rbw entry "yamix"
+#   envault -n yamix -x pnpm dev   # inject and exec (no .env file created)
+#   envault -e .env.example         # specify example file
+#   envault -o .env.local           # output to specific path
 #
-# .env.example format:
-#   KEY=rbw:entry-name/username  # rbw get entry-name username
-#   KEY=rbw:entry-name           # rbw get entry-name (password field)
-#   KEY=literal-value            # kept as-is (no rbw: prefix)
-#   KEY=                         # prompt interactively
-#   # comment                    # ignored
+# Resolution order for each KEY=VALUE in .env.example:
+#   1. rbw:entry/user        → rbw get entry user  (explicit)
+#   2. -n NAME given         → rbw get NAME KEY    (auto-match by key name)
+#   3. empty value (KEY=)    → prompt interactively
+#   4. non-empty value       → keep as-is (literal/placeholder)
 
 set -eu
 
 EXAMPLE_FILE=".env.example"
 OUTPUT_FILE=".env"
 EXEC_MODE=""
+RBW_ENTRY=""
 
 usage() {
-    echo "Usage: envault [-e example_file] [-o output_file] [-x command...]"
+    echo "Usage: envault [-n entry] [-e file] [-o file] [-x command...]"
     echo ""
     echo "Options:"
+    echo "  -n NAME    rbw entry name to auto-resolve keys (e.g. yamix)"
     echo "  -e FILE    Input example file (default: .env.example)"
     echo "  -o FILE    Output file (default: .env)"
     echo "  -x CMD     Exec mode: inject vars and run command (no file written)"
     echo "  -h         Show this help"
+    echo ""
+    echo "With -n, each KEY in .env.example is looked up as: rbw get NAME KEY"
+    echo "If not found in rbw, the original value is kept as-is."
     exit 0
 }
 
 while [ $# -gt 0 ]; do
     case "$1" in
+        -n) RBW_ENTRY="$2"; shift 2 ;;
         -e) EXAMPLE_FILE="$2"; shift 2 ;;
         -o) OUTPUT_FILE="$2"; shift 2 ;;
         -x) shift; EXEC_MODE="$*"; break ;;
@@ -56,6 +61,7 @@ resolve_value() {
     value="$1"
     key="$2"
 
+    # 1. Explicit rbw: prefix
     case "$value" in
         rbw:*/*)
             entry="${value#rbw:}"
@@ -65,6 +71,7 @@ resolve_value() {
                 echo "Error: failed to get rbw:$name user:$username" >&2
                 return 1
             }
+            return
             ;;
         rbw:*)
             entry="${value#rbw:}"
@@ -72,16 +79,28 @@ resolve_value() {
                 echo "Error: failed to get rbw:$entry" >&2
                 return 1
             }
-            ;;
-        "")
-            printf "Enter value for %s: " "$key" >&2
-            read -r val
-            echo "$val"
-            ;;
-        *)
-            echo "$value"
+            return
             ;;
     esac
+
+    # 2. Auto-resolve from rbw entry if -n given
+    if [ -n "$RBW_ENTRY" ]; then
+        rbw_value="$(rbw get "$RBW_ENTRY" "$key" 2>/dev/null)" && {
+            echo "$rbw_value"
+            return
+        }
+    fi
+
+    # 3. Empty value → prompt
+    if [ -z "$value" ]; then
+        printf "Enter value for %s: " "$key" >&2
+        read -r val
+        echo "$val"
+        return
+    fi
+
+    # 4. Keep as-is (placeholder/literal)
+    echo "$value"
 }
 
 if [ -n "$EXEC_MODE" ]; then
