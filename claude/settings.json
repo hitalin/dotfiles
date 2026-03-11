@@ -28,7 +28,12 @@
       "Read(//home/taka/.ghq/github.com/hitalin/notedeck/**)",
       "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/01637d7/src/**)",
       "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/d4e8512/src/**)",
-      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/0f54eb7/src/**)"
+      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/0f54eb7/src/**)",
+      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/9f76da6/src/**)",
+      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/5af7468/src/**)",
+      "Read(//home/taka/.ghq/github.com/yamisskey-dev/yamisskey/packages/frontend/src/components/**)",
+      "Read(//home/taka/.ghq/github.com/yamisskey-dev/yamisskey/packages/frontend/src/**)",
+      "Read(//home/taka/.ghq/github.com/yamisskey-dev/yamisskey/packages/backend/src/**)"
     ],
     "deny": [
       "Bash(rm -rf /)",
