@@ -33,7 +33,10 @@
       "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/5af7468/src/**)",
       "Read(//home/taka/.ghq/github.com/yamisskey-dev/yamisskey/packages/frontend/src/components/**)",
       "Read(//home/taka/.ghq/github.com/yamisskey-dev/yamisskey/packages/frontend/src/**)",
-      "Read(//home/taka/.ghq/github.com/yamisskey-dev/yamisskey/packages/backend/src/**)"
+      "Read(//home/taka/.ghq/github.com/yamisskey-dev/yamisskey/packages/backend/src/**)",
+      "Read(//home/taka/.ghq/github.com/misskey-dev/misskey/**)",
+      "Read(//home/taka/.ghq/github.com/misskey-dev/misskey/packages/frontend/**)",
+      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/**)"
     ],
     "deny": [
       "Bash(rm -rf /)",

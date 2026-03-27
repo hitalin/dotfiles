@@ -43,8 +43,10 @@ export BAT_THEME="Catppuccin-mocha"
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
-export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border --bind "ctrl-/:toggle-preview"'
+export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=header,grid --line-range :100 {}"'
+export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
+export FZF_ALT_C_OPTS='--preview "eza --tree --level=2 --color=always {}"'
 
 # personal scripts
 export PATH="$HOME/dotfiles/bin:$PATH"
@@ -99,8 +101,13 @@ fi
 export SDL_VIDEO_X11_DGAMOUSE=0
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
-# wsl2-ssh-agent
-[[ -x $HOME/wsl2-ssh-agent ]] && eval $($HOME/wsl2-ssh-agent)
+# WSL2
+if grep -qi microsoft /proc/version 2>/dev/null; then
+  # ssh-agent forwarding from Windows
+  [[ -x $HOME/wsl2-ssh-agent ]] && eval $($HOME/wsl2-ssh-agent)
+  # Open URLs in Windows default browser
+  export BROWSER="wslview"
+fi
 
 # gpg-agent
 export GPG_TTY=$(tty)

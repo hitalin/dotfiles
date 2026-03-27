@@ -21,6 +21,11 @@ zinit for \
 # https://github.com/zdharma-continuum/fast-syntax-highlighting
 zinit light zdharma-continuum/fast-syntax-highlighting
 
+# https://github.com/zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
 ### https://github.com/wfxr/forgit
 zinit load wfxr/forgit
 
