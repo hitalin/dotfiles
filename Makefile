@@ -10,7 +10,7 @@ GNUPG_PATH    = $(HOME)/.gnupg
 
 CLAUDE_LINKS  = CLAUDE.md settings.json rules skills hooks
 PROTO_LINKS   = .prototools config.toml
-GNUPG_LINKS   = gpg-agent.conf
+GNUPG_LINKS   = gpg-agent.conf pinentry-auto.sh
 
 .PHONY: init deploy uninstall list claude-deploy proto-deploy gnupg-deploy
 
