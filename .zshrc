@@ -21,15 +21,8 @@ zinit for \
 # https://github.com/zdharma-continuum/fast-syntax-highlighting
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-# https://github.com/zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-autosuggestions
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-
 ### https://github.com/wfxr/forgit
 zinit load wfxr/forgit
-
-### zoxide is initialized in .zshenv (replaces rupa/z)
 
 # bindkey
 bindkey -e
@@ -102,7 +95,6 @@ autoload -Uz colors
 colors
 
 # setopt
-setopt correct
 setopt auto_list
 setopt auto_pushd
 setopt auto_menu
@@ -140,16 +132,11 @@ if command -v batcat > /dev/null 2>&1 && ! command -v bat > /dev/null 2>&1; then
   alias bat='batcat'
 fi
 
-alias ocaml="rlwrap ocaml"
-
 alias gdb="gdb -q"
 alias objdump="objdump -M intel"
 
-alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
-
 alias t='todoist list'
 alias y='yazi'
-alias f='fuck'
 
 alias v='nvim'
 
@@ -158,10 +145,6 @@ function _get_default_iface() { ip route show default 2>/dev/null | awk '/defaul
 alias mac='ip link show $(_get_default_iface) 2>/dev/null | grep -oP "link/ether \K[^ ]+"'
 alias ipv4='ip -4 addr show $(_get_default_iface) 2>/dev/null | grep -oP "inet \K[0-9.]+"'
 alias ipv6='ip -6 addr show $(_get_default_iface) 2>/dev/null | grep -oP "inet6 \K[0-9a-f:]+" | head -1'
-function ipv6todecimal(){
-  dig $1 aaaa +short | perl -lpe '($c=$_)=~s/[^:]//g; s/::/":"x length($c)/e; foreach (split(/:/)) { $_= hex($_); $o .= sprintf("%d.%d.", int($_/256), $_%256);} $_=substr($o,0,-1);'
-}
-
 alias c='claude'
 
 # productive
@@ -249,41 +232,6 @@ if [[ ! -n $TMUX && $- == *l* && -t 0 ]]; then
   fi
 fi
 
-## https://github.com/akermu/emacs-libvterm#shell-side-configuration
-vterm_printf(){
-  if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
-    # Tell tmux to pass the escape sequences through
-    printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-  elif [ "${TERM%%-*}" = "screen" ]; then
-    # GNU screen (screen, screen-256color, screen-256color-bce)
-    printf "\eP\e]%s\007\e\\" "$1"
-  else
-    printf "\e]%s\e\\" "$1"
-  fi
-}
-## https://zenn.dev/yutakatay/articles/yarakashi-reboot
-function ssh() {
-  # tmux起動時
-  if [[ -n $(printenv TMUX) ]] ; then
-    # 現在のペインIDを記録
-    local pane_id=$(tmux display -p '#{pane_id}')
-    # 接続先ホスト名に応じて背景色を切り替え
-    if [[ `echo $1 | grep 'prd'` ]] ; then
-      tmux select-pane -P 'bg=colour52,fg=white'
-    elif [[ `echo $1 | grep 'stg'` ]] ; then
-      tmux select-pane -P 'bg=colour25,fg=white'
-    fi
-
-    # 通常通りssh続行
-    command ssh $@
-
-    # デフォルトの背景色に戻す
-    tmux select-pane -t $pane_id -P 'default'
-  else
-    command ssh $@
-  fi
-}
-
 function fzf_npm_scripts() {
   # package.jsonの存在確認
   if [[ ! -e package.json ]]; then
@@ -317,15 +265,8 @@ bindkey "^N" fzf_npm_scripts
 # load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# load shims in rye
-[ -s ~/.rye/env ] && source ~/.rye/env
-
-
 # custom scripts
 PATH=$PATH:~/dotfiles/bin
-
-# filen-cli
-PATH=$PATH:~/.filen-cli/bin
 
 # pnpm/bun are managed by proto
 
@@ -348,15 +289,6 @@ unset _gwq_comp_cache
 # starship prompt
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
-fi
-
-# thefuck (lazy load — Python startup is expensive)
-if command -v thefuck >/dev/null 2>&1; then
-  fuck() {
-    unset -f fuck
-    eval "$(thefuck --alias)"
-    fuck "$@"
-  }
 fi
 
 # zoxide

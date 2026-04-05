@@ -36,15 +36,6 @@ export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
 ## python
 export PATH="$HOME/.local/bin:$PATH"
 ## rust (sourced at end of file via .cargo/env)
-## ocaml
-test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-## haskell
-if command -v ghcup >/dev/null 2>&1; then
-  export PATH="$HOME/.ghcup/bin:$PATH"
-  if command -v cabal >/dev/null 2>&1; then
-    export PATH="$HOME/.cabal/bin:$PATH"
-  fi
-fi
 ## go
 if command -v go >/dev/null 2>&1; then
   export GOPATH=$HOME/.go
