@@ -41,8 +41,8 @@ bindkey '^[^U' backward-delete-word
 bindkey '^[^K' delete-word
 
 HISTFILE=~/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
+HISTSIZE=50000
+SAVEHIST=50000
 HIST_STAMPS="mm/dd/yyyy"
 
 # hoge
@@ -91,8 +91,13 @@ bindkey '^[d' _quote-previous-word-in-double
 
 autoload -Uz select-word-style
 autoload -Uz add-zsh-hook
+# compinit with daily cache
 autoload -Uz compinit
-compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 autoload -Uz colors
 colors
 
@@ -330,5 +335,58 @@ if [ -f '/home/taka/google-cloud-sdk/path.zsh.inc' ]; then . '/home/taka/google-
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/taka/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/taka/google-cloud-sdk/completion.zsh.inc'; fi
 
-# gwq
-source <(gwq completion zsh)
+# gwq completion (cached)
+_gwq_comp_cache="${XDG_CACHE_HOME:-$HOME/.cache}/gwq_completion.zsh"
+if [[ ! -f "$_gwq_comp_cache" ]] || [[ $(command -v gwq) -nt "$_gwq_comp_cache" ]]; then
+  gwq completion zsh > "$_gwq_comp_cache" 2>/dev/null
+fi
+[[ -f "$_gwq_comp_cache" ]] && source "$_gwq_comp_cache"
+unset _gwq_comp_cache
+
+# --- Moved from .zshenv (interactive-only tools) ---
+
+# starship prompt
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
+
+# thefuck (lazy load — Python startup is expensive)
+if command -v thefuck >/dev/null 2>&1; then
+  fuck() {
+    unset -f fuck
+    eval "$(thefuck --alias)"
+    fuck "$@"
+  }
+fi
+
+# zoxide
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+# direnv
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
+# keychain
+if command -v keychain >/dev/null 2>&1; then
+  [[ -f $HOME/.keychain/$HOST-sh ]] && source $HOME/.keychain/$HOST-sh
+  eval $(keychain --eval --quiet)
+fi
+
+# auto venv activation on cd
+function cd() {
+  builtin cd "$@"
+
+  if [[ -z "$VIRTUAL_ENV" ]] ; then
+    if [[ -d ./.venv ]] ; then
+      source ./.venv/bin/activate
+    fi
+  else
+    parentdir="$(dirname "$VIRTUAL_ENV")"
+    if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+      deactivate
+    fi
+  fi
+}

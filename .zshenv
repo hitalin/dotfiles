@@ -16,28 +16,6 @@ export LESS_TERMCAP_so=$(tput bold; tput setaf 3)  # begin standout-mode (yellow
 export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)     # end underline
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2)  # begin underline (green)
 
-# theme
-## startship
-if command -v starship >/dev/null 2>&1; then
-  eval "$(starship init zsh)"
-fi
-
-# thefuck
-if command -v thefuck >/dev/null 2>&1; then
-  eval "$(thefuck --alias)"
-fi
-
-# zoxide
-if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init zsh)"
-fi
-
-# direnv
-if command -v direnv >/dev/null 2>&1; then
-  eval "$(direnv hook zsh)"
-  export DIRENV_LOG_FORMAT=""
-fi
-
 # bat
 export BAT_THEME="Catppuccin-mocha"
 
@@ -57,24 +35,6 @@ export PROTO_HOME="$HOME/.proto"
 export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
 ## python
 export PATH="$HOME/.local/bin:$PATH"
-function cd() {
-  builtin cd "$@"
-
-  if [[ -z "$VIRTUAL_ENV" ]] ; then
-    ## If env folder is found then activate the vitualenv
-    if [[ -d ./.venv ]] ; then
-      source ./.venv/bin/activate
-    fi
-  else
-    ## check the current folder belong to earlier VIRTUAL_ENV folder
-    # if yes then do nothing
-    # else deactivate
-    parentdir="$(dirname "$VIRTUAL_ENV")"
-    if [[ "$PWD"/ != "$parentdir"/* ]] ; then
-      deactivate
-    fi
-  fi
-}
 ## rust (sourced at end of file via .cargo/env)
 ## ocaml
 test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
@@ -91,11 +51,8 @@ if command -v go >/dev/null 2>&1; then
   export PATH="$GOPATH/bin:$PATH"
 fi
 
-# keychain
-if command -v keychain >/dev/null 2>&1; then
-  source $HOME/.keychain/$HOST-sh
-  eval $(keychain --eval --quiet)
-fi
+# direnv (env var only, hook is in .zshrc)
+export DIRENV_LOG_FORMAT=""
 
 # terminal
 export SDL_VIDEO_X11_DGAMOUSE=0
