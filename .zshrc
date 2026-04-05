@@ -18,12 +18,6 @@ autoload -Uz _zinit
 zinit for \
   light-mode  zsh-users/zsh-completions \
 
-# https://github.com/zdharma-continuum/fast-syntax-highlighting
-zinit light zdharma-continuum/fast-syntax-highlighting
-
-### https://github.com/wfxr/forgit
-zinit load wfxr/forgit
-
 # bindkey
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
@@ -38,51 +32,6 @@ HISTSIZE=50000
 SAVEHIST=50000
 HIST_STAMPS="mm/dd/yyyy"
 
-# hoge
-autoload smart-insert-last-word
-zle -N insert-last-word smart-insert-last-word
-zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
-bindkey '^]' insert-last-word
-
-function _delete-char-or-list-expand() {
-  if [[ -z "${RBUFFER}" ]]; then
-    zle list-expand
-  else
-    zle delete-char
-  fi
-}
-zle -N _delete-char-or-list-expand
-bindkey '^D' _delete-char-or-list-expand
-
-function _kill-backward-blank-word() {
-  zle set-mark-command
-  zle vi-backward-blank-word
-  zle kill-region
-}
-zle -N _kill-backward-blank-word
-bindkey '^Y' _kill-backward-blank-word
-
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-bindkey "^O" history-beginning-search-backward-end
-
-autoload -U modify-current-argument
-_quote-previous-word-in-single() {
-  modify-current-argument '${(qq)${(Q)ARG}}'
-  zle vi-forward-blank-word
-}
-
-zle -N _quote-previous-word-in-single
-bindkey '^[s' _quote-previous-word-in-single
-
-quote-previous-word-in-double() {
-  modify-current-argument '${(qqq)${(Q)ARG}}'
-  zle vi-forward-blank-word
-}
-zle -N _quotus-previous-word-in-double
-bindkey '^[d' _quote-previous-word-in-double
-
-autoload -Uz select-word-style
 autoload -Uz add-zsh-hook
 # compinit with daily cache
 autoload -Uz compinit
@@ -91,8 +40,6 @@ if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
 else
   compinit -C
 fi
-autoload -Uz colors
-colors
 
 # setopt
 setopt auto_list
@@ -140,11 +87,6 @@ alias y='yazi'
 
 alias v='nvim'
 
-# ネットワーク情報取得（デフォルトインターフェースを自動検出）
-function _get_default_iface() { ip route show default 2>/dev/null | awk '/default/ {print $5; exit}'; }
-alias mac='ip link show $(_get_default_iface) 2>/dev/null | grep -oP "link/ether \K[^ ]+"'
-alias ipv4='ip -4 addr show $(_get_default_iface) 2>/dev/null | grep -oP "inet \K[0-9.]+"'
-alias ipv6='ip -6 addr show $(_get_default_iface) 2>/dev/null | grep -oP "inet6 \K[0-9a-f:]+" | head -1'
 alias c='claude'
 
 # productive
@@ -171,21 +113,6 @@ function gwq-fzf() {
 }
 zle -N gwq-fzf
 bindkey '^w' gwq-fzf
-
-## https://dev.classmethod.jp/articles/shuntaka-rust-20190816/#toc-7
-function fd-fzf() {
-  local target_dir=$(fd -t d -I -H -E ".git" | fzf --query="$LBUFFER")
-  local current_dir=$(pwd)
-
-  if [ -n "$target_dir" ]; then
-    BUFFER="cd ${current_dir}/${target_dir}"
-    zle accept-line
-  fi
-
-  zle reset-prompt
-}
-zle -N fd-fzf
-bindkey "^f" fd-fzf
 
 ## https://qiita.com/tomoyamachi/items/e51d2906a5bb24cf1684#%E3%81%95%E3%82%89%E3%81%AB%E4%BD%BF%E3%81%84%E3%82%84%E3%81%99%E3%81%8F--zsh%E3%81%AE%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0
 function ghq-fzf() {
@@ -273,9 +200,6 @@ PATH=$PATH:~/dotfiles/bin
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/taka/google-cloud-sdk/path.zsh.inc' ]; then . '/home/taka/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/taka/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/taka/google-cloud-sdk/completion.zsh.inc'; fi
-
 # gwq completion (cached)
 _gwq_comp_cache="${XDG_CACHE_HOME:-$HOME/.cache}/gwq_completion.zsh"
 if [[ ! -f "$_gwq_comp_cache" ]] || [[ $(command -v gwq) -nt "$_gwq_comp_cache" ]]; then
@@ -307,18 +231,3 @@ if command -v keychain >/dev/null 2>&1; then
   eval $(keychain --eval --quiet)
 fi
 
-# auto venv activation on cd
-function cd() {
-  builtin cd "$@"
-
-  if [[ -z "$VIRTUAL_ENV" ]] ; then
-    if [[ -d ./.venv ]] ; then
-      source ./.venv/bin/activate
-    fi
-  else
-    parentdir="$(dirname "$VIRTUAL_ENV")"
-    if [[ "$PWD"/ != "$parentdir"/* ]] ; then
-      deactivate
-    fi
-  fi
-}
