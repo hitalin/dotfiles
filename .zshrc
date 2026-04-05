@@ -197,9 +197,6 @@ PATH=$PATH:~/dotfiles/bin
 
 # pnpm/bun are managed by proto
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/taka/google-cloud-sdk/path.zsh.inc' ]; then . '/home/taka/google-cloud-sdk/path.zsh.inc'; fi
-
 # gwq completion (cached)
 _gwq_comp_cache="${XDG_CACHE_HOME:-$HOME/.cache}/gwq_completion.zsh"
 if [[ ! -f "$_gwq_comp_cache" ]] || [[ $(command -v gwq) -nt "$_gwq_comp_cache" ]]; then
