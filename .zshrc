@@ -18,6 +18,9 @@ autoload -Uz _zinit
 zinit for \
   light-mode  zsh-users/zsh-completions \
 
+# https://github.com/zdharma-continuum/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
+
 # bindkey
 bindkey -e
 bindkey "^[[Z" reverse-menu-complete
