@@ -7,12 +7,14 @@ CLAUDE_PATH   = $(HOME)/.claude
 GEMINI_PATH   = $(HOME)/.gemini
 PROTO_PATH    = $(HOME)/.proto
 GNUPG_PATH    = $(HOME)/.gnupg
+HERMES_PATH   = $(HOME)/.hermes
 
 CLAUDE_LINKS  = CLAUDE.md settings.json rules skills hooks
 PROTO_LINKS   = .prototools config.toml
 GNUPG_LINKS   = gpg-agent.conf pinentry-auto.sh
+HERMES_LINKS  = config.yaml
 
-.PHONY: init deploy uninstall list claude-deploy proto-deploy gnupg-deploy
+.PHONY: init deploy uninstall list claude-deploy proto-deploy gnupg-deploy hermes-deploy
 
 $(VIM_PATH):
 	ln -sfnv $(PWD)/vim $@
@@ -28,8 +30,11 @@ gnupg-deploy:
 	@mkdir -p $(GNUPG_PATH)
 	@chmod 700 $(GNUPG_PATH)
 	@$(foreach item, $(GNUPG_LINKS), ln -sfnv $(PWD)/gnupg/$(item) $(GNUPG_PATH)/$(item);)
+hermes-deploy:
+	@mkdir -p $(HERMES_PATH)
+	@$(foreach item, $(HERMES_LINKS), ln -sfnv $(PWD)/hermes/$(item) $(HERMES_PATH)/$(item);)
 
-init: $(VIM_PATH) claude-deploy $(GEMINI_PATH) proto-deploy gnupg-deploy
+init: $(VIM_PATH) claude-deploy $(GEMINI_PATH) proto-deploy gnupg-deploy hermes-deploy
 
 deploy: init
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
@@ -39,6 +44,7 @@ uninstall:
 	@$(foreach item, $(CLAUDE_LINKS), unlink $(CLAUDE_PATH)/$(item) 2>/dev/null || true;)
 	@$(foreach item, $(PROTO_LINKS), unlink $(PROTO_PATH)/$(item) 2>/dev/null || true;)
 	@$(foreach item, $(GNUPG_LINKS), unlink $(GNUPG_PATH)/$(item) 2>/dev/null || true;)
+	@$(foreach item, $(HERMES_LINKS), unlink $(HERMES_PATH)/$(item) 2>/dev/null || true;)
 	@$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
 
 list:

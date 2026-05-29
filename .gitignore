@@ -22,3 +22,13 @@ gemini/oauth_creds.json
 gemini/tmp/
 gemini/user_id
 .claude/
+
+# hermes-agent: config.yaml のみ管理。APIキー/トークン/セッションデータは除外
+hermes/.env
+hermes/auth.json
+hermes/sessions/
+hermes/logs/
+hermes/cron/
+hermes/memories/
+hermes/skills/
+hermes/hermes-agent/
