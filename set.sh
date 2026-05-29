@@ -49,6 +49,17 @@ if command -v uv >/dev/null 2>&1; then
   uv tool install pyghidra-mcp
 fi
 
+# Hermes Agent (self-improving AI agent by Nous Research)
+# https://github.com/NousResearch/hermes-agent
+# 公式インストーラが内部で uv を使い ~/.hermes に clone + venv + editable install する
+# （uv tool install では skills 同期等の postinstall が走らないため公式経路が筋が良い）。
+#   --skip-setup   : APIキー入力の対話ウィザードを回避（後で `hermes setup` を手動実行）
+#   --skip-browser : Playwright/Chromium の巨大DLを回避（必要時 install.sh を --ensure browser で再実行）
+if command -v uv >/dev/null 2>&1 && [ ! -e ~/.hermes/ ]; then
+  curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh \
+    | bash -s -- --skip-setup --skip-browser
+fi
+
 if command -v go >/dev/null 2>&1 && [ ! -e ~/.go/ ]; then
   go install github.com/x-motemen/ghq@latest
   go install github.com/d-kuro/gwq/cmd/gwq@latest

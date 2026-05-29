@@ -91,6 +91,7 @@ alias y='yazi'
 alias v='nvim'
 
 alias c='claude'
+alias h='hermes'
 
 # productive
 
