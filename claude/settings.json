@@ -74,7 +74,6 @@
       "/home/taka/.claude/projects/-home-taka--ghq-github-com-hitalin-notedeck"
     ]
   },
-  "model": "sonnet",
   "hooks": {
     "PreToolUse": [
       {
@@ -158,6 +157,7 @@
   },
   "language": "ja",
   "effortLevel": "high",
+  "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "showTurnDuration": true
 }
