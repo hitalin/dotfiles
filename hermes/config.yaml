@@ -240,26 +240,32 @@ auxiliary:
     timeout: 600
     extra_body: {}
 display:
-  compact: false
-  personality: kawaii
-  resume_display: full
-  resume_exchanges: 10
-  resume_max_user_chars: 300
-  resume_max_assistant_chars: 200
-  resume_max_assistant_lines: 3
+  compact: true
+  personality: concise
+  resume_display: compact
+  resume_exchanges: 5
+  resume_max_user_chars: 200
+  resume_max_assistant_chars: 100
+  resume_max_assistant_lines: 2
   resume_skip_tool_only: true
-  busy_input_mode: interrupt
-  tui_auto_resume_recent: false
+  busy_input_mode: steer
+  interface: tui
+  tui_auto_resume_recent: true
   bell_on_complete: false
   show_reasoning: false
   streaming: true
   timestamps: false
-  final_response_markdown: strip
+  final_response_markdown: auto
+  details_mode: collapsed
+  sections:
+    thinking: collapsed
+    tools: collapsed
+    activity: collapsed
   persistent_output: true
-  persistent_output_max_lines: 200
+  persistent_output_max_lines: 100
   inline_diffs: true
   file_mutation_verifier: true
-  show_cost: false
+  show_cost: true
   skin: default
   language: en
   tui_status_indicator: kaomoji
@@ -269,11 +275,11 @@ display:
   interim_assistant_messages: true
   tool_progress_command: false
   tool_progress_overrides: {}
-  tool_preview_length: 0
+  tool_preview_length: 80
   ephemeral_system_ttl: 0
   platforms: {}
   runtime_footer:
-    enabled: false
+    enabled: true
     fields:
     - model
     - context_pct
@@ -284,6 +290,7 @@ display:
   long_running_notifications: true
   busy_ack_detail: true
   background_process_notifications: all
+  quiet: true
 dashboard:
   theme: default
   show_token_analytics: false
