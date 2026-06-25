@@ -2,12 +2,11 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "cleanupPeriodDays": 30,
   "env": {
-    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "70",
     "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
     "PATH": "/home/taka/.proto/shims:/home/taka/.proto/bin:/home/taka/.cargo/bin:/home/taka/.local/bin:/home/taka/dotfiles/bin:/home/taka/.fly/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
   },
   "attribution": {
-    "commit": "\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>"
+    "commit": "\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
   },
   "permissions": {
     "allow": [
@@ -20,24 +19,7 @@
       "Skill",
       "Task",
       "mcp__github__*",
-      "mcp__filesystem__*",
-      "Bash(curl -s \"https://raw.githubusercontent.com/HanaMisskey/misskey/hanami/packages/backend/src/server/api/stream/ChannelsService.ts\")",
-      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/df3dff1/src/**)",
-      "Read(//home/taka/.ghq/github.com/hitalin/notecli/src/**)",
-      "Read(//home/taka/.ghq/github.com/hitalin/notecli/**)",
-      "Read(//home/taka/.ghq/github.com/misskey-dev/misskey/packages/frontend/src/ui/_common_/**)",
-      "Read(//home/taka/.ghq/github.com/hitalin/notedeck/**)",
-      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/01637d7/src/**)",
-      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/d4e8512/src/**)",
-      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/0f54eb7/src/**)",
-      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/9f76da6/src/**)",
-      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/5af7468/src/**)",
-      "Read(//home/taka/.ghq/github.com/yamisskey-dev/yamisskey/packages/frontend/src/components/**)",
-      "Read(//home/taka/.ghq/github.com/yamisskey-dev/yamisskey/packages/frontend/src/**)",
-      "Read(//home/taka/.ghq/github.com/yamisskey-dev/yamisskey/packages/backend/src/**)",
-      "Read(//home/taka/.ghq/github.com/misskey-dev/misskey/**)",
-      "Read(//home/taka/.ghq/github.com/misskey-dev/misskey/packages/frontend/**)",
-      "Read(//home/taka/.cargo/git/checkouts/notecli-87329c01dfbd0d2a/**)"
+      "mcp__filesystem__*"
     ],
     "deny": [
       "Bash(rm -rf /)",
@@ -68,11 +50,7 @@
       "Bash(git push *)"
     ],
     "defaultMode": "acceptEdits",
-    "additionalDirectories": [
-      "/home/taka/.ghq/github.com/hitalin/notedeck/src/{adapters/misskey,adapters/sharkey,adapters/cherrypick,core,stores,composables,components",
-      "/tmp/notedeck-init/public",
-      "/home/taka/.claude/projects/-home-taka--ghq-github-com-hitalin-notedeck"
-    ]
+    "additionalDirectories": []
   },
   "hooks": {
     "PreToolUse": [

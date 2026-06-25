@@ -41,7 +41,7 @@
 - `/context` でコンテキスト使用状況を確認
 - 複雑なタスクは Plan Mode（Shift+Tab x2）
 - `/effort low|medium|high|max` で推論の深さを調整
-- `/fast` で高速出力モード切替（同じ Opus 4.6 モデル）
+- `/fast` で高速出力モード切替（同じ Opus 4.8 モデル）
 - `@ファイル名` でファイルをコンテキストに追加
 - `/memory` でプロジェクト固有のメモを管理
 - `CLAUDE.local.md` で個人設定（.gitignore 対象）
