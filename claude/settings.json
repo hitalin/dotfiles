@@ -136,6 +136,5 @@
   "language": "ja",
   "effortLevel": "high",
   "tui": "fullscreen",
-  "skipWorkflowUsageWarning": true,
   "showTurnDuration": true
 }
