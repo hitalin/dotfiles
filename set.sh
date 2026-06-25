@@ -25,7 +25,7 @@ if [ ! -e ~/.proto/ ]; then
   proto install pnpm latest
   proto install bun latest
   # Global npm packages via pnpm
-  pnpm add -g wrangler @devcontainers/cli @biomejs/biome
+  pnpm add -g wrangler @devcontainers/cli @biomejs/biome @getpaseo/cli
 fi
 
 if command -v claude >/dev/null 2>&1 && [ ! -e ~/.claude/ ]; then

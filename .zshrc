@@ -200,6 +200,12 @@ bindkey "^N" fzf_npm_scripts
 PATH=$PATH:~/dotfiles/bin
 
 # pnpm/bun are managed by proto
+# pnpm global bin (for globally installed CLIs like paseo)
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
 
 # gwq completion (cached)
 _gwq_comp_cache="${XDG_CACHE_HOME:-$HOME/.cache}/gwq_completion.zsh"
