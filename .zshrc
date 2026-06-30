@@ -232,6 +232,11 @@ if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 fi
 
+# tirith (terminal security monitor)
+if command -v tirith >/dev/null 2>&1; then
+  eval "$(tirith init --shell zsh)"
+fi
+
 # keychain
 if command -v keychain >/dev/null 2>&1; then
   [[ -f $HOME/.keychain/$HOST-sh ]] && source $HOME/.keychain/$HOST-sh
